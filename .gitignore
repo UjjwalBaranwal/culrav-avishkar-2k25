@@ -1,0 +1,42 @@
+# ---- Node (server) ----
+server/node_modules
+server/.env
+server/.env.local
+server/package-lock.json
+
+# ---- React (client) ----
+client/node_modules
+client/.env
+client/.env.local
+client/build
+client/package-lock.json
+
+# ---- Logs ----
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ---- OS / Editor junk ----
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# ---- IDE / Editor ----
+.vscode/
+.idea/
+*.iml
+
+# ---- Environment / Secrets ----
+.env
+.env.local
+.env.*.local
+
+# ---- Misc ----
+dist/
+coverage/
+.tmp/
+.cache/
