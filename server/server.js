@@ -3,6 +3,7 @@ dotenv.config({
   path: "./.env",
 });
 
+const mongoose = require("mongoose");
 //////////////////////////////////////////////
 ////// catching uncaught exception
 process.on("uncaughtException", (err) => {
@@ -12,6 +13,9 @@ process.on("uncaughtException", (err) => {
 });
 
 const app = require("./app");
+const { connectDB } = require("./utils/connectDB");
+
+connectDB();
 
 //created a serverr
 const port = process.env.PORT || 3000;
