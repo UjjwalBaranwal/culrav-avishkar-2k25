@@ -8,6 +8,7 @@ const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 
 const app = express();
+const teamRouter = require("./Router/team.router");
 
 app.use(helmet());
 
@@ -31,15 +32,7 @@ app.use(
     extended: true,
     limit: "10kb",
   })
-); //for parsing the data that come with url post request
-
-/// DATA sanitization against noSql query injection
-// app.use(mongoSanitize());
-/// DATA sanitization against XSS
-// app.use(xss());
-
-//////////////////////////////////////////////////////////////////////
-/////////// Creating our own middleWare function
+); 
 app.use((req, res, next) => {
   console.log("hello from the middleware 😎");
   console.log(req.cookies);
@@ -58,4 +51,5 @@ app.get("/api/test", (req, res) => {
   });
 });
 
+app.use("/api/v1/team", teamRouter);
 module.exports = app;

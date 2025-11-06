@@ -1,82 +1,90 @@
-import Team from "../Model/team.model";
-import User from "../Model/user.model"
+// Controller/team.controller.js
+const mongoose = require("mongoose");
+const Team = require("../Model/team.model");
+const User = require("../Model/user.model");
+
+
+
 
 const createTeam = async (req, res, next) => {
-    const { teamName, leader, size } = req.body;
+  const { teamName, leader, size } = req.body;
 
-    // Validate input fields
-    if (!teamName) {
-        return res.status(400).json({
-            success: false,
-            message: "Team name is missing",
-        });
+  // Basic validation
+  if (!teamName?.trim()) {
+    return res.status(400).json({ success: false, message: "Team name is missing" });
+  }
+  if (!leader) {
+    return res.status(400).json({ success: false, message: "Leader ID is missing." });
+  }
+  if (size !== undefined && (!Number.isInteger(size) || size <= 0)) {
+    return res.status(400).json({ success: false, message: "Size must be a positive integer." });
+  }
+
+  const session = await mongoose.startSession();
+  session.startTransaction();
+
+  try {
+    
+    const leaderUser = await User.findById(leader).session(session);
+
+    if (!leaderUser) {
+      await session.abortTransaction();
+      return res.status(422).json({
+        success: false,
+        message: "Cannot create team — leader ID is invalid or not registered.",
+      });
     }
 
-    if (!leader) {
-        return res.status(400).json({
-            success: false,
-            message: "Leader ID is missing.",
-        });
+    // Enforce unique teamName per leader
+    const existingTeam = await Team.findOne({ teamName, leader }).session(session);
+    if (existingTeam) {
+      await session.abortTransaction();
+      return res.status(409).json({
+        success: false,
+        message: "A team with the same name already exists for this leader.",
+        team: existingTeam,
+      });
     }
 
-    try {
-        // Validate leader existence
-        const leaderUser = await User.findById(leader);
-        if (!leaderUser) {
-            return res.status(422).json({
-                success: false,
-                message:
-                    "Cannot create team — leader ID is invalid or leader is not registered.",
-            });
-        }
+    // Create the team
+    const [team] = await Team.create(
+      [{ teamName: teamName.trim(), leader, size }],
+      { session }
+    );
 
-        // Check if a team with the same name already exists for this leader
-        const existingTeam = await Team.findOne({ teamName, leader });
+    // Add leader as an accepted member (idempotent)
+    team.acceptedMembers = Array.from(new Set([...(team.acceptedMembers || []), leader]));
 
-        if (existingTeam) {
-            return res.status(409).json({
-                success: false,
-                message: "A team with the same name already exists.",
-                team: existingTeam,
-            });
-        }
+    // Link team on the user (idempotent)
+    leaderUser.participatingTeam = Array.from(
+      new Set([...(leaderUser.participatingTeam || []), team._id])
+    );
 
-        // Create a new team
-        const team = await Team.create({ teamName, leader, size });
+    await team.save({ session });
+    await leaderUser.save({ session });
 
-        // Update relationships
-        team.acceptedMembers = [...team.acceptedMembers, leader];
+    await session.commitTransaction();
+    session.endSession();
 
-        leaderUser.participatingTeam = [
-            ...leaderUser.participatingTeam,
-            team._id,
-        ];
-
-        // Save both updates
-        await leaderUser.save();
-        await team.save();
-
-        return res.status(200).json({
-            success: true,
-            message: "Team created successfully!",
-            team: {
-                _id: team._id,
-                teamName: team.teamName,
-                leader: team.leader,
-                size: team.size,
-                acceptedMembers: team.acceptedMembers,
-                pendingMembers: team.pendingMembers,
-                registeredEvents: team.registeredEvents,
-                __v: team.__v,
-            },
-        });
-    } catch (error) {
-        next(error);
-    }
+    return res.status(201).json({
+      success: true,
+      message: "Team created successfully!",
+      team: {
+        _id: team._id,
+        teamName: team.teamName,
+        leader: team.leader,
+        size: team.size,
+        acceptedMembers: team.acceptedMembers,
+        pendingMembers: team.pendingMembers,
+        registeredEvents: team.registeredEvents,
+        __v: team.__v,
+      },
+    });
+  } catch (error) {
+    await session.abortTransaction();
+    session.endSession();
+    return next(error);
+  }
 };
 
-
-
-export {
-    createTeam,
-}
+module.exports = { createTeam };
