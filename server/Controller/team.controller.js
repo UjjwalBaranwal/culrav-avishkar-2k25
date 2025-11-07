@@ -64,7 +64,6 @@ exports.createTeam = catchAsync(async (req, res, next) => {
     return next(error);
   }
 });
-
 // if a team wants to change its name before registering an event
 exports.updateTeamName = catchAsync(async (req,res,next) =>{
  const { teamId ,teamName } = req.body;
@@ -103,7 +102,6 @@ exports.updateTeamName = catchAsync(async (req,res,next) =>{
     next(err);
   }
 });
-
 exports.deleteTeam = catchAsync(async(req,res,next) =>{
   const { teamId, userId } = req.body;
   if (!teamId) {
@@ -178,7 +176,6 @@ exports.deleteTeam = catchAsync(async(req,res,next) =>{
     next(err);
   }
 });
-
 exports.sendTeamInvite = catchAsync(async(req,res,next)=>{
 
  const { teamName, sendToEmail, leaderId } = req.body;
@@ -269,6 +266,147 @@ exports.sendTeamInvite = catchAsync(async(req,res,next)=>{
     next(err);
   }
 })
+exports.acceptInvite = catchAsync(async (req, res, next) => {
+  const { userId, teamId } = req.body;
+
+  if (!userId) {
+    return next(new AppError("userId missing", 400));
+  }
+
+  if (!teamId) {
+    return next(new AppError("teamId missing", 400));
+  }
+
+  try {
+    const user = await User.findById({ _id: userId });
+
+    if (!user) {
+      return next(new AppError("User does not exist", 404));
+    }
+
+    // if (!user.isFeePaid) {
+    //   return next(new AppError("First Pay the fee to accept invite", 403));
+    // }
+
+    const tm = await Team.findById({ _id: teamId });
+
+    if (!tm) {
+      return next(new AppError("team not found", 404));
+    }
+
+    //check if team is participating in any event. [even though team can't participate in any event if it has any pending memeber].
+
+    if (tm.registeredEvents.length > 0) {
+      return next(new AppError("Team is already in any event.", 400));
+    }
+
+    //first check if user have this invite or not
+    if (!user.pendingTeam.includes(teamId)) {
+      return next(new AppError("You dont have this invite", 400));
+    }
+
+    // then remove this team from pendingTeams of this user
+
+    const pendingTeams = user.pendingTeam;
+    const toBeRemoved = teamId;
+
+    const newPendingTeams = pendingTeams.filter(
+      (team) => JSON.stringify(team) != JSON.stringify(toBeRemoved)
+    );
+    user.pendingTeam = newPendingTeams;
+
+    //then add this team to the user's participatingTeam
+
+    const participatingTeams = user.participatingTeam;
+    const newParticipatingTeams = [...participatingTeams, teamId];
+    user.participatingTeam = newParticipatingTeams;
+
+    //then remove this user from this team's pending members
+
+    const teamPendingMembers = tm.pendingMembers;
+    const toBeRemovedUser = userId;
+
+    const newTeamPendingMembers = teamPendingMembers.filter(
+      (us) => JSON.stringify(us) != JSON.stringify(toBeRemovedUser)
+    );
+    tm.pendingMembers = newTeamPendingMembers;
+
+    //then add this user to the team's accepted members.
+    const acceptedMembersOfTeam = tm.acceptedMembers;
+    const newAcceptedMembers = [...acceptedMembersOfTeam, userId];
+    tm.acceptedMembers = newAcceptedMembers;
+
+    await tm.save();
+    await user.save();
+
+    res.status(200).json({
+      success: true,
+      message: "Invite Accepted!",
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+exports.rejectInvite = catchAsync(async (req, res, next) => {
+  const { userId, teamId } = req.body;
+
+  if (!userId) {
+    return next(new AppError("userId missing", 400));
+  }
+
+  if (!teamId) {
+    return next(new AppError("teamId missing", 400));
+  }
+
+  try {
+    const user = await User.findById({ _id: userId });
+
+    if (!user) {
+      return next(new AppError("User does not exist", 404));
+    }
+
+    const tm = await Team.findById({ _id: teamId });
+
+    if (!tm) {
+      return next(new AppError("team not found", 404));
+    }
+
+    // first check if user have this team invite or not.
+    if (!user.pendingTeam.includes(teamId)) {
+      return next(new AppError("You dont have this invite", 400));
+    }
+
+    //then remove this user from pending members of this team
+    const pendingInvites = tm.pendingMembers;
+
+    const toBeRemovedUser = userId;
+    const newPendingInvites = pendingInvites.filter(
+      (us) => JSON.stringify(us) != JSON.stringify(toBeRemovedUser)
+    );
+
+    tm.pendingMembers = newPendingInvites;
+
+    //remove this team from user's pending teams
+
+    const pendingTeams = user.pendingTeam;
+    const toBeRemovedTeam = teamId;
+    const newPendingTeams = pendingTeams.filter(
+      (team) => JSON.stringify(team) != JSON.stringify(toBeRemovedTeam)
+    );
+
+    user.pendingTeam = newPendingTeams;
+
+    tm.save();
+    user.save();
+
+    res.status(200).json({
+      success: true,
+      message: "Invite Rejected!",
+    });
+  } catch (err) {
+    next(err);
+  }
+});
 
 
 

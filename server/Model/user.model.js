@@ -39,7 +39,7 @@ const userSchema = new mongoose.Schema(
     },
     resumeLink: {
       type: String,
-      required: [true, "Resume Link is required"],
+      //required: [true, "Resume Link is required"],
     },
     isFeePaid: {
       type: Boolean,
