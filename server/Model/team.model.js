@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const TeamSchema = new mongoose.Schema({
   teamName: {
@@ -30,4 +30,4 @@ const TeamSchema = new mongoose.Schema({
 });
 
 const TeamModel = mongoose.model("Team", TeamSchema);
-export default TeamModel;
+module.exports = { TeamModel };
