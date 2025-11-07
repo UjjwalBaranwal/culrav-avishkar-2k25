@@ -505,6 +505,102 @@ exports.leaveTeam = catchAsync(async (req, res, next) => {
     next(err);
   }
 });
+exports.kickMember = catchAsync(async (req, res, next) => {
+  const { leaderId, teamId, userTobeKickedId } = req.body;
+
+  if (!leaderId) {
+    return next(new AppError("leaderId missing", 400));
+  }
+
+  if (!teamId) {
+    return next(new AppError("teamId is missing", 400));
+  }
+
+  if (!userTobeKickedId) {
+    return next(new AppError("userTobeKeckedId is missing", 400));
+  }
+
+  try {
+    const ld = await User.findById({ _id: leaderId });
+    if (!ld) {
+      return next(new AppError("leader id is invalid or does not exist in db", 404));
+    }
+
+    const tm = await Team.findById({ _id: teamId });
+    if (!tm) {
+      return next(new AppError("team does not exist with teamId", 404));
+    }
+
+    const userToBeKicked = await User.findById({ _id: userTobeKickedId });
+    if (!userToBeKicked) {
+      return next(new AppError("target user does not exist", 404));
+    }
+
+    //check if the team is not participating in any event
+    const registeredEventsByThisTeam = tm.registeredEvents;
+    if (registeredEventsByThisTeam.length > 0) {
+      return next(
+        new AppError(
+          "Can't kick this user because this team is registered for some event/events",
+          400
+        )
+      );
+    }
+
+    // check if user is authorized to kick user [only team creator can kick members]
+
+    const currentUserId = leaderId;
+    const teamLeaderId = tm.leader;
+
+    if (currentUserId != teamLeaderId) {
+      return next(new AppError("You are not authorized to kick this user", 403));
+    }
+
+    //team leader can't kick himself from the team.
+
+    if (JSON.stringify(userToBeKicked) === JSON.stringify(tm.leader)) {
+      return next(
+        new AppError("leader can't kick himself, however leader can delete the team", 400)
+      );
+    }
+
+    //check if userToBeKicked is in the team
+
+    if (!tm.acceptedMembers.includes(userTobeKickedId)) {
+      return next(new AppError("user is not the in team", 400));
+    }
+
+    //remove this user from team's accpeted members.
+    const currentTeamAcceptedMembers = tm.acceptedMembers;
+    const userKicking = userTobeKickedId;
+
+    const newTeamAcceptedMembers = currentTeamAcceptedMembers.filter(
+      (us) => JSON.stringify(us) != JSON.stringify(userKicking)
+    );
+
+    tm.acceptedMembers = newTeamAcceptedMembers;
+
+    //remove this team from user's participating teams
+    const currentParticipatingTeams = userToBeKicked.participatingTeam;
+    const teamToBeRemoved = teamId;
+
+    const newParticipatingTeams = currentParticipatingTeams.filter(
+      (team) => JSON.stringify(team) != JSON.stringify(teamToBeRemoved)
+    );
+    userToBeKicked.participatingTeam = newParticipatingTeams;
+
+    await tm.save();
+    await userToBeKicked.save();
+    res.status(200).json({
+      success: true,
+      message: "User kicked out successfully",
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+
 
 
 
