@@ -30,4 +30,4 @@ const TeamSchema = new mongoose.Schema({
 });
 
 const TeamModel = mongoose.model("Team", TeamSchema);
-module.exports = { TeamModel };
+module.exports = TeamModel;
