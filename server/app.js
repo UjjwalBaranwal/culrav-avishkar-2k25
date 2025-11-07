@@ -10,6 +10,11 @@ const cookieParser = require("cookie-parser");
 const app = express();
 const teamRouter = require("./Router/team.router");
 
+const authRouter = require("./Router/auth.router");
+const AppError = require("./utils/appError");
+
+const globalErrorHandler = require("./Controller/error.controller");
+
 app.use(helmet());
 
 // login into developer mode
@@ -52,4 +57,13 @@ app.get("/api/test", (req, res) => {
 });
 
 app.use("/api/v1/team", teamRouter);
+app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/user", authRouter);
+
+app.all(/.*/, (req, res, next) => {
+  next(new AppError(`can't find the ${req.originalUrl}`, 404));
+});
+
+app.use(globalErrorHandler);
+
 module.exports = app;

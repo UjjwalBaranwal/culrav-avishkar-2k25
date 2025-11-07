@@ -1,51 +1,47 @@
 const mongoose = require("mongoose");
-
-const UserSchema = new mongoose.Schema(
+const bcyrpt = require("bcryptjs");
+const validator = require("validator");
+const userSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: true,
+      required: [true, "please entered the name"],
+      unique: true,
+      trim: true,
     },
     email: {
       type: String,
-      required: true,
+      required: [true, "please entered the email"],
       unique: true,
+      trim: true,
+      lowercase: true,
+      validate: [validator.isEmail, "pls entered valid email"],
     },
-    userName: {
+    password: {
       type: String,
-      required: true,
-      unique: true,
-    },
-    phone: {
-      type: String,
-      default: null,
+      required: [true, "please entered the password "],
+      minlength: 8,
+      select: false,
     },
     college: {
       type: String,
-      required: true,
-    },
-    resumeLink: {
-      type: String,
-    },
-    password: {
-      encryptedData: {
-        type: String,
-        required: true,
-      },
-      iv: {
-        type: String,
-        required: true,
-      },
+      required: [true, "please enter your college"],
     },
     role: {
       type: String,
-      default: "User",
+      enum: ["user", "fs", "pr-lead", "dc", "admin"],
+      default: "user",
+    },
+    branch: {
+      type: String,
+      enum: ["CSE", "ECE", "CHE", "CE", "PIE", "EE", "BT", "ME", "MC"],
+      required: [true, "please enter your branch"],
+    },
+    resumeLink: {
+      type: String,
+      required: [true, "Resume Link is required"],
     },
     isFeePaid: {
-      type: Boolean,
-      default: false,
-    },
-    isVerifiedUser: {
       type: Boolean,
       default: false,
     },
@@ -75,9 +71,24 @@ const UserSchema = new mongoose.Schema(
     department: {
       type: String,
     },
+    isConfirmed: {
+      type: Boolean,
+      default: false,
+    },
+    confirmedAt: { type: Date },
+    // tokens are stored hashed for security
+    emailConfirmToken: { type: String, select: false },
+    emailConfirmExpires: Date,
+
+    resetPasswordToken: { type: String, select: false },
+    resetPasswordExpires: Date,
+
+    // optional extras
+    createdAt: { type: Date, default: Date.now },
+    lastLoginAt: Date,
   },
   { timestamps: true }
 );
 
-//const UserModel = mongoose.model("User", UserSchema);
-module.exports = mongoose.model("User", UserSchema);
+const User = mongoose.model("User", userSchema);
+module.exports = User;
