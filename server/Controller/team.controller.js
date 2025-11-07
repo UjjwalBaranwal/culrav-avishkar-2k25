@@ -407,6 +407,104 @@ exports.rejectInvite = catchAsync(async (req, res, next) => {
     next(err);
   }
 });
+exports.leaveTeam = catchAsync(async (req, res, next) => {
+  const { userId, teamId } = req.body;
+
+  if (!teamId) {
+    return res.status(400).json({
+      success: false,
+      message: "teamId missing, can't leave this team",
+    });
+  }
+
+  if (!userId) {
+    return res.status(400).json({
+      success: false,
+      message: "userId missing, can't leave this team",
+    });
+  }
+
+  try {
+    const user = await User.findById({ _id: userId });
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "Not authorized to leave this team",
+      });
+    }
+
+    const tm = await Team.findById({ _id: teamId });
+
+    if (!tm) {
+      return res.status(404).json({
+        success: false,
+        message: "Team does not exist",
+      });
+    }
+
+    // check if this team is already registered for any event.
+
+    const registeredEventsByThisTeam = tm.registeredEvents;
+    if (registeredEventsByThisTeam.length > 0) {
+      return res.status(400).json({
+        success: false,
+        message:
+          "this team is already participating in some event/events, so can's leave team right now",
+      });
+    }
+
+    //check if leader want to leave the team.
+
+    if (JSON.stringify(tm.leader) === JSON.stringify(userId)) {
+      return res.status(400).json({
+        success: false,
+        message:
+          "leader can't leave the team, however you can delete the team.",
+      });
+    }
+
+    //check if this user is in the team or not.
+
+    if (!tm.acceptedMembers.includes(userId)) {
+      return res.status(400).json({
+        success: false,
+        message: "this user is not in the team",
+      });
+    }
+
+    // remove this user from team's accepted members
+
+    const currentTeamAcceptedMembers = tm.acceptedMembers;
+    const userToBeRemoved = userId;
+
+    const newTeamAcceptedMembers = currentTeamAcceptedMembers.filter(
+      (us) => JSON.stringify(us) != JSON.stringify(userToBeRemoved)
+    );
+
+    tm.acceptedMembers = newTeamAcceptedMembers;
+
+    // remove this team from this user's participating teams.
+    const userParticipatingTeams = user.participatingTeam;
+
+    const teamToBeRemoved = teamId;
+    const newUserParticipatingTeams = userParticipatingTeams.filter(
+      (team) => JSON.stringify(team) != JSON.stringify(teamToBeRemoved)
+    );
+
+    user.participatingTeam = newUserParticipatingTeams;
+
+    await tm.save();
+    await user.save();
+
+    res.status(200).json({
+      success: true,
+      message: "Successfully left the team",
+    });
+  } catch (err) {
+    next(err);
+  }
+});
 
 
 
