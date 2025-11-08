@@ -1,7 +1,19 @@
-function App() {
-  console.log("hey");
+import { Suspense, lazy } from "react";
+import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
+import Loader from "./components/Loader";
 
-  return <h1 className="text-7xl">THIS IS MY PAGE</h1>;
+// Implementing the lazy loading
+const Homepage = lazy(() => import("./pages/Homepage"));
+function App() {
+  return (
+    <BrowserRouter>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route index element={<Homepage />} />
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
+  );
 }
 
 export default App;
