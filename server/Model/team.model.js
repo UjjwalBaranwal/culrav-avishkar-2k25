@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
-const TeamSchema = new mongoose.Schema({
+const teamSchema = new mongoose.Schema({
   teamName: {
     type: String,
     required: true,
@@ -25,9 +25,9 @@ const TeamSchema = new mongoose.Schema({
   },
   registeredEvents: {
     type: [mongoose.Schema.Types.ObjectId],
-    ref:"Event", // this will contain the eventId of each resgitered event by this team.
+    ref: "Event", // this will contain the eventId of each resgitered event by this team.
   },
 });
 
-const TeamModel = mongoose.model("Team", TeamSchema);
-export default TeamModel;
+const Team = mongoose.model("Team", teamSchema);
+module.exports = Team;

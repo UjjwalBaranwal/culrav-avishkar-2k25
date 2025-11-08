@@ -42,7 +42,7 @@ exports.changePassword = catchAsync(async (req, res, next) => {
   res.json({ message: "Password changed successfully" });
 });
 
-exports.deleteMe = asyncHandler(async (req, res) => {
+exports.deleteMe = catchAsync(async (req, res) => {
   await User.findByIdAndDelete(req.user.id);
   res.json({ message: "Account deleted successfully" });
 });

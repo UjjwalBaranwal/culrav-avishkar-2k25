@@ -20,7 +20,7 @@ const RESET_MIN = Number(process.env.RESET_TOKEN_EXPIRES_MIN || 30);
 const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000";
 
 exports.signUp = catchAsync(async (req, res, next) => {
-  const { email, password, name, college, branch } = req.body;
+  const { email, password, name, college, branch, resumeLink } = req.body;
   if (!email || !password || !name) {
     return next(new AppError("please provide email or password or name", 401));
   }

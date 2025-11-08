@@ -9,10 +9,14 @@ const cookieParser = require("cookie-parser");
 
 const app = express();
 
-const authRouter = require("./Router/auth.router");
 const AppError = require("./utils/appError");
 
 const globalErrorHandler = require("./Controller/error.controller");
+
+// Router
+const authRouter = require("./Router/auth.router");
+const userRouter = require("./Router/user.router");
+const eventRouter = require("./Router/event.router");
 
 app.use(helmet());
 
@@ -64,7 +68,8 @@ app.get("/api/test", (req, res) => {
 });
 
 app.use("/api/v1/auth", authRouter);
-app.use("/api/v1/user", authRouter);
+app.use("/api/v1/user", userRouter);
+app.use("/api/v1/event", eventRouter);
 
 app.all(/.*/, (req, res, next) => {
   next(new AppError(`can't find the ${req.originalUrl}`, 404));
