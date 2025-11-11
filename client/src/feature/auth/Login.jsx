@@ -42,10 +42,10 @@ const Login = () => {
 
   return (
     <div className="flex items-start justify-center min-h-screen bg-gray-100 font-[Jost]">
-      <div className="w-[380px] [perspective:1500px] relative">
+      <div className="w-[380px] perspective-[1500px] relative">
         <div
-          className={`relative w-full h-full rounded-xl shadow-lg transition-transform duration-700 [transform-style:preserve-3d] ${
-            flip ? "[transform:rotateY(180deg)]" : ""
+          className={`relative w-full h-full rounded-xl shadow-lg transition-transform duration-700 transform-3d ${
+            flip ? "transform-[rotateY(180deg)]" : ""
           }`}
         >
           {/* ===================== REGISTER PAGE ===================== */}
