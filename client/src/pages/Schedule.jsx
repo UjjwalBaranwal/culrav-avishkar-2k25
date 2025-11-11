@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import Card from "../components/General/Card";
 import dummy from "../assets/dummy.png";
-import bg from "../assets/bg.mp4";
+import bg from "../assets/bg1.mp4";
 export default function Schedule() {
   const cardsRef = useRef([]);
 
@@ -128,6 +128,7 @@ export default function Schedule() {
           backgroundSize: "400% 400%",
           WebkitBackgroundClip: "text",
           animation: "gradientFlow 5s ease infinite",
+          color: "white",
         }}
       >
         SCHEDULE
