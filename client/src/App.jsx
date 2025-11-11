@@ -1,7 +1,7 @@
 import { Suspense, lazy } from "react";
 import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 import Loader from "./components/Loader";
-
+import Login from "./feature/auth/Login"
 // Implementing the lazy loading
 const Homepage = lazy(() => import("./pages/Homepage"));
 function App() {
