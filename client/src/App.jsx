@@ -4,6 +4,7 @@ import Loader from "./components/Loader";
 import Login from "./feature/auth/Login"
 // Implementing the lazy loading
 import Navbar from "./components/General/Navbar";
+import Schedule from "./pages/Schedule";
 
 // Implementing lazy loading
 const Homepage = lazy(() => import("./pages/Homepage"));
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route index element={<Homepage />} />
           <Route path="/culrav" element={<CulravEvent />} />
+          <Route path="/schedule" element={<Schedule />} />
         </Routes>
       </Suspense>
     </BrowserRouter>
