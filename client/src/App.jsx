@@ -8,7 +8,7 @@ import Navbar from "./components/General/Navbar";
 // Implementing lazy loading
 const Homepage = lazy(() => import("./pages/Homepage"));
 const CulravEvent = lazy(() => import("./pages/culravEvent"));
-
+const Sponsers = lazy(()=>import("../src/components/Sponsers/Sponsers.jsx"))
 function App() {
   return (
     <BrowserRouter>
@@ -17,6 +17,7 @@ function App() {
         <Routes>
           <Route index element={<Homepage />} />
           <Route path="/culrav" element={<CulravEvent />} />
+          <Route path="/sponsors" element={<Sponsers />}/>
         </Routes>
       </Suspense>
     </BrowserRouter>
