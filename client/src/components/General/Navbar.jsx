@@ -34,7 +34,7 @@ function Navbar() {
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex flex-1 justify-between max-w-[70%]">
+        <div className="hidden lg:flex flex-1 justify-between max-w-[70%]">
           {navItems.map((item) => (
             <div
               key={item.name}
@@ -44,7 +44,7 @@ function Navbar() {
               <h1 className="text-[#d9faff] font-bebas tracking-wider text-lg transition-all duration-300 group-hover:text-[#00e5ff] group-hover:drop-shadow-[0_0_8px_#00e5ff]">
                 {item.name}
               </h1>
-              <span className="absolute left-0 bottom-[-3px] w-0 h-[2px] bg-gradient-to-r from-[#00e5ff] to-[#7f00ff] transition-all duration-300 group-hover:w-full group-hover:shadow-[0_0_10px_#00e5ff]"></span>
+              <span className="absolute left-0 bottom-[-3px] w-0 h-0.5 bg-linear-to-r from-[#00e5ff] to-[#7f00ff] transition-all duration-300 group-hover:w-full group-hover:shadow-[0_0_10px_#00e5ff]"></span>
             </div>
           ))}
         </div>
@@ -52,14 +52,14 @@ function Navbar() {
         {/* REGISTER BUTTON */}
         <button
           onClick={() => navigate("/register")}
-          className="hidden md:block bg-gradient-to-r from-[#1ba0af] to-[#7f00ff] text-white font-bold px-8 py-2   hover:scale-105 transition-all duration-300 font-bebas tracking-wider"
+          className="hidden lg:block bg-linear-to-r from-[#1ba0af] to-[#7f00ff] text-white font-bold px-8 py-2   hover:scale-105 transition-all duration-300 font-bebas tracking-wider"
         >
           REGISTER
         </button>
 
         {/* Hamburger Icon */}
         <button
-          className="md:hidden text-[#00e5ff] text-2xl"
+          className="lg:hidden text-[#00e5ff] text-2xl"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? "✖" : "☰"}
@@ -68,7 +68,7 @@ function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-[#0a0a1a]/95 flex flex-col items-center space-y-4 py-6 border-t border-[#1a1a3d] backdrop-blur-md animate-fadeIn">
+        <div className="lg:hidden bg-[#0a0a1a]/95 flex flex-col items-center space-y-4 py-6 border-t border-[#1a1a3d] backdrop-blur-md animate-fadeIn">
           {navItems.map((item) => (
             <div
               key={item.name}
