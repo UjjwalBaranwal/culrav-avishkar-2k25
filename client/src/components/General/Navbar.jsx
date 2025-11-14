@@ -20,16 +20,14 @@ function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-gradient-to-r from-[#0a0a1a] via-[#101020] to-[#0a0a1a] backdrop-blur-md z-50 shadow-[0_0_25px_rgba(0,255,255,0.1)] border-b border-[#1a1a3d]">
+    <nav className="relative top-0 left-0 w-full bg-gradient-to-r from-[#0a0a1a] via-[#101020] to-[#0a0a1a] backdrop-blur-md z-50 shadow-[0_0_25px_rgba(0,255,255,0.1)] border-b border-[#1a1a3d]">
       <div className="flex items-center justify-between px-8 md:px-16 py-4">
         {/* LOGO */}
         <div
           onClick={() => navigate("/")}
           className="relative w-[110px] h-[45px] bg-white text-black font-bold text-sm cursor-pointer flex items-center justify-center   overflow-hidden"
         >
-          <span className="text-white tracking-widest font-bebas text-lg z-10">
-            
-          </span>
+          <span className="text-white tracking-widest font-bebas text-lg z-10"></span>
           <div className="absolute inset-0  opacity-0 hover:opacity-100 blur-sm transition-opacity duration-500"></div>
         </div>
 
@@ -51,10 +49,10 @@ function Navbar() {
 
         {/* REGISTER BUTTON */}
         <button
-          onClick={() => navigate("/register")}
-          className="hidden lg:block bg-linear-to-r from-[#1ba0af] to-[#7f00ff] text-white font-bold px-8 py-2   hover:scale-105 transition-all duration-300 font-bebas tracking-wider"
+          onClick={() => navigate("/login")}
+          className="hidden md:block bg-gradient-to-r from-[#1ba0af] to-[#7f00ff] text-white font-bold px-8 py-2   hover:scale-105 transition-all duration-300 font-bebas tracking-wider"
         >
-          REGISTER
+          LOGIN
         </button>
 
         {/* Hamburger Icon */}
@@ -83,10 +81,10 @@ function Navbar() {
           ))}
 
           <button
-            onClick={() => handleNavigation("/register")}
+            onClick={() => handleNavigation("/login")}
             className="bg-gradient-to-r from-[#00e5ff] to-[#7f00ff] text-white font-bold px-6 py-2 rounded-md hover:shadow-[0_0_20px_#00e5ff] transition-all duration-300 font-bebas tracking-wider"
           >
-            REGISTER
+            LOGIN
           </button>
         </div>
       )}
