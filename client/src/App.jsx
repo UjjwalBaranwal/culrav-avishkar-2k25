@@ -4,12 +4,11 @@ import Loader from "./components/Loader";
 import Login from "./feature/auth/Login"
 // Implementing the lazy loading
 import Navbar from "./components/General/Navbar";
-// import AvishkarEvents from "./pages/AvishkarEvent";
 
 // Implementing lazy loading
 const Homepage = lazy(() => import("./pages/Homepage"));
 const CulravEvent = lazy(() => import("./pages/culravEvent"));
-const Card = lazy(() => import("./components/General/AvishkarCard"));
+const Sponsers = lazy(()=>import("../src/components/Sponsers/Sponsers.jsx"))
 const AvishkarEvents = lazy(() => import("./pages/AvishkarAllEvent"));
 
 function App() {
@@ -19,8 +18,9 @@ function App() {
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route index element={<Homepage />} />
+          <Route path="/culrav" element={<CulravEvent />} />
+          <Route path="/sponsors" element={<Sponsers />}/>
           <Route path="/avishkar" element={<AvishkarEvents/>} />
-          <Route path="/culrav" element={<CulravEvent/>} />
         </Routes>
       </Suspense>
     </BrowserRouter>

@@ -1,4 +1,39 @@
 @import "tailwindcss";
+
+/* === Custom Fonts === */
+@font-face {
+  font-family: "Dragz";
+  src: url("/src/assets/fonts/62DRAGZ.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Anton";
+  src: url("/src/assets/fonts/Anton-Regular.ttf") format("truetype");
+}
+
+/* === Theme Variables === */
+@theme {
+  --font-dragz: "Dragz", sans-serif;
+  --font-anton: "Anton", sans-serif;
+}
+
+/* === Text Outline Utilities === */
+@layer utilities {
+  .text-outline {
+    color: white;
+    -webkit-text-stroke: 2px var(--outline-color);
+    text-stroke: 2px var(--outline-color);
+    text-shadow:
+      0 0 10px color-mix(in srgb, var(--outline-color) 50%, transparent),
+      0 0 20px color-mix(in srgb, var(--outline-color) 30%, transparent);
+  }
+
+  .text-outline-pink {
+    --outline-color: #ff1493;
+  }
+
+  .text-outline-blue {
+    --outline-color: #00ffff;
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
