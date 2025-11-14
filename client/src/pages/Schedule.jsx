@@ -92,7 +92,7 @@ export default function Schedule() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        padding: "4rem 2rem",
+        padding: "2rem",
         perspective: "1000px",
       }}
     >
@@ -121,7 +121,6 @@ export default function Schedule() {
           fontWeight: "900",
           textTransform: "uppercase",
           letterSpacing: "6px",
-          margin: "2rem",
           position: "relative",
           zIndex: 2,
           backgroundImage: "linear-gradient(90deg, #00e5ff, #8a2be2, #00e5ff)",
