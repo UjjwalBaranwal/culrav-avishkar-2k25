@@ -4,6 +4,7 @@ import Loader from "./components/Loader";
 import Login from "./feature/auth/Login"
 // Implementing the lazy loading
 import Navbar from "./components/General/Navbar";
+import Schedule from "./pages/Schedule";
 
 // Implementing lazy loading
 const Homepage = lazy(() => import("./pages/Homepage"));
@@ -16,11 +17,13 @@ const MyTeams = lazy(() => import("./pages/dashBoard/MyTeams"));
 const CreateTeam = lazy(() => import("./pages/dashBoard/CreateTeam"));
 const ViewInvitation = lazy(() => import("./pages/dashBoard/ViewInvitation"));
 const Logout = lazy(() => import("./pages/dashBoard/Logout"));
+const Sponsers = lazy(()=>import("../src/components/Sponsers/Sponsers.jsx"))
+const AvishkarEvents = lazy(() => import("./pages/AvishkarAllEvent"));
 
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
+    <Navbar />
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route index element={<Homepage />} />
@@ -37,6 +40,9 @@ function App() {
               <Route path="logout" element={<Logout />} />
         </Route>
 
+          <Route path="/schedule" element={<Schedule />} />
+          <Route path="/sponsors" element={<Sponsers />}/>
+          <Route path="/avishkar" element={<AvishkarEvents/>} />
         </Routes>
       </Suspense>
     </BrowserRouter>
