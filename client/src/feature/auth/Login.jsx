@@ -1,16 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
-import { forgotPassword, loginUser, signUpUser } from "../../services/apiAuth";
+import { login, signUp, forgotPass } from "../auth/authSlice.js";
+import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
   const [flip, setFlip] = useState(false);
   const [view, setView] = useState("register");
-  const [registerResp, setRegisterResp] = useState("");
-  const [loginResp, setLoginResp] = useState("");
-  const [resetResp, setResetResp] = useState("");
-
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { loading, error, isAuthenticated } = useSelector(
+    (state) => state.auth,
+  );
+
+  useEffect(() => {
+    if (isAuthenticated) navigate("/");
+  }, [isAuthenticated, navigate]);
   // Register form
   const {
     register: registerRegister,
@@ -43,26 +49,13 @@ const Login = () => {
   };
 
   const onRegisterSubmit = async (data) => {
-    try {
-      await signUpUser(data);
-    } catch (e) {
-      setRegisterResp(e.response.data.message);
-    }
+    dispatch(signUp(data));
   };
   const onLoginSubmit = async (data) => {
-    try {
-      await loginUser(data);
-      navigate("/");
-    } catch (err) {
-      setLoginResp(err.response.data.message);
-    }
+    dispatch(login(data));
   };
   const onResetSubmit = async (data) => {
-    try {
-      await forgotPassword(data.email);
-    } catch (e) {
-      setResetResp(e.response.data.message);
-    }
+    dispatch(forgotPass(data.email));
   };
 
   return (
@@ -170,10 +163,9 @@ const Login = () => {
                 type="submit"
                 className="mt-6 w-full py-2 bg-red-500 text-white text-lg rounded-md hover:bg-red-600 transition"
               >
-                Register
+                {loading ? "Signing up" : "Register"}
               </button>
-              <div>{registerResp.message}</div>
-
+              <p>{error && "Error signing up"}</p>
               <div className="mt-4 flex flex-col items-center">
                 <p className="text-sm text-gray-700">Already registered?</p>
                 <button
@@ -248,13 +240,13 @@ const Login = () => {
                 </button>
               </div>
 
-              <div>{loginResp.message}</div>
               <button
                 type="submit"
                 className="mt-6 w-full py-2 bg-red-500 text-white text-lg rounded-md hover:bg-red-600 transition"
               >
-                Login
+                {loading ? "Logging in" : "Login"}
               </button>
+              <p>{error && "Error logging in"}</p>
             </form>
           )}
 
@@ -290,10 +282,9 @@ const Login = () => {
                 type="submit"
                 className="mt-6 w-full py-2 bg-red-500 text-white text-lg rounded-md hover:bg-red-600 transition"
               >
-                Reset Password
+                {loading ? "Request pending" : "Reset Password"}
               </button>
-              <div>{resetResp}</div>
-
+              <p>{error && "Error resetting password"}</p>
               <button
                 type="button"
                 onClick={() => handleFlip("login")}
