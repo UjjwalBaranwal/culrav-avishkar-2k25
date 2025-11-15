@@ -1,22 +1,17 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router";
-import { resetPassword } from "../../services/apiAuth";
+import { resetPass } from "./authSlice";
 
 export default function ResetPassword() {
   const [searchParams] = useSearchParams();
   const [pwd, setPwd] = useState("");
-  const [msg, setMsg] = useState("");
+
+  const dispatch = useDispatch();
+  const { error, loading } = useSelector((state) => state.auth);
 
   async function handleClick() {
-    try {
-      await resetPassword(
-        searchParams.get("token"),
-        searchParams.get("id"),
-        pwd,
-      );
-    } catch (e) {
-      setMsg(e.response.data.message);
-    }
+    dispatch(resetPass(searchParams.get("token"), searchParams.get("id"), pwd));
   }
   return (
     <div>
@@ -25,8 +20,10 @@ export default function ResetPassword() {
         value={pwd}
         onChange={(e) => setPwd(e.target.value)}
       />
-      <button onClick={handleClick}>Reset Password</button>
-      <p>{msg}</p>
+      <button onClick={handleClick}>
+        {loading ? "Resetting" : "Reset Password"}
+      </button>
+      <p>{error && "Error resetting password"}</p>
     </div>
   );
 }

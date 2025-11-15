@@ -1,41 +1,25 @@
-import { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router";
-import { confirmEmail } from "../../services/apiAuth";
+import { useEffect } from "react";
+import { useSearchParams } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { confirmEmailToken } from "./authSlice";
 
 export default function ConfirmEmail() {
   const [searchParams] = useSearchParams();
-  const [pending, setPending] = useState(true);
-  const [status, setStatus] = useState(400);
+  const { loading, error } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   useEffect(() => {
-    async function sendConfirmationRequest() {
-      try {
-        confirmEmail(searchParams.get("token"), searchParams.get("id"));
-      } catch (e) {
-        setStatus(e.response.status);
-        setPending(false);
-      }
-    }
-    sendConfirmationRequest();
+    dispatch(
+      confirmEmailToken(searchParams.get("token"), searchParams.get("id")),
+    );
   });
-  return (
-    <div>
-      {pending ? "Email confirmation pending..." : <GoHome status={status} />}
-    </div>
-  );
-}
 
-export function GoHome({ status }) {
   return (
     <div>
-      {status === 200 ? (
-        <Link className="text-green-500" href="/login">
-          Email verified! You can now login!!
-        </Link>
-      ) : (
-        <Link className="text-red-500" href="/">
-          Verification failed :( Go Home
-        </Link>
-      )}
+      {loading
+        ? "Email confirmation pending..."
+        : error
+          ? "Error verifying email!"
+          : "Email verified!"}
     </div>
   );
 }
