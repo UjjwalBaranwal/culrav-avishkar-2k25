@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { createTeam } from "../../services/apiTeam";
+import { toast } from "sonner";
 
 export default function CreateTeam() {
   const user = useSelector((state) => state.auth.user);
@@ -19,8 +20,10 @@ export default function CreateTeam() {
   async function onSubmit(values) {
     try {
       await createTeam(values.name, values.size, user?.id);
+      toast.success("Team created!");
     } catch (e) {
       console.log(e);
+      toast.error("Team creation failed :(");
     }
   }
 

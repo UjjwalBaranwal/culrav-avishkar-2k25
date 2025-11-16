@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Loader from "./components/Loader";
 import Login from "./feature/auth/Login";
 import { TeamPage } from "./pages/TeamPage";
+import { Toaster } from "sonner";
 // Implementing the lazy loading
 import Navbar from "./components/General/Navbar";
 import Schedule from "./pages/Schedule";
@@ -27,33 +28,36 @@ const AvishkarEvents = lazy(() => import("./pages/AvishkarAllEvent"));
 
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar />
-      <Suspense fallback={<Loader />}>
-        <Routes>
-          <Route index element={<Homepage />} />
-          <Route path="/culrav" element={<CulravEvent />} />
-          <Route path="/team" element={<TeamPage />} />
+    <>
+      <BrowserRouter>
+        <Navbar />
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route index element={<Homepage />} />
+            <Route path="/culrav" element={<CulravEvent />} />
+            <Route path="/team" element={<TeamPage />} />
 
-          <Route path="/dashboard" element={<DashboardLayout />}>
-            <Route index element={<Navigate to="profile" replace />} />
-            <Route path="profile" element={<Profile />} />
-            <Route path="upload-resume" element={<UploadResume />} />
-            <Route path="my-teams" element={<MyTeams />} />
-            <Route path="create-team" element={<CreateTeam />} />
-            <Route path="view-invitation" element={<ViewInvitation />} />
-            <Route path="logout" element={<Logout />} />
-          </Route>
+            <Route path="/dashboard" element={<DashboardLayout />}>
+              <Route index element={<Navigate to="profile" replace />} />
+              <Route path="profile" element={<Profile />} />
+              <Route path="upload-resume" element={<UploadResume />} />
+              <Route path="my-teams" element={<MyTeams />} />
+              <Route path="create-team" element={<CreateTeam />} />
+              <Route path="view-invitation" element={<ViewInvitation />} />
+              <Route path="logout" element={<Logout />} />
+            </Route>
 
-          <Route path="/schedule" element={<Schedule />} />
-          <Route path="/sponsors" element={<Sponsers />} />
-          <Route path="/avishkar" element={<AvishkarEvents />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/confirm-email" element={<ConfirmEmail />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
-        </Routes>
-      </Suspense>
-    </BrowserRouter>
+            <Route path="/schedule" element={<Schedule />} />
+            <Route path="/sponsors" element={<Sponsers />} />
+            <Route path="/avishkar" element={<AvishkarEvents />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/confirm-email" element={<ConfirmEmail />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
+          </Routes>
+        </Suspense>
+      </BrowserRouter>
+      <Toaster richColors position="top-right" />
+    </>
   );
 }
 
