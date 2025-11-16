@@ -1,25 +1,48 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
+import { login, signUp, forgotPass } from "../auth/authSlice.js";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "sonner";
 
 const Login = () => {
   const [flip, setFlip] = useState(false);
   const [view, setView] = useState("register");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  // Register form
+  const { loading, error, message, isAuthenticated } = useSelector(
+    (state) => state.auth,
+  );
+
+  useEffect(() => {
+    if (isAuthenticated) navigate("/");
+  }, [isAuthenticated, navigate]);
+
+  useEffect(() => {
+    if (loading) return;
+
+    if (message) toast.success(message);
+
+    if (error) toast.error(error);
+
+    if (isAuthenticated) {
+      toast.success("Logged in successfully!");
+    }
+  }, [loading, message, error, isAuthenticated]);
+
   const {
     register: registerRegister,
     handleSubmit: handleSubmitRegister,
     formState: { errors: registerErrors },
   } = useForm();
 
-  // Login form
   const {
     register: registerLogin,
     handleSubmit: handleSubmitLogin,
     formState: { errors: loginErrors },
   } = useForm();
 
-  // Reset form
   const {
     register: registerReset,
     handleSubmit: handleSubmitReset,
@@ -36,13 +59,21 @@ const Login = () => {
     }
   };
 
-  const onRegisterSubmit = (data) => console.log("Register:", data);
-  const onLoginSubmit = (data) => console.log("Login:", data);
-  const onResetSubmit = (data) => console.log("Reset:", data);
+  const onRegisterSubmit = (data) => {
+    dispatch(signUp(data));
+  };
+
+  const onLoginSubmit = (data) => {
+    dispatch(login(data));
+  };
+
+  const onResetSubmit = (data) => {
+    dispatch(forgotPass(data.email));
+  };
 
   return (
     <div className="flex items-start justify-center min-h-screen bg-gray-100 font-[Jost]">
-      <div className="w-[380px] perspective-[1500px] relative">
+      <div className="w-[450px] perspective-[1500px] relative">
         <div
           className={`relative w-full h-full rounded-xl shadow-lg transition-transform duration-700 transform-3d ${
             flip ? "transform-[rotateY(180deg)]" : ""
@@ -54,9 +85,10 @@ const Login = () => {
               onSubmit={handleSubmitRegister(onRegisterSubmit)}
               className="absolute inset-0 bg-white rounded-xl backface-hidden flex flex-col items-center justify-start px-6 py-6 h-[525px]"
             >
-              <h2 className="text-2xl font-bold text-black mt-2 self-start">
-                Register For CULRUV-AVISHKAR
+              <h2 className="text-2xl font-bold text-black mt-2">
+                Register For CULRAV-AVISHKAR
               </h2>
+
               <div className="flex flex-col w-full mt-3 space-y-3">
                 <input
                   type="text"
@@ -78,7 +110,7 @@ const Login = () => {
 
                 <input
                   type="email"
-                  placeholder="Gsuit id"
+                  placeholder="College mail id"
                   {...registerRegister("email", {
                     required: "Email is required",
                     pattern: {
@@ -96,7 +128,7 @@ const Login = () => {
 
                 <input
                   type="text"
-                  placeholder="College"
+                  placeholder="College Name"
                   {...registerRegister("college", {
                     required: "College name is required",
                   })}
@@ -124,7 +156,7 @@ const Login = () => {
 
                 <input
                   type="password"
-                  placeholder="Enter your password"
+                  placeholder="Create a password"
                   {...registerRegister("password", {
                     required: "Password is required",
                     minLength: {
@@ -145,7 +177,7 @@ const Login = () => {
                 type="submit"
                 className="mt-6 w-full py-2 bg-red-500 text-white text-lg rounded-md hover:bg-red-600 transition"
               >
-                Register
+                {loading ? "Signing up…" : "Register"}
               </button>
 
               <div className="mt-4 flex flex-col items-center">
@@ -174,7 +206,7 @@ const Login = () => {
               <div className="flex flex-col w-full mt-4 space-y-3">
                 <input
                   type="email"
-                  placeholder="Enter your Gsuit id"
+                  placeholder="Enter your college mail id"
                   {...registerLogin("email", {
                     required: "Email is required",
                     pattern: {
@@ -226,7 +258,7 @@ const Login = () => {
                 type="submit"
                 className="mt-6 w-full py-2 bg-red-500 text-white text-lg rounded-md hover:bg-red-600 transition"
               >
-                Login
+                {loading ? "Logging in…" : "Login"}
               </button>
             </form>
           )}
@@ -247,8 +279,7 @@ const Login = () => {
                 {...registerReset("email", {
                   required: "Email is required",
                   pattern: {
-                    value:
-                      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                     message: "Enter a valid email",
                   },
                 })}
@@ -264,7 +295,7 @@ const Login = () => {
                 type="submit"
                 className="mt-6 w-full py-2 bg-red-500 text-white text-lg rounded-md hover:bg-red-600 transition"
               >
-                Reset Password
+                {loading ? "Request pending…" : "Reset Password"}
               </button>
 
               <button
