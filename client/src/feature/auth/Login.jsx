@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { login, signUp, forgotPass } from "../auth/authSlice.js";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "sonner";
 
 const Login = () => {
   const [flip, setFlip] = useState(false);
@@ -10,28 +11,38 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { loading, error, isAuthenticated } = useSelector(
+  const { loading, error, message, isAuthenticated } = useSelector(
     (state) => state.auth,
   );
 
   useEffect(() => {
     if (isAuthenticated) navigate("/");
   }, [isAuthenticated, navigate]);
-  // Register form
+
+  useEffect(() => {
+    if (loading) return;
+
+    if (message) toast.success(message);
+
+    if (error) toast.error(error);
+
+    if (isAuthenticated) {
+      toast.success("Logged in successfully!");
+    }
+  }, [loading, message, error, isAuthenticated]);
+
   const {
     register: registerRegister,
     handleSubmit: handleSubmitRegister,
     formState: { errors: registerErrors },
   } = useForm();
 
-  // Login form
   const {
     register: registerLogin,
     handleSubmit: handleSubmitLogin,
     formState: { errors: loginErrors },
   } = useForm();
 
-  // Reset form
   const {
     register: registerReset,
     handleSubmit: handleSubmitReset,
@@ -48,13 +59,15 @@ const Login = () => {
     }
   };
 
-  const onRegisterSubmit = async (data) => {
+  const onRegisterSubmit = (data) => {
     dispatch(signUp(data));
   };
-  const onLoginSubmit = async (data) => {
+
+  const onLoginSubmit = (data) => {
     dispatch(login(data));
   };
-  const onResetSubmit = async (data) => {
+
+  const onResetSubmit = (data) => {
     dispatch(forgotPass(data.email));
   };
 
@@ -72,9 +85,10 @@ const Login = () => {
               onSubmit={handleSubmitRegister(onRegisterSubmit)}
               className="absolute inset-0 bg-white rounded-xl backface-hidden flex flex-col items-center justify-start px-6 py-6 h-[525px]"
             >
-              <h2 className="text-2xl font-bold text-black mt-2 ">
+              <h2 className="text-2xl font-bold text-black mt-2">
                 Register For CULRAV-AVISHKAR
               </h2>
+
               <div className="flex flex-col w-full mt-3 space-y-3">
                 <input
                   type="text"
@@ -163,9 +177,9 @@ const Login = () => {
                 type="submit"
                 className="mt-6 w-full py-2 bg-red-500 text-white text-lg rounded-md hover:bg-red-600 transition"
               >
-                {loading ? "Signing up" : "Register"}
+                {loading ? "Signing up…" : "Register"}
               </button>
-              <p>{error && "Error signing up"}</p>
+
               <div className="mt-4 flex flex-col items-center">
                 <p className="text-sm text-gray-700">Already registered?</p>
                 <button
@@ -244,9 +258,8 @@ const Login = () => {
                 type="submit"
                 className="mt-6 w-full py-2 bg-red-500 text-white text-lg rounded-md hover:bg-red-600 transition"
               >
-                {loading ? "Logging in" : "Login"}
+                {loading ? "Logging in…" : "Login"}
               </button>
-              <p>{error && "Error logging in"}</p>
             </form>
           )}
 
@@ -282,9 +295,9 @@ const Login = () => {
                 type="submit"
                 className="mt-6 w-full py-2 bg-red-500 text-white text-lg rounded-md hover:bg-red-600 transition"
               >
-                {loading ? "Request pending" : "Reset Password"}
+                {loading ? "Request pending…" : "Reset Password"}
               </button>
-              <p>{error && "Error resetting password"}</p>
+
               <button
                 type="button"
                 onClick={() => handleFlip("login")}
