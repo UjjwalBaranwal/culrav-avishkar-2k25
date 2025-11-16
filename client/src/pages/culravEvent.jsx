@@ -1,144 +1,166 @@
-import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
-import dummy from "../assets/dummy.png";
-import bg from "../assets/bg.mp4";
-import Card from "../components/General/Card";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import Navbar from "../components/General/Navbar";
+import RevealCard from "../components/ui/reveal-card";
 
-const CulravEvent = () => {
-  const cardsRef = useRef([]);
+// Assets
+import culravbg from "../assets/bg.mp4";
+import base from "../assets/base.png";
+import image from "../assets/CardImg.png";
 
-  const events = [
-    {
-      name: "ANUNAAD",
-      image: { dummy },
-      description: "Battle of beats and rhythm.",
-    },
-    {
-      name: "DARKROOM",
-      image: { dummy },
-      description: "Mystery and thrill await.",
-    },
-    {
-      name: "RANGMANCH",
-      image: { dummy },
-      description: "Drama that speaks beyond words.",
-    },
-    {
-      name: "LITMUSE",
-      image: { dummy },
-      description: "Where literature meets art.",
-    },
-    {
-      name: "RANGSAZZI",
-      image: { dummy },
-      description: "Colors of creativity and imagination.",
-    },
-    {
-      name: "SPANDAN",
-      image: { dummy },
-      description: "Dance to the pulse of your soul.",
-    },
-  ];
-  useEffect(() => {
-    cardsRef.current.forEach((card) => {
-      if (!card) return;
-      card.addEventListener("mousemove", (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const rotateY = (x / rect.width - 0.5) * 15;
-        const rotateX = (y / rect.height - 0.5) * -15;
+function CulravEvent() {
+  const navigate = useNavigate();
 
-        gsap.to(card, {
-          rotateY,
-          rotateX,
-          duration: 0.3,
-          ease: "power2.out",
-        });
-      });
+  // Using SAME IMAGES as Avishkar
+  const spidermanPoster =
+    "https://raw.githubusercontent.com/MihirJaiswal/hero-hq/main/public/spidermanposter.jpg";
+  const titleImg =
+    "https://raw.githubusercontent.com/MihirJaiswal/hero-hq/main/public/pngwing1.png";
+  const characterImg =
+    "https://raw.githubusercontent.com/MihirJaiswal/hero-hq/main/public/spidermanpng.png";
 
-      card.addEventListener("mouseleave", () => {
-        gsap.to(card, {
-          rotateX: 0,
-          rotateY: 0,
-          duration: 0.5,
-          ease: "power3.out",
-        });
-      });
-    });
-  }, []);
+ const events = [
+  {
+    id: "ce1",
+    name: "ANUNAAD",
+    slug: "anunaad",
+    coverImage: spidermanPoster,
+    titleImage: titleImg,
+    characterImage: characterImg
+  },
+  {
+    id: "ce2",
+    name: "RANGMANCH",
+    slug: "rangmanch",
+    coverImage: spidermanPoster,
+    titleImage: titleImg,
+    characterImage: characterImg
+  },
+  {
+    id: "ce3",
+    name: "DARKROOM",
+    slug: "darkroom",
+    coverImage: spidermanPoster,
+    titleImage: titleImg,
+    characterImage: characterImg
+  },
+  {
+    id: "ce4",
+    name: "LITMUSE",
+    slug: "litmuse",
+    coverImage: spidermanPoster,
+    titleImage: titleImg,
+    characterImage: characterImg
+  },
+  {
+    id: "ce5",
+    name: "SPANDAN",
+    slug: "spandan",
+    coverImage: spidermanPoster,
+    titleImage: titleImg,
+    characterImage: characterImg
+  },
+  {
+    id: "ce6",
+    name: "RANGSAAZI",
+    slug: "rangsaazi",
+    coverImage: spidermanPoster,
+    titleImage: titleImg,
+    characterImage: characterImg
+  }
+];
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        position: "relative",
-        overflow: "hidden",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        padding: "4rem 2rem",
-        perspective: "1000px",
-      }}
-    >
+    <section className="relative min-h-screen w-full flex flex-col items-center justify-start text-white">
+      
+      {/* VIDEO BACKGROUND */}
       <video
         autoPlay
         loop
         muted
         playsInline
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          zIndex: "-1",
-          filter: "brightness(0.9) contrast(1) opacity(1)",
-        }}
+        className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src={bg} type="video/mp4" />
+        <source src={culravbg} type="video/mp4" />
       </video>
-      <h2
-        style={{
-          fontSize: "3rem",
-          fontWeight: "900",
-          textTransform: "uppercase",
-          letterSpacing: "6px",
-          marginBottom: "3rem",
-          position: "relative",
-          zIndex: 2,
-          backgroundImage: "linear-gradient(90deg, #8a2be2, #00e5ff, #8a2be2)",
-          backgroundSize: "400% 400%",
-          WebkitBackgroundClip: "text",
-          animation: "gradientFlow 5s ease infinite",
-        }}
-      >
-        EVENTS
-      </h2>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-          gap: "2.5rem",
-          width: "100%",
-          maxWidth: "1100px",
-          zIndex: "2",
-        }}
-      >
-        {events.map((event, i) => (
-          <div key={i} ref={(el) => (cardsRef.current[i] = el)}>
-            <Card
-              title={event.name}
-              image={event.image}
-              description={event.description}
-              onClick={() => console.log(`Clicked ${event.name}`)}
-            />
-          </div>
-        ))}
+
+      {/* NAVBAR */}
+      <Navbar />
+
+      {/* TOP SECTION */}
+      <div className="relative w-full mt-10 overflow-hidden">
+        <img
+          src={base}
+          alt="Top Image"
+          className="
+            w-full
+            h-[120px] sm:h-[130px] md:h-[160px] lg:h-[200px] xl:h-[300px]
+          "
+        />
+
+        {/* Overlay Row */}
+        <div className="absolute inset-0 flex items-center justify-around px-6">
+          <img
+            src={image}
+            className="w-16 sm:w-20 md:w-24 lg:w-28"
+            alt="Logo"
+          />
+
+          <p className="text-white text-lg sm:text-lg md:text-lg font-bold">
+            Culrav, a 4-day-long annual cultural extravaganza of MNNIT
+            Allahabad, is a vibrant celebration of art, music, And creativity.
+            With its diverse range of activities, including pronites featuring
+            performances by renowned artists or bAnds, kavsAndhya highlighting
+            poetry And literature, And appearances by comedians or big figures,
+            Culrav offers entertainment And engagement for all attendees.
+          </p>
+        </div>
       </div>
-    </div>
+
+      {/* HEADER */}
+      <div className="w-full flex justify-center pt-16 md:pt-20">
+        <h1
+          className="text-center inline-block px-6 py-2 rounded-md font-bionix font-bold text-[#FFFAF0] bg-[#F54E25]"
+          style={{ fontSize: "clamp(1.2rem, 3.5vw, 2.5rem)" }}
+        >
+          EVENTS
+        </h1>
+      </div>
+
+      {/* GRID */}
+      <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 mt-20 mb-16">
+        <div
+          className="
+            grid 
+            grid-cols-1 
+            sm:grid-cols-2 
+            lg:grid-cols-3 
+            gap-20
+            justify-items-center
+          "
+        >
+         {events.map((event) => (
+  <div
+    key={event.id}
+    className="w-[90%] sm:w-[320px] lg:w-[300px] max-w-[340px] text-center relative z-10"
+  >
+    <RevealCard
+      coverImage={event.coverImage}
+      titleImage={event.titleImage}
+      characterImage={event.characterImage}
+      buttonText="Explore"
+      onRegister={() => navigate(`/culrav/${event.slug}`)}
+    />
+
+    <p className="text-white mt-4 text-xl font-bold tracking-wide">
+      {event.name}
+    </p>
+  </div>
+))}
+        </div>
+      </div>
+    </section>
   );
-};
+}
 
 export default CulravEvent;
