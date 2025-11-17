@@ -82,12 +82,18 @@ export default function MyTeams() {
             exit={{ opacity: 0, x: '-100%' }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             className="max-w-6xl mx-auto h-full flex flex-col"
-          >
+          >{mockMyTeams.length === 0 ? (
+            <div className="flex flex-col items-center justify-center h-full text-center text-gray-300">
+              <h2 className="text-2xl font-semibold mb-2">No teams</h2>
+              <p className="text-gray-400">You can create a team to get started!</p>
+            </div>
+          ) : (
             <TeamList
               onSelectTeam={handleSelectTeam}
               listItemVariants={listItemVariants}
             />
-          </motion.div>
+          )}
+        </motion.div>
         )}
       </AnimatePresence>
     </div>
