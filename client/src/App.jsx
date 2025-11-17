@@ -1,4 +1,4 @@
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Loader from "./components/Loader";
 import Login from "./feature/auth/Login";
@@ -9,6 +9,8 @@ import Navbar from "./components/General/Navbar";
 import Schedule from "./pages/Schedule";
 import ConfirmEmail from "./feature/auth/ConfirmEmail";
 import ResetPassword from "./feature/auth/ResetPassword";
+import { useDispatch } from "react-redux";
+import { loadUser } from "./feature/auth/authSlice.js";
 
 // Implementing lazy loading
 const Homepage = lazy(() => import("./pages/Homepage"));
@@ -27,6 +29,11 @@ const Sponsers = lazy(() => import("../src/components/Sponsers/Sponsers.jsx"));
 const AvishkarEvents = lazy(() => import("./pages/AvishkarAllEvent"));
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadUser());
+  });
   return (
     <>
       <BrowserRouter>
