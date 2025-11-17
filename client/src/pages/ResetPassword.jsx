@@ -1,4 +1,3 @@
-import React from "react";
 import { useForm } from "react-hook-form";
 
 const ResetPassword = () => {
@@ -33,7 +32,9 @@ const ResetPassword = () => {
 
             {/* Current Email */}
             <div className="flex flex-col w-full mt-4">
-              <label className="text-sm text-gray-700 mb-1">Your email address is:- </label>
+              <label className="text-sm text-gray-700 mb-1">
+                Your email address is:-{" "}
+              </label>
               <input
                 type="email"
                 {...register("email")}
