@@ -1,137 +1,170 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import dummy from "../../assets/dummy.png";
+import dummy from "../../assets/dummy.png"; // Adjust path as needed
 
-// Dummy VR hero image as placeholder
-const VR_IMAGE = dummy;
+const HERO_IMAGE = dummy;
 
-// Example event data
-const Spandan = {
-  eventName: "SPANDAN",
-  tagline: "The Rhythm of Culture",
+const Rangsaazi = {
+  eventName: "Rangsazzi",
+  tagline: "",
   events: [
     {
-      id: 1,
-      name: "Battle Groove",
-      img: VR_IMAGE,
-      desc: "A high-energy solo dance face-off.",
-      rules: ["Time limit: 2 mins", "No vulgar moves allowed"],
-      coords: [
-        { name: "Arjun", phone: "9876543210" },
-        { name: "Riya", phone: "9123456780" },
+      id: 20,
+      name: "PAINT THE WAY",
+      desc: [
+        "The world is your canvas, paint it without inhibitions."
       ],
+      rules: [
+        "This is a team event with a minimum size of 4 and a maximum size of 5.",
+        "Time limit is 3 hrs.",
+        "There will be an elimination round based on sketching and ideas. Entries have to be verified beforehand on the spot for participation in further rounds.",
+        "Necessary items for road painting such as brushes, paints, chalks, etc. will be provided on the spot.",
+        "Restrict the size of your painting within the block of the road assigned to you.",
+        "Further details will be shared on the spot.",
+        "The evaluation will be based on the judges' discretion and interpretation of the painting, with marks based on the portrayal of the theme, creativity, and overall presentation.",
+        "The coordinators have the authority to change the rule of the event as per need."
+      ],
+      coords: [
+        { name: "Sattwik Jana", phone: "7908773477" },
+        { name: "Anil Patidar", phone: "8000736097" },
+        { name: "Pratiksha Anuragi", phone: "8470884880" },
+        { name: "Saurav Sagar", phone: "7645926785" }
+      ]
     },
     {
-      id: 2,
-      name: "Step Sync",
-      img: VR_IMAGE,
-      desc: "A group dance event focused on coordination.",
-      rules: ["Team size: 4–12", "Time limit: 4 mins"],
-      coords: [
-        { name: "Manav", phone: "9911223344" },
-        { name: "Sana", phone: "9988776655" },
+      id: 21,
+      name: "LET’S FACE IT",
+      desc: ["Brushing on smiles, one face at a time."],
+      rules: [
+        "A team of 2 members will be allowed.",
+        "Time limit is 2 hours.",
+        "The face of a participant is to be painted with watercolors, sketches, and the materials provided during the event.",
+        "The painting must represent the theme given at the time of the event.",
+        "The evaluation will be based on the judges' discretion and interpretation of the painting, with marks based on the portrayal of the theme, creativity, and overall presentation.",
+        "The coordinators have the authority to change the rule of the event as per need."
       ],
+      coords: [
+        { name: "Saurav Sagar", phone: "7645926785" },
+        { name: "Mehak Singh", phone: "7985432090" },
+        { name: "Shyam Bathvar", phone: "6353945873" }
+      ]
     },
-  ],
+    {
+      id: 22,
+      name: "SWADDLE",
+      desc: ["From paper to runway, creativity unfolds."],
+      rules: [
+        "This is a team event with a minimum size of 2 and a maximum size of 4. One team member will act as the model, while another will be tasked with designing the outfit.",
+        "Time limit is 3 hours.",
+        "Participating teams need to make a dress from the logistics provided to them on the spot.",
+        "Newspapers, staplers, pins, and cello tape will be given to each team. No additional logistics, apart from the ones provided, can be used.",
+        "Each team will have to give a presentation before the judges after the dress designing is over.",
+        "The evaluation will be based on the judges' discretion and interpretation of the outfit, with marks based on the portrayal of the theme (if any), creativity, and overall presentation.",
+        "The coordinators have the authority to change the rule of the event as per need."
+      ],
+      coords: [
+        { name: "Sattwik Jana", phone: "7908773477" },
+        { name: "Ashisha Tulsian", phone: "7307810743" },
+        { name: "Ayush Singh", phone: "9877943429" }
+      ]
+    },
+    {
+      id: 23,
+      name: "Blind Art",
+      desc: ["Art transcends sight, born from the heart."],
+      rules: [
+        "A team of 2 members will be allowed.",
+        "Time limit is 1.5 hours.",
+        "Only one of the two members will be allowed to sketch/color.",
+        "The one drawing will be blindfolded. The teammate (if any) will only be allowed to instruct/help the person in the drawing orally.",
+        "Only the blindfolded person is allowed to touch the drawing sheet.",
+        "Only the provided stationaries should be used.",
+        "Discussing or cheating with other teams will immediately lead to disqualification.",
+        "The evaluation will be based on the judges' discretion and interpretation of the artwork, with marks based on the portrayal of the theme (if any), creativity, and overall presentation.",
+        "The coordinators have the authority to change the rule of the event as per need."
+      ],
+      coords: [
+        { name: "Anil Patidar", phone: "8000736097" },
+        { name: "Yakshita Ojha", phone: "8107242221" },
+        { name: "Shyam Bathvar", phone: "6353945873" }
+      ]
+    },
+    {
+      id: 24,
+      name: "Momento Vinci",
+      desc: ["Sketching moments, etching memories."],
+      rules: [
+        "This is a solo event.",
+        "Time limit is 2 hours.",
+        "Participants are needed to make a sketch based on a theme given to them on the spot.",
+        "All logistics shall be provided on the spot. You won't be able to use additional logistics apart from those provided initially.",
+        "The evaluation will be based on the judges' discretion and interpretation of the artwork with marks based on the portrayal of the theme (if any), creativity, and overall presentation.",
+        "The coordinators have the authority to change the rule of the event as per need."
+      ],
+      coords: [
+        { name: "Anil Patidar", phone: "8000736097" },
+        { name: "Yakshita Ojha", phone: "8107242221" },
+        { name: "Shyam Bathvar", phone: "6353945873" }
+      ]
+    }
+  ]
 };
 
-const navLinks = ["Home", "Info", "Service", "Contact"];
-
-const SpandanPage = () => {
+const RangsazziPage = () => {
   const [selected, setSelected] = useState(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#00e5ff] to-[#7f00ff] text-white font-sans">
-      {/* HEADER BAR */}
-      <header className="flex justify-between items-center px-8 py-6 border-b border-cyan-400/40">
-        <div className="text-cyan-300 text-xl font-bold neon-shadow uppercase tracking-wider">
-          WELCOME TO THE FUTURE
-        </div>
-        <nav className="flex space-x-8">
-          {navLinks.map((link) => (
-            <span
-              key={link}
-              className="relative group text-cyan-300 transition font-semibold neon-shadow cursor-pointer hover:text-white"
-            >
-              {link}
-              <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-            </span>
-          ))}
-        </nav>
-      </header>
-
-      {/* HERO AND SLOGAN */}
+    <div className="min-h-screen bg-black font-sans text-gray-300">
+      {/* Top image and heading */}
       <main className="flex flex-col md:flex-row justify-center items-center px-8 py-16 relative">
-        {/* Visual Zone */}
         <div className="relative flex flex-col justify-center items-center md:w-1/2">
           <img
-            src={VR_IMAGE}
-            alt="VR Hero"
-            className="w-[330px] h-[300px] object-cover brightness-90 rounded-xl shadow-lg border border-cyan-400/60 neon-shadow"
+            src={HERO_IMAGE}
+            alt="Rangsazzi Hero"
+            className="w-[330px] h-[300px] object-cover brightness-90 rounded-xl shadow-lg border border-cyan-600/60 neon-shadow"
           />
-          {/* Floating 3D Shapes/Decor */}
           <motion.div
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
-            className="absolute left-10 top-6 w-16 h-16 rounded-full bg-gradient-to-br from-fuchsia-400 to-cyan-400 filter blur-[2px] border border-cyan-300 shadow-2xl"
+            className="absolute left-10 top-6 w-16 h-16 rounded-full bg-gradient-to-br from-fuchsia-600 to-cyan-600 filter blur-[2px] border border-cyan-600 shadow-2xl"
           />
-          <div className="absolute right-16 top-28 w-12 h-12 bg-gradient-to-br from-blue-600 to-cyan-400 rotate-12 rounded-xl" />
-          <div className="absolute left-14 bottom-10 w-10 h-10 bg-gradient-to-tr from-fuchsia-500 to-cyan-300 rounded-full opacity-90" />
+          <div className="absolute right-16 top-28 w-12 h-12 bg-gradient-to-br from-blue-700 to-cyan-600 rotate-12 rounded-xl" />
+          <div className="absolute left-14 bottom-10 w-10 h-10 bg-gradient-to-tr from-fuchsia-700 to-cyan-500 rounded-full opacity-90" />
         </div>
-
-        {/* Slogan + Buttons */}
-        <div className="md:w-1/2 mt-12 md:mt-0 text-center md:text-left">
-          <h1 className="text-5xl font-bold neon-shadow text-cyan-300 mb-4 drop-shadow-xl tracking-wide uppercase">
-             SPANDAN
+        <div className="md:w-1/2 mt-12 md:mt-0 text-center md:text-center">
+          <h1 className="text-5xl font-bold neon-shadow text-cyan-400 mb-4 drop-shadow-xl tracking-wide uppercase">
+            RANGSAAZI
           </h1>
-          <p className="text-lg text-cyan-100 mb-8 max-w-md mx-auto md:mx-0">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.
+          <p className="text-lg text-cyan-300 mb-8 max-w-md mx-auto">
+            Explore an expressive range of art and creativity in the Rangsazzi events.
           </p>
-          <div className="flex gap-7 justify-center md:justify-start mb-10">
-            <button className="px-6 py-2 rounded-xl bg-cyan-400 text-black font-semibold neon-shadow transition hover:scale-105 hover:bg-cyan-200">
-              Know More
-            </button>
-          </div>
-          {/* Social Icons */}
-          <div className="flex gap-7 justify-center md:justify-start">
-            <span className="w-10 h-10 bg-cyan-500 rounded-full flex items-center justify-center neon-shadow text-black cursor-pointer transition hover:bg-cyan-300">
-              {/* Facebook */}
-              <svg width="22" height="22" viewBox="0 0 22 22"><path fill="currentColor" d="M21 1H1v20h11v-8H9v-3h3V7.5A3.5 3.5 0 0 1 15.5 4H18v3h-2.5A.5.5 0 0 0 15 7.5V9h3v3h-3v8h6V1z"/></svg>
-            </span>
-            <span className="w-10 h-10 bg-cyan-500 rounded-full flex items-center justify-center neon-shadow text-black cursor-pointer transition hover:bg-cyan-300">
-              {/* Instagram */}
-              <svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="5.5" stroke="currentColor" strokeWidth="2" fill="none"/><rect x="5" y="5" width="12" height="12" rx="6" stroke="currentColor" strokeWidth="2" fill="none"/><circle cx="16.5" cy="7.5" r="1" fill="currentColor"/></svg>
-            </span>
-            <span className="w-10 h-10 bg-cyan-500 rounded-full flex items-center justify-center neon-shadow text-black cursor-pointer transition hover:bg-cyan-300">
-              {/* Globe */}
-              <svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="9" stroke="currentColor" strokeWidth="2" fill="none"/><ellipse cx="11" cy="11" rx="4" ry="9" stroke="currentColor" strokeWidth="2" fill="none"/><line x1="2" y1="11" x2="20" y2="11" stroke="currentColor" strokeWidth="2"/></svg>
-            </span>
-          </div>
         </div>
       </main>
 
-      {/* EVENTS GRID */}
+      {/* Event cards */}
       <div className="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 sm:grid-cols-2 gap-10">
-        {Spandan.events.map((event) => (
+        {Rangsaazi.events.map((event) => (
           <motion.div
             key={event.id}
-            whileHover={{ scale: 1.04 }}
-            className="relative cyber-card p-4 border border-cyan-400/40 rounded-xl bg-black/40 backdrop-blur-md shadow-lg text-left"
+            initial={{ scale: 1, boxShadow: "0 0 10px rgba(0,0,0,0.2)" }}
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0 15px 30px rgba(0,255,255,0.4)",
+              transition: { duration: 0.3, ease: "easeInOut" }
+            }}
+            whileTap={{ scale: 0.98 }}
+            className="relative cyber-card p-6 border border-cyan-600 rounded-xl bg-black/90 backdrop-blur-md shadow-md cursor-pointer text-center select-none"
+            onClick={() => setSelected(event)}
           >
-            <div className="overflow-hidden rounded-lg mb-4">
-              <img
-                src={event.img}
-                className="w-full h-48 object-cover transition duration-700 hover:scale-110"
-                alt={event.name}
-              />
-            </div>
-            <h2 className="text-2xl font-bold neon-shadow text-cyan-300 mb-2">
-              {event.name}
-            </h2>
+            <h2 className="text-2xl font-bold neon-shadow text-cyan-400 mb-2">{event.name}</h2>
             <button
-              onClick={() => setSelected(event)}
-              className="w-full mt-4 py-2 border border-cyan-300 neon-shadow rounded-lg bg-cyan-400 text-black transition hover:scale-105 hover:bg-cyan-200"
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelected(event);
+              }}
+              className="mt-4 py-2 w-full border border-cyan-400 rounded-lg bg-cyan-500 text-black font-semibold hover:bg-cyan-300 transition"
             >
               Explore
             </button>
@@ -139,7 +172,7 @@ const SpandanPage = () => {
         ))}
       </div>
 
-      {/* EXPLORE PANEL */}
+      {/* Explore panel on selection */}
       <AnimatePresence>
         {selected && (
           <motion.div
@@ -147,35 +180,45 @@ const SpandanPage = () => {
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ duration: 0.45, ease: "easeOut" }}
-            className="fixed bottom-0 left-0 w-full h-[85vh] bg-black/95 backdrop-blur-xl border-t border-cyan-400/40 z-50 p-8 overflow-y-auto neon-shadow"
+            className="fixed top-0 left-0 w-full h-full bg-black/95 backdrop-blur-xl border-t border-cyan-600/50 z-50 p-8 overflow-y-auto neon-shadow"
+            style={{ overflowX: "hidden", overscrollBehavior: "contain" }}
           >
             <button
+              type="button"
               onClick={() => setSelected(null)}
-              className="absolute top-6 right-10 text-3xl text-cyan-200 hover:text-cyan-400 font-bold"
+              className="absolute top-6 right-10 text-4xl text-cyan-400 hover:text-cyan-600 font-bold focus:outline-none"
+              aria-label="Close Explore Panel"
             >
               ✕
             </button>
-            <img
-              src={selected.img}
-              className="mx-auto w-full max-w-lg h-64 object-cover rounded-xl border border-cyan-400/40 mb-6"
-              alt={selected.name}
-            />
-            <h2 className="text-4xl font-bold mt-4 neon-shadow text-cyan-300 mb-4">
+            <h2 className="text-4xl font-bold mt-4 neon-shadow text-cyan-400 mb-8 text-center">
               {selected.name}
             </h2>
-            <p className="mt-3 text-gray-300">{selected.desc}</p>
-            <h3 className="text-2xl font-bold mt-8 text-cyan-300 neon-shadow">Rules</h3>
-            <ul className="list-disc ml-8 mt-3 text-gray-300 space-y-2">
-              {selected.rules.map((r, i) => (
-                <li key={i}>{r}</li>
-              ))}
-            </ul>
-            <h3 className="text-2xl font-bold mt-8 text-cyan-300 neon-shadow">Coordinators</h3>
-            <ul className="mt-3 text-gray-300 space-y-2">
-              {selected.coords.map((c, i) => (
-                <li key={i}>{c.name} — {c.phone}</li>
-              ))}
-            </ul>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+              <section>
+                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">About the Event</h3>
+                <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300">
+                  {selected.desc.map((point, idx) => <li key={idx}>{point}</li>)}
+                </ul>
+              </section>
+
+              <section>
+                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">Rules</h3>
+                <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 max-h-[60vh] overflow-y-auto pr-4">
+                  {selected.rules.map((rule, idx) => <li key={idx}>{rule}</li>)}
+                </ul>
+              </section>
+
+              <section>
+                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">Coordinators</h3>
+                <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 text-center">
+                  {selected.coords.length
+                    ? selected.coords.map((coord, idx) => (<li key={idx}>{coord.name} — {coord.phone}</li>))
+                    : <li>No coordinators listed.</li>}
+                </ul>
+              </section>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -183,4 +226,4 @@ const SpandanPage = () => {
   );
 };
 
-export default SpandanPage;
+export default RangsazziPage;

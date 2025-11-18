@@ -1,137 +1,183 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import dummy from "../../assets/dummy.png";
+import dummy from "../../assets/dummy.png"; // Replace with your image path
 
-// Dummy VR hero image as placeholder
-const VR_IMAGE = dummy;
+const TOP_IMAGE = dummy;
 
-// Example event data
-const Spandan = {
-  eventName: "SPANDAN",
-  tagline: "The Rhythm of Culture",
+const Anunaad = {
+  eventName: "Anunaad",
+  tagline: "",
   events: [
     {
-      id: 1,
-      name: "Battle Groove",
-      img: VR_IMAGE,
-      desc: "A high-energy solo dance face-off.",
-      rules: ["Time limit: 2 mins", "No vulgar moves allowed"],
-      coords: [
-        { name: "Arjun", phone: "9876543210" },
-        { name: "Riya", phone: "9123456780" },
+      id: 2,
+      name: "Voice of Culrav",
+      desc: [
+        "Let your voice be heard and let the world sing along!"
       ],
+      rules: [
+        "Time limit for performance will be 3 minutes 30 seconds.",
+        "The final round requires all shortlisted candidates to submit one choice and we'll provide a second song (from the same list). Participants have to perform both songs.",
+        "The second song will be provided immediately after you submit your response, so submit early.",
+        "Songs in the form are final; no additions will be made.",
+        "Note: Background music is compulsory. Bring an instrumentalist or your own Karaoke for spot submission.",
+        "Only singing is judged.",
+        "Judging based on Pitch Accuracy, Vocal Range, Voice Quality, Improvisations, etc.",
+        "Judges' decision is final."
+      ],
+      coords: [],
     },
     {
-      id: 2,
-      name: "Step Sync",
-      img: VR_IMAGE,
-      desc: "A group dance event focused on coordination.",
-      rules: ["Team size: 4–12", "Time limit: 4 mins"],
-      coords: [
-        { name: "Manav", phone: "9911223344" },
-        { name: "Sana", phone: "9988776655" },
+      id: 3,
+      name: "Harmony",
+      desc: [
+        "Twice the talent, twice the magic."
       ],
+      rules: [
+        "Time allotted: 5 minutes (plus 2 minutes for sound check).",
+        "Teams may use karaoke or one instrumentalist.",
+        "Judged on vocals only.",
+        "Judging parameters: Pitch Accuracy, Vocal Range, Voice Quality, Improvisations, Harmonization.",
+        "Judges’ decision is final."
+      ],
+      coords: [],
     },
-  ],
+    {
+      id: 4,
+      name: "Ijaad",
+      desc: [
+        "Get Ready to drop the beat, Unleash the Rhythm.",
+        "Non-conventional music talents (EDM, Beat-Boxing, Rapping, etc.), solo and group.",
+        "Combinations highly preferred."
+      ],
+      rules: [
+        "Performance time limit: 5 minutes (plus 2 minutes for sound check).",
+        "Up to 4 participants per group; single participation only.",
+        "First round is an elimination round before the main event.",
+        "Second round: finale for selected contestants on main event date.",
+        "Backing track/instruments allowed.",
+        "Judging on complexity, creativity, etc.",
+        "Original Composition gets extra points.",
+        "Judges' decision is final and binding."
+      ],
+      coords: [],
+    },
+    {
+      id: 5,
+      name: "Rocktave",
+      desc: [
+        "Flagship band event: soul, rock, and energy.",
+        "Two rounds: pre-elims for in-house bands (MP Hall, Swaarang Day).",
+        "Finale at Gymkhana Ground.",
+        "External selection by video submitted with registration."
+      ],
+      rules: [
+        "Final round: selected bands get 25 minutes (20 mins performance + 5 mins soundcheck).",
+        "Bands: 3-8 members.",
+        "Each individual may join only one team.",
+        "At least one vocalist, guitarist and percussionist is mandatory.",
+        "No professional bands allowed.",
+        "Original Composition awarded extra points.",
+        "Judges’ decision is final and binding."
+      ],
+      coords: [],
+    },
+    {
+      id: 6,
+      name: "Vadya",
+      desc: [
+        "Solo/group purely instrumental event.",
+        "All genres welcome.",
+        "In-house screening; external screening by video.",
+        "Final round at Culrav."
+      ],
+      rules: [
+        "Up to 5 members per team.",
+        "All music genres entertained.",
+        "No restriction on instrument type (digital, acoustic, electric).",
+        "Pieces can be composed, covered, or improvised.",
+        "Stage time: 8 minutes (5 mins performance + 3 mins soundcheck).",
+        "Judges’ decision is final."
+      ],
+      coords: [],
+    },
+    {
+      id: 7,
+      name: "Euphony",
+      desc: [
+        "Acoustic band event.",
+        "Two rounds; pre-elims and finale at Gymkhana Ground.",
+        "Finale: 15 minutes stage time (10 mins performance + 5 mins soundcheck)."
+      ],
+      rules: [
+        "Final round: selected bands get 15 minutes (10 mins performance + 5 mins soundcheck).",
+        "Bands: 3-5 members.",
+        "Each individual may join only one team.",
+        "At least one vocalist, guitarist and percussionist required.",
+        "Only non-electrical instruments allowed (no drums/distortion).",
+        "No professional bands allowed.",
+        "Original Composition awarded extra points."
+      ],
+      coords: [],
+    }
+  ]
 };
-
-const navLinks = ["Home", "Info", "Service", "Contact"];
 
 const SpandanPage = () => {
   const [selected, setSelected] = useState(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#00e5ff] to-[#7f00ff] text-white font-sans">
-      {/* HEADER BAR */}
-      <header className="flex justify-between items-center px-8 py-6 border-b border-cyan-400/40">
-        <div className="text-cyan-300 text-xl font-bold neon-shadow uppercase tracking-wider">
-          WELCOME TO THE FUTURE
-        </div>
-        <nav className="flex space-x-8">
-          {navLinks.map((link) => (
-            <span
-              key={link}
-              className="relative group text-cyan-300 transition font-semibold neon-shadow cursor-pointer hover:text-white"
-            >
-              {link}
-              <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-            </span>
-          ))}
-        </nav>
-      </header>
-
-      {/* HERO AND SLOGAN */}
+    <div className="min-h-screen bg-black font-sans text-gray-300">
+      {/* TOP IMAGE AND HEADER */}
       <main className="flex flex-col md:flex-row justify-center items-center px-8 py-16 relative">
-        {/* Visual Zone */}
         <div className="relative flex flex-col justify-center items-center md:w-1/2">
           <img
-            src={VR_IMAGE}
-            alt="VR Hero"
-            className="w-[330px] h-[300px] object-cover brightness-90 rounded-xl shadow-lg border border-cyan-400/60 neon-shadow"
+            src={TOP_IMAGE}
+            alt="Event Hero"
+            className="w-[330px] h-[300px] object-cover brightness-90 rounded-xl shadow-lg border border-cyan-600/60 neon-shadow"
           />
-          {/* Floating 3D Shapes/Decor */}
           <motion.div
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
-            className="absolute left-10 top-6 w-16 h-16 rounded-full bg-gradient-to-br from-fuchsia-400 to-cyan-400 filter blur-[2px] border border-cyan-300 shadow-2xl"
+            className="absolute left-10 top-6 w-16 h-16 rounded-full bg-gradient-to-br from-fuchsia-600 to-cyan-600 filter blur-[2px] border border-cyan-600 shadow-2xl"
           />
-          <div className="absolute right-16 top-28 w-12 h-12 bg-gradient-to-br from-blue-600 to-cyan-400 rotate-12 rounded-xl" />
-          <div className="absolute left-14 bottom-10 w-10 h-10 bg-gradient-to-tr from-fuchsia-500 to-cyan-300 rounded-full opacity-90" />
+          <div className="absolute right-16 top-28 w-12 h-12 bg-gradient-to-br from-blue-700 to-cyan-600 rotate-12 rounded-xl" />
+          <div className="absolute left-14 bottom-10 w-10 h-10 bg-gradient-to-tr from-fuchsia-700 to-cyan-500 rounded-full opacity-90" />
         </div>
-
-        {/* Slogan + Buttons */}
-        <div className="md:w-1/2 mt-12 md:mt-0 text-center md:text-left">
-          <h1 className="text-5xl font-bold neon-shadow text-cyan-300 mb-4 drop-shadow-xl tracking-wide uppercase">
-             SPANDAN
+        <div className="md:w-1/2 mt-12 md:mt-0 text-center md:text-center">
+          <h1 className="text-5xl font-bold neon-shadow text-cyan-400 mb-4 drop-shadow-xl tracking-wide uppercase">
+            ANUNAAD
           </h1>
-          <p className="text-lg text-cyan-100 mb-8 max-w-md mx-auto md:mx-0">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.
+          <p className="text-lg text-cyan-300 mb-8 max-w-md mx-auto">
+            Flagship musical events, bringing together the best talent in solo, duet, band, and fusion performances across a diverse range of styles.
           </p>
-          <div className="flex gap-7 justify-center md:justify-start mb-10">
-            <button className="px-6 py-2 rounded-xl bg-cyan-400 text-black font-semibold neon-shadow transition hover:scale-105 hover:bg-cyan-200">
-              Know More
-            </button>
-          </div>
-          {/* Social Icons */}
-          <div className="flex gap-7 justify-center md:justify-start">
-            <span className="w-10 h-10 bg-cyan-500 rounded-full flex items-center justify-center neon-shadow text-black cursor-pointer transition hover:bg-cyan-300">
-              {/* Facebook */}
-              <svg width="22" height="22" viewBox="0 0 22 22"><path fill="currentColor" d="M21 1H1v20h11v-8H9v-3h3V7.5A3.5 3.5 0 0 1 15.5 4H18v3h-2.5A.5.5 0 0 0 15 7.5V9h3v3h-3v8h6V1z"/></svg>
-            </span>
-            <span className="w-10 h-10 bg-cyan-500 rounded-full flex items-center justify-center neon-shadow text-black cursor-pointer transition hover:bg-cyan-300">
-              {/* Instagram */}
-              <svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="5.5" stroke="currentColor" strokeWidth="2" fill="none"/><rect x="5" y="5" width="12" height="12" rx="6" stroke="currentColor" strokeWidth="2" fill="none"/><circle cx="16.5" cy="7.5" r="1" fill="currentColor"/></svg>
-            </span>
-            <span className="w-10 h-10 bg-cyan-500 rounded-full flex items-center justify-center neon-shadow text-black cursor-pointer transition hover:bg-cyan-300">
-              {/* Globe */}
-              <svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="9" stroke="currentColor" strokeWidth="2" fill="none"/><ellipse cx="11" cy="11" rx="4" ry="9" stroke="currentColor" strokeWidth="2" fill="none"/><line x1="2" y1="11" x2="20" y2="11" stroke="currentColor" strokeWidth="2"/></svg>
-            </span>
-          </div>
         </div>
       </main>
 
       {/* EVENTS GRID */}
       <div className="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 sm:grid-cols-2 gap-10">
-        {Spandan.events.map((event) => (
+        {Anunaad.events.map((event) => (
           <motion.div
             key={event.id}
-            whileHover={{ scale: 1.04 }}
-            className="relative cyber-card p-4 border border-cyan-400/40 rounded-xl bg-black/40 backdrop-blur-md shadow-lg text-left"
+            initial={{ scale: 1, boxShadow: "0 0 10px rgba(0,0,0,0.2)" }}
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0 15px 30px rgba(0,255,255,0.4)",
+              transition: { duration: 0.3, ease: "easeInOut" }
+            }}
+            whileTap={{ scale: 0.98 }}
+            className="relative cyber-card p-6 border border-cyan-600 rounded-xl bg-black/90 backdrop-blur-md shadow-md cursor-pointer text-center select-none"
+            onClick={() => setSelected(event)}
           >
-            <div className="overflow-hidden rounded-lg mb-4">
-              <img
-                src={event.img}
-                className="w-full h-48 object-cover transition duration-700 hover:scale-110"
-                alt={event.name}
-              />
-            </div>
-            <h2 className="text-2xl font-bold neon-shadow text-cyan-300 mb-2">
+            <h2 className="text-2xl font-bold neon-shadow text-cyan-400 mb-2">
               {event.name}
             </h2>
             <button
-              onClick={() => setSelected(event)}
-              className="w-full mt-4 py-2 border border-cyan-300 neon-shadow rounded-lg bg-cyan-400 text-black transition hover:scale-105 hover:bg-cyan-200"
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelected(event);
+              }}
+              className="mt-4 py-2 w-full border border-cyan-400 rounded-lg bg-cyan-500 text-black font-semibold hover:bg-cyan-300 transition"
             >
               Explore
             </button>
@@ -147,35 +193,64 @@ const SpandanPage = () => {
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ duration: 0.45, ease: "easeOut" }}
-            className="fixed bottom-0 left-0 w-full h-[85vh] bg-black/95 backdrop-blur-xl border-t border-cyan-400/40 z-50 p-8 overflow-y-auto neon-shadow"
+            className="fixed top-0 left-0 w-full h-full bg-black/95 backdrop-blur-xl border-t border-cyan-600/50 z-50 p-8 overflow-y-auto neon-shadow"
+            style={{ overflowX: "hidden", overscrollBehavior: "contain" }}
           >
             <button
               onClick={() => setSelected(null)}
-              className="absolute top-6 right-10 text-3xl text-cyan-200 hover:text-cyan-400 font-bold"
+              className="absolute top-6 right-10 text-4xl text-cyan-400 hover:text-cyan-600 font-bold focus:outline-none"
+              aria-label="Close Explore Panel"
             >
               ✕
             </button>
-            <img
-              src={selected.img}
-              className="mx-auto w-full max-w-lg h-64 object-cover rounded-xl border border-cyan-400/40 mb-6"
-              alt={selected.name}
-            />
-            <h2 className="text-4xl font-bold mt-4 neon-shadow text-cyan-300 mb-4">
+            <h2 className="text-4xl font-bold mt-4 neon-shadow text-cyan-400 mb-8 text-center">
               {selected.name}
             </h2>
-            <p className="mt-3 text-gray-300">{selected.desc}</p>
-            <h3 className="text-2xl font-bold mt-8 text-cyan-300 neon-shadow">Rules</h3>
-            <ul className="list-disc ml-8 mt-3 text-gray-300 space-y-2">
-              {selected.rules.map((r, i) => (
-                <li key={i}>{r}</li>
-              ))}
-            </ul>
-            <h3 className="text-2xl font-bold mt-8 text-cyan-300 neon-shadow">Coordinators</h3>
-            <ul className="mt-3 text-gray-300 space-y-2">
-              {selected.coords.map((c, i) => (
-                <li key={i}>{c.name} — {c.phone}</li>
-              ))}
-            </ul>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+             {/* Event Description as bullet points */}
+<section>
+  <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">
+    About the Event
+  </h3>
+  <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 overflow-wrap break-word">
+    {selected.desc.map((point, index) => (
+      <li key={index}>{point}</li>
+    ))}
+  </ul>
+</section>
+
+{/* Rules */}
+<section>
+  <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">
+    Rules
+  </h3>
+  <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 max-h-[60vh] overflow-y-auto pr-4">
+    {selected.rules.map((rule, index) => (
+      <li key={index}>{rule}</li>
+    ))}
+  </ul>
+</section>
+
+{/* Coordinators */}
+<section>
+  <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">
+    Coordinators
+  </h3>
+  <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 text-center">
+    {selected.coords.length > 0 ? (
+      selected.coords.map((c, i) => (
+        <li key={i}>
+          {c.name} — {c.phone}
+        </li>
+      ))
+    ) : (
+      <li>No coordinators listed.</li>
+    )}
+  </ul>
+</section>
+
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

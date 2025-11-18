@@ -1,137 +1,140 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import dummy from "../../assets/dummy.png";
+import dummy from "../../assets/dummy.png"; // Replace with your hero image path
 
-// Dummy VR hero image as placeholder
-const VR_IMAGE = dummy;
+const HERO_IMAGE = dummy;
 
-// Example event data
-const Spandan = {
-  eventName: "SPANDAN",
-  tagline: "The Rhythm of Culture",
+const Litmuse = {
+  eventName: "Litmuse",
+  tagline: "",
   events: [
     {
-      id: 1,
-      name: "Battle Groove",
-      img: VR_IMAGE,
-      desc: "A high-energy solo dance face-off.",
-      rules: ["Time limit: 2 mins", "No vulgar moves allowed"],
-      coords: [
-        { name: "Arjun", phone: "9876543210" },
-        { name: "Riya", phone: "9123456780" },
+      id: 13,
+      name: "Kavyanjali",
+      desc: [
+        "Poem should be written in Hindi and should be of maximum 8 mins.",
+        "Poem should be an original piece of content.",
+        "Participants are allowed to present more than one poem in bound time."
       ],
+      rules: [
+        "Poem should be written in Hindi and should be of maximum 8 mins.",
+        "Poem should be an original piece of content.",
+        "Participants are allowed to present more than one poem in bound time."
+      ],
+      coords: [],
     },
     {
-      id: 2,
-      name: "Step Sync",
-      img: VR_IMAGE,
-      desc: "A group dance event focused on coordination.",
-      rules: ["Team size: 4–12", "Time limit: 4 mins"],
-      coords: [
-        { name: "Manav", phone: "9911223344" },
-        { name: "Sana", phone: "9988776655" },
+      id: 14,
+      name: "Poetry Slam",
+      desc: [
+        "The English poetry slam competition will comprise of 3 rounds.",
+        "Poetry should contain the mentioned literary device at least once but is not restricted to it.",
+        "The poem will be judged based on creativity, idea, thought process and development, style and structure of writing, knowledge and usage of literary devices, and overall representation."
       ],
+      rules: [
+        "The English poetry slam competition will comprise of 3 rounds.",
+        "a. The online Elimination round: Contestants submit entries online; best are chosen.",
+        "b. Impromptu Poetry writing and recitation round: Given a phrase with a literary device, write an original piece impromptu in 30 mins.",
+        "c. Final Round: Recite any original work you feel best represents you.",
+        "Content shouldn't be explicit or vulgar.",
+        "Judging criteria: creativity, structure, literary device usage, overall representation."
+      ],
+      coords: [],
+    },
+    {
+      id: 15,
+      name: "Spell-bee",
+      desc: [
+        "A 2 round team event with a maximum of 2 members per team.",
+        "Conducted only in English language."
+      ],
+      rules: [
+        "It would be a 2 round event.",
+        "It would be a team event with a maximum of 2 members a team.",
+        "Events would be conducted for the English language only.",
+        "Panel will pronounce words with some star marked words as tie-breakers.",
+        "Participants write spellings on a sheet of paper.",
+        "Specific teams qualify for Final based on previous round evaluation.",
+        "Teams press buzzer; order of buzzing determines word to spell immediately.",
+        "Team with most correct answers wins."
+      ],
+      coords: [],
+    },
+    {
+      id: 110,
+      name: "Laccuzzi",
+      desc: [
+        "Two-round event with eliminations.",
+        "Written Round: Quiz on TV series and comics choice.",
+        "Final Round: Gnosis styled quiz during Culrav on multiple topics."
+      ],
+      rules: [
+        "Two-round event with eliminations.",
+        "Written Round: Quiz on TV series: Friends, Big Bang Theory, Sherlock, etc.",
+        "Choice between Comic series: DC and Marvel Universe or Anime-Manga.",
+        "Final Round: Gnosis styled quiz during Culrav with diverse questions."
+      ],
+      coords: [],
     },
   ],
 };
 
-const navLinks = ["Home", "Info", "Service", "Contact"];
-
-const SpandanPage = () => {
+const LitmusePage = () => {
   const [selected, setSelected] = useState(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#00e5ff] to-[#7f00ff] text-white font-sans">
-      {/* HEADER BAR */}
-      <header className="flex justify-between items-center px-8 py-6 border-b border-cyan-400/40">
-        <div className="text-cyan-300 text-xl font-bold neon-shadow uppercase tracking-wider">
-          WELCOME TO THE FUTURE
-        </div>
-        <nav className="flex space-x-8">
-          {navLinks.map((link) => (
-            <span
-              key={link}
-              className="relative group text-cyan-300 transition font-semibold neon-shadow cursor-pointer hover:text-white"
-            >
-              {link}
-              <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-            </span>
-          ))}
-        </nav>
-      </header>
-
-      {/* HERO AND SLOGAN */}
+    <div className="min-h-screen bg-black font-sans text-gray-300">
+      {/* TOP IMAGE AND HEADER */}
       <main className="flex flex-col md:flex-row justify-center items-center px-8 py-16 relative">
-        {/* Visual Zone */}
         <div className="relative flex flex-col justify-center items-center md:w-1/2">
           <img
-            src={VR_IMAGE}
-            alt="VR Hero"
-            className="w-[330px] h-[300px] object-cover brightness-90 rounded-xl shadow-lg border border-cyan-400/60 neon-shadow"
+            src={HERO_IMAGE}
+            alt="Litmuse Hero"
+            className="w-[330px] h-[300px] object-cover brightness-90 rounded-xl shadow-lg border border-cyan-600/60 neon-shadow"
           />
-          {/* Floating 3D Shapes/Decor */}
           <motion.div
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
-            className="absolute left-10 top-6 w-16 h-16 rounded-full bg-gradient-to-br from-fuchsia-400 to-cyan-400 filter blur-[2px] border border-cyan-300 shadow-2xl"
+            className="absolute left-10 top-6 w-16 h-16 rounded-full bg-gradient-to-br from-fuchsia-600 to-cyan-600 filter blur-[2px] border border-cyan-600 shadow-2xl"
           />
-          <div className="absolute right-16 top-28 w-12 h-12 bg-gradient-to-br from-blue-600 to-cyan-400 rotate-12 rounded-xl" />
-          <div className="absolute left-14 bottom-10 w-10 h-10 bg-gradient-to-tr from-fuchsia-500 to-cyan-300 rounded-full opacity-90" />
+          <div className="absolute right-16 top-28 w-12 h-12 bg-gradient-to-br from-blue-700 to-cyan-600 rotate-12 rounded-xl" />
+          <div className="absolute left-14 bottom-10 w-10 h-10 bg-gradient-to-tr from-fuchsia-700 to-cyan-500 rounded-full opacity-90" />
         </div>
-
-        {/* Slogan + Buttons */}
-        <div className="md:w-1/2 mt-12 md:mt-0 text-center md:text-left">
-          <h1 className="text-5xl font-bold neon-shadow text-cyan-300 mb-4 drop-shadow-xl tracking-wide uppercase">
-             SPANDAN
+        <div className="md:w-1/2 mt-12 md:mt-0 text-center md:text-center">
+          <h1 className="text-5xl font-bold neon-shadow text-cyan-400 mb-4 drop-shadow-xl tracking-wide uppercase">
+            LITMUSE
           </h1>
-          <p className="text-lg text-cyan-100 mb-8 max-w-md mx-auto md:mx-0">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.
+          <p className="text-lg text-cyan-300 mb-8 max-w-md mx-auto">
+            Explore literary talents ranging from poetry recitations to spelling competitions in Litmuse.
           </p>
-          <div className="flex gap-7 justify-center md:justify-start mb-10">
-            <button className="px-6 py-2 rounded-xl bg-cyan-400 text-black font-semibold neon-shadow transition hover:scale-105 hover:bg-cyan-200">
-              Know More
-            </button>
-          </div>
-          {/* Social Icons */}
-          <div className="flex gap-7 justify-center md:justify-start">
-            <span className="w-10 h-10 bg-cyan-500 rounded-full flex items-center justify-center neon-shadow text-black cursor-pointer transition hover:bg-cyan-300">
-              {/* Facebook */}
-              <svg width="22" height="22" viewBox="0 0 22 22"><path fill="currentColor" d="M21 1H1v20h11v-8H9v-3h3V7.5A3.5 3.5 0 0 1 15.5 4H18v3h-2.5A.5.5 0 0 0 15 7.5V9h3v3h-3v8h6V1z"/></svg>
-            </span>
-            <span className="w-10 h-10 bg-cyan-500 rounded-full flex items-center justify-center neon-shadow text-black cursor-pointer transition hover:bg-cyan-300">
-              {/* Instagram */}
-              <svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="5.5" stroke="currentColor" strokeWidth="2" fill="none"/><rect x="5" y="5" width="12" height="12" rx="6" stroke="currentColor" strokeWidth="2" fill="none"/><circle cx="16.5" cy="7.5" r="1" fill="currentColor"/></svg>
-            </span>
-            <span className="w-10 h-10 bg-cyan-500 rounded-full flex items-center justify-center neon-shadow text-black cursor-pointer transition hover:bg-cyan-300">
-              {/* Globe */}
-              <svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="9" stroke="currentColor" strokeWidth="2" fill="none"/><ellipse cx="11" cy="11" rx="4" ry="9" stroke="currentColor" strokeWidth="2" fill="none"/><line x1="2" y1="11" x2="20" y2="11" stroke="currentColor" strokeWidth="2"/></svg>
-            </span>
-          </div>
         </div>
       </main>
 
       {/* EVENTS GRID */}
       <div className="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 sm:grid-cols-2 gap-10">
-        {Spandan.events.map((event) => (
+        {Litmuse.events.map((event) => (
           <motion.div
             key={event.id}
-            whileHover={{ scale: 1.04 }}
-            className="relative cyber-card p-4 border border-cyan-400/40 rounded-xl bg-black/40 backdrop-blur-md shadow-lg text-left"
+            initial={{ scale: 1, boxShadow: "0 0 10px rgba(0,0,0,0.2)" }}
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0 15px 30px rgba(0,255,255,0.4)",
+              transition: { duration: 0.3, ease: "easeInOut" }
+            }}
+            whileTap={{ scale: 0.98 }}
+            className="relative cyber-card p-6 border border-cyan-600 rounded-xl bg-black/90 backdrop-blur-md shadow-md cursor-pointer text-center select-none"
+            onClick={() => setSelected(event)}
           >
-            <div className="overflow-hidden rounded-lg mb-4">
-              <img
-                src={event.img}
-                className="w-full h-48 object-cover transition duration-700 hover:scale-110"
-                alt={event.name}
-              />
-            </div>
-            <h2 className="text-2xl font-bold neon-shadow text-cyan-300 mb-2">
+            <h2 className="text-2xl font-bold neon-shadow text-cyan-400 mb-2">
               {event.name}
             </h2>
             <button
-              onClick={() => setSelected(event)}
-              className="w-full mt-4 py-2 border border-cyan-300 neon-shadow rounded-lg bg-cyan-400 text-black transition hover:scale-105 hover:bg-cyan-200"
+              onClick={e => {
+                e.stopPropagation();
+                setSelected(event);
+              }}
+              className="mt-4 py-2 w-full border border-cyan-400 rounded-lg bg-cyan-500 text-black font-semibold hover:bg-cyan-300 transition"
             >
               Explore
             </button>
@@ -147,35 +150,63 @@ const SpandanPage = () => {
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ duration: 0.45, ease: "easeOut" }}
-            className="fixed bottom-0 left-0 w-full h-[85vh] bg-black/95 backdrop-blur-xl border-t border-cyan-400/40 z-50 p-8 overflow-y-auto neon-shadow"
+            className="fixed top-0 left-0 w-full h-full bg-black/95 backdrop-blur-xl border-t border-cyan-600/50 z-50 p-8 overflow-y-auto neon-shadow"
+            style={{ overflowX: "hidden", overscrollBehavior: "contain" }}
           >
             <button
               onClick={() => setSelected(null)}
-              className="absolute top-6 right-10 text-3xl text-cyan-200 hover:text-cyan-400 font-bold"
+              className="absolute top-6 right-10 text-4xl text-cyan-400 hover:text-cyan-600 font-bold focus:outline-none"
+              aria-label="Close Explore Panel"
             >
               ✕
             </button>
-            <img
-              src={selected.img}
-              className="mx-auto w-full max-w-lg h-64 object-cover rounded-xl border border-cyan-400/40 mb-6"
-              alt={selected.name}
-            />
-            <h2 className="text-4xl font-bold mt-4 neon-shadow text-cyan-300 mb-4">
+            <h2 className="text-4xl font-bold mt-4 neon-shadow text-cyan-400 mb-8 text-center">
               {selected.name}
             </h2>
-            <p className="mt-3 text-gray-300">{selected.desc}</p>
-            <h3 className="text-2xl font-bold mt-8 text-cyan-300 neon-shadow">Rules</h3>
-            <ul className="list-disc ml-8 mt-3 text-gray-300 space-y-2">
-              {selected.rules.map((r, i) => (
-                <li key={i}>{r}</li>
-              ))}
-            </ul>
-            <h3 className="text-2xl font-bold mt-8 text-cyan-300 neon-shadow">Coordinators</h3>
-            <ul className="mt-3 text-gray-300 space-y-2">
-              {selected.coords.map((c, i) => (
-                <li key={i}>{c.name} — {c.phone}</li>
-              ))}
-            </ul>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+              {/* Event Description */}
+              <section>
+                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">
+                  About the Event
+                </h3>
+                <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300">
+                  {selected.desc.map((point, idx) => (
+                    <li key={idx}>{point}</li>
+                  ))}
+                </ul>
+              </section>
+
+              {/* Rules */}
+              <section>
+                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">
+                  Rules
+                </h3>
+                <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 max-h-[60vh] overflow-y-auto pr-4">
+                  {selected.rules.map((rule, idx) => (
+                    <li key={idx}>{rule}</li>
+                  ))}
+                </ul>
+              </section>
+
+              {/* Coordinators */}
+              <section>
+                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">
+                  Coordinators
+                </h3>
+                <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 text-center">
+                  {selected.coords.length > 0 ? (
+                    selected.coords.map((coord, idx) => (
+                      <li key={idx}>
+                        {coord.name} — {coord.phone}
+                      </li>
+                    ))
+                  ) : (
+                    <li>No coordinators listed.</li>
+                  )}
+                </ul>
+              </section>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -183,4 +214,4 @@ const SpandanPage = () => {
   );
 };
 
-export default SpandanPage;
+export default LitmusePage;
