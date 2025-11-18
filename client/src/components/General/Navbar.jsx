@@ -6,7 +6,7 @@ function Navbar() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const { isAuthenticated, user } = useSelector((state) => state.auth);
-  const firstName = user.name.split(" ")[0];
+  const firstName = user?.name.split(" ")[0];
 
   const navItems = [
     { name: "CULRAV", path: "/culrav" },

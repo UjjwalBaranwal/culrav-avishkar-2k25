@@ -70,7 +70,7 @@ const Login = () => {
   const onResetSubmit = (data) => {
     dispatch(forgotPass(data.email));
   };
-
+  const branches = ["CSE", "ECE", "CHE", "CE", "PIE", "EE", "BT", "ME", "MC"];
   return (
     <div className="flex items-start justify-center min-h-screen bg-gray-100 font-[Jost]">
       <div className="w-[450px] perspective-[1500px] relative">
@@ -93,7 +93,7 @@ const Login = () => {
                 <input
                   type="text"
                   placeholder="User name"
-                  {...registerRegister("username", {
+                  {...registerRegister("name", {
                     required: "Username is required",
                     minLength: {
                       value: 3,
@@ -114,7 +114,7 @@ const Login = () => {
                   {...registerRegister("email", {
                     required: "Email is required",
                     pattern: {
-                      value: /^[a-zA-Z0-9._%+-]+@(gmail\.com|gla\.ac\.in)$/,
+                      value: /^[^\s@]+@(mnnit|iitk|iiitp)\.ac\.in$/,
                       message: "Enter a valid Gsuit email",
                     },
                   })}
@@ -140,19 +140,22 @@ const Login = () => {
                   </p>
                 )}
 
-                <input
-                  type="text"
-                  placeholder="Branch"
+                <select
                   {...registerRegister("branch", {
                     required: "Branch is required",
                   })}
                   className="p-2.5 rounded-md bg-gray-100 text-black outline-none"
-                />
-                {registerErrors.branch && (
-                  <p className="text-red-500 text-sm">
-                    {registerErrors.branch.message}
-                  </p>
-                )}
+                  defaultValue=""
+                >
+                  <option value="" disabled>
+                    Select Branch
+                  </option>
+                  {branches.map((b) => (
+                    <option key={b} value={b}>
+                      {b}
+                    </option>
+                  ))}
+                </select>
 
                 <input
                   type="password"
@@ -210,7 +213,7 @@ const Login = () => {
                   {...registerLogin("email", {
                     required: "Email is required",
                     pattern: {
-                      value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                      value: /^[^\s@]+@(mnnit|iitk|iiitp)\.ac\.in$/,
                       message: "Enter a valid email",
                     },
                   })}

@@ -22,7 +22,7 @@ export const login = createAsyncThunk(
     } catch (err) {
       return rejectWithValue(err);
     }
-  }
+  },
 );
 
 // Sign Up
@@ -35,7 +35,7 @@ export const signUp = createAsyncThunk(
     } catch (err) {
       return rejectWithValue(err);
     }
-  }
+  },
 );
 
 // Get current user
@@ -48,7 +48,7 @@ export const loadUser = createAsyncThunk(
     } catch (err) {
       return rejectWithValue(err);
     }
-  }
+  },
 );
 
 // Forgot password
@@ -61,7 +61,7 @@ export const forgotPass = createAsyncThunk(
     } catch (err) {
       return rejectWithValue(err);
     }
-  }
+  },
 );
 
 // Reset password
@@ -74,7 +74,7 @@ export const resetPass = createAsyncThunk(
     } catch (err) {
       return rejectWithValue(err);
     }
-  }
+  },
 );
 
 // Confirm Email
@@ -87,7 +87,7 @@ export const confirmEmailToken = createAsyncThunk(
     } catch (err) {
       return rejectWithValue(err);
     }
-  }
+  },
 );
 
 // ---------------------------
@@ -164,7 +164,7 @@ const authSlice = createSlice({
       })
       .addCase(loadUser.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload.user;
+        state.user = action.payload;
         state.isAuthenticated = true;
       })
       .addCase(loadUser.rejected, (state, action) => {
