@@ -1,6 +1,5 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { toast } from "sonner";
 import { logout } from "../../feature/auth/authSlice";
 
 export default function Logout() {
@@ -9,7 +8,6 @@ export default function Logout() {
 
   const handleLogout = () => {
     dispatch(logout());
-    toast.success("Logged out");
     navigate("/");
   };
 

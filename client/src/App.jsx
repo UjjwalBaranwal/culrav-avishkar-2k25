@@ -3,13 +3,13 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Loader from "./components/Loader";
 import Login from "./feature/auth/Login";
 import { TeamPage } from "./pages/TeamPage";
-import { toast, Toaster } from "sonner";
+import { Toaster } from "sonner";
 // Implementing the lazy loading
 import Navbar from "./components/General/Navbar";
 import Schedule from "./pages/Schedule";
 import ConfirmEmail from "./feature/auth/ConfirmEmail";
 import ResetPassword from "./feature/auth/ResetPassword";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { loadUser } from "./feature/auth/authSlice.js";
 
 // Implementing lazy loading
@@ -30,18 +30,10 @@ const AvishkarEvents = lazy(() => import("./pages/AvishkarAllEvent"));
 
 function App() {
   const dispatch = useDispatch();
-  const { error, message, loading } = useSelector((state) => state.auth);
-
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) dispatch(loadUser());
   }, [dispatch]);
-
-  useEffect(() => {
-    if (loading) return;
-    if (error) toast.error(error);
-    else if (message) toast.success(message);
-  });
 
   return (
     <>

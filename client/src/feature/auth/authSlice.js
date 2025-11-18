@@ -7,6 +7,7 @@ import {
   resetPassword,
   confirmEmail,
 } from "../../services/apiAuth";
+import { toast } from "sonner";
 
 // ---------------------------
 // Async Thunks
@@ -114,6 +115,7 @@ const authSlice = createSlice({
       state.error = null;
       state.message = null;
       localStorage.removeItem("token");
+      toast.success("Logged out!");
     },
     clearError: (state) => {
       state.error = null;
@@ -135,10 +137,12 @@ const authSlice = createSlice({
         state.token = action.payload.token;
         state.isAuthenticated = true;
         localStorage.setItem("token", action.payload.token);
+        toast.success("Logged in sucessfully!");
       })
       .addCase(login.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload?.message || "Login failed";
+        toast.error(action.payload?.message || "Login failed");
       })
 
       // Sign Up
@@ -151,10 +155,15 @@ const authSlice = createSlice({
         state.message =
           action.payload?.message ||
           "Sign up successful. Check email to confirm.";
+        toast.success(
+          action.payload?.message ||
+            "Sign up successful. Check email to confirm.",
+        );
       })
       .addCase(signUp.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload?.message || "Sign up failed";
+        toast.error(action.payload?.message || "Sign up failed");
       })
 
       // Load User
@@ -170,6 +179,7 @@ const authSlice = createSlice({
       .addCase(loadUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload?.message || "Failed to load user";
+        toast.error(action.payload?.message || "Failed to load user");
       })
 
       // Forgot Password
@@ -181,10 +191,12 @@ const authSlice = createSlice({
       .addCase(forgotPass.fulfilled, (state, action) => {
         state.loading = false;
         state.message = action.payload?.message || "Check email for reset link";
+        toast.success(action.payload?.message || "Check email for reset link");
       })
       .addCase(forgotPass.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload?.message || "Forgot password failed";
+        toast.error(action.payload?.message || "Forgot password failed");
       })
 
       // Reset Password
@@ -196,10 +208,12 @@ const authSlice = createSlice({
       .addCase(resetPass.fulfilled, (state, action) => {
         state.loading = false;
         state.message = action.payload?.message || "Password reset successful";
+        toast.success(action.payload?.message || "Password reset successful");
       })
       .addCase(resetPass.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload?.message || "Reset password failed";
+        toast.error(action.payload?.message || "Reset password failed");
       })
 
       // Confirm Email
@@ -211,10 +225,12 @@ const authSlice = createSlice({
       .addCase(confirmEmailToken.fulfilled, (state, action) => {
         state.loading = false;
         state.message = action.payload?.message || "Email confirmed";
+        toast.success(action.payload?.message || "Email confirmed");
       })
       .addCase(confirmEmailToken.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload?.message || "Email confirmation failed";
+        toast.error(action.payload?.message || "Email confirmation failed");
       });
   },
 });
