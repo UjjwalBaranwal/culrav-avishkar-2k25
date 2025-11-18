@@ -1,30 +1,22 @@
 import React from "react";
-import dummy from "../../assets/sample.jpg"; // ✅ Dummy image from assets
+import dummy from "../../assets/sample.jpg";
 
 const Sponsers = () => {
   return (
-    <div className="relative min-h-screen overflow-hidden flex flex-col items-center py-16 px-6">
-      {/* Background Video */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover brightness-[0.9] contrast-[1] opacity-100 -z-10"
-      >
-        <source src="/bg.mp4" type="video/mp4" />
-      </video>
-
+    <div className="relative min-h-screen overflow-hidden flex flex-col items-center px-6 bg-[#0a0a1a] font-Anton">
+      
       {/* Title */}
-      <h1 className="font-anton text-outline text-outline-pink text-5xl sm:text-6xl md:text-7xl font-extrabold uppercase tracking-[6px] mb-10 mt-10">
+      <h1 className="font-anton bg-gradient-to-r from-[#00e5ff] to-[#7f00ff] bg-clip-text text-transparent text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-[6px] mb-10 mt-10">
+  
         Sponsors
       </h1>
 
       {/* Foreground: Triangular Layout */}
       <div className="flex flex-col items-center gap-15 w-full max-w-6xl z-10">
+        
         {/* Row 1 */}
         <div className="text-center">
-          <h2 className="font-anton text-outline text-outline-blue text-3xl sm:text-4xl font-extrabold mb-5 uppercase tracking-[6px]">
+          <h2 className="font-anton bg-gradient-to-r from-[#00e5ff] to-[#7f00ff] bg-clip-text text-transparent text-3xl sm:text-4xl font-extrabold mb-5 uppercase tracking-[6px]">
             ASSOCIATE SPONSOR
           </h2>
           <div className="flex justify-center gap-6">
@@ -53,7 +45,6 @@ const Sponsers = () => {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                {/* <p className="text-white font-semibold">{`Sponsor ${i}`}</p> */}
               </div>
             ))}
           </div>
@@ -74,11 +65,11 @@ const Sponsers = () => {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                {/* <p className="text-white font-semibold">{`Sponsor ${i}`}</p> */}
               </div>
             ))}
           </div>
         </div>
+
       </div>
     </div>
   );

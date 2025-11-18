@@ -126,7 +126,7 @@ function AvishkarEvents() {
         backgroundPosition: "top center", // align how you want
       }}
     >
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="relative w-full mt-10 overflow-hidden">
         {/* Base image */}
         <img
@@ -134,7 +134,7 @@ function AvishkarEvents() {
           alt="Top Image"
           className="
       w-full
-      h-[120px] sm:h-[130px] md:h-[160px] lg:h-[200px] xl:h-[300px]
+      h-[120px] sm:h-[130px] md:h-40 lg:h-[200px] xl:h-[300px]
     "
         />
 
