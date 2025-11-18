@@ -19,6 +19,8 @@ exports.createTeam = catchAsync(async (req, res, next) => {
   if (size !== undefined && (!Number.isInteger(size) || size <= 0)) {
     return next(new AppError("Size must be a positive integer." , 400));
   }
+  console.log("leader",leader ,"size",size, "teamName",teamName);
+  
   const session = await mongoose.startSession();
   session.startTransaction();
   try {

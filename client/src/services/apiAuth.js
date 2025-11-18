@@ -2,6 +2,11 @@ import apiClient from "../utils/apiClient";
 import { catchAsync } from "../utils/catchAsync";
 const baseUrl = "/auth";
 
+export const getMe = catchAsync(async () => {
+  const { data } = await apiClient.get("/user/me");
+  return data;
+});
+
 export const loginUser = catchAsync(async (credential) => {
   const { data } = await apiClient.post(`${baseUrl}/login`, credential);
   return data;
