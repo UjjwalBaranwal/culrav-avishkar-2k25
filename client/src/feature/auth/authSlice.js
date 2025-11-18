@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
   loginUser,
   signUpUser,
-  getMe,
+  //getMe,
   forgotPassword,
   resetPassword,
   confirmEmail,
