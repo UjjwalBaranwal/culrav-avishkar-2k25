@@ -6,7 +6,7 @@ import Sidebar from "./Sidebar.jsx";
 
 export default function DashboardLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const NAVBAR_H = "72px";
+  const NAVBAR_H = "0px";
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
