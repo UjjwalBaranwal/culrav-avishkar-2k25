@@ -64,7 +64,7 @@ function App() {
           </Routes>
         </Suspense>
       </BrowserRouter>
-      <Toaster richColors position="top-right" />
+      <Toaster richColors position="bottom-right" />
     </>
   );
 }
