@@ -4,7 +4,7 @@ import RevealCard from "../components/ui/reveal-card";
 import avishkarbg from "../assets/AvishkarBG.png";
 import base from "../assets/base.png";
 import Navbar from "../components/General/Navbar";
-import image from "../assets/CardImg.png";
+import image from "../assets/avishkarrr.png";
 function AvishkarEvents() {
   const navigate = useNavigate();
   const events = [
@@ -126,35 +126,58 @@ function AvishkarEvents() {
         backgroundPosition: "top center", // align how you want
       }}
     >
-      <Navbar />
-      <div className="relative w-full mt-10 overflow-hidden">
-        {/* Base image */}
-        <img
-          src={base}
-          alt="Top Image"
-          className="
-      w-full
-      h-[120px] sm:h-[130px] md:h-[160px] lg:h-[200px] xl:h-[300px]
-    "
-        />
+<div className="relative w-full overflow-hidden">
+        {/* Base image - Increased min-height to ensure coverage */}
+        <img
+          src={base}
+          alt="Top Image"
+          className="
+            w-full
+            /* Increased base height, especially for desktop */
+            h-[500px] sm:h-[350px] md:h-[200px] lg:h-[200px] xl:h-[250px]
+        "
+        />
 
-        {/* Overlay row */}
-        <div className="absolute inset-0 flex items-center justify-around px-6">
-          <img
-            src={image}
-            className="w-16 sm:w-20 md:w-24 lg:w-28"
-            alt="Logo"
-          />
-          <p className="text-white text-lg sm:text-lg md:text-lg font-bold">
-            Culrav, a 4-day-long annual cultural extravaganza of MNNIT
-            Allahabad, is a vibrant celebration of art, music, And creativity.
-            With its diverse range of activities, including pronites featuring
-            performances by renowned artists or bAnds, kavsAndhya highlighting
-            poetry And literature, And appearances by comedians or big figures,
-            Culrav offers entertainment And engagement for all attendees.
-          </p>
-        </div>
-      </div>
+        <div className="absolute inset-0 flex flex-col justify-center sm:px-8">
+
+  {/* TOP GROUP — stays together on small screens */}
+  <div className="
+      w-full flex flex-col md:flex-row
+      items-center md:items-center   /* <-- FIX: center vertically on large screens */
+       md:gap-6
+       justify-center
+    "
+  >
+
+    {/* IMAGE */}
+    <div className="flex justify-center md:justify-center w-full md:w-1/3">
+      <img
+        src={image}
+        className="w-70 sm:w-80 md:w-full max-w-[400px]"
+        alt="Logo"
+      />
+    </div>
+
+    {/* TEXT */}
+    <div className="w-full md:w-2/3 flex justify-center md:justify-start">
+      <p className="text-white text-base sm:text-sm font-bold text-center md:text-left">
+        Culrav, a 4-day-long annual cultural extravaganza of MNNIT Allahabad,
+        is a vibrant celebration of art, music, and creativity. With its diverse
+        range of activities, including pronites featuring performances by
+        renowned artists or bands, kavsAndhya highlighting poetry and literature,
+        and appearances by comedians or big figures, Culrav offers entertainment
+        and engagement for all attendees.
+      </p>
+    </div>
+
+  </div>
+
+  {/* BOTTOM EMPTY SPACE */}
+  <div className="w-full h-4"></div>
+</div>
+
+
+      </div>
 
       {/* Header */}
       <div className="w-full flex justify-center pt-16 md:pt-20">
@@ -182,7 +205,7 @@ function AvishkarEvents() {
         >
           {events.map((event) => (
             <div
-              className="w-[90%] sm:w-[320px] lg:w-[300px] max-w-[340px]"
+              className="w-[90%] sm:w-[200px] lg:w-[300px] max-w-[250px]"
               key={event.id}
             >
               <RevealCard
