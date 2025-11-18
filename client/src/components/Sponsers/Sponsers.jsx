@@ -16,20 +16,17 @@ const Sponsers = () => {
       </video>
 
       {/* Title */}
-     <h1 className="font-anton text-outline text-outline-pink text-5xl sm:text-6xl md:text-7xl font-extrabold uppercase tracking-[6px] mb-10 mt-10">
-  Sponsors
-</h1>
-
-
+      <h1 className="font-anton text-outline text-outline-pink text-5xl sm:text-6xl md:text-7xl font-extrabold uppercase tracking-[6px] mb-10 mt-10">
+        Sponsors
+      </h1>
 
       {/* Foreground: Triangular Layout */}
       <div className="flex flex-col items-center gap-15 w-full max-w-6xl z-10">
         {/* Row 1 */}
         <div className="text-center">
-
           <h2 className="font-anton text-outline text-outline-blue text-3xl sm:text-4xl font-extrabold mb-5 uppercase tracking-[6px]">
-  ASSOCIATE SPONSOR
-</h2>
+            ASSOCIATE SPONSOR
+          </h2>
           <div className="flex justify-center gap-6">
             <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden shadow-lg hover:scale-105 transition-transform duration-200">
               <img
@@ -44,14 +41,11 @@ const Sponsers = () => {
         {/* Row 2 */}
         <div className="text-center">
           <h2 className="font-anton text-outline text-outline-blue text-3xl sm:text-4xl font-extrabold mb-5 uppercase tracking-[6px]">
-  ASSOCIATE SPONSOR
-</h2>
+            ASSOCIATE SPONSOR
+          </h2>
           <div className="flex justify-center gap-8 flex-wrap">
             {[1, 2].map((i) => (
-              <div
-                key={i}
-                className="flex flex-col items-center space-y-3"
-              >
+              <div key={i} className="flex flex-col items-center space-y-3">
                 <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden shadow-lg hover:scale-105 transition-transform duration-200">
                   <img
                     src={dummy}
@@ -68,14 +62,11 @@ const Sponsers = () => {
         {/* Row 3 */}
         <div className="text-center">
           <h2 className="font-anton text-outline text-outline-blue text-3xl sm:text-4xl font-extrabold mb-5 uppercase tracking-[6px]">
-  ASSOCIATE SPONSOR
-</h2>
+            ASSOCIATE SPONSOR
+          </h2>
           <div className="flex justify-center gap-8 flex-wrap">
             {[1, 2, 3].map((i) => (
-              <div
-                key={i}
-                className="flex flex-col items-center space-y-3"
-              >
+              <div key={i} className="flex flex-col items-center space-y-3">
                 <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden shadow-lg hover:scale-105 transition-transform duration-200">
                   <img
                     src={dummy}

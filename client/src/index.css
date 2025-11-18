@@ -34,6 +34,8 @@
 
   .text-outline-blue {
     --outline-color: #00ffff;
+  }
+}
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
