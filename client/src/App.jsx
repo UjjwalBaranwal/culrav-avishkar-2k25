@@ -31,10 +31,11 @@ const AvishkarEvents = lazy(() => import("./pages/AvishkarAllEvent"));
 
 function App() {
   const dispatch = useDispatch();
-
   useEffect(() => {
-    dispatch(loadUser());
-  });
+    const token = localStorage.getItem("token");
+    if (token) dispatch(loadUser());
+  }, [dispatch]);
+
   return (
     <>
       <BrowserRouter>
@@ -65,7 +66,7 @@ function App() {
           </Routes>
         </Suspense>
       </BrowserRouter>
-      <Toaster richColors position="top-right" />
+      <Toaster richColors position="bottom-right" />
     </>
   );
 }

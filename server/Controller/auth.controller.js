@@ -42,6 +42,9 @@ exports.signUp = catchAsync(async (req, res, next) => {
     return next(new AppError("Email already registered", 401));
   }
 
+  const existingUsername = await User.findOne({ name });
+  if (existingUsername) return next(new AppError("Username taken", 401));
+
   const hashed = await bcyrpt.hash(password, 12);
 
   const user = await User.create({
@@ -129,7 +132,7 @@ exports.login = catchAsync(async (req, res, next) => {
     token,
     user: {
       id: user._id,
-      username: user.name,
+      name: user.name,
       email: user.email,
       role: user.role,
     },
