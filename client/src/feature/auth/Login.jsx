@@ -102,9 +102,9 @@ const Login = () => {
                   })}
                   className="p-2.5 rounded-md bg-gray-100 text-black outline-none"
                 />
-                {registerErrors.username && (
+                {registerErrors.name && (
                   <p className="text-red-500 text-sm">
-                    {registerErrors.username.message}
+                    {registerErrors.name.message}
                   </p>
                 )}
 

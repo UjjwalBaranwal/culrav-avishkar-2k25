@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
-import { logout } from "../../redux/slices/authSlice";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import { logout } from "../../feature/auth/authSlice";
 
 export default function Logout() {
   const dispatch = useDispatch();
