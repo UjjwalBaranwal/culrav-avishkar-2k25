@@ -12,18 +12,21 @@ export default function CreateTeam() {
     formState: { errors, isSubmitting },
   } = useForm({
     defaultValues: {
-      name: "",
+      teamName: "",
       size: "1",
     },
   });
 
+  //just for testing it will be change by actual user_id 
+  const user_id = "690b8843df951f521d7609ce";
+
   async function onSubmit(values) {
     try {
-      await createTeam(values.name, Number(values.size), user?.id);
+      await createTeam(values.teamName,user_id,Number(values.size));
       toast.success("Team created!");
     } catch (e) {
       console.log(e);
-      toast.error("Team creation failed :(");
+      toast.error(e.message);
     }
   }
 
@@ -36,7 +39,7 @@ export default function CreateTeam() {
           {/* NAME INPUT */}
           <div>
             <input
-              {...register("name", {
+              {...register("teamName", {
                 required: "Team name is required",
                 minLength: {
                   value: 2,
@@ -46,8 +49,8 @@ export default function CreateTeam() {
               placeholder="Team name"
               className="w-full rounded bg-white/80 text-black px-3 py-2"
             />
-            {errors.name && (
-              <p className="text-red-400 text-sm mt-1">{errors.name.message}</p>
+            {errors.teamName && (
+              <p className="text-red-400 text-sm mt-1">{errors.teamName.message}</p>
             )}
           </div>
 
