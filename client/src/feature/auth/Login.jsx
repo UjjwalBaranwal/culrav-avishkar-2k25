@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { login, signUp, forgotPass } from "../auth/authSlice.js";
 import { useDispatch, useSelector } from "react-redux";
-import { toast } from "sonner";
 
 const Login = () => {
   const [flip, setFlip] = useState(false);
@@ -11,25 +10,11 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { loading, error, message, isAuthenticated } = useSelector(
-    (state) => state.auth,
-  );
+  const { loading, isAuthenticated } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (isAuthenticated) navigate("/");
   }, [isAuthenticated, navigate]);
-
-  useEffect(() => {
-    if (loading) return;
-
-    if (message) toast.success(message);
-
-    if (error) toast.error(error);
-
-    if (isAuthenticated) {
-      toast.success("Logged in successfully!");
-    }
-  }, [loading, message, error, isAuthenticated]);
 
   const {
     register: registerRegister,

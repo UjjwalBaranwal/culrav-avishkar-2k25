@@ -2,15 +2,13 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router";
 import { resetPass } from "./authSlice";
-import { toast } from "sonner";
-import { useEffect } from "react";
 
 export default function ResetPassword() {
   const [searchParams] = useSearchParams();
   const [pwd, setPwd] = useState("");
 
   const dispatch = useDispatch();
-  const { message, error, loading } = useSelector((state) => state.auth);
+  const { loading } = useSelector((state) => state.auth);
 
   async function handleClick() {
     const token = searchParams.get("token");
@@ -18,11 +16,6 @@ export default function ResetPassword() {
 
     dispatch(resetPass({ token, id, newPassword: pwd }));
   }
-
-  useEffect(() => {
-    if (error) toast.error(error);
-    else toast.success(message);
-  }, [error, message]);
 
   return (
     <div className="flex flex-col gap-3 p-5 max-w-sm mx-auto mt-20">
