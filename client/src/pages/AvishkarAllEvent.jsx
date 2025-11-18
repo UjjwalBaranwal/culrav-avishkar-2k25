@@ -153,7 +153,7 @@ function AvishkarEvents() {
     <div className="flex justify-center md:justify-center w-full md:w-1/3">
       <img
         src={image}
-        className="w-70 sm:w-80 md:w-full max-w-[400px]"
+        className="w-75 sm:w-80 md:w-full max-w-[400px]"
         alt="Logo"
       />
     </div>
