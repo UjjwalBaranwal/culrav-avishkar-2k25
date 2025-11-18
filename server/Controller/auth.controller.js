@@ -42,9 +42,6 @@ exports.signUp = catchAsync(async (req, res, next) => {
     return next(new AppError("Email already registered", 401));
   }
 
-  const existingUsername = await User.findOne({ name });
-  if (existingUsername) return next(new AppError("Username taken", 401));
-
   const hashed = await bcyrpt.hash(password, 12);
 
   const user = await User.create({
