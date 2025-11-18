@@ -1,0 +1,86 @@
+import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
+import { createTeam } from "../../services/apiTeam";
+import { toast } from "sonner";
+
+export default function CreateTeam() {
+  const user = useSelector((state) => state.auth.user);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    defaultValues: {
+      name: "",
+      size: "1",
+    },
+  });
+
+  async function onSubmit(values) {
+    try {
+      await createTeam(values.name, Number(values.size), user?.id);
+      toast.success("Team created!");
+    } catch (e) {
+      console.log(e);
+      toast.error("Team creation failed :(");
+    }
+  }
+
+  return (
+    <div>
+      <h2 className="text-xl font-semibold mb-4">Create Team</h2>
+
+      <div className="bg-black/30 rounded-lg p-6 border border-white/10">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          {/* NAME INPUT */}
+          <div>
+            <input
+              {...register("name", {
+                required: "Team name is required",
+                minLength: {
+                  value: 2,
+                  message: "Team name must be at least 2 characters",
+                },
+              })}
+              placeholder="Team name"
+              className="w-full rounded bg-white/80 text-black px-3 py-2"
+            />
+            {errors.name && (
+              <p className="text-red-400 text-sm mt-1">{errors.name.message}</p>
+            )}
+          </div>
+
+          {/* TEAM SIZE DROPDOWN */}
+          <div>
+            <select
+              {...register("size", {
+                required: "Team size is required",
+              })}
+              className="w-full rounded bg-white/80 text-black px-3 py-2"
+            >
+              {/* Create options 1–10 (feel free to change) */}
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((size) => (
+                <option key={size} value={size}>
+                  {size}
+                </option>
+              ))}
+            </select>
+
+            {errors.size && (
+              <p className="text-red-400 text-sm mt-1">{errors.size.message}</p>
+            )}
+          </div>
+
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="px-4 py-2 rounded bg-white/20 hover:bg-white/30"
+          >
+            {isSubmitting ? "Creating..." : "Create"}
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+}

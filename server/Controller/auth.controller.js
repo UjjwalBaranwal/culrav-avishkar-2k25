@@ -17,7 +17,7 @@ const JWT_EXPIRES = process.env.JWT_EXPIRES;
 
 const CONFIRM_MIN = Number(process.env.CONFIRM_TOKEN_EXPIRES_MIN || 60);
 const RESET_MIN = Number(process.env.RESET_TOKEN_EXPIRES_MIN || 30);
-const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000";
+const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
 
 exports.signUp = catchAsync(async (req, res, next) => {
   const { email, password, name, college, branch, resumeLink } = req.body;
@@ -26,7 +26,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
   }
   if (!college || !branch) {
     return next(
-      new AppError("please provide your college name or branch", 401)
+      new AppError("please provide your college name or branch", 401),
     );
   }
 
@@ -60,7 +60,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
   await user.save();
 
   // creating the confirm link
-  const confirmLink = `${FRONTEND_URL}/api/v1/auth/confirm-email?token=${rawToken}&id=${user._id}`;
+  const confirmLink = `${FRONTEND_URL}/confirm-email?token=${rawToken}&id=${user._id}`;
 
   await sendEmail({
     to: email,
@@ -75,7 +75,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
 });
 
 exports.confirmEmail = catchAsync(async (req, res) => {
-  const { token, id } = req.query;
+  const { token, id } = req.body;
   if (!token || !id) {
     return next(new AppError("Token or Id is missing", 401));
   }
@@ -107,7 +107,7 @@ exports.login = catchAsync(async (req, res, next) => {
   }
 
   const user = await User.findOne({ email }).select(
-    "+password +resetPasswordToken +emailConfirmToken"
+    "+password +resetPasswordToken +emailConfirmToken",
   );
 
   if (!user) {
@@ -142,20 +142,22 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   const user = await User.findOne({ email });
   if (!user)
     return next(
-      new AppError("If that email exists, a reset link has been sent", 200)
+      new AppError("If that email exists, a reset link has been sent", 200),
     );
 
   const rawToken = getRandomToken(20);
   user.resetPasswordToken = hashToken(rawToken);
   user.resetPasswordExpires = Date.now() + RESET_MIN * 60 * 1000;
   await user.save();
-  const resetLink = `${FRONTEND_URL}/api/v1/auth/reset-password?token=${rawToken}&id=${user._id}`;
+  const resetLink = `${FRONTEND_URL}/reset-password?token=${rawToken}&id=${user._id}`;
   await sendEmail({
     to: user.email,
     subject: "Password reset",
     html: forgetPasswordEmail(resetLink, RESET_MIN),
   });
-  res.json({ message: "If that email exists, a reset link has been sent" });
+  res.json({
+    message: "If an account with that email exists, a reset link has been sent",
+  });
 });
 
 exports.resetPassword = catchAsync(async (req, res, next) => {
@@ -181,7 +183,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
 
 exports.getMe = catchAsync(async (req, res, next) => {
   const user = await User.findById(req.user.id).select(
-    "-password -resetPasswordToken -emailConfirmToken"
+    "-password -resetPasswordToken -emailConfirmToken",
   );
   res.json({ user });
 });
