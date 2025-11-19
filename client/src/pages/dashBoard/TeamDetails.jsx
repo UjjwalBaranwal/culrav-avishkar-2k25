@@ -2,8 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { motion } from 'framer-motion';
 import { ArrowLeft } from "lucide-react";
-import EventCard from "./EventCard";
-import MemberCard from "./MemberCard";
+import EventCard from "../../components/General/EventCard";
+import MemberCard from "../../components/General/MemberCard";
 
 export default function TeamDetail({ team, onBack, listItemVariants }) {
     const [email, setEmail] = useState('');
