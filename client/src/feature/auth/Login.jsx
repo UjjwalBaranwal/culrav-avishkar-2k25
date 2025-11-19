@@ -22,6 +22,7 @@ const Login = () => {
 
   const {
     register: registerRegister,
+    reset: resetRegisterForm,
     handleSubmit: handleSubmitRegister,
     formState: { errors: registerErrors },
     getValues: getRegisterValues,
@@ -50,8 +51,14 @@ const Login = () => {
     }
   };
 
-  const onRegisterSubmit = (data) => {
-    dispatch(signUp(data));
+  const onRegisterSubmit = async (data) => {
+    try {
+      await dispatch(signUp(data)).unwrap();
+      resetRegisterForm();
+      setView("login");
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const onLoginSubmit = (data) => {
