@@ -273,6 +273,31 @@ const Login = () => {
                 </button>
               </div>
 
+              {errorCode == "AUTH_EMAIL_NOT_VERIFIED" && (
+                <p className="p-2.5 text-black outline-none">
+                  You need to verify your email before you can login.
+                  <button
+                    type="button"
+                    className="underline cursor-pointer"
+                    onClick={async () => {
+                      try {
+                        await apiClient.post(
+                          "/auth/request-confirmation-mail",
+                          { email: getRegisterValues("email") },
+                        );
+                        toast.success("Confirmation mail sent!");
+                      } catch (e) {
+                        console.error(e);
+                        toast.error(
+                          "Error requesting confirmation mail. Try again!",
+                        );
+                      }
+                    }}
+                  >
+                    Request a new confirmation link?
+                  </button>
+                </p>
+              )}
               <button
                 type="submit"
                 className="mt-6 w-full py-2 bg-red-500 text-white text-lg rounded-md hover:bg-red-600 transition"
