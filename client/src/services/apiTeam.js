@@ -10,3 +10,9 @@ export const createTeam = catchAsync(async (teamName, leader, size) => {
   });
   return data;
 });
+
+
+export const getMyTeams = catchAsync(async () => {
+  const { data } = await apiClient.get(`${baseUrl}/myTeams`);
+  return data;
+});
