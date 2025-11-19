@@ -77,9 +77,9 @@ const Login = () => {
               <div className="flex flex-col w-full mt-3 space-y-3">
                 <input
                   type="text"
-                  placeholder="User name"
+                  placeholder="Enter your name"
                   {...registerRegister("name", {
-                    required: "Username is required",
+                    required: "Name is required",
                     minLength: {
                       value: 3,
                       message: "At least 3 characters required",
