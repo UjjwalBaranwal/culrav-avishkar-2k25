@@ -4,7 +4,7 @@ import { createTeam } from "../../services/apiTeam";
 import { toast } from "sonner";
 
 export default function CreateTeam() {
-  const user = useSelector((state) => state.auth.user);
+  const { user } = useSelector((state) => state.auth);
 
   const {
     register,
@@ -17,12 +17,9 @@ export default function CreateTeam() {
     },
   });
 
-  //just for testing it will be change by actual user_id 
-  const user_id = "690b8843df951f521d7609ce";
-
   async function onSubmit(values) {
     try {
-      await createTeam(values.teamName,user_id,Number(values.size));
+      await createTeam(values.teamName,user._id,Number(values.size));
       toast.success("Team created!");
     } catch (e) {
       console.log(e);

@@ -1,5 +1,6 @@
 import apiClient from "../utils/apiClient";
 import { catchAsync } from "../utils/catchAsync";
+
 const baseUrl = "/auth";
 
 export const getMe = catchAsync(async () => {
@@ -20,10 +21,7 @@ export const signUpUser = catchAsync(async (credential) => {
 export const confirmEmail = catchAsync(async (token, id) => {
   const { data } = await apiClient.post(
     `${baseUrl}/confirm-email?token=${token}&id=${id}`,
-    {
-      token,
-      id,
-    },
+    { token, id },
   );
   return data;
 });

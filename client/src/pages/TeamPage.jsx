@@ -179,7 +179,7 @@ export function TeamPage() {
             </aside>
 
             {/* --- Mobile Dropdown  --- */}
-            <div className="md:hidden fixed top-[77px] left-0 right-0 z-40 bg-gradient-to-r from-[#0a0a1a] via-[#101020] to-[#0a0a1a] border-b border-[#1a1a3d] shadow-lg">
+            <div className="md:hidden fixed top-[77px] left-0 right-0 z-40 bg-linear-to-r from-[#0a0a1a] via-[#101020] to-[#0a0a1a] border-b border-[#1a1a3d] shadow-lg">
                 <div className="relative p-4">
                     <select
                         value={activeSection}
@@ -221,7 +221,7 @@ export function TeamPage() {
                                 transition={{ duration: 0.5 }}
                             >
                                 {team.name}
-                                <span className="absolute -bottom-2 left-0 w-1/2 h-1 bg-gradient-to-r from-[#00e5ff] to-[#7f00ff]"></span>
+                                <span className="absolute -bottom-2 left-0 w-1/2 h-1 bg-linear-to-r from-[#00e5ff] to-[#7f00ff]"></span>
                             </motion.h2>
 
                             {/* Team Grid */}

@@ -24,6 +24,7 @@ apiClient.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       console.error("Unauthorized! Token expired or invalid.");
+      localStorage.removeItem("token");
       // Optionally redirect to login or refresh token
     }
     return Promise.reject(error);

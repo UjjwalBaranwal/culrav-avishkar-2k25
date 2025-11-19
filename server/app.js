@@ -69,7 +69,13 @@ app.use("/api/v1/user", userRouter);
 app.use("/api/v1/event", eventRouter);
 
 app.all(/.*/, (req, res, next) => {
-  next(new AppError(`can't find the ${req.originalUrl}`, 404));
+  next(
+    new AppError(
+      `can't find the ${req.originalUrl}`,
+      404,
+      "RESOURCE_NOT_FOUND",
+    ),
+  );
 });
 
 app.use(globalErrorHandler);

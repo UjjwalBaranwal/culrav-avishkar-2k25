@@ -5,6 +5,7 @@ import {
   forgotPassword,
   resetPassword,
   confirmEmail,
+  getMe,
 } from "../../services/apiAuth";
 import { toast } from "sonner";
 
@@ -99,6 +100,7 @@ const initialState = {
   isAuthenticated: !!localStorage.getItem("token"),
   loading: false,
   error: null,
+  errorCode: null,
   message: null, // for success messages like password reset
 };
 
@@ -118,6 +120,7 @@ const authSlice = createSlice({
     },
     clearError: (state) => {
       state.error = null;
+      state.errorCode = null;
     },
     clearMessage: (state) => {
       state.message = null;
@@ -129,6 +132,7 @@ const authSlice = createSlice({
       .addCase(login.pending, (state) => {
         state.loading = true;
         state.error = null;
+        state.errorCode = null;
       })
       .addCase(login.fulfilled, (state, action) => {
         state.loading = false;
@@ -141,6 +145,7 @@ const authSlice = createSlice({
       .addCase(login.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload?.message || "Login failed";
+        state.errorCode = action.payload.errorCode;
         toast.error(action.payload?.message || "Login failed");
       })
 
@@ -148,6 +153,7 @@ const authSlice = createSlice({
       .addCase(signUp.pending, (state) => {
         state.loading = true;
         state.error = null;
+        state.errorCode = null;
       })
       .addCase(signUp.fulfilled, (state, action) => {
         state.loading = false;
@@ -162,6 +168,7 @@ const authSlice = createSlice({
       .addCase(signUp.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload?.message || "Sign up failed";
+        state.errorCode = action.payload.errorCode;
         toast.error(action.payload?.message || "Sign up failed");
       })
 
@@ -169,6 +176,7 @@ const authSlice = createSlice({
       .addCase(loadUser.pending, (state) => {
         state.loading = true;
         state.error = null;
+        state.errorCode = null;
       })
       .addCase(loadUser.fulfilled, (state, action) => {
         state.loading = false;
@@ -178,6 +186,7 @@ const authSlice = createSlice({
       .addCase(loadUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload?.message || "Failed to load user";
+        state.errorCode = action.payload.errorCode;
         toast.error(action.payload?.message || "Failed to load user");
       })
 
@@ -185,6 +194,7 @@ const authSlice = createSlice({
       .addCase(forgotPass.pending, (state) => {
         state.loading = true;
         state.error = null;
+        state.errorCode = null;
         state.message = null;
       })
       .addCase(forgotPass.fulfilled, (state, action) => {
@@ -195,6 +205,7 @@ const authSlice = createSlice({
       .addCase(forgotPass.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload?.message || "Forgot password failed";
+        state.errorCode = action.payload.errorCode;
         toast.error(action.payload?.message || "Forgot password failed");
       })
 
@@ -202,6 +213,7 @@ const authSlice = createSlice({
       .addCase(resetPass.pending, (state) => {
         state.loading = true;
         state.error = null;
+        state.errorCode = null;
         state.message = null;
       })
       .addCase(resetPass.fulfilled, (state, action) => {
@@ -212,6 +224,7 @@ const authSlice = createSlice({
       .addCase(resetPass.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload?.message || "Reset password failed";
+        state.errorCode = action.payload.errorCode;
         toast.error(action.payload?.message || "Reset password failed");
       })
 
@@ -219,6 +232,7 @@ const authSlice = createSlice({
       .addCase(confirmEmailToken.pending, (state) => {
         state.loading = true;
         state.error = null;
+        state.errorCode = null;
         state.message = null;
       })
       .addCase(confirmEmailToken.fulfilled, (state, action) => {
@@ -229,6 +243,7 @@ const authSlice = createSlice({
       .addCase(confirmEmailToken.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload?.message || "Email confirmation failed";
+        state.errorCode = action.payload.errorCode;
         toast.error(action.payload?.message || "Email confirmation failed");
       });
   },

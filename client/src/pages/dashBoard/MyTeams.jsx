@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { Users } from 'lucide-react';
 import TeamCard from './TeamCard'; 
 import JoinedTeamCard from './JoinedTeamCard';
+import {AnimatePresence } from 'framer-motion';
+import TeamList from '../../components/General/TeamList';
+import TeamDetail from './TeamDetails';
 
 export default function MyTeams() {
   const navigate = useNavigate();

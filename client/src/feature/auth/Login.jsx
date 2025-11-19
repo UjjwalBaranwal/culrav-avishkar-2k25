@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { login, signUp, forgotPass } from "../auth/authSlice.js";
 import { useDispatch, useSelector } from "react-redux";
+import apiClient from "../../utils/apiClient.js";
+import { toast } from "sonner";
 
 const Login = () => {
   const [flip, setFlip] = useState(false);
@@ -10,7 +12,9 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { loading, isAuthenticated } = useSelector((state) => state.auth);
+  const { loading, isAuthenticated, errorCode } = useSelector(
+    (state) => state.auth,
+  );
 
   useEffect(() => {
     if (isAuthenticated) navigate("/");
@@ -18,14 +22,17 @@ const Login = () => {
 
   const {
     register: registerRegister,
+    reset: resetRegisterForm,
     handleSubmit: handleSubmitRegister,
     formState: { errors: registerErrors },
+    getValues: getRegisterValues,
   } = useForm();
 
   const {
     register: registerLogin,
     handleSubmit: handleSubmitLogin,
     formState: { errors: loginErrors },
+    getValues: getLoginValues,
   } = useForm();
 
   const {
@@ -44,8 +51,14 @@ const Login = () => {
     }
   };
 
-  const onRegisterSubmit = (data) => {
-    dispatch(signUp(data));
+  const onRegisterSubmit = async (data) => {
+    try {
+      await dispatch(signUp(data)).unwrap();
+      resetRegisterForm();
+      setView("login");
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const onLoginSubmit = (data) => {
@@ -160,6 +173,31 @@ const Login = () => {
                   </p>
                 )}
               </div>
+              {errorCode == "AUTH_EMAIL_TAKEN" && (
+                <p className="p-2.5 text-black outline-none">
+                  Email already taken.{" "}
+                  <button
+                    type="button"
+                    className="underline cursor-pointer"
+                    onClick={async () => {
+                      try {
+                        await apiClient.post(
+                          "/auth/request-confirmation-mail",
+                          { email: getRegisterValues("email") },
+                        );
+                        toast.success("Confirmation mail sent!");
+                      } catch (e) {
+                        console.error(e);
+                        toast.error(
+                          "Error requesting confirmation mail. Try again!",
+                        );
+                      }
+                    }}
+                  >
+                    Request a new confirmation link?
+                  </button>
+                </p>
+              )}
 
               <button
                 type="submit"
@@ -242,6 +280,31 @@ const Login = () => {
                 </button>
               </div>
 
+              {errorCode == "AUTH_EMAIL_NOT_VERIFIED" && (
+                <p className="p-2.5 text-black outline-none">
+                  You need to verify your email before you can login.
+                  <button
+                    type="button"
+                    className="underline cursor-pointer"
+                    onClick={async () => {
+                      try {
+                        await apiClient.post(
+                          "/auth/request-confirmation-mail",
+                          { email: getLoginValues("email") },
+                        );
+                        toast.success("Confirmation mail sent!");
+                      } catch (e) {
+                        console.error(e);
+                        toast.error(
+                          "Error requesting confirmation mail. Try again!",
+                        );
+                      }
+                    }}
+                  >
+                    Request a new confirmation link?
+                  </button>
+                </p>
+              )}
               <button
                 type="submit"
                 className="mt-6 w-full py-2 bg-red-500 text-white text-lg rounded-md hover:bg-red-600 transition"
