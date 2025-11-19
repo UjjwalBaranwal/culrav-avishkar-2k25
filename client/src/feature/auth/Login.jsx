@@ -283,7 +283,7 @@ const Login = () => {
                       try {
                         await apiClient.post(
                           "/auth/request-confirmation-mail",
-                          { email: getRegisterValues("email") },
+                          { email: getLoginValues("email") },
                         );
                         toast.success("Confirmation mail sent!");
                       } catch (e) {
