@@ -38,7 +38,7 @@ function CulravEvent() {
       <div className="absolute inset-0 w-full h-full -z-10">
         {/* Mobile Background */}
         <img
-          src={AvishkarBgMobile}
+          src={AvishkarBG}
           alt="Mobile Background"
           className="w-full h-full object-cover block sm:hidden"
         />
