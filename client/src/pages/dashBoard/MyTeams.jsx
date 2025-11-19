@@ -1,26 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom'; 
 import { Users } from 'lucide-react';
-import TeamCard from './TeamCard'; 
-import JoinedTeamCard from './JoinedTeamCard';
+import TeamCard from '../../components/General/TeamCard'; 
+import JoinedTeamCard from '../../components/General/JoinedTeamCard';
 import {AnimatePresence } from 'framer-motion';
 import TeamList from '../../components/General/TeamList';
-import TeamDetail from './TeamDetails';
+import TeamDetail from '../../pages/dashBoard/TeamDetails';
+import { getMyTeams } from '../../services/apiTeam';
 
 export default function MyTeams() {
   const navigate = useNavigate();
   
-  const myTeams = [
-    { id: 't1', name: 'Trycatch'}, 
-    { id: 't2', name: 'Trycatch-2'},
-    { id: 't3', name: 'Trycatch-2'},
-  ];
+  // const myTeams = [
+  //   { id: 't1', name: 'Trycatch'}, 
+  //   { id: 't2', name: 'Trycatch-2'},
+  //   { id: 't3', name: 'Trycatch-2'},
+  // ];
+  // const joinedTeams = [
+  //   { id: 'j1', name: 'OnePiece Fan Club' },
+  //   { id: 'j2', name: 'React Developers' },
+  // ];
+  const [myTeams, setMyTeams] = useState([]);
+  const [joinedTeams, setJoinedTeams] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const joinedTeams = [
-    { id: 'j1', name: 'OnePiece Fan Club' },
-    { id: 'j2', name: 'React Developers' },
-  ];
+    useEffect(() => {
+    async function fetchTeams() {
+      try {
+        setIsLoading(true);
+        const res = await getMyTeams();
+        console.log("API Response:", res);
+        setMyTeams(res?.myTeams || []);
+        setJoinedTeams(res?.participatingTeams || []);
+      } catch (error) {
+        console.error("Error fetching teams:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    fetchTeams();
+  },[]);
 
   // Animation Variants
   const containerVariants = {
@@ -44,15 +64,18 @@ export default function MyTeams() {
             </h2>
             <motion.div 
               className="bg-gray-800 rounded-lg border border-gray-700 p-4 space-y-3 overflow-y-auto scrollbar-hide flex-1"
-              variants={containerVariants}
+              // variants={containerVariants}
               initial="hidden"
               animate="visible"
             >
-              {myTeams.length === 0 ? (
+              { isLoading ? (
+                <p className="text-gray-500 text-center py-4">Loading teams...</p>
+              ) :
+              myTeams.length === 0 ? (
                 <p className="text-gray-500 text-center py-4">You haven't created any teams.</p>
               ) : (
                 myTeams.map(team => (
-                  <motion.div key={team.id} variants={itemVariants}>
+                  <motion.div key={team.id}>
                     <TeamCard 
                       team={team} 
                       onSelect={() => navigate(`/dashboard/my-teams/${team.id}`)} 
@@ -70,15 +93,18 @@ export default function MyTeams() {
             </h2>
             <motion.div 
               className="bg-gray-800 rounded-lg border border-gray-700 p-4 space-y-3 overflow-y-auto scrollbar-hide flex-1"
-              variants={containerVariants}
+              // variants={containerVariants}
               initial="hidden"
               animate="visible"
             >
-              {joinedTeams.length === 0 ? (
+              { isLoading ? (
+                <p className="text-gray-500 text-center py-4">Loading teams...</p>
+              ) :
+              joinedTeams.length === 0 ? (
                 <p className="text-gray-500 text-center py-4">You haven't joined any teams.</p>
               ) : (
                 joinedTeams.map(team => (
-                  <motion.div key={team.id} variants={itemVariants}>
+                  <motion.div key={team.id} >
                     <JoinedTeamCard team={team} />
                   </motion.div>
                 ))

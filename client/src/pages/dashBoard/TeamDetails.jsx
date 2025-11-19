@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { motion } from 'framer-motion';
 import { ArrowLeft } from "lucide-react";
 import { useParams, useNavigate } from "react-router-dom";
-import EventCard from "./EventCard";
-import MemberCard from "./MemberCard";
+import EventCard from "../../components/General/EventCard";
+import MemberCard from "../../components/General/MemberCard";
 
 export default function TeamDetail() {
     const { teamId } = useParams();
