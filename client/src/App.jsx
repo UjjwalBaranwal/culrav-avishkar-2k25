@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Loader from "./components/Loader";
 import Login from "./feature/auth/Login";
 import { TeamPage } from "./pages/TeamPage";
+import Gallery from "./pages/Gallery.jsx"
 import { Toaster } from "sonner";
 // Implementing the lazy loading
 import Navbar from "./components/General/Navbar";
@@ -44,6 +45,7 @@ function App() {
             <Route index element={<Homepage />} />
             <Route path="/culrav" element={<CulravEvent />} />
             <Route path="/team" element={<TeamPage />} />
+            <Route path="/gallery" element={<Gallery />} />
 
             <Route path="/dashboard" element={<DashboardLayout />}>
               <Route index element={<Navigate to="profile" replace />} />
