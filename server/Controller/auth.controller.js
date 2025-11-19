@@ -88,6 +88,32 @@ exports.signUp = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.sendConfirmationMail = catchAsync(async (req, res, next) => {
+  const { email } = req.body;
+  const user = await User.findOne({
+    email,
+  });
+  if (!user) return next(new AppError("User not found", 404));
+  if (user.isConfirmed)
+    return next(new AppError("Email already confirmed", 400));
+  const rawToken = getRandomToken(20);
+  user.emailConfirmToken = hashToken(rawToken);
+  user.emailConfirmExpires = Date.now() + CONFIRM_MIN * 60 * 1000;
+  await user.save();
+
+  const confirmLink = `${FRONTEND_URL}/confirm-email?token=${rawToken}&id=${user._id}`;
+
+  await sendEmail({
+    to: email,
+    subject: "Email Verification",
+    html: generateVerificationEmail(confirmLink, CONFIRM_MIN),
+  });
+
+  res.status(201).json({
+    message: "Confimration mail sent!",
+  });
+});
+
 exports.confirmEmail = catchAsync(async (req, res, next) => {
   const { token, id } = req.body;
   if (!token || !id) {
