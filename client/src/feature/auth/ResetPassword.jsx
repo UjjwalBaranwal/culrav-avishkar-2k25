@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useSearchParams } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
 import { resetPass } from "./authSlice";
 
 export default function ResetPassword() {
@@ -10,13 +10,22 @@ export default function ResetPassword() {
 
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
 
   async function handleClick() {
     if (pwd != rpwd || pwd.length < 6) return;
     const token = searchParams.get("token");
     const id = searchParams.get("id");
 
-    dispatch(resetPass({ token, id, newPassword: pwd }));
+    const run = async () => {
+      try {
+        await dispatch(resetPass({ token, id, newPassword: pwd })).unwrap();
+        navigate("/login");
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    run();
   }
 
   return (
@@ -42,7 +51,7 @@ export default function ResetPassword() {
       {pwd != rpwd && <p className="text-red-600">Passwords do not match.</p>}
       <button
         onClick={handleClick}
-        className="bg-red-600 text-white py-2 rounded"
+        className={`${pwd == rpwd && pwd.length >= 6 ? "bg-red-600" : "bg-gray-400"} text-white py-2 rounded`}
       >
         {loading ? "Resetting..." : "Submit"}
       </button>
