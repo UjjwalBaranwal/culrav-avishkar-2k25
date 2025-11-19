@@ -39,8 +39,8 @@ const Card = ({ item, index, onClick }) => {
             transition={{
                 duration: 1.7,
                 type: "spring",
-                bounce: 0.3,
-                delay: index * 0.1 
+                bounce: 0.2,
+                delay: index * 0.2
             }}
             // --- End Animation ---
             whileHover={{ scale: 0.98, zIndex: 10 }}

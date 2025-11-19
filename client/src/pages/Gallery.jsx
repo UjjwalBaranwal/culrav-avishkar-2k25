@@ -13,7 +13,7 @@ const Gallery = () => {
             giphyId: 'u04b3W02LMnV6', 
             title: 'Neon Rain',
             size: 'md:col-span-2 md:row-span-2',
-            color: 'bg-purple-900',
+            color: 'bg-grey-300',
             initialX: -800, initialY: -800 // Flies in from Top-Left
         },
         {
@@ -22,7 +22,7 @@ const Gallery = () => {
             title: 'Pixel Sunset',
             // Standard block
             size: 'col-span-1 row-span-1',
-            color: 'bg-blue-900',
+            color: 'bg-grey-300',
             initialX: 0, initialY: -1000 // Flies in from Top
         },
         {
@@ -31,7 +31,7 @@ const Gallery = () => {
             title: 'Abstract Flow',
             // Tall vertical skyscraper
             size: 'col-span-1 md:row-span-2',
-            color: 'bg-pink-900',
+            color: 'bg-grey-300',
             initialX: 800, initialY: -800 // Flies in from Top-Right
         },
         {
@@ -39,7 +39,7 @@ const Gallery = () => {
             giphyId: 'l41lI4bYmcsPJX9Go', 
             title: 'Retro Vibes',
             size: 'col-span-1 row-span-1',
-            color: 'bg-indigo-900',
+            color: 'bg-grey-300',
             initialX: -1000, initialY: 0 // Flies in from Left
         },
         {
@@ -48,7 +48,7 @@ const Gallery = () => {
             title: 'System Error',
             // Wide horizontal banner
             size: 'md:col-span-2 row-span-1',
-            color: 'bg-red-900',
+            color: 'bg-grey-300',
             initialX: 1000, initialY: 0 // Flies in from Right
         },
         {
@@ -56,7 +56,7 @@ const Gallery = () => {
             giphyId: 'xT9IgN8YKZh0JObIQU', 
             title: 'Geometry',
             size: 'col-span-1 row-span-1',
-            color: 'bg-emerald-900',
+            color: 'bg-grey-300',
             initialX: -800, initialY: 800 // Flies in from Bottom-Left
         },
         {
@@ -64,7 +64,7 @@ const Gallery = () => {
             giphyId: 'BHNpk97Fp0eMnvyyBv', 
             title: 'Night City',
             size: 'md:col-span-2 md:row-span-2',
-            color: 'bg-cyan-900',
+            color: 'bg-grey-300',
             initialX: 0, initialY: 1000 // Flies in from Bottom
         },
         {
@@ -72,7 +72,7 @@ const Gallery = () => {
             giphyId: '3o7TksjRzpUTAF7SuY', 
             title: 'Deep Space',
             size: 'col-span-1 row-span-1',
-            color: 'bg-slate-900',
+            color: 'bg-grey-300',
             initialX: 800, initialY: 800 // Flies in from Bottom-Right
         },
         {
@@ -81,16 +81,25 @@ const Gallery = () => {
             title: 'Dreamy',
             // Wide footer block
             size: 'md:col-span-2 row-span-1',
-            color: 'bg-orange-900',
+            color: 'bg-grey-300',
             initialX: 0, initialY: 1200 // Flies in from far Bottom
+        },
+        {
+            id: 10,
+            giphyId: 'L0JwN6UvW2SZO', 
+            title: 'Dreamy',
+            // Wide footer block
+            size: 'md:col-span-2 row-span-1',
+            color: 'bg-grey-300',
+            initialX: 0, initialY: 1000 // Flies in from far Bottom
         },
     ];
 
     return (
-        <div className="min-h-screen pt-6 m-auto bg-black text-white overflow-x-hidden">
+        <div className="min-h-screen pt-6 m-auto bg-black text-white">
 
             <main className="max-w-[1600px] mx-auto px-4 md:px-6 pb-24">
-                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[200px] grid-flow-dense">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[200px] grid-flow-dense">
                     {GALLERY_ITEMS.map((item, index) => (
                         <Card
                             key={item.id}
