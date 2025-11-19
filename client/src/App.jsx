@@ -11,6 +11,7 @@ import ConfirmEmail from "./feature/auth/ConfirmEmail";
 import ResetPassword from "./feature/auth/ResetPassword";
 import { useDispatch } from "react-redux";
 import { loadUser } from "./feature/auth/authSlice.js";
+import TeamDetail from "./pages/dashBoard/TeamDetails.jsx";
 
 // lazy loaded pages
 const Homepage = lazy(() => import("./pages/Homepage"));
@@ -96,6 +97,7 @@ function App() {
               <Route path="profile" element={<Profile />} />
               <Route path="upload-resume" element={<UploadResume />} />
               <Route path="my-teams" element={<MyTeams />} />
+              <Route path="my-teams/:teamId" element={<TeamDetail />} />
               <Route path="create-team" element={<CreateTeam />} />
               <Route path="view-invitation" element={<ViewInvitation />} />
               <Route path="logout" element={<Logout />} />
