@@ -132,6 +132,9 @@ exports.login = catchAsync(async (req, res, next) => {
       name: user.name,
       email: user.email,
       role: user.role,
+      branch: user.branch,
+      college: user.college,
+      resumeLink: user.resumeLink,
     },
   });
 });
