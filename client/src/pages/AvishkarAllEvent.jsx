@@ -31,7 +31,7 @@ function AvishkarEvents() {
     <section
       className="relative min-h-screen w-full flex flex-col items-center justify-start text-white"
       style={{
-        backgroundImage: `url(${avishkarbg})`,
+        backgroundImage: `url(${AvishkarBG})`,
         backgroundSize: "100% auto", // fit width, preserve aspect ratio (no horizontal crop)
         backgroundPosition: "top center", // align how you want
       }}
@@ -44,7 +44,7 @@ function AvishkarEvents() {
           className="
             w-full
             /* Increased base height, especially for desktop */
-            h-[500px] sm:h-[350px] md:h-[200px] lg:h-[200px] xl:h-[250px]
+            h-[570px] sm:h-[350px] md:h-[200px] lg:h-[200px] xl:h-[250px]
         "
         />
 

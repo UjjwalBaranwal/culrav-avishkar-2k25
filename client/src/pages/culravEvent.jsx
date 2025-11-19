@@ -8,7 +8,7 @@ import AvishkarBG from "../assets/AvishkarBG.png";
 
 // Assets
 import base from "../assets/base.png";
-import image from "../assets/CardImg.png";
+import image from "../assets/CULRAV LOGO.png";
 
 function CulravEvent() {
   const navigate = useNavigate();
@@ -32,49 +32,68 @@ function CulravEvent() {
   ];
 
   return (
-    <section className="relative min-h-screen w-full flex flex-col items-center justify-start text-white">
+    <section
+      className="relative min-h-screen w-full flex flex-col items-center justify-start text-white"
+      style={{
+        backgroundImage: `url(${AvishkarBG})`,
+        backgroundSize: "100% auto", // fit width, preserve aspect ratio (no horizontal crop)
+        backgroundPosition: "top center", // align how you want
+      }}
+    >
+<div className="relative w-full overflow-hidden">
+        {/* Base image - Increased min-height to ensure coverage */}
+        <img
+          src={base}
+          alt="Top Image"
+          className="
+            w-full
+            /* Increased base height, especially for desktop */
+            h-[570px] sm:h-[350px] md:h-[200px] lg:h-[200px] xl:h-[250px]
+        "
+        />
 
-      {/* 📌 RESPONSIVE BACKGROUND IMAGES */}
-      <div className="absolute inset-0 w-full h-full -z-10">
-        {/* Mobile Background */}
-        <img
-          src={AvishkarBG}
-          alt="Mobile Background"
-          className="w-full h-full object-cover block sm:hidden"
-        />
-        {/* Laptop Background */}
-        <img
-          src={AvishkarBG}
-          alt="Laptop Background"
-          className="w-full h-full object-cover hidden sm:block"
-        />
-      </div>
+        <div className="absolute inset-0 flex flex-col justify-center sm:px-8">
 
-      {/* TOP SECTION */}
-      <div className="relative w-full mt-10 overflow-hidden">
-        <img
-          src={base}
-          alt="Top Image"
-          className="w-full h-[120px] sm:h-[130px] md:h-[160px] lg:h-[200px] xl:h-[300px]"
-        />
+  {/* TOP GROUP — stays together on small screens */}
+  <div className="
+      w-full flex flex-col md:flex-row
+      items-center md:items-center   /* <-- FIX: center vertically on large screens */
+       md:gap-6
+       justify-center
+    "
+  >
 
-        {/* Overlay Row */}
-        <div className="absolute inset-0 flex items-center justify-around px-6">
-          <img
-            src={image}
-            className="w-16 sm:w-20 md:w-24 lg:w-28"
-            alt="Logo"
-          />
-          <p className="text-white text-lg sm:text-lg md:text-lg font-bold max-w-3xl text-justify">
-            Culrav, a 4-day-long annual cultural extravaganza of MNNIT Allahabad, is a vibrant celebration of art, music, and creativity.
-            With its diverse range of activities, including pronites featuring performances by renowned artists or bands,
-            kavsAndhya highlighting poetry and literature, and appearances by comedians or big figures,
-            Culrav offers entertainment and engagement for all attendees.
-          </p>
-        </div>
-      </div>
+    {/* IMAGE */}
+    <div className="flex justify-center md:justify-center w-full md:w-1/3">
+      <img
+        src={image}
+        className="w-75 sm:w-80 md:w-full max-w-[400px]"
+        alt="Logo"
+      />
+    </div>
 
-      {/* HEADER */}
+    {/* TEXT */}
+    <div className="w-full md:w-2/3 flex justify-center md:justify-start">
+      <p className="text-white text-base sm:text-sm font-bold text-center md:text-left">
+        Culrav, a 4-day-long annual cultural extravaganza of MNNIT Allahabad,
+        is a vibrant celebration of art, music, and creativity. With its diverse
+        range of activities, including pronites featuring performances by
+        renowned artists or bands, kavsAndhya highlighting poetry and literature,
+        and appearances by comedians or big figures, Culrav offers entertainment
+        and engagement for all attendees.
+      </p>
+    </div>
+
+  </div>
+
+  {/* BOTTOM EMPTY SPACE */}
+  <div className="w-full h-4"></div>
+</div>
+
+
+      </div>
+
+      {/* Header */}
       <div className="w-full flex justify-center pt-16 md:pt-20">
         <h1
           className="text-center inline-block px-6 py-2 rounded-md font-bionix font-bold text-[#FFFAF0] bg-[#F54E25]"
@@ -84,7 +103,7 @@ function CulravEvent() {
         </h1>
       </div>
 
-      {/* GRID */}
+      {/* Grid */}
       <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 mt-20 mb-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-20 justify-items-center">
           {events.map((event) => (

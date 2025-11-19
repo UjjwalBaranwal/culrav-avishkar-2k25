@@ -43,8 +43,3 @@ export const resetPassword = catchAsync(
   }
 );
 
-export const getMe = catchAsync(async () => {
-  const { data } = await apiClient.get("/auth/me");
-  return data;
-});
-
