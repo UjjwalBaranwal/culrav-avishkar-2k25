@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import TeamList from './TeamList';
+import TeamList from '../../components/General/TeamList';
 import TeamDetail from './TeamDetails';
 
 export default function MyTeams() {
