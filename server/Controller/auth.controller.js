@@ -22,11 +22,21 @@ const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
 exports.signUp = catchAsync(async (req, res, next) => {
   const { email, password, name, college, branch, resumeLink } = req.body;
   if (!email || !password || !name) {
-    return next(new AppError("please provide email or password or name", 401));
+    return next(
+      new AppError(
+        "please provide email or password or name",
+        400,
+        "BAD_REQUEST",
+      ),
+    );
   }
   if (!college || !branch) {
     return next(
-      new AppError("please provide your college name or branch", 401),
+      new AppError(
+        "please provide your college name or branch",
+        400,
+        "BAD_REQUEST",
+      ),
     );
   }
 
@@ -34,12 +44,16 @@ exports.signUp = catchAsync(async (req, res, next) => {
 
   //checking if the domain is allowed or not
   if (!allowedCollege.includes(domain)) {
-    return next(new AppError("please signup using your collge id", 401));
+    return next(
+      new AppError("please signup using your collge id", 400, "BAD_REQUEST"),
+    );
   }
 
   const existingUser = await User.findOne({ email });
   if (existingUser) {
-    return next(new AppError("Email already registered", 401));
+    return next(
+      new AppError("Email already registered", 409, "AUTH_EMAIL_TAKEN"),
+    );
   }
 
   const hashed = await bcyrpt.hash(password, 12);
@@ -52,7 +66,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
     password: hashed,
   });
 
-  if (!user) return next(new AppError("User is not created", 401));
+  if (!user) return next(new AppError("User not created", 401));
   // create emali confirm token
   const rawToken = getRandomToken(20);
   user.emailConfirmToken = hashToken(rawToken);
@@ -77,7 +91,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
 exports.confirmEmail = catchAsync(async (req, res, next) => {
   const { token, id } = req.body;
   if (!token || !id) {
-    return next(new AppError("Token or Id is missing", 401));
+    return next(new AppError("Token or Id is missing", 400, "BAD_REQUEST"));
   }
   const hashed = hashToken(token);
   const user = await User.findOne({
@@ -87,7 +101,7 @@ exports.confirmEmail = catchAsync(async (req, res, next) => {
   });
 
   if (!user) {
-    return next(new AppError("Invalid or expired confirmation token", 401));
+    return next(new AppError("Invalid or expired confirmation token", 400));
   }
   user.isConfirmed = true;
   user.confirmedAt = Date.now();
@@ -103,7 +117,7 @@ exports.confirmEmail = catchAsync(async (req, res, next) => {
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {
-    return next(new AppError("Email or password missing"));
+    return next(new AppError("Email or password missing", 400, "BAD_REQUEST"));
   }
 
   const user = await User.findOne({ email }).select(
@@ -111,16 +125,26 @@ exports.login = catchAsync(async (req, res, next) => {
   );
 
   if (!user) {
-    return next(new AppError("Invalid Credential"));
+    return next(
+      new AppError("Invalid Credential", 401, "AUTH_INVALID_CREDENTIALS"),
+    );
   }
 
   const ok = await bcyrpt.compare(password, user.password);
   if (!ok) {
-    return next(new AppError("Invalid Credentials", 401));
+    return next(
+      new AppError("Invalid Credentials", 401, "AUTH_INVALID_CREDENTIALS"),
+    );
   }
 
   if (!user.isConfirmed) {
-    return next(new AppError("Please confirm your email first", 401));
+    return next(
+      new AppError(
+        "Please confirm your email first",
+        401,
+        "AUTH_EMAIL_NOT_VERIFIED",
+      ),
+    );
   }
   user.lastLoginAt = Date.now();
   await user.save();
@@ -141,7 +165,7 @@ exports.login = catchAsync(async (req, res, next) => {
 
 exports.forgotPassword = catchAsync(async (req, res, next) => {
   const { email } = req.body;
-  if (!email) return next(new AppError("email require", 400));
+  if (!email) return next(new AppError("email required", 400));
   const user = await User.findOne({ email });
   if (!user)
     return next(

@@ -4,7 +4,10 @@ const catchAsync = require("../utils/catchAsync");
 
 exports.getMe = catchAsync(async (req, res, next) => {
   const user = await User.findById(req.user.id).select("-password");
-  if (!user) return next(new AppError("Failed in getting the user", 401));
+  if (!user)
+    return next(
+      new AppError("Failed in getting the user", 401, "USER_NOT_FOUND"),
+    );
   res.json({
     id: user._id,
     name: user.name,
@@ -28,17 +31,21 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   }).select("-password");
 
   if (!updatedUser)
-    return next(new AppError("Failed in updation of the user", 400));
+    return next(
+      new AppError("Failed in updation of the user", 400, "USER_UPDATE_FAILED"),
+    );
   res.json({ message: "Profile updated successfully", user: updatedUser });
 });
 
 exports.changePassword = catchAsync(async (req, res, next) => {
   const { oldPassword, newPassword } = req.body;
   if (!oldPassword || !newPassword)
-    return next(new AppError("Please provide old and new password", 400));
+    return next(
+      new AppError("Please provide old and new password", 400, "BAD_REQUEST"),
+    );
 
   const user = await User.findById(req.user.id).select("+password");
-  if (!user) return next(new AppError("User not found", 404));
+  if (!user) return next(new AppError("User not found", 404, "USER_NOT_FOUND"));
   const isMatch = await bcrypt.compare(oldPassword, user.password);
   if (!isMatch)
     return res.status(401).json({ message: "Incorrect old password" });
@@ -63,6 +70,7 @@ exports.updateUser = catchAsync(async (req, res, next) => {
     runValidators: true,
   }).select("-password");
 
-  if (!updatedUser) return next(new AppError("user not found", 404));
+  if (!updatedUser)
+    return next(new AppError("user not found", 404, "USER_NOT_FOUND"));
   res.json({ message: "User updated successfully", user: updatedUser });
 });
