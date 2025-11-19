@@ -194,7 +194,7 @@ const Login = () => {
 
               <button
                 type="submit"
-                className=" w-full py-2 bg-red-500 text-white text-lg rounded-md hover:bg-red-600 transition"
+                className="mt-6 w-full py-2 bg-red-500 text-white text-lg rounded-md hover:bg-red-600 transition"
               >
                 {loading ? "Signing up…" : "Register"}
               </button>
