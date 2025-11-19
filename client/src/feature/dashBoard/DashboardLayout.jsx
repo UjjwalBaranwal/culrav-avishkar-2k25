@@ -6,7 +6,7 @@ import Sidebar from "./Sidebar.jsx";
 
 export default function DashboardLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const NAVBAR_H = "72px";
+  const NAVBAR_H = "0px";
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -22,9 +22,9 @@ export default function DashboardLayout() {
         <button
           onClick={toggleSidebar}
           className={`lg:hidden fixed top-20 left-4 z-50 bg-[#0E1A20]/90
-    backdrop-blur-sm border border-white/20 rounded-full p-3
-    hover:bg-[#0E1A20] transition-all duration-200 shadow-lg
-    ${isSidebarOpen ? "hidden" : ""}`
+          backdrop-blur-sm border border-white/20 rounded-full p-3
+          hover:bg-[#0E1A20] transition-all duration-200 shadow-lg
+          ${isSidebarOpen ? "hidden" : ""}`
           }
         >
           <User className="w-5 h-5 text-white" />

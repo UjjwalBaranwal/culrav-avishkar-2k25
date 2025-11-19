@@ -1,13 +1,16 @@
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Loader from "./components/Loader";
 import Login from "./feature/auth/Login";
 import { TeamPage } from "./pages/TeamPage";
+import Gallery from "./pages/Gallery.jsx"
 import { Toaster } from "sonner";
 import Navbar from "./components/General/Navbar";
 import Schedule from "./pages/Schedule";
 import ConfirmEmail from "./feature/auth/ConfirmEmail";
 import ResetPassword from "./feature/auth/ResetPassword";
+import { useDispatch } from "react-redux";
+import { loadUser } from "./feature/auth/authSlice.js";
 
 // lazy loaded pages
 const Homepage = lazy(() => import("./pages/Homepage"));
@@ -47,6 +50,12 @@ const RasayansPage = lazy(() => import("./pages/avishkar/Rasayans"));
 
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) dispatch(loadUser());
+  }, [dispatch]);
+
   return (
     <>
       <BrowserRouter>
@@ -79,6 +88,7 @@ function App() {
 
             {/* Team Page */}
             <Route path="/team" element={<TeamPage />} />
+            <Route path="/gallery" element={<Gallery />} />
 
             {/* Dashboard */}
             <Route path="/dashboard" element={<DashboardLayout />}>
@@ -101,7 +111,6 @@ function App() {
           </Routes>
         </Suspense>
       </BrowserRouter>
-
       {/* Global Toaster */}
       <Toaster richColors position="top-right" />
     </>

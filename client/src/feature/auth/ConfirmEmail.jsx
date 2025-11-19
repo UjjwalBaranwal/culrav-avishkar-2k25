@@ -1,41 +1,27 @@
 import { useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { confirmEmailToken } from "./authSlice";
-import { toast } from "sonner";
 
 export default function ConfirmEmail() {
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
 
-  const { loading, error, message } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = searchParams.get("token");
     const id = searchParams.get("id");
 
     if (token && id) {
-      dispatch(confirmEmailToken({ token, id }));
+      const run = async () => {
+        try {
+          await dispatch(confirmEmailToken({ token, id })).unwrap();
+        } finally {
+          navigate("/login");
+        }
+      };
+      run();
     }
-  }, [dispatch, searchParams]);
-
-  useEffect(() => {
-    if (!loading && error) {
-      toast.error(error || "Error verifying email");
-    }
-
-    if (!loading && message) {
-      toast.success(message || "Email verified!");
-    }
-  }, [loading, error, message]);
-
-  return (
-    <div>
-      {loading
-        ? "Email confirmation pending..."
-        : error
-          ? "Error verifying email!"
-          : "Email verified!"}
-    </div>
-  );
+  }, [dispatch, searchParams, navigate]);
 }

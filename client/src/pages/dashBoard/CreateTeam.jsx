@@ -4,7 +4,7 @@ import { createTeam } from "../../services/apiTeam";
 import { toast } from "sonner";
 
 export default function CreateTeam() {
-  const user = useSelector((state) => state.auth.user);
+  const { user } = useSelector((state) => state.auth);
 
   const {
     register,
@@ -12,18 +12,18 @@ export default function CreateTeam() {
     formState: { errors, isSubmitting },
   } = useForm({
     defaultValues: {
-      name: "",
-      size: 1,
+      teamName: "",
+      size: "1",
     },
   });
 
   async function onSubmit(values) {
     try {
-      await createTeam(values.name, values.size, user?.id);
+      await createTeam(values.teamName,user._id,Number(values.size));
       toast.success("Team created!");
     } catch (e) {
       console.log(e);
-      toast.error("Team creation failed :(");
+      toast.error(e.message);
     }
   }
 
@@ -33,9 +33,10 @@ export default function CreateTeam() {
 
       <div className="bg-black/30 rounded-lg p-6 border border-white/10">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          {/* NAME INPUT */}
           <div>
             <input
-              {...register("name", {
+              {...register("teamName", {
                 required: "Team name is required",
                 minLength: {
                   value: 2,
@@ -45,23 +46,27 @@ export default function CreateTeam() {
               placeholder="Team name"
               className="w-full rounded bg-white/80 text-black px-3 py-2"
             />
-            {errors.name && (
-              <p className="text-red-400 text-sm mt-1">{errors.name.message}</p>
+            {errors.teamName && (
+              <p className="text-red-400 text-sm mt-1">{errors.teamName.message}</p>
             )}
           </div>
 
+          {/* TEAM SIZE DROPDOWN */}
           <div>
-            <input
-              type="number"
+            <select
               {...register("size", {
                 required: "Team size is required",
-                valueAsNumber: true,
-                validate: (value) =>
-                  value > 0 || "Team size must be at least 1",
               })}
-              placeholder="Team size"
               className="w-full rounded bg-white/80 text-black px-3 py-2"
-            />
+            >
+              {/* Create options 1–10 (feel free to change) */}
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((size) => (
+                <option key={size} value={size}>
+                  {size}
+                </option>
+              ))}
+            </select>
+
             {errors.size && (
               <p className="text-red-400 text-sm mt-1">{errors.size.message}</p>
             )}

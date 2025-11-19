@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+  const { isAuthenticated, user } = useSelector((state) => state.auth);
+  const firstName = user?.name.split(" ")[0];
 
   const navItems = [
     { name: "CULRAV", path: "/culrav" },
@@ -49,10 +52,12 @@ function Navbar() {
 
         {/* REGISTER BUTTON */}
         <button
-          onClick={() => navigate("/login")}
+          onClick={() =>
+            navigate(isAuthenticated ? "/dashboard/profile" : "/login")
+          }
           className="hidden md:block bg-gradient-to-r from-[#1ba0af] to-[#7f00ff] text-white font-bold px-8 py-2   hover:scale-105 transition-all duration-300 font-bebas tracking-wider"
         >
-          LOGIN
+          {isAuthenticated ? `Welcome, ${firstName}!` : "LOGIN"}
         </button>
 
         {/* Hamburger Icon */}
@@ -81,10 +86,12 @@ function Navbar() {
           ))}
 
           <button
-            onClick={() => handleNavigation("/login")}
+            onClick={() =>
+              navigate(isAuthenticated ? "/dashboard/profile" : "/login")
+            }
             className="bg-gradient-to-r from-[#00e5ff] to-[#7f00ff] text-white font-bold px-6 py-2 rounded-md hover:shadow-[0_0_20px_#00e5ff] transition-all duration-300 font-bebas tracking-wider"
           >
-            LOGIN
+            {isAuthenticated ? `Welcome, ${firstName}!` : "LOGIN"}
           </button>
         </div>
       )}

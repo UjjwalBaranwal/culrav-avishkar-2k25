@@ -196,3 +196,14 @@
 .cyber-panel {
   box-shadow: 0 -4px 25px rgba(0, 255, 255, 0.2);
 }
+.scrollbar-hide {
+  /* For IE and Edge */
+  -ms-overflow-style: none;
+  /* For Firefox */
+  scrollbar-width: none;
+}
+
+/* For Chrome, Safari, and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

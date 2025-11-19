@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { login, signUp, forgotPass } from "../auth/authSlice.js";
 import { useDispatch, useSelector } from "react-redux";
+import apiClient from "../../utils/apiClient.js";
 import { toast } from "sonner";
 
 const Login = () => {
@@ -11,7 +12,7 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { loading, error, message, isAuthenticated } = useSelector(
+  const { loading, isAuthenticated, errorCode } = useSelector(
     (state) => state.auth,
   );
 
@@ -19,28 +20,19 @@ const Login = () => {
     if (isAuthenticated) navigate("/");
   }, [isAuthenticated, navigate]);
 
-  useEffect(() => {
-    if (loading) return;
-
-    if (message) toast.success(message);
-
-    if (error) toast.error(error);
-
-    if (isAuthenticated) {
-      toast.success("Logged in successfully!");
-    }
-  }, [loading, message, error, isAuthenticated]);
-
   const {
     register: registerRegister,
+    reset: resetRegisterForm,
     handleSubmit: handleSubmitRegister,
     formState: { errors: registerErrors },
+    getValues: getRegisterValues,
   } = useForm();
 
   const {
     register: registerLogin,
     handleSubmit: handleSubmitLogin,
     formState: { errors: loginErrors },
+    getValues: getLoginValues,
   } = useForm();
 
   const {
@@ -59,8 +51,14 @@ const Login = () => {
     }
   };
 
-  const onRegisterSubmit = (data) => {
-    dispatch(signUp(data));
+  const onRegisterSubmit = async (data) => {
+    try {
+      await dispatch(signUp(data)).unwrap();
+      resetRegisterForm();
+      setView("login");
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const onLoginSubmit = (data) => {
@@ -70,7 +68,7 @@ const Login = () => {
   const onResetSubmit = (data) => {
     dispatch(forgotPass(data.email));
   };
-
+  const branches = ["CSE", "ECE", "CHE", "CE", "PIE", "EE", "BT", "ME", "MC"];
   return (
     <div className="flex items-start justify-center min-h-screen bg-gray-100 font-[Jost]">
       <div className="w-[450px] perspective-[1500px] relative">
@@ -92,9 +90,9 @@ const Login = () => {
               <div className="flex flex-col w-full mt-3 space-y-3">
                 <input
                   type="text"
-                  placeholder="User name"
-                  {...registerRegister("username", {
-                    required: "Username is required",
+                  placeholder="Enter your name"
+                  {...registerRegister("name", {
+                    required: "Name is required",
                     minLength: {
                       value: 3,
                       message: "At least 3 characters required",
@@ -102,9 +100,9 @@ const Login = () => {
                   })}
                   className="p-2.5 rounded-md bg-gray-100 text-black outline-none"
                 />
-                {registerErrors.username && (
+                {registerErrors.name && (
                   <p className="text-red-500 text-sm">
-                    {registerErrors.username.message}
+                    {registerErrors.name.message}
                   </p>
                 )}
 
@@ -114,7 +112,7 @@ const Login = () => {
                   {...registerRegister("email", {
                     required: "Email is required",
                     pattern: {
-                      value: /^[a-zA-Z0-9._%+-]+@(gmail\.com|gla\.ac\.in)$/,
+                      value: /^[^\s@]+@(mnnit|iitk|iiitp)\.ac\.in$/,
                       message: "Enter a valid Gsuit email",
                     },
                   })}
@@ -140,19 +138,22 @@ const Login = () => {
                   </p>
                 )}
 
-                <input
-                  type="text"
-                  placeholder="Branch"
+                <select
                   {...registerRegister("branch", {
                     required: "Branch is required",
                   })}
                   className="p-2.5 rounded-md bg-gray-100 text-black outline-none"
-                />
-                {registerErrors.branch && (
-                  <p className="text-red-500 text-sm">
-                    {registerErrors.branch.message}
-                  </p>
-                )}
+                  defaultValue=""
+                >
+                  <option value="" disabled>
+                    Select Branch
+                  </option>
+                  {branches.map((b) => (
+                    <option key={b} value={b}>
+                      {b}
+                    </option>
+                  ))}
+                </select>
 
                 <input
                   type="password"
@@ -172,6 +173,31 @@ const Login = () => {
                   </p>
                 )}
               </div>
+              {errorCode == "AUTH_EMAIL_TAKEN" && (
+                <p className="p-2.5 text-black outline-none">
+                  Email already taken.{" "}
+                  <button
+                    type="button"
+                    className="underline cursor-pointer"
+                    onClick={async () => {
+                      try {
+                        await apiClient.post(
+                          "/auth/request-confirmation-mail",
+                          { email: getRegisterValues("email") },
+                        );
+                        toast.success("Confirmation mail sent!");
+                      } catch (e) {
+                        console.error(e);
+                        toast.error(
+                          "Error requesting confirmation mail. Try again!",
+                        );
+                      }
+                    }}
+                  >
+                    Request a new confirmation link?
+                  </button>
+                </p>
+              )}
 
               <button
                 type="submit"
@@ -210,7 +236,7 @@ const Login = () => {
                   {...registerLogin("email", {
                     required: "Email is required",
                     pattern: {
-                      value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                      value: /^[^\s@]+@(mnnit|iitk|iiitp)\.ac\.in$/,
                       message: "Enter a valid email",
                     },
                   })}
@@ -254,6 +280,31 @@ const Login = () => {
                 </button>
               </div>
 
+              {errorCode == "AUTH_EMAIL_NOT_VERIFIED" && (
+                <p className="p-2.5 text-black outline-none">
+                  You need to verify your email before you can login.
+                  <button
+                    type="button"
+                    className="underline cursor-pointer"
+                    onClick={async () => {
+                      try {
+                        await apiClient.post(
+                          "/auth/request-confirmation-mail",
+                          { email: getLoginValues("email") },
+                        );
+                        toast.success("Confirmation mail sent!");
+                      } catch (e) {
+                        console.error(e);
+                        toast.error(
+                          "Error requesting confirmation mail. Try again!",
+                        );
+                      }
+                    }}
+                  >
+                    Request a new confirmation link?
+                  </button>
+                </p>
+              )}
               <button
                 type="submit"
                 className="mt-6 w-full py-2 bg-red-500 text-white text-lg rounded-md hover:bg-red-600 transition"

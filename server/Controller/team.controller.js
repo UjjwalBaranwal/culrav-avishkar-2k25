@@ -9,16 +9,21 @@ const AppError = require("../utils/appError");
 
 
 exports.createTeam = catchAsync(async (req, res, next) => {
-  const { teamName, leader, size } = req.body;
+  const { teamName, size } = req.body;
+  const leader = req.user.id;
+
   if (!teamName?.trim()) {
     return next(new AppError("Team name is missing" , 400));
-  }
-  if (!leader) {
-    return next(new AppError("Leader ID is missing." , 400));
   }
   if (size !== undefined && (!Number.isInteger(size) || size <= 0)) {
     return next(new AppError("Size must be a positive integer." , 400));
   }
+  if (!leader) {
+    return next(new AppError("Leader ID is missing." , 400));
+  }
+  
+  console.log("leader",leader ,"size",size, "teamName",teamName);
+  
   const session = await mongoose.startSession();
   session.startTransaction();
   try {

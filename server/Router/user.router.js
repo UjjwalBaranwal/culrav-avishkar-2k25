@@ -6,7 +6,7 @@ const router = express.Router();
 router.use(protect);
 
 router.get("/me", userController.getMe);
-router.post("/update", userController.updateMe);
+router.patch("/update", userController.updateMe);
 router.patch("/change-password", userController.changePassword);
 router.delete("/delete", userController.deleteMe);
 

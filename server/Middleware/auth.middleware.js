@@ -8,7 +8,13 @@ exports.restrictTo = (...roles) => {
   return (req, res, next) => {
     // roles = ['admin',''] let current login user has role==='user'. So this user is not a role in roles array so this user donot have a permission to pass in the next function
     if (!req.user || !roles.includes(req.user.role))
-      return next(new AppError("you dont have a permission do to this", 403));
+      return next(
+        new AppError(
+          "you dont have a permission do to this",
+          403,
+          "PERMISSION_DENIED",
+        ),
+      );
     next();
   };
 };
@@ -21,7 +27,13 @@ exports.protect = catchAsync(async (req, res, next) => {
   if (authHeader && authHeader.startsWith("Bearer "))
     token = authHeader.split(" ")[1];
   if (!token) {
-    return next(new AppError("invalid token, you are not logged in"));
+    return next(
+      new AppError(
+        "invalid token, you are not logged in",
+        401,
+        TOKEN_NOT_FOUND,
+      ),
+    );
   }
   // try {
   //   const decoded = jwt.verify(token, JWT_SECRET);
@@ -37,7 +49,13 @@ exports.protect = catchAsync(async (req, res, next) => {
   console.log(decoded);
   const freshUser = await User.findById(decoded.id);
   if (!freshUser)
-    return next(new AppError("token belonging to the user doesnot exist", 401));
+    return next(
+      new AppError(
+        "token belonging to the user doesnot exist",
+        401,
+        USER_NOT_FOUND,
+      ),
+    );
   // grant access to the protected route
   req.user = freshUser;
   next();

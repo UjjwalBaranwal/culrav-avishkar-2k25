@@ -6,6 +6,7 @@ const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
 const app = express();
 
@@ -20,6 +21,7 @@ const eventRouter = require("./Router/event.router");
 const teamRouter = require("./Router/team.router");
 
 app.use(helmet());
+app.use(cors());
 
 // login into developer mode
 if (process.env.NODE_ENV === "development") {
@@ -40,8 +42,9 @@ app.use(
   express.urlencoded({
     extended: true,
     limit: "10kb",
-  })
+  }),
 );
+
 app.use((req, res, next) => {
   console.log("hello from the middleware 😎");
   console.log(req.cookies);
@@ -66,7 +69,13 @@ app.use("/api/v1/user", userRouter);
 app.use("/api/v1/event", eventRouter);
 
 app.all(/.*/, (req, res, next) => {
-  next(new AppError(`can't find the ${req.originalUrl}`, 404));
+  next(
+    new AppError(
+      `can't find the ${req.originalUrl}`,
+      404,
+      "RESOURCE_NOT_FOUND",
+    ),
+  );
 });
 
 app.use(globalErrorHandler);
