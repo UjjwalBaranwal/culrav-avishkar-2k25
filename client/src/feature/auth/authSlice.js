@@ -5,6 +5,7 @@ import {
   forgotPassword,
   resetPassword,
   confirmEmail,
+  getMe,
 } from "../../services/apiAuth";
 import { toast } from "sonner";
 

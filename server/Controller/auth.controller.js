@@ -74,7 +74,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.confirmEmail = catchAsync(async (req, res) => {
+exports.confirmEmail = catchAsync(async (req, res, next) => {
   const { token, id } = req.body;
   if (!token || !id) {
     return next(new AppError("Token or Id is missing", 401));
