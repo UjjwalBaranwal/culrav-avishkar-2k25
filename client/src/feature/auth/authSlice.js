@@ -2,10 +2,10 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
   loginUser,
   signUpUser,
-  getMe,
   forgotPassword,
   resetPassword,
   confirmEmail,
+  getMe,
 } from "../../services/apiAuth";
 import { toast } from "sonner";
 

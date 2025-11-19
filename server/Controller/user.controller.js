@@ -1,12 +1,19 @@
 const AppError = require("../utils/appError");
 const User = require("../Model/user.model");
 const catchAsync = require("../utils/catchAsync");
-const bcyrpt = require("bcryptjs");
 
 exports.getMe = catchAsync(async (req, res, next) => {
   const user = await User.findById(req.user.id).select("-password");
   if (!user) return next(new AppError("Failed in getting the user", 401));
-  res.json(user);
+  res.json({
+    id: user._id,
+    name: user.name,
+    email: user.email,
+    role: user.role,
+    branch: user.branch,
+    college: user.college,
+    resumeLink: user.resumeLink,
+  });
 });
 
 exports.updateMe = catchAsync(async (req, res, next) => {
