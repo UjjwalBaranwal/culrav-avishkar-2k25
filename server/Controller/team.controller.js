@@ -84,31 +84,31 @@ exports.createTeam = catchAsync(async (req, res, next) => {
       return next(
         new AppError(
           "Cannot create team — leader ID is invalid or not registered.",
-          422
-        )
+          422,
+        ),
       );
     }
     const existingTeam = await Team.findOne({ teamName, leader }).session(
-      session
+      session,
     );
     if (existingTeam) {
       await session.abortTransaction();
       return next(
         new AppError(
           "A team with the same name already exists for this leader.",
-          409
-        )
+          409,
+        ),
       );
     }
     const [team] = await Team.create(
       [{ teamName: teamName.trim(), leader, size }],
-      { session }
+      { session },
     );
     team.acceptedMembers = Array.from(
-      new Set([...(team.acceptedMembers || []), leader])
+      new Set([...(team.acceptedMembers || []), leader]),
     );
     leaderUser.participatingTeam = Array.from(
-      new Set([...(leaderUser.participatingTeam || []), team._id])
+      new Set([...(leaderUser.participatingTeam || []), team._id]),
     );
     await team.save({ session });
     await leaderUser.save({ session });
@@ -144,12 +144,14 @@ exports.getAllTeams = catchAsync(async (req, res, next) => {
     const user = await User.findOne({ email }).populate({
       path: "participatingTeam",
       model: "Team",
-      select: "teamName leader _id"
+      select: "teamName leader _id",
     });
 
     if (!user) return next(new AppError("User not found", 404));
 
-    const teamsArray = Array.isArray(user.participatingTeam) ? user.participatingTeam : [];
+    const teamsArray = Array.isArray(user.participatingTeam)
+      ? user.participatingTeam
+      : [];
     const currentUserId = (id || user._id).toString();
 
     const myTeams = [];
@@ -166,7 +168,7 @@ exports.getAllTeams = catchAsync(async (req, res, next) => {
     res.status(200).json({
       success: true,
       myTeams,
-      participatingTeams
+      participatingTeams,
     });
   } catch (err) {
     next(err);
@@ -185,7 +187,7 @@ exports.updateTeamName = catchAsync(async (req, res, next) => {
     const oldtm = await Team.findOne({ _id: teamId });
     if (!oldtm) {
       return next(
-        new AppError("TeamId is invalid or Team Does not exist", 404)
+        new AppError("TeamId is invalid or Team Does not exist", 404),
       );
     }
     const registeredEventsByThisTeam = oldtm.registeredEvents;
@@ -193,7 +195,7 @@ exports.updateTeamName = catchAsync(async (req, res, next) => {
     //onces a team register for an event can't change their name
     if (registeredEventsByThisTeam.length > 0) {
       return next(
-        new AppError("Team already registered for some event/events", 409)
+        new AppError("Team already registered for some event/events", 409),
       );
     }
 
@@ -203,7 +205,7 @@ exports.updateTeamName = catchAsync(async (req, res, next) => {
     const updatedTeam = await Team.findByIdAndUpdate(
       { _id: teamId },
       { teamName: teamName },
-      { new: true }
+      { new: true },
     );
     res.status(200).json({
       success: true,
@@ -256,8 +258,8 @@ exports.deleteTeam = catchAsync(async (req, res, next) => {
       return next(
         new AppError(
           "This team is already registered for some event/events",
-          409
-        )
+          409,
+        ),
       );
     }
     //first remove all the references of this team. [otherwise it will cause deletion anomaly]
@@ -315,8 +317,8 @@ exports.sendTeamInvite = catchAsync(async (req, res, next) => {
       return next(
         new AppError(
           "Team is already participating in any event, can't send the invite",
-          400
-        )
+          400,
+        ),
       );
     }
     const ld = await User.findById({ _id: leaderId });
@@ -340,7 +342,7 @@ exports.sendTeamInvite = catchAsync(async (req, res, next) => {
       const leaderEmail = ld.email;
       if (!leaderEmail.includes("mnnit.ac.in")) {
         return next(
-          new AppError("Inter College participation is not allowed.", 400)
+          new AppError("Inter College participation is not allowed.", 400),
         );
       }
     }
@@ -349,14 +351,14 @@ exports.sendTeamInvite = catchAsync(async (req, res, next) => {
       const leaderEmail = ld.email;
       if (leaderEmail.includes("mnnit.ac.in")) {
         return next(
-          new AppError("Inter College participation is not allowed.", 400)
+          new AppError("Inter College participation is not allowed.", 400),
         );
       }
     }
     // leader can not sent the invite to himself
     if (JSON.stringify(targetUser._id) === JSON.stringify(leaderId)) {
       return next(
-        new AppError("You can not send team invite to yourself", 400)
+        new AppError("You can not send team invite to yourself", 400),
       );
     }
 
@@ -371,8 +373,8 @@ exports.sendTeamInvite = catchAsync(async (req, res, next) => {
         return next(
           new AppError(
             "User is already in the team and accepted by leader",
-            409
-          )
+            409,
+          ),
         );
       }
     }
@@ -400,23 +402,14 @@ exports.sendTeamInvite = catchAsync(async (req, res, next) => {
   }
 });
 exports.acceptInvite = catchAsync(async (req, res, next) => {
-  const { userId, teamId } = req.body;
-
-  if (!userId) {
-    return next(new AppError("userId missing", 400));
-  }
+  const { teamId } = req.body;
+  const user = req.user;
 
   if (!teamId) {
     return next(new AppError("teamId missing", 400));
   }
 
   try {
-    const user = await User.findById({ _id: userId });
-
-    if (!user) {
-      return next(new AppError("User does not exist", 404));
-    }
-
     // if (!user.isFeePaid) {
     //   return next(new AppError("First Pay the fee to accept invite", 403));
     // }
@@ -444,9 +437,9 @@ exports.acceptInvite = catchAsync(async (req, res, next) => {
     const toBeRemoved = teamId;
 
     const newPendingTeams = pendingTeams.filter(
-      (team) => JSON.stringify(team) != JSON.stringify(toBeRemoved)
+      (team) => JSON.stringify(team) != JSON.stringify(toBeRemoved),
     );
-    user.pendingTeam = newPendingTeams;
+    req.user.pendingTeam = newPendingTeams;
 
     //then add this team to the user's participatingTeam
 
@@ -457,16 +450,16 @@ exports.acceptInvite = catchAsync(async (req, res, next) => {
     //then remove this user from this team's pending members
 
     const teamPendingMembers = tm.pendingMembers;
-    const toBeRemovedUser = userId;
+    const toBeRemovedUser = user._id;
 
     const newTeamPendingMembers = teamPendingMembers.filter(
-      (us) => JSON.stringify(us) != JSON.stringify(toBeRemovedUser)
+      (us) => JSON.stringify(us) != JSON.stringify(toBeRemovedUser),
     );
     tm.pendingMembers = newTeamPendingMembers;
 
     //then add this user to the team's accepted members.
     const acceptedMembersOfTeam = tm.acceptedMembers;
-    const newAcceptedMembers = [...acceptedMembersOfTeam, userId];
+    const newAcceptedMembers = [...acceptedMembersOfTeam, user._id];
     tm.acceptedMembers = newAcceptedMembers;
 
     await tm.save();
@@ -481,23 +474,14 @@ exports.acceptInvite = catchAsync(async (req, res, next) => {
   }
 });
 exports.rejectInvite = catchAsync(async (req, res, next) => {
-  const { userId, teamId } = req.body;
-
-  if (!userId) {
-    return next(new AppError("userId missing", 400));
-  }
+  const { teamId } = req.body;
+  const user = req.user;
 
   if (!teamId) {
     return next(new AppError("teamId missing", 400));
   }
 
   try {
-    const user = await User.findById({ _id: userId });
-
-    if (!user) {
-      return next(new AppError("User does not exist", 404));
-    }
-
     const tm = await Team.findById({ _id: teamId });
 
     if (!tm) {
@@ -512,9 +496,9 @@ exports.rejectInvite = catchAsync(async (req, res, next) => {
     //then remove this user from pending members of this team
     const pendingInvites = tm.pendingMembers;
 
-    const toBeRemovedUser = userId;
+    const toBeRemovedUser = user._id;
     const newPendingInvites = pendingInvites.filter(
-      (us) => JSON.stringify(us) != JSON.stringify(toBeRemovedUser)
+      (us) => JSON.stringify(us) != JSON.stringify(toBeRemovedUser),
     );
 
     tm.pendingMembers = newPendingInvites;
@@ -524,7 +508,7 @@ exports.rejectInvite = catchAsync(async (req, res, next) => {
     const pendingTeams = user.pendingTeam;
     const toBeRemovedTeam = teamId;
     const newPendingTeams = pendingTeams.filter(
-      (team) => JSON.stringify(team) != JSON.stringify(toBeRemovedTeam)
+      (team) => JSON.stringify(team) != JSON.stringify(toBeRemovedTeam),
     );
 
     user.pendingTeam = newPendingTeams;
@@ -612,7 +596,7 @@ exports.leaveTeam = catchAsync(async (req, res, next) => {
     const userToBeRemoved = userId;
 
     const newTeamAcceptedMembers = currentTeamAcceptedMembers.filter(
-      (us) => JSON.stringify(us) != JSON.stringify(userToBeRemoved)
+      (us) => JSON.stringify(us) != JSON.stringify(userToBeRemoved),
     );
 
     tm.acceptedMembers = newTeamAcceptedMembers;
@@ -622,7 +606,7 @@ exports.leaveTeam = catchAsync(async (req, res, next) => {
 
     const teamToBeRemoved = teamId;
     const newUserParticipatingTeams = userParticipatingTeams.filter(
-      (team) => JSON.stringify(team) != JSON.stringify(teamToBeRemoved)
+      (team) => JSON.stringify(team) != JSON.stringify(teamToBeRemoved),
     );
 
     user.participatingTeam = newUserParticipatingTeams;
@@ -657,7 +641,7 @@ exports.kickMember = catchAsync(async (req, res, next) => {
     const ld = await User.findById({ _id: leaderId });
     if (!ld) {
       return next(
-        new AppError("leader id is invalid or does not exist in db", 404)
+        new AppError("leader id is invalid or does not exist in db", 404),
       );
     }
 
@@ -677,8 +661,8 @@ exports.kickMember = catchAsync(async (req, res, next) => {
       return next(
         new AppError(
           "Can't kick this user because this team is registered for some event/events",
-          400
-        )
+          400,
+        ),
       );
     }
 
@@ -689,7 +673,7 @@ exports.kickMember = catchAsync(async (req, res, next) => {
 
     if (currentUserId != teamLeaderId) {
       return next(
-        new AppError("You are not authorized to kick this user", 403)
+        new AppError("You are not authorized to kick this user", 403),
       );
     }
 
@@ -699,8 +683,8 @@ exports.kickMember = catchAsync(async (req, res, next) => {
       return next(
         new AppError(
           "leader can't kick himself, however leader can delete the team",
-          400
-        )
+          400,
+        ),
       );
     }
 
@@ -715,7 +699,7 @@ exports.kickMember = catchAsync(async (req, res, next) => {
     const userKicking = userTobeKickedId;
 
     const newTeamAcceptedMembers = currentTeamAcceptedMembers.filter(
-      (us) => JSON.stringify(us) != JSON.stringify(userKicking)
+      (us) => JSON.stringify(us) != JSON.stringify(userKicking),
     );
 
     tm.acceptedMembers = newTeamAcceptedMembers;
@@ -725,7 +709,7 @@ exports.kickMember = catchAsync(async (req, res, next) => {
     const teamToBeRemoved = teamId;
 
     const newParticipatingTeams = currentParticipatingTeams.filter(
-      (team) => JSON.stringify(team) != JSON.stringify(teamToBeRemoved)
+      (team) => JSON.stringify(team) != JSON.stringify(teamToBeRemoved),
     );
     userToBeKicked.participatingTeam = newParticipatingTeams;
 
