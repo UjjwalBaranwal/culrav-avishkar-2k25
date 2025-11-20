@@ -466,7 +466,7 @@ exports.acceptInvite = catchAsync(async (req, res, next) => {
     const tm = await Team.findById({ _id: teamId });
 
     if (!tm) {
-      return next(new AppError("team not found", 404));
+      return next(new AppError("Team not found", 404));
     }
 
     //check if team is participating in any event. [even though team can't participate in any event if it has any pending memeber].
@@ -534,7 +534,7 @@ exports.rejectInvite = catchAsync(async (req, res, next) => {
     const tm = await Team.findById({ _id: teamId });
 
     if (!tm) {
-      return next(new AppError("team not found", 404));
+      return next(new AppError("Team not found", 404));
     }
 
     // first check if user have this team invite or not.

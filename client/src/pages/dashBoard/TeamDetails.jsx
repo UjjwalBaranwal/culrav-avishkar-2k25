@@ -25,7 +25,7 @@ export default function TeamDetail() {
       toast.success("Invite sent!");
     } catch (e) {
       console.error(e);
-      toast.error("Error sending invite!");
+      toast.error(e.message);
     }
   };
 

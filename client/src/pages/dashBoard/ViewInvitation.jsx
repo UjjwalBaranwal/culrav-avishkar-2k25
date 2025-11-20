@@ -23,8 +23,8 @@ export default function ViewInvitation() {
       );
       toast.success("Invitation accepted!");
     },
-    onError: () => {
-      toast.error("Error accepting invitation. Try again!");
+    onError: (e) => {
+      toast.error(e?.message);
     },
   });
 
@@ -36,8 +36,8 @@ export default function ViewInvitation() {
       );
       toast.success("Invitation rejected!");
     },
-    onError: () => {
-      toast.error("Error rejecting invitation. Try again!");
+    onError: (e) => {
+      toast.error(e?.message);
     },
   });
 
