@@ -19,7 +19,7 @@ exports.createTeam = catchAsync(async (req, res, next) => {
     return next(new AppError("Leader ID is missing.", 400));
   }
 
-  console.log("leader", leader, "size", size, "teamName", teamName);
+  // console.log("leader", leader, "size", size, "teamName", teamName);
 
   const session = await mongoose.startSession();
   session.startTransaction();
@@ -161,7 +161,8 @@ exports.updateTeamName = catchAsync(async (req, res, next) => {
   }
 });
 exports.deleteTeam = catchAsync(async (req, res, next) => {
-  const { teamId, userId } = req.body;
+  const { teamId } = req.body;
+  const userId = req.user.id;
   if (!teamId) {
     return next(new AppError("Provide team ID", 400));
   }

@@ -16,3 +16,11 @@ export const getMyTeams = catchAsync(async () => {
   const { data } = await apiClient.get(`${baseUrl}/myTeams`);
   return data;
 });
+
+
+export const deleteTeam = catchAsync(async (teamId) => {
+  const { data } = await apiClient.delete(`${baseUrl}/deleteTeam`, {
+    data: { teamId },
+  });
+  return data;
+});
