@@ -1,18 +1,19 @@
 import React from "react";
 
 const Card = ({ title, image, description, onClick }) => {
+  console.log(image);
   return (
     <div
       onClick={onClick}
       className="group relative w-full h-[320px] sm:h-[360px] rounded-2xl overflow-hidden cursor-pointer transition-transform duration-500 hover:-translate-y-2 bg-[#0a0a1a]/80 border border-[#ffffff22] backdrop-blur-md"
     >
       <img
-        src={image}
+        src={image.dummy}
         alt={title}
         className="absolute inset-0 w-full h-full object-cover opacity-80 transition-all duration-700 group-hover:scale-110 group-hover:opacity-100"
       />
       <div className="absolute inset-0 bg-gradient-to-br from-[#4f00ff33] via-[#00ffff22] to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-700"></div>
-      
+
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700">
         <div className="absolute inset-0 rounded-2xl border border-transparent bg-gradient-to-r from-[#085757aa] via-[#b100ff88] to-[#0b6464aa] " />
       </div>

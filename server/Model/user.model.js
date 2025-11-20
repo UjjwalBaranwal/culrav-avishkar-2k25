@@ -1,12 +1,10 @@
 const mongoose = require("mongoose");
-const bcyrpt = require("bcryptjs");
 const validator = require("validator");
 const userSchema = new mongoose.Schema(
   {
     name: {
       type: String,
       required: [true, "please entered the name"],
-      unique: true,
       trim: true,
     },
     email: {
@@ -87,7 +85,7 @@ const userSchema = new mongoose.Schema(
     createdAt: { type: Date, default: Date.now },
     lastLoginAt: Date,
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const User = mongoose.model("User", userSchema);

@@ -10,10 +10,12 @@ const createTransport = () => {
     host: SMTP_HOST,
     port: Number(SMTP_PORT || 587),
     secure: Number(SMTP_PORT) === 465, // true for 465
-    auth: {
-      user: SMTP_USER,
-      pass: SMTP_PASS,
-    },
+    auth: SMTP_USER
+      ? {
+          user: SMTP_USER,
+          pass: SMTP_PASS,
+        }
+      : undefined,
   });
 };
 
