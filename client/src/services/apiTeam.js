@@ -24,3 +24,9 @@ export const deleteTeam = catchAsync(async (teamId) => {
   });
   return data;
 });
+
+
+export const teamDetail = catchAsync(async (teamId) => {
+  const { data } = await apiClient.post(`${baseUrl}/teamDetails`, { teamId });
+  return data;
+});
