@@ -5,6 +5,60 @@ const User = require("../Model/user.model");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 
+
+
+exports.teamDetail = catchAsync(async (req, res, next) => {
+  // console.log("Inside teamDetail controller");
+  // console.log("Request body:", req);
+  const { teamId } = req.body;
+  // console.log("teamId:", teamId);
+  if (!teamId) {
+    return next(new AppError("teamId is missing", 400));
+  }
+
+  // Populate members + events
+  const team = await Team.findById(teamId)
+    .populate("leader", "name")
+    .populate("acceptedMembers", "name")
+    .populate("pendingMembers", "name")
+    .populate("registeredEvents", "eventName")
+    .lean();
+
+  if (!team) {
+    return next(new AppError("Team not found", 404));
+  }
+
+  // Format response
+  const formatted = {
+    id: team._id,
+    name: team.teamName,
+
+    stats: {
+      size: team.size,
+      accepted: team.acceptedMembers?.length || 0,
+      pending: team.pendingMembers?.length || 0,
+    },
+
+    events: team.registeredEvents?.map((ev) => ({
+      id: ev._id,
+      name: ev.eventName,
+    })) || [],
+
+    members: [
+      ...team.acceptedMembers.map((m) => ({
+        id: m._id,
+        name: m.name,
+      })),
+    ],
+  };
+  // console.log("Formatted team detail:", formatted);
+  res.status(200).json({
+    success: true,
+    team: formatted,
+  });
+});
+
+
 exports.createTeam = catchAsync(async (req, res, next) => {
   const { teamName, size } = req.body;
   const leader = req.user.id;

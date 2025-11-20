@@ -15,5 +15,6 @@ router.post("/rejectInvite",teamController.rejectInvite);
 router.post("/leaveTeam",teamController.leaveTeam);
 router.post("/kickMember",teamController.kickMember);
 router.get("/myTeams",teamController.getAllTeams);
+router.post('/teamDetails',teamController.teamDetail);
 
 module.exports = router;
