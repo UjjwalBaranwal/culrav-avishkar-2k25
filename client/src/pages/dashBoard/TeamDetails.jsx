@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import EventCard from "../../components/General/EventCard";
 import MemberCard from "../../components/General/MemberCard";
 import { sendInvite, teamDetail } from "../../services/apiTeam";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -15,10 +15,13 @@ export default function TeamDetail() {
   const [invitee, setInvitee] = useState("");
   const regex = /^[^\s@]+@(mnnit|iitk|iiitp)\.ac\.in$/;
 
+  const queryClient = useQueryClient();
+
   const handleInvite = async () => {
     if (!regex.test(invitee)) return;
     try {
       await sendInvite(invitee, teamId);
+      queryClient.invalidateQueries({ queryKey: ["team", teamId] });
       toast.success("Invite sent!");
     } catch (e) {
       console.error(e);
