@@ -3,12 +3,28 @@ import { ArrowLeft } from "lucide-react";
 import { useParams, useNavigate } from "react-router-dom";
 import EventCard from "../../components/General/EventCard";
 import MemberCard from "../../components/General/MemberCard";
-import { teamDetail } from "../../services/apiTeam";
+import { sendInvite, teamDetail } from "../../services/apiTeam";
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import { toast } from "sonner";
 
 export default function TeamDetail() {
   const { teamId } = useParams();
   const navigate = useNavigate();
+
+  const [invitee, setInvitee] = useState("");
+  const regex = /^[^\s@]+@(mnnit|iitk|iiitp)\.ac\.in$/;
+
+  const handleInvite = async () => {
+    if (!regex.test(invitee)) return;
+    try {
+      await sendInvite(invitee, teamId);
+      toast.success("Invite sent!");
+    } catch (e) {
+      console.error(e);
+      toast.error("Error sending invite!");
+    }
+  };
 
   const {
     data: team,
@@ -120,15 +136,20 @@ export default function TeamDetail() {
           {/* Left Column: Sticky Sidebar */}
           <div className="lg:col-span-1 space-y-6 lg:sticky top-0 self-start">
             <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 shadow-md">
-              <div className="flex gap-2 mb-3">
+              <div className="flex flex-col gap-2 mb-3">
                 <input
                   type="email"
                   placeholder="Email ID"
-                  className="w-full px-4 py-2 border border-gray-600 bg-gray-700 text-gray-200 rounded-md focus:outline-none focus:ring-1 focus:ring-green-300"
+                  value={invitee}
+                  onChange={(e) => setInvitee(e.target.value)}
+                  className={`w-full px-4 py-2 border  bg-gray-700 text-gray-200 rounded-md focus:outline-none focus:ring-1 ${regex.test(invitee) ? "focus:ring-green-300 border-gray-600" : "focus:ring-red-600 border-red-600"} `}
                 />
+                {!regex.test(invitee) && (
+                  <p className="text-sm text-red-500">Enter a valid email.</p>
+                )}
               </div>
               <button
-                onClick={() => console.log("Add member (not implemented)")}
+                onClick={handleInvite}
                 className="w-full py-2.5 rounded-md font-semibold bg-green-600 hover:bg-green-700 text-white transition-colors"
               >
                 Add team member

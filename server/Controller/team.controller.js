@@ -131,6 +131,59 @@ exports.createTeam = catchAsync(async (req, res, next) => {
 });
 // if a team wants to change its name before registering an event
 
+exports.createTeamWT = catchAsync(async (req, res, next) => {
+  const { teamName, size } = req.body;
+  const leader = req.user.id;
+
+  if (!teamName?.trim()) {
+    return next(new AppError("Team name is missing", 400));
+  }
+
+  if (size !== undefined && (!Number.isInteger(size) || size <= 0)) {
+    return next(new AppError("Size must be a positive integer.", 400));
+  }
+
+  if (!leader) {
+    return next(new AppError("Leader ID is missing.", 400));
+  }
+
+  const leaderUser = await User.findById(leader);
+  if (!leaderUser) {
+    return next(
+      new AppError("Leader ID is invalid or user does not exist.", 422),
+    );
+  }
+
+  const existingTeam = await Team.findOne({ teamName, leader });
+  if (existingTeam) {
+    return next(
+      new AppError(
+        "A team with this name already exists for this leader.",
+        409,
+      ),
+    );
+  }
+
+  const team = await Team.create({
+    teamName: teamName.trim(),
+    leader,
+    size,
+    acceptedMembers: [leader], // auto-add leader
+  });
+
+  // update user
+  leaderUser.participatingTeam = Array.from(
+    new Set([...(leaderUser.participatingTeam || []), team._id]),
+  );
+  await leaderUser.save();
+
+  return res.status(201).json({
+    success: true,
+    message: "Team created successfully!",
+    team,
+  });
+});
+
 exports.getAllTeams = catchAsync(async (req, res, next) => {
   const { email, id } = req.user;
   if (!email) return next(new AppError("User email missing", 400));
@@ -292,9 +345,10 @@ exports.deleteTeam = catchAsync(async (req, res, next) => {
   }
 });
 exports.sendTeamInvite = catchAsync(async (req, res, next) => {
-  const { teamName, sendToEmail, leaderId } = req.body;
-  if (!teamName) {
-    return next(new AppError("TeamName is Missing", 400));
+  const { teamId, sendToEmail } = req.body;
+  const leaderId = req.user._id;
+  if (!teamId) {
+    return next(new AppError("TeamId is Missing", 400));
   }
   if (!sendToEmail) {
     return next(new AppError("Email is Missing", 400));
@@ -303,9 +357,9 @@ exports.sendTeamInvite = catchAsync(async (req, res, next) => {
     return next(new AppError("LeaderId is Missing", 400));
   }
   try {
-    const tm = await Team.findOne({ teamName, leader: leaderId });
+    const tm = await Team.findOne({ _id: teamId, leader: leaderId });
     if (!tm) {
-      return next(new AppError("Invalid team name or invalid leaderID", 404));
+      return next(new AppError("Invalid team id or invalid leaderID", 404));
     }
     //check if this team is participating in any event, if so you can't add members.
     if (tm.registeredEvents.length > 0) {

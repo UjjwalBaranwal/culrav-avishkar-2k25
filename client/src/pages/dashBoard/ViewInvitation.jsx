@@ -1,7 +1,7 @@
 import { acceptInvitation, rejectInvitation } from "../../services/apiTeam";
 import { toast } from "sonner";
 import { getUserInvites } from "../../services/apiUser";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export default function ViewInvitation() {
   const {
@@ -13,25 +13,33 @@ export default function ViewInvitation() {
     queryFn: getUserInvites,
   });
 
-  const accept = async (team_id) => {
-    try {
-      await acceptInvitation(team_id);
-      toast.success("Invitation accepted!");
-    } catch (e) {
-      console.error(e);
-      toast.error("Error accepting invitation. Try again!");
-    }
-  };
+  const queryClient = useQueryClient();
 
-  const reject = async (team_id) => {
-    try {
-      await rejectInvitation(team_id);
+  const acceptInvite = useMutation({
+    mutationFn: (teamId) => acceptInvitation(teamId),
+    onSuccess: (_, teamId) => {
+      queryClient.setQueryData(["invites"], (old) =>
+        (old ?? []).filter((i) => i._id != teamId),
+      );
+      toast.success("Invitation accepted!");
+    },
+    onError: () => {
+      toast.error("Error accepting invitation. Try again!");
+    },
+  });
+
+  const rejectInvite = useMutation({
+    mutationFn: (teamId) => rejectInvitation(teamId),
+    onSuccess: (_, teamId) => {
+      queryClient.setQueryData(["invites"], (old) =>
+        (old ?? []).filter((i) => i._id != teamId),
+      );
       toast.success("Invitation rejected!");
-    } catch (e) {
-      console.error(e);
+    },
+    onError: () => {
       toast.error("Error rejecting invitation. Try again!");
-    }
-  };
+    },
+  });
 
   return (
     <div>
@@ -52,13 +60,13 @@ export default function ViewInvitation() {
                   <span className="flex gap-5 justify-end">
                     <button
                       className="cursor-pointer w-[100px] h-10 bg-green-500 rounded-sm"
-                      onClick={() => accept(invitation._id)}
+                      onClick={() => acceptInvite.mutate(invitation._id)}
                     >
                       Accept
                     </button>
                     <button
                       className="cursor-pointer w-[100px] h-10 bg-red-500 rounded-sm"
-                      onClick={() => reject(invitation._id)}
+                      onClick={() => rejectInvite.mutate(invitation._id)}
                     >
                       Reject
                     </button>
