@@ -176,11 +176,14 @@ const MechrocosmData = {
   ],
 };
 
+
+
 const MechrocosmPage = () => {
   const [selected, setSelected] = useState(null);
 
   return (
     <div className="relative min-h-screen bg-black font-sans text-gray-300">
+
       {/* Responsive Background */}
       <div className="absolute inset-0 w-full h-full -z-10">
         <img
@@ -198,13 +201,26 @@ const MechrocosmPage = () => {
       </div>
 
       {/* Header */}
-      <main className="flex flex-col md:flex-row justify-center items-center px-8 py-16 relative">
+      <main className="flex flex-col md:flex-row justify-center items-center px-8 py-20 relative">
+
+        {/* BACK BUTTON */}
+        <button
+          onClick={() => window.history.back()}
+          className="absolute top-6 left-6 px-6 py-3 border border-cyan-500 text-cyan-400 
+          rounded-lg hover:bg-cyan-500 hover:text-black transition font-semibold text-lg"
+        >
+          ← Back
+        </button>
+
         <div className="md:w-1/2 mt-12 md:mt-0 text-center md:text-left">
           <h1 className="text-5xl font-bold neon-shadow text-cyan-400 mb-4 tracking-wide uppercase">
             {MechrocosmData.eventName}
           </h1>
+
           {MechrocosmData.tagline && (
-            <p className="text-lg text-cyan-300 mb-8 max-w-md">{MechrocosmData.tagline}</p>
+            <p className="text-lg text-cyan-300 mb-6 max-w-md">
+              {MechrocosmData.tagline}
+            </p>
           )}
         </div>
       </main>
@@ -224,13 +240,17 @@ const MechrocosmPage = () => {
             className="relative p-6 border border-cyan-600 rounded-xl bg-black/90 backdrop-blur-md shadow-md cursor-pointer text-center select-none"
             onClick={() => setSelected(event)}
           >
-            <h2 className="text-2xl font-bold neon-shadow text-cyan-400 mb-2">{event.eventName}</h2>
+            <h2 className="text-2xl font-bold neon-shadow text-cyan-400 mb-2">
+              {event.eventName}
+            </h2>
+
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 setSelected(event);
               }}
-              className="mt-4 py-2 w-full border border-cyan-400 rounded-lg bg-cyan-500 text-black font-semibold hover:bg-cyan-300 transition"
+              className="mt-4 py-2 w-full border border-cyan-400 rounded-lg 
+              bg-cyan-500 text-black font-semibold hover:bg-cyan-300 transition"
             >
               Explore
             </button>
@@ -256,28 +276,46 @@ const MechrocosmPage = () => {
             >
               ✕
             </button>
-            <h2 className="text-4xl font-bold mt-4 neon-shadow text-cyan-400 mb-8 text-center">{selected.eventName}</h2>
+
+            <h2 className="text-4xl font-bold mt-4 neon-shadow text-cyan-400 mb-8 text-center">
+              {selected.eventName}
+            </h2>
+
             <section className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
               <div>
-                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">About the Event</h3>
-                <p className="text-cyan-300 whitespace-pre-wrap">{selected.description}</p>
+                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">
+                  About the Event
+                </h3>
+                <p className="text-cyan-300 whitespace-pre-wrap">
+                  {selected.description}
+                </p>
               </div>
+
               <div>
-                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">Rules</h3>
+                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">
+                  Rules
+                </h3>
                 <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 max-h-[60vh] overflow-y-auto pr-4">
                   {selected.rules.map((r, i) => (
                     <li key={i}>{r}</li>
                   ))}
                 </ul>
               </div>
+
               <div>
-                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">Coordinators</h3>
+                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">
+                  Coordinators
+                </h3>
+
                 <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 text-center">
                   {selected.coordinators.map((c, i) => (
                     <li key={i}>{c.name} — {c.contact}</li>
                   ))}
                 </ul>
-                <p className="mt-6 text-cyan-300 text-left"><strong>Team size:</strong> {selected.minTeamSize} - {selected.maxTeamSize}</p>
+
+                <p className="mt-6 text-cyan-300 text-left">
+                  <strong>Team size:</strong> {selected.minTeamSize} - {selected.maxTeamSize}
+                </p>
               </div>
             </section>
           </motion.div>

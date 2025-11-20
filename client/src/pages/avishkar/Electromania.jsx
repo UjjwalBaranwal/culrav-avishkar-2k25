@@ -197,6 +197,16 @@ const ElectromaniaPage = () => {
 
       {/* TOP IMAGE AND HEADER */}
       <main className="flex flex-col md:flex-row justify-center items-center px-8 py-16 relative">
+
+        {/* 🔥 BACK BUTTON ADDED */}
+        <button
+          onClick={() => window.history.back()}
+          className="absolute top-6 left-6 px-5 py-2 border border-cyan-500 text-cyan-400 rounded-lg 
+                     hover:bg-cyan-500 hover:text-black transition font-semibold z-50"
+        >
+          ← Back
+        </button>
+
         <div className="relative flex flex-col justify-center items-center md:w-1/2">
           <img
             src={TOP_IMAGE}
@@ -204,6 +214,7 @@ const ElectromaniaPage = () => {
             className="w-[330px] h-[300px] object-cover brightness-90 rounded-xl shadow-lg border border-cyan-600/60 neon-shadow"
           />
         </div>
+
         <div className="md:w-1/2 mt-12 md:mt-0 text-center md:text-center">
           <h1 className="text-5xl font-bold neon-shadow text-cyan-400 mb-4 drop-shadow-xl tracking-wide uppercase">
             ELECTROMANIA 2K25
@@ -260,43 +271,61 @@ const ElectromaniaPage = () => {
             >
               ✕
             </button>
+
             <h2 className="text-4xl font-bold mt-4 neon-shadow text-cyan-400 mb-8 text-center">
               {selected.name}
             </h2>
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+              
               {/* Description */}
               <section>
-                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">About the Event</h3>
+                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">
+                  About the Event
+                </h3>
                 <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 overflow-wrap break-word">
                   {selected.desc.map((point, i) => (
                     <li key={i}>{point}</li>
                   ))}
                 </ul>
               </section>
+
               {/* Rounds/Rules */}
               <section>
-                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">Rules</h3>
+                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">
+                  Rules
+                </h3>
                 <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 max-h-[60vh] overflow-y-auto pr-4">
-                  {(selected.rounds && selected.rounds.length > 0) ?
-                    selected.rounds.map((rule, i) => (<li key={i}>{rule}</li>))
-                    : <li>No structured rounds listed.</li>
-                  }
+                  {selected.rounds && selected.rounds.length > 0
+                    ? selected.rounds.map((rule, i) => <li key={i}>{rule}</li>)
+                    : <li>No structured rounds listed.</li>}
                 </ul>
               </section>
-              {/* Event Coordinators */}
+
+              {/* Coordinators */}
               <section>
-                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">Event Coordinators</h3>
+                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">
+                  Event Coordinators
+                </h3>
                 <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 text-center">
-                  {selected.coords.length > 0 ? (
-                    selected.coords.map((c, i) => (<li key={i}>{c}</li>))
-                  ) : <li>No coordinators listed.</li>}
+                  {selected.coords.length > 0
+                    ? selected.coords.map((c, i) => <li key={i}>{c}</li>)
+                    : <li>No coordinators listed.</li>}
                 </ul>
+
                 <div className="mt-6 text-left">
-                  <p className="text-cyan-300"><span className="font-bold text-cyan-400">Eligibility:</span> {selected.eligibility}</p>
-                  <p className="text-cyan-300"><span className="font-bold text-cyan-400">Expected Registrations:</span> {selected.expectedRegistrations}</p>
-                  <p className="text-cyan-300"><span className="font-bold text-cyan-400">No. of Goodies:</span> {selected.goodies}</p>
+                  <p className="text-cyan-300">
+                    <span className="font-bold text-cyan-400">Eligibility:</span> {selected.eligibility}
+                  </p>
+                  <p className="text-cyan-300">
+                    <span className="font-bold text-cyan-400">Expected Registrations:</span> {selected.expectedRegistrations}
+                  </p>
+                  <p className="text-cyan-300">
+                    <span className="font-bold text-cyan-400">No. of Goodies:</span> {selected.goodies}
+                  </p>
                 </div>
               </section>
+
             </div>
           </motion.div>
         )}

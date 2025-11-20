@@ -84,27 +84,46 @@ const LitmusePage = () => {
 
   return (
     <div className="min-h-screen bg-black font-sans text-gray-300">
+
       {/* TOP IMAGE AND HEADER */}
       <main className="flex flex-col md:flex-row justify-center items-center px-8 py-16 relative">
+
+        {/* BACK BUTTON */}
+        <button
+          onClick={() => window.history.back()}
+          className="absolute top-6 left-6 px-5 py-2 border border-cyan-500 text-cyan-400 
+                     rounded-lg hover:bg-cyan-500 hover:text-black transition font-semibold z-50"
+        >
+          ← Back
+        </button>
+
         <div className="relative flex flex-col justify-center items-center md:w-1/2">
           <img
             src={HERO_IMAGE}
             alt="Litmuse Hero"
             className="w-[330px] h-[300px] object-cover brightness-90 rounded-xl shadow-lg border border-cyan-600/60 neon-shadow"
           />
+
           <motion.div
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
-            className="absolute left-10 top-6 w-16 h-16 rounded-full bg-gradient-to-br from-fuchsia-600 to-cyan-600 filter blur-[2px] border border-cyan-600 shadow-2xl"
+            className="absolute left-10 top-6 w-16 h-16 rounded-full bg-gradient-to-br 
+                       from-fuchsia-600 to-cyan-600 filter blur-[2px] border border-cyan-600 shadow-2xl"
           />
-          <div className="absolute right-16 top-28 w-12 h-12 bg-gradient-to-br from-blue-700 to-cyan-600 rotate-12 rounded-xl" />
-          <div className="absolute left-14 bottom-10 w-10 h-10 bg-gradient-to-tr from-fuchsia-700 to-cyan-500 rounded-full opacity-90" />
+
+          <div className="absolute right-16 top-28 w-12 h-12 bg-gradient-to-br 
+                          from-blue-700 to-cyan-600 rotate-12 rounded-xl" />
+
+          <div className="absolute left-14 bottom-10 w-10 h-10 bg-gradient-to-tr 
+                          from-fuchsia-700 to-cyan-500 rounded-full opacity-90" />
         </div>
+
         <div className="md:w-1/2 mt-12 md:mt-0 text-center md:text-center">
           <h1 className="text-5xl font-bold neon-shadow text-cyan-400 mb-4 drop-shadow-xl tracking-wide uppercase">
             LITMUSE
           </h1>
+
           <p className="text-lg text-cyan-300 mb-8 max-w-md mx-auto">
             Explore literary talents ranging from poetry recitations to spelling competitions in Litmuse.
           </p>
@@ -123,18 +142,21 @@ const LitmusePage = () => {
               transition: { duration: 0.3, ease: "easeInOut" }
             }}
             whileTap={{ scale: 0.98 }}
-            className="relative cyber-card p-6 border border-cyan-600 rounded-xl bg-black/90 backdrop-blur-md shadow-md cursor-pointer text-center select-none"
+            className="relative cyber-card p-6 border border-cyan-600 rounded-xl bg-black/90 
+                       backdrop-blur-md shadow-md cursor-pointer text-center select-none"
             onClick={() => setSelected(event)}
           >
             <h2 className="text-2xl font-bold neon-shadow text-cyan-400 mb-2">
               {event.name}
             </h2>
+
             <button
-              onClick={e => {
+              onClick={(e) => {
                 e.stopPropagation();
                 setSelected(event);
               }}
-              className="mt-4 py-2 w-full border border-cyan-400 rounded-lg bg-cyan-500 text-black font-semibold hover:bg-cyan-300 transition"
+              className="mt-4 py-2 w-full border border-cyan-400 rounded-lg bg-cyan-500 
+                         text-black font-semibold hover:bg-cyan-300 transition"
             >
               Explore
             </button>
@@ -150,26 +172,27 @@ const LitmusePage = () => {
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ duration: 0.45, ease: "easeOut" }}
-            className="fixed top-0 left-0 w-full h-full bg-black/95 backdrop-blur-xl border-t border-cyan-600/50 z-50 p-8 overflow-y-auto neon-shadow"
+            className="fixed top-0 left-0 w-full h-full bg-black/95 backdrop-blur-xl border-t 
+                       border-cyan-600/50 z-50 p-8 overflow-y-auto neon-shadow"
             style={{ overflowX: "hidden", overscrollBehavior: "contain" }}
           >
             <button
               onClick={() => setSelected(null)}
-              className="absolute top-6 right-10 text-4xl text-cyan-400 hover:text-cyan-600 font-bold focus:outline-none"
-              aria-label="Close Explore Panel"
+              className="absolute top-6 right-10 text-4xl text-cyan-400 hover:text-cyan-600 
+                         font-bold focus:outline-none"
             >
               ✕
             </button>
+
             <h2 className="text-4xl font-bold mt-4 neon-shadow text-cyan-400 mb-8 text-center">
               {selected.name}
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-              {/* Event Description */}
+
+              {/* Description */}
               <section>
-                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">
-                  About the Event
-                </h3>
+                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">About the Event</h3>
                 <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300">
                   {selected.desc.map((point, idx) => (
                     <li key={idx}>{point}</li>
@@ -179,9 +202,7 @@ const LitmusePage = () => {
 
               {/* Rules */}
               <section>
-                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">
-                  Rules
-                </h3>
+                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">Rules</h3>
                 <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 max-h-[60vh] overflow-y-auto pr-4">
                   {selected.rules.map((rule, idx) => (
                     <li key={idx}>{rule}</li>
@@ -191,9 +212,7 @@ const LitmusePage = () => {
 
               {/* Coordinators */}
               <section>
-                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">
-                  Coordinators
-                </h3>
+                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">Coordinators</h3>
                 <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 text-center">
                   {selected.coords.length > 0 ? (
                     selected.coords.map((coord, idx) => (
@@ -206,10 +225,12 @@ const LitmusePage = () => {
                   )}
                 </ul>
               </section>
+
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
     </div>
   );
 };

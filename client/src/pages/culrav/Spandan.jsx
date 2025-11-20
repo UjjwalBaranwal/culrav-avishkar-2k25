@@ -65,23 +65,39 @@ const SpandanPage = () => {
 
   return (
     <div className="min-h-screen bg-black font-sans text-gray-300">
+
       {/* TOP IMAGE AND HEADER */}
       <main className="flex flex-col md:flex-row justify-center items-center px-8 py-16 relative">
+
+        {/* BACK BUTTON */}
+        <button
+          onClick={() => window.history.back()}
+          className="absolute top-6 left-6 px-5 py-2 border border-cyan-500 text-cyan-400 rounded-lg 
+                     hover:bg-cyan-500 hover:text-black transition font-semibold z-50"
+        >
+          ← Back
+        </button>
+
         <div className="relative flex flex-col justify-center items-center md:w-1/2">
           <img
             src={HERO_IMAGE}
             alt="Spandan Hero"
             className="w-[330px] h-[300px] object-cover brightness-90 rounded-xl shadow-lg border border-cyan-600/60 neon-shadow"
           />
+
+          {/* Glow effects */}
           <motion.div
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
             className="absolute left-10 top-6 w-16 h-16 rounded-full bg-gradient-to-br from-fuchsia-600 to-cyan-600 filter blur-[2px] border border-cyan-600 shadow-2xl"
           />
+
           <div className="absolute right-16 top-28 w-12 h-12 bg-gradient-to-br from-blue-700 to-cyan-600 rotate-12 rounded-xl" />
+
           <div className="absolute left-14 bottom-10 w-10 h-10 bg-gradient-to-tr from-fuchsia-700 to-cyan-500 rounded-full opacity-90" />
         </div>
+
         <div className="md:w-1/2 mt-12 md:mt-0 text-center md:text-center">
           <h1 className="text-5xl font-bold neon-shadow text-cyan-400 mb-4 drop-shadow-xl tracking-wide uppercase">
             FOOTPRINTS
@@ -110,6 +126,7 @@ const SpandanPage = () => {
             <h2 className="text-2xl font-bold neon-shadow text-cyan-400 mb-2">
               {event.name}
             </h2>
+
             <button
               onClick={(e) => {
                 e.stopPropagation();
@@ -134,6 +151,7 @@ const SpandanPage = () => {
             className="fixed top-0 left-0 w-full h-full bg-black/95 backdrop-blur-xl border-t border-cyan-600/50 z-50 p-8 overflow-y-auto neon-shadow"
             style={{ overflowX: "hidden", overscrollBehavior: "contain" }}
           >
+            {/* CLOSE BUTTON */}
             <button
               onClick={() => setSelected(null)}
               className="absolute top-6 right-10 text-4xl text-cyan-400 hover:text-cyan-600 font-bold focus:outline-none"
@@ -141,11 +159,13 @@ const SpandanPage = () => {
             >
               ✕
             </button>
+
             <h2 className="text-4xl font-bold mt-4 neon-shadow text-cyan-400 mb-8 text-center">
               {selected.name}
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+              
               {/* Event Description */}
               <section>
                 <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">
@@ -187,10 +207,12 @@ const SpandanPage = () => {
                   )}
                 </ul>
               </section>
+
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
     </div>
   );
 };

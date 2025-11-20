@@ -185,32 +185,56 @@ const DarkroomPage = () => {
 
   return (
     <div className="min-h-screen bg-black font-sans text-gray-300">
-      {/* TOP IMAGE AND HEADER */}
+      
       <main className="flex flex-col md:flex-row justify-center items-center px-8 py-16 relative">
-        <div className="relative flex flex-col justify-center items-center md:w-1/2">
-          <img
-            src={HERO_IMAGE}
-            alt="Darkroom Hero"
-            className="w-[330px] h-[300px] object-cover brightness-90 rounded-xl shadow-lg border border-cyan-600/60 neon-shadow"
-          />
-          <motion.div
-            initial={{ opacity: 0, y: -30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            className="absolute left-10 top-6 w-16 h-16 rounded-full bg-gradient-to-br from-fuchsia-600 to-cyan-600 filter blur-[2px] border border-cyan-600 shadow-2xl"
-          />
-          <div className="absolute right-16 top-28 w-12 h-12 bg-gradient-to-br from-blue-700 to-cyan-600 rotate-12 rounded-xl" />
-          <div className="absolute left-14 bottom-10 w-10 h-10 bg-gradient-to-tr from-fuchsia-700 to-cyan-500 rounded-full opacity-90" />
-        </div>
-        <div className="md:w-1/2 mt-12 md:mt-0 text-center md:text-center">
-          <h1 className="text-5xl font-bold neon-shadow text-cyan-400 mb-4 drop-shadow-xl tracking-wide uppercase">
-            DARKROOM
-          </h1>
-          <p className="text-lg text-cyan-300 mb-8 max-w-md mx-auto">
-            Showcase your photographic storytelling and visual creativity with the Darkroom events.
-          </p>
-        </div>
-      </main>
+
+  {/* BACK BUTTON */}
+  <button
+    onClick={() => window.history.back()}
+    className="absolute top-6 left-6 px-6 py-3 border border-cyan-500 text-cyan-400 
+               rounded-lg hover:bg-cyan-500 hover:text-black transition font-semibold text-lg"
+  >
+    ← Back
+  </button>
+
+  {/* LEFT SIDE - HERO IMAGE & SHAPES */}
+  <div className="relative flex flex-col justify-center items-center md:w-1/2">
+    <img
+      src={HERO_IMAGE}
+      alt="Darkroom Hero"
+      className="w-[330px] h-[300px] object-cover brightness-90 rounded-xl shadow-lg 
+                 border border-cyan-600/60 neon-shadow"
+    />
+
+    {/* Glow Elements */}
+    <motion.div
+      initial={{ opacity: 0, y: -30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.5, duration: 0.6 }}
+      className="absolute left-10 top-6 w-16 h-16 rounded-full 
+                 bg-gradient-to-br from-fuchsia-600 to-cyan-600 filter blur-[2px]
+                 border border-cyan-600 shadow-2xl"
+    />
+
+    <div className="absolute right-16 top-28 w-12 h-12 bg-gradient-to-br 
+                    from-blue-700 to-cyan-600 rotate-12 rounded-xl" />
+
+    <div className="absolute left-14 bottom-10 w-10 h-10 bg-gradient-to-tr 
+                    from-fuchsia-700 to-cyan-500 rounded-full opacity-90" />
+  </div>
+
+  {/* RIGHT SIDE - TEXT */}
+  <div className="md:w-1/2 mt-12 md:mt-0 text-center">
+    <h1 className="text-5xl font-bold neon-shadow text-cyan-400 mb-4 drop-shadow-xl tracking-wide uppercase">
+      DARKROOM
+    </h1>
+    <p className="text-lg text-cyan-300 mb-8 max-w-md mx-auto">
+      Showcase your photographic storytelling and visual creativity with the Darkroom events.
+    </p>
+  </div>
+  
+</main>
+
 
       {/* EVENTS GRID */}
       <div className="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 sm:grid-cols-2 gap-10">

@@ -168,35 +168,50 @@ const NirmaanData = {
   ],
 };
 
+
+
+
 const NirmaanPage = () => {
   const [selected, setSelected] = useState(null);
 
   return (
     <div className="relative min-h-screen bg-black font-sans text-gray-300">
-      {/* Responsive Background */}
+
+      {/* 🔙 Back Button */}
+      <button
+        onClick={() => window.history.back()}
+        className="absolute top-6 left-6 px-5 py-2 border border-cyan-500 
+                   text-cyan-400 rounded-lg hover:bg-cyan-500 hover:text-black 
+                   transition font-semibold z-50"
+      >
+        ← Back
+      </button>
+
+      {/* Background */}
       <div className="absolute inset-0 w-full h-full -z-10">
         <img
           src={AvishkarBgMobile}
           alt="Mobile Background"
           className="block sm:hidden w-full h-full object-cover"
-          style={{ position: "absolute", top: 0, left: 0 }}
         />
         <img
           src={AvishkarBG}
           alt="Desktop Background"
           className="hidden sm:block w-full h-full object-cover"
-          style={{ position: "absolute", top: 0, left: 0 }}
         />
       </div>
 
       {/* Header */}
       <main className="flex flex-col md:flex-row justify-center items-center px-8 py-16 relative">
         <div className="md:w-1/2 mt-12 md:mt-0 text-center md:text-left">
-          <h1 className="text-5xl font-bold neon-shadow text-cyan-400 mb-4 tracking-wide uppercase">
+          <h1 className="text-5xl font-bold text-cyan-400 mb-4 tracking-wide uppercase">
             {NirmaanData.eventName}
           </h1>
+
           {NirmaanData.tagline && (
-            <p className="text-lg text-cyan-300 mb-8 max-w-md">{NirmaanData.tagline}</p>
+            <p className="text-lg text-cyan-300 mb-8 max-w-md">
+              {NirmaanData.tagline}
+            </p>
           )}
         </div>
       </main>
@@ -206,23 +221,27 @@ const NirmaanPage = () => {
         {NirmaanData.events.map((event) => (
           <motion.div
             key={event.eventId}
-            initial={{ scale: 1, boxShadow: "0 0 10px rgba(0,0,0,0.2)" }}
+            initial={{ scale: 1 }}
             whileHover={{
               scale: 1.05,
-              boxShadow: "0 15px 30px rgba(0,255,255,0.4)",
-              transition: { duration: 0.3, ease: "easeInOut" },
+              transition: { duration: 0.25, ease: "easeInOut" },
             }}
-            whileTap={{ scale: 0.98 }}
-            className="relative p-6 border border-cyan-600 rounded-xl bg-black/90 backdrop-blur-md shadow-md cursor-pointer text-center select-none"
+            whileTap={{ scale: 0.97 }}
+            className="relative p-6 border border-cyan-600 rounded-xl 
+                       bg-black/90 backdrop-blur-md shadow-md cursor-pointer text-center"
             onClick={() => setSelected(event)}
           >
-            <h2 className="text-2xl font-bold neon-shadow text-cyan-400 mb-2">{event.eventName}</h2>
+            <h2 className="text-2xl font-bold text-cyan-400 mb-2">
+              {event.eventName}
+            </h2>
+
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 setSelected(event);
               }}
-              className="mt-4 py-2 w-full border border-cyan-400 rounded-lg bg-cyan-500 text-black font-semibold hover:bg-cyan-300 transition"
+              className="mt-4 py-2 w-full border border-cyan-400 rounded-lg 
+                         bg-cyan-500 text-black font-semibold hover:bg-cyan-300 transition"
             >
               Explore
             </button>
@@ -238,41 +257,65 @@ const NirmaanPage = () => {
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ duration: 0.45, ease: "easeOut" }}
-            className="fixed top-0 left-0 w-full h-full bg-black/80 backdrop-blur-md z-50 p-8 overflow-y-auto neon-shadow"
-            style={{ overscrollBehavior: "contain" }}
+            className="fixed top-0 left-0 w-full h-full bg-black/80 
+                       backdrop-blur-md z-50 p-8 overflow-y-auto"
           >
             <button
               onClick={() => setSelected(null)}
-              className="absolute top-6 right-10 text-4xl text-cyan-400 hover:text-cyan-600 font-bold focus:outline-none"
-              aria-label="Close Explore Panel"
+              className="absolute top-6 right-10 text-4xl text-cyan-400 
+                         hover:text-cyan-600 font-bold"
             >
               ✕
             </button>
-            <h2 className="text-4xl font-bold mt-4 neon-shadow text-cyan-400 mb-8 text-center">{selected.eventName}</h2>
+
+            <h2 className="text-4xl font-bold mt-4 text-cyan-400 mb-8 text-center">
+              {selected.eventName}
+            </h2>
+
             <section className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+              
+              {/* About */}
               <div>
-                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">About the Event</h3>
-                <p className="text-cyan-300 whitespace-pre-wrap">{selected.description}</p>
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">Rules</h3>
-                <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 max-h-[60vh] overflow-y-auto pr-4">
-                  {selected.rules.map((rule, i) => (
-                    <li key={i}>{rule}</li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">Coordinators</h3>
-                <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 text-center">
-                  {selected.coordinators.map((c, i) => (
-                    <li key={i}>{c.name} — {c.contact}</li>
-                  ))}
-                </ul>
-                <p className="mt-6 text-cyan-300 text-left">
-                  <strong>Team size:</strong> {selected.minTeamSize} - {selected.maxTeamSize}
+                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">
+                  About the Event
+                </h3>
+                <p className="text-cyan-300 whitespace-pre-wrap">
+                  {selected.description}
                 </p>
               </div>
+
+              {/* Rules */}
+              <div>
+                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">
+                  Rules
+                </h3>
+                <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 
+                               max-h-[60vh] overflow-y-auto pr-4">
+                  {selected.rules.map((rule, index) => (
+                    <li key={index}>{rule}</li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Coordinators */}
+              <div>
+                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">
+                  Coordinators
+                </h3>
+
+                <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 text-center">
+                  {selected.coordinators.map((c, index) => (
+                    <li key={index}>
+                      {c.name} — {c.contact}
+                    </li>
+                  ))}
+                </ul>
+
+                <p className="mt-6 text-cyan-300 text-left">
+                  <strong>Team size:</strong> {selected.minTeamSize} – {selected.maxTeamSize}
+                </p>
+              </div>
+
             </section>
           </motion.div>
         )}

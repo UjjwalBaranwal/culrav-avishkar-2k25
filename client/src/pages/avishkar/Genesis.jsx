@@ -121,6 +121,7 @@ const GenesisPage = () => {
 
   return (
     <div className="relative min-h-screen bg-black font-sans text-gray-300">
+
       {/* Responsive Background Images */}
       <div className="absolute inset-0 w-full h-full -z-10">
         <img
@@ -137,6 +138,16 @@ const GenesisPage = () => {
 
       {/* Header Section */}
       <main className="flex flex-col md:flex-row justify-center items-center px-8 py-16 relative">
+
+        {/* 🔥 BACK BUTTON ADDED HERE */}
+        <button
+          onClick={() => window.history.back()}
+          className="absolute top-6 left-6 px-5 py-2 border border-cyan-500 text-cyan-400 rounded-lg 
+                     hover:bg-cyan-500 hover:text-black transition font-semibold z-50"
+        >
+          ← Back
+        </button>
+
         <div className="relative flex justify-center md:w-1/2">
           <img
             src={GenesisData.BGImageLink}
@@ -144,12 +155,16 @@ const GenesisPage = () => {
             className="w-[330px] h-[300px] object-cover brightness-90 rounded-xl shadow-lg border border-cyan-600/60 neon-shadow"
           />
         </div>
+
         <div className="md:w-1/2 mt-12 md:mt-0 text-center md:text-left">
           <h1 className="text-5xl font-bold neon-shadow text-cyan-400 mb-4 drop-shadow-xl tracking-wide uppercase">
             {GenesisData.eventName}
           </h1>
+
           {GenesisData.tagline && (
-            <p className="text-lg text-cyan-300 mb-8 max-w-md">{GenesisData.tagline}</p>
+            <p className="text-lg text-cyan-300 mb-8 max-w-md">
+              {GenesisData.tagline}
+            </p>
           )}
         </div>
       </main>
@@ -169,7 +184,10 @@ const GenesisPage = () => {
             className="relative cyber-card p-6 border border-cyan-600 rounded-xl bg-black/90 backdrop-blur-md shadow-md cursor-pointer text-center select-none"
             onClick={() => setSelected(event)}
           >
-            <h2 className="text-2xl font-bold neon-shadow text-cyan-400 mb-2">{event.eventName}</h2>
+            <h2 className="text-2xl font-bold neon-shadow text-cyan-400 mb-2">
+              {event.eventName}
+            </h2>
+
             <button
               onClick={(e) => {
                 e.stopPropagation();
@@ -191,7 +209,8 @@ const GenesisPage = () => {
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ duration: 0.45, ease: "easeOut" }}
-            className="fixed top-0 left-0 w-full h-full bg-black/95 backdrop-blur-xl border-t border-cyan-600/50 z-50 p-8 overflow-y-auto neon-shadow"
+            className="fixed top-0 left-0 w-full h-full bg-black/95 backdrop-blur-xl border-t border-cyan-600/50 
+                       z-50 p-8 overflow-y-auto neon-shadow"
             style={{ overflowX: "hidden", overscrollBehavior: "contain" }}
           >
             <button
@@ -201,12 +220,22 @@ const GenesisPage = () => {
             >
               ✕
             </button>
-            <h2 className="text-4xl font-bold mt-4 neon-shadow text-cyan-400 mb-8 text-center">{selected.eventName}</h2>
+
+            <h2 className="text-4xl font-bold mt-4 neon-shadow text-cyan-400 mb-8 text-center">
+              {selected.eventName}
+            </h2>
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+
+              {/* About Section */}
               <section>
                 <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">About the Event</h3>
-                <p className="text-cyan-300 px-4 whitespace-pre-wrap break-words">{selected.description}</p>
+                <p className="text-cyan-300 px-4 whitespace-pre-wrap break-words">
+                  {selected.description}
+                </p>
               </section>
+
+              {/* Rules Section */}
               <section>
                 <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">Rules</h3>
                 <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 max-h-[60vh] overflow-y-auto pr-4">
@@ -215,6 +244,8 @@ const GenesisPage = () => {
                   ))}
                 </ul>
               </section>
+
+              {/* Coordinators Section */}
               <section>
                 <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">Coordinators</h3>
                 <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 text-center">
@@ -222,10 +253,16 @@ const GenesisPage = () => {
                     <li key={i}>{c.name} — {c.contact}</li>
                   ))}
                 </ul>
+
                 <div className="mt-6 text-left">
-                  <p className="text-cyan-300"><strong>Team Size: </strong>{selected.minTeamSize} - {selected.maxTeamSize}</p>
+                  <p className="text-cyan-300">
+                    <strong>Team Size: </strong>
+                    {selected.minTeamSize} - {selected.maxTeamSize}
+                  </p>
                 </div>
+
               </section>
+
             </div>
           </motion.div>
         )}
@@ -235,4 +272,3 @@ const GenesisPage = () => {
 };
 
 export default GenesisPage;
-``
