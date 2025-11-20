@@ -111,10 +111,6 @@ const Login = () => {
                   placeholder="College mail id"
                   {...registerRegister("email", {
                     required: "Email is required",
-                    pattern: {
-                      value: /^[^\s@]+@(mnnit|iitk|iiitp)\.ac\.in$/,
-                      message: "Enter a valid Gsuit email",
-                    },
                   })}
                   className="p-2.5 rounded-md bg-gray-100 text-black outline-none"
                 />
@@ -235,10 +231,6 @@ const Login = () => {
                   placeholder="Enter your college mail id"
                   {...registerLogin("email", {
                     required: "Email is required",
-                    pattern: {
-                      value: /^[^\s@]+@(mnnit|iitk|iiitp)\.ac\.in$/,
-                      message: "Enter a valid email",
-                    },
                   })}
                   className="p-2.5 rounded-md bg-gray-100 text-black outline-none"
                 />

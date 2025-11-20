@@ -13,7 +13,7 @@ export default function TeamDetail() {
   const navigate = useNavigate();
 
   const [invitee, setInvitee] = useState("");
-  const regex = /^[^\s@]+@(mnnit|iitk|iiitp)\.ac\.in$/;
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const queryClient = useQueryClient();
 
