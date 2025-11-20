@@ -8,7 +8,7 @@ import { toast } from "sonner";
 
 const Login = () => {
   const [flip, setFlip] = useState(false);
-  const [view, setView] = useState("register");
+  const [view, setView] = useState("login");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -111,10 +111,6 @@ const Login = () => {
                   placeholder="College mail id"
                   {...registerRegister("email", {
                     required: "Email is required",
-                    pattern: {
-                      value: /^[^\s@]+@(mnnit|iitk|iiitp)\.ac\.in$/,
-                      message: "Enter a valid Gsuit email",
-                    },
                   })}
                   className="p-2.5 rounded-md bg-gray-100 text-black outline-none"
                 />
@@ -235,10 +231,6 @@ const Login = () => {
                   placeholder="Enter your college mail id"
                   {...registerLogin("email", {
                     required: "Email is required",
-                    pattern: {
-                      value: /^[^\s@]+@(mnnit|iitk|iiitp)\.ac\.in$/,
-                      message: "Enter a valid email",
-                    },
                   })}
                   className="p-2.5 rounded-md bg-gray-100 text-black outline-none"
                 />

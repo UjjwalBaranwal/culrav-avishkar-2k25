@@ -13,7 +13,7 @@ export default function TeamDetail() {
   const navigate = useNavigate();
 
   const [invitee, setInvitee] = useState("");
-  const regex = /^[^\s@]+@(mnnit|iitk|iiitp)\.ac\.in$/;
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const queryClient = useQueryClient();
 
@@ -25,8 +25,12 @@ export default function TeamDetail() {
       toast.success("Invite sent!");
     } catch (e) {
       console.error(e);
-      toast.error("Error sending invite!");
+      toast.error(e.message);
     }
+  };
+
+  const onKick = () => {
+    queryClient.invalidateQueries({ queryKey: ["team", teamId] });
   };
 
   const {
@@ -224,7 +228,11 @@ export default function TeamDetail() {
                 {Array.isArray(team.members) && team.members.length > 0 ? (
                   team.members.map((member) => (
                     <motion.div key={member.id} variants={listItemVariants}>
-                      <MemberCard member={member} />
+                      <MemberCard
+                        member={member}
+                        onKick={onKick}
+                        teamId={teamId}
+                      />
                     </motion.div>
                   ))
                 ) : (

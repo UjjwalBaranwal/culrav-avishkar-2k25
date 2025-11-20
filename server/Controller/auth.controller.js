@@ -42,13 +42,6 @@ exports.signUp = catchAsync(async (req, res, next) => {
 
   const domain = email.split("@")[1];
 
-  //checking if the domain is allowed or not
-  if (!allowedCollege.includes(domain)) {
-    return next(
-      new AppError("please signup using your collge id", 400, "BAD_REQUEST"),
-    );
-  }
-
   const existingUser = await User.findOne({ email });
   if (existingUser) {
     return next(
