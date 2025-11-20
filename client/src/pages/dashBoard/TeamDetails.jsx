@@ -29,6 +29,10 @@ export default function TeamDetail() {
     }
   };
 
+  const onKick = () => {
+    queryClient.invalidateQueries({ queryKey: ["team", teamId] });
+  };
+
   const {
     data: team,
     isLoading,
@@ -224,7 +228,11 @@ export default function TeamDetail() {
                 {Array.isArray(team.members) && team.members.length > 0 ? (
                   team.members.map((member) => (
                     <motion.div key={member.id} variants={listItemVariants}>
-                      <MemberCard member={member} />
+                      <MemberCard
+                        member={member}
+                        onKick={onKick}
+                        teamId={teamId}
+                      />
                     </motion.div>
                   ))
                 ) : (

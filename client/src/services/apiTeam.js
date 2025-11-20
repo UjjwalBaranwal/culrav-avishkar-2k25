@@ -53,3 +53,11 @@ export const leaveTeam = catchAsync(async (teamId) => {
   const { data } = await apiClient.post(`${baseUrl}/leaveTeam`, { teamId });
   return data;
 });
+
+export const kickMember = catchAsync(async (teamId, userTobeKickedId) => {
+  const { data } = await apiClient.post(`${baseUrl}/kickMember`, {
+    teamId,
+    userTobeKickedId,
+  });
+  return data;
+});
