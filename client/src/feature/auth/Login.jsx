@@ -8,7 +8,7 @@ import { toast } from "sonner";
 
 const Login = () => {
   const [flip, setFlip] = useState(false);
-  const [view, setView] = useState("register");
+  const [view, setView] = useState("login");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
