@@ -574,19 +574,12 @@ exports.rejectInvite = catchAsync(async (req, res, next) => {
   }
 });
 exports.leaveTeam = catchAsync(async (req, res, next) => {
-  const { userId, teamId } = req.body;
-
+  const { teamId } = req.body;
+  const userId = req.user._id;
   if (!teamId) {
     return res.status(400).json({
       success: false,
       message: "teamId missing, can't leave this team",
-    });
-  }
-
-  if (!userId) {
-    return res.status(400).json({
-      success: false,
-      message: "userId missing, can't leave this team",
     });
   }
 

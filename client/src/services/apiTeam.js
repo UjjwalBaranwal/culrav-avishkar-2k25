@@ -48,3 +48,8 @@ export const rejectInvitation = catchAsync(async (teamId) => {
   });
   return data;
 });
+
+export const leaveTeam = catchAsync(async (teamId) => {
+  const { data } = await apiClient.post(`${baseUrl}/leaveTeam`, { teamId });
+  return data;
+});
