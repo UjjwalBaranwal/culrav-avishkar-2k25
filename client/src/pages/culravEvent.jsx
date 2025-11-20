@@ -2,17 +2,46 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import Card from "../components/General/CardEvent";
 
-
 const CulravEvent = () => {
   const cardsRef = useRef([]);
 
   const events = [
-    { name: "ANUNAAD", image: "/dummy.png", description: "Battle of beats and rhythm.Battle of beats and rhythm.Battle of beats and rhythm.Battle of beats and rhythm.Battle of beats and rhythm.Battle of beats and rhythm.Battle of beats and rhythm.Battle of beats and rhythm.Battle of beats and rhythm." },
-    { name: "DARKROOM", image: "/dummy.png", description: "Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await." },
-    { name: "RANGMANCH", image: "/dummy.png", description: "Drama that speaks beyond words.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await." },
-    { name: "LITMUSE", image: "/dummy.png", description: "Where literature meets art.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await." },
-    { name: "RANGSAZZI", image: "/dummy.png", description: "Colors of creativity and imagination.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await." },
-    { name: "SPANDAN", image: "/dummy.png", description: "Dance to the pulse of your soul.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await." },
+    {
+      name: "ANUNAAD",
+      image: "/dummy.png",
+      description:
+        "Battle of beats and rhythm.Battle of beats and rhythm.Battle of beats and rhythm.Battle of beats and rhythm.Battle of beats and rhythm.Battle of beats and rhythm.Battle of beats and rhythm.Battle of beats and rhythm.Battle of beats and rhythm.",
+    },
+    {
+      name: "DARKROOM",
+      image: "/dummy.png",
+      description:
+        "Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.",
+    },
+    {
+      name: "RANGMANCH",
+      image: "/dummy.png",
+      description:
+        "Drama that speaks beyond words.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.",
+    },
+    {
+      name: "LITMUSE",
+      image: "/dummy.png",
+      description:
+        "Where literature meets art.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.",
+    },
+    {
+      name: "RANGSAZZI",
+      image: "/dummy.png",
+      description:
+        "Colors of creativity and imagination.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.",
+    },
+    {
+      name: "SPANDAN",
+      image: "/dummy.png",
+      description:
+        "Dance to the pulse of your soul.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.Mystery and thrill await.",
+    },
   ];
   useEffect(() => {
     cardsRef.current.forEach((card) => {
@@ -21,8 +50,8 @@ const CulravEvent = () => {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        const rotateY = ((x / rect.width) - 0.5) * 15;
-        const rotateX = ((y / rect.height) - 0.5) * -15;
+        const rotateY = (x / rect.width - 0.5) * 15;
+        const rotateX = (y / rect.height - 0.5) * -15;
 
         gsap.to(card, {
           rotateY,
@@ -87,6 +116,7 @@ const CulravEvent = () => {
           backgroundSize: "400% 400%",
           WebkitBackgroundClip: "text",
           animation: "gradientFlow 5s ease infinite",
+          fontFamily: "Playwrite HU",
         }}
       >
         EVENTS
