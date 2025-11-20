@@ -6,7 +6,6 @@ import { TeamPage } from "./pages/TeamPage";
 import { Toaster } from "sonner";
 // Implementing the lazy loading
 import Navbar from "./components/General/Navbar";
-import Schedule from "./pages/Schedule";
 import ConfirmEmail from "./feature/auth/ConfirmEmail";
 import ResetPassword from "./feature/auth/ResetPassword";
 import { useDispatch } from "react-redux";
@@ -25,7 +24,7 @@ const MyTeams = lazy(() => import("./pages/dashBoard/MyTeams"));
 const CreateTeam = lazy(() => import("./pages/dashBoard/CreateTeam"));
 const ViewInvitation = lazy(() => import("./pages/dashBoard/ViewInvitation"));
 const Logout = lazy(() => import("./pages/dashBoard/Logout"));
-const Sponsers = lazy(() => import("../src/components/Sponsers/Sponsers.jsx"));
+const Sponsers = lazy(() => import("../src/components/Sponsers/Soonser_2.jsx"));
 const AvishkarEvents = lazy(() => import("./pages/AvishkarAllEvent"));
 
 function App() {
@@ -55,7 +54,6 @@ function App() {
               <Route path="logout" element={<Logout />} />
             </Route>
 
-            <Route path="/schedule" element={<Schedule />} />
             <Route path="/sponsors" element={<Sponsers />} />
             <Route path="/avishkar" element={<AvishkarEvents />} />
             <Route path="/login" element={<Login />} />
