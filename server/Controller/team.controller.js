@@ -5,8 +5,6 @@ const User = require("../Model/user.model");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 
-
-
 exports.teamDetail = catchAsync(async (req, res, next) => {
   // console.log("Inside teamDetail controller");
   // console.log("Request body:", req);
@@ -39,10 +37,11 @@ exports.teamDetail = catchAsync(async (req, res, next) => {
       pending: team.pendingMembers?.length || 0,
     },
 
-    events: team.registeredEvents?.map((ev) => ({
-      id: ev._id,
-      name: ev.eventName,
-    })) || [],
+    events:
+      team.registeredEvents?.map((ev) => ({
+        id: ev._id,
+        name: ev.eventName,
+      })) || [],
 
     members: [
       ...team.acceptedMembers.map((m) => ({
@@ -52,12 +51,8 @@ exports.teamDetail = catchAsync(async (req, res, next) => {
     ],
   };
   // console.log("Formatted team detail:", formatted);
-  res.status(200).json({
-    success: true,
-    team: formatted,
-  });
+  res.status(200).json(formatted);
 });
-
 
 exports.createTeam = catchAsync(async (req, res, next) => {
   const { teamName, size } = req.body;

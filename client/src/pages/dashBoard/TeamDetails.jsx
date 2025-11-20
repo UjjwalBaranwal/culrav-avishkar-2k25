@@ -1,68 +1,24 @@
-import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { useParams, useNavigate } from "react-router-dom";
 import EventCard from "../../components/General/EventCard";
 import MemberCard from "../../components/General/MemberCard";
 import { teamDetail } from "../../services/apiTeam";
+import { useQuery } from "@tanstack/react-query";
 
 export default function TeamDetail() {
   const { teamId } = useParams();
   const navigate = useNavigate();
 
-  const [team, setTeam] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [loadError, setLoadError] = useState(null);
-
-  useEffect(() => {
-    if (!teamId) {
-      setLoadError("Missing team id.");
-      setIsLoading(false);
-      return;
-    }
-
-    const controller = new AbortController();
-    const signal = controller.signal;
-
-    async function fetchTeam() {
-      setIsLoading(true);
-      setLoadError(null);
-
-      try {
-        // Adjust the endpoint if your API path differs.
-        // console.log("Fetching team details for ID:", teamId);
-        const res = await teamDetail(teamId);
-        if (!res.success) {
-          const text = await res.text();
-          throw new Error(`Server responded ${res.status}: ${text}`);
-        }
-
-        // Expecting: { success: true, team: { ... } }
-        if (res.success && res.team) {
-          setTeam(res.team);
-        } else if (res.team) {
-          // tolerant fallback
-          setTeam(res.team);
-        } else {
-          throw new Error(res.message || "Invalid response from server");
-        }
-      } catch (err) {
-        if (err.name === "AbortError") {
-          // request was cancelled — do nothing
-          return;
-        }
-        console.error("Failed to load team detail:", err);
-        setLoadError(err.message || "Failed to load team");
-        setTeam(null);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    fetchTeam();
-
-    return () => controller.abort();
-  }, [teamId]);
+  const {
+    data: team,
+    isLoading,
+    error: loadError,
+  } = useQuery({
+    queryKey: ["team", teamId],
+    queryFn: () => teamDetail(teamId),
+    enabled: !!teamId,
+  });
 
   // Animation Variants
   const listContainerVariants = {
@@ -113,8 +69,10 @@ export default function TeamDetail() {
             >
               <ArrowLeft className="w-4 h-4" /> Back
             </button>
-            <h1 className="text-2xl font-bold text-white mb-4">Unable to load team</h1>
-            <p className="text-gray-400 mb-6">Error: {loadError}</p>
+            <h1 className="text-2xl font-bold text-white mb-4">
+              Unable to load team
+            </h1>
+            <p className="text-gray-400 mb-6">Error: {loadError.message}</p>
           </div>
         </div>
       </div>
@@ -133,7 +91,9 @@ export default function TeamDetail() {
             >
               <ArrowLeft className="w-4 h-4" /> Back
             </button>
-            <h1 className="text-2xl font-bold text-white mb-4">Team not found</h1>
+            <h1 className="text-2xl font-bold text-white mb-4">
+              Team not found
+            </h1>
           </div>
         </div>
       </div>
@@ -179,15 +139,21 @@ export default function TeamDetail() {
               <div className="space-y-2">
                 <div className="flex justify-between">
                   <span className="text-gray-400">Team size:</span>
-                  <span className="font-medium text-white">{team.stats?.size ?? "-"}</span>
+                  <span className="font-medium text-white">
+                    {team.stats?.size ?? "-"}
+                  </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-400">Accepted Members:</span>
-                  <span className="font-medium text-white">{team.stats?.accepted ?? 0}</span>
+                  <span className="font-medium text-white">
+                    {team.stats?.accepted ?? 0}
+                  </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-400">Pending Invites:</span>
-                  <span className="font-medium text-white">{team.stats?.pending ?? 0}</span>
+                  <span className="font-medium text-white">
+                    {team.stats?.pending ?? 0}
+                  </span>
                 </div>
               </div>
             </div>
@@ -197,7 +163,9 @@ export default function TeamDetail() {
           <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Participated Events */}
             <div className="flex flex-col min-h-0">
-              <h3 className="font-semibold text-lg text-green-400 mb-4 flex-shrink-0">Participated Events</h3>
+              <h3 className="font-semibold text-lg text-green-400 mb-4 flex-shrink-0">
+                Participated Events
+              </h3>
               <motion.div
                 className="bg-gray-800 p-4 rounded-lg border border-gray-700 space-y-3 overflow-y-auto flex-1"
                 variants={listContainerVariants}
@@ -211,14 +179,18 @@ export default function TeamDetail() {
                     </motion.div>
                   ))
                 ) : (
-                  <p className="text-gray-400 text-center py-6">No events registered.</p>
+                  <p className="text-gray-400 text-center py-6">
+                    No events registered.
+                  </p>
                 )}
               </motion.div>
             </div>
 
             {/* Team Members */}
             <div className="flex flex-col min-h-0">
-              <h3 className="font-semibold text-lg text-cyan-400 mb-4 flex-shrink-0">Team members</h3>
+              <h3 className="font-semibold text-lg text-cyan-400 mb-4 flex-shrink-0">
+                Team members
+              </h3>
               <motion.div
                 className="bg-gray-800 p-4 rounded-lg border border-gray-700 space-y-3 overflow-y-auto flex-1"
                 variants={listContainerVariants}
@@ -232,7 +204,9 @@ export default function TeamDetail() {
                     </motion.div>
                   ))
                 ) : (
-                  <p className="text-gray-400 text-center py-6">No members found.</p>
+                  <p className="text-gray-400 text-center py-6">
+                    No members found.
+                  </p>
                 )}
               </motion.div>
             </div>
