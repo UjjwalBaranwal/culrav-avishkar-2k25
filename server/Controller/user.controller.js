@@ -1,6 +1,7 @@
 const AppError = require("../utils/appError");
 const User = require("../Model/user.model");
 const catchAsync = require("../utils/catchAsync");
+const Team = require("../Model/team.model");
 
 exports.getMe = catchAsync(async (req, res, next) => {
   const user = await User.findById(req.user.id).select("-password");
@@ -73,4 +74,14 @@ exports.updateUser = catchAsync(async (req, res, next) => {
   if (!updatedUser)
     return next(new AppError("user not found", 404, "USER_NOT_FOUND"));
   res.json({ message: "User updated successfully", user: updatedUser });
+});
+
+exports.getUserInvites = catchAsync(async (req, res, next) => {
+  const user = req.user;
+  const teams = await Team.find({
+    _id: { $in: user.pendingTeam },
+  })
+    .lean()
+    .select("_id teamName");
+  res.status(200).json(teams);
 });
