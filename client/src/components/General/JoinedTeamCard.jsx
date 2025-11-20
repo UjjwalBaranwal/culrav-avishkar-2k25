@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { leaveTeam } from "../../services/apiTeam";
 import { toast } from "sonner";
 
-export default function JoinedTeamCard({ team, onSelect, onDelete }) {
+export default function JoinedTeamCard({ team, onDelete }) {
   const teamId = team.id ?? team._id;
   const [showConfirm, setShowConfirm] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -49,13 +49,9 @@ export default function JoinedTeamCard({ team, onSelect, onDelete }) {
   return (
     <>
       <div
-        onClick={() => onSelect && onSelect()}
         className="flex items-center justify-between bg-blue-50 border border-blue-200 p-4 rounded-md shadow-sm cursor-pointer"
         role="button"
         tabIndex={0}
-        onKeyDown={(e) =>
-          (e.key === "Enter" || e.key === " ") && onSelect && onSelect()
-        }
       >
         <div className="font-semibold text-lg text-blue-800 hover:text-blue-600 transition-colors flex-1 text-left">
           {team.name}

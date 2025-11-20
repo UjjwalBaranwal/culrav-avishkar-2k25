@@ -94,9 +94,6 @@ export default function MyTeams() {
                   <JoinedTeamCard
                     team={team}
                     onDelete={handleRemoveJoinedTeam}
-                    onSelect={() => {
-                      navigate(`/dashboard/my-teams/${team.id ?? team._id}`);
-                    }}
                   />
                 </motion.div>
               ))
