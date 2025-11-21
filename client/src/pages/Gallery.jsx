@@ -1,8 +1,18 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import Card from '../components/gallery/card';
 import Modal from '../components/gallery/Modal';
-import { ImageIcon } from "lucide-react";
+import galleryImg1 from '../assets/gallery/galleryImg1.jpg';
+import galleryImg2 from '../assets/gallery/galleryImg2.jpg';
+import galleryImg3 from '../assets/gallery/galleryImg3.jpg';
+import galleryImg4 from '../assets/gallery/galleryImg4.jpg';
+import galleryImg5 from '../assets/gallery/galleryImg5.jpg';
+import galleryImg6 from '../assets/gallery/galleryImg6.jpg';
+import galleryImg7 from '../assets/gallery/galleryImg7.jpg';
+import galleryImg8 from '../assets/gallery/galleryImg8.jpg';
+import galleryImg9 from '../assets/gallery/galleryImg9.jpg';
+import galleryImg10 from '../assets/gallery/galleryImg10.jpg';
+import galleryImg11 from '../assets/gallery/galleryImg11.jpg';
 
 
 const Gallery = () => {
@@ -10,96 +20,121 @@ const Gallery = () => {
     const GALLERY_ITEMS = [
         {
             id: 1,
-            giphyId: 'u04b3W02LMnV6', 
+            staticSrc: galleryImg2, 
+            gifSrc: null, 
             title: 'Neon Rain',
-            size: 'md:col-span-2 md:row-span-2',
+            size: 'md:col-span-2 md:row-span-1 col-span-1 row-span-1', 
+            aspectRatio: 'aspect-[2/1]',
             color: 'bg-grey-300',
-            initialX: -800, initialY: -800 // Flies in from Top-Left
+            initialX: -800, initialY: -800
+        },
+        {
+            id: 13,
+            staticSrc: galleryImg11,
+            gifSrc: 'https://i.giphy.com/media/L0JwN6UvW2SZO/giphy.gif',
+            title: 'Dreamy 13',
+            size: 'md:col-span-2 md:row-span-1 col-span-1 row-span-1',
+            aspectRatio: 'aspect-[2/1]',
+            color: 'bg-grey-300',
+            initialX: 0, initialY: 900
         },
         {
             id: 2,
-            giphyId: '11jt18x5lCCjKM', 
+            staticSrc: galleryImg1,
+            gifSrc: 'https://i.giphy.com/media/11jt18x5lCCjKM/giphy.gif',
             title: 'Pixel Sunset',
-            // Standard block
-            size: 'col-span-1 row-span-1',
+            size: 'col-span-1 row-span-1 md:row-span-2', 
+            aspectRatio: 'aspect-[1/2]',
             color: 'bg-grey-300',
-            initialX: 0, initialY: -1000 // Flies in from Top
+            initialX: 0, initialY: -1000
         },
         {
             id: 3,
-            giphyId: '3o7aD2saalBwwftBIY', 
+            staticSrc: galleryImg3,
+            gifSrc: 'https://i.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif',
             title: 'Abstract Flow',
-            // Tall vertical skyscraper
-            size: 'col-span-1 md:row-span-2',
+            size: 'md:col-span-2 md:row-span-2 col-span-1 row-span-1', 
+            aspectRatio: 'aspect-square',
             color: 'bg-grey-300',
-            initialX: 800, initialY: -800 // Flies in from Top-Right
+            initialX: 800, initialY: -800
         },
         {
             id: 4,
-            giphyId: 'l41lI4bYmcsPJX9Go', 
+            staticSrc: galleryImg4,
+            gifSrc: 'https://i.giphy.com/media/l41lI4bYmcsPJX9Go/giphy.gif',
             title: 'Retro Vibes',
-            size: 'col-span-1 row-span-1',
+            size: 'col-span-1 row-span-1 md:row-span-2', 
+            aspectRatio: 'aspect-[1/2]',
             color: 'bg-grey-300',
-            initialX: -1000, initialY: 0 // Flies in from Left
+            initialX: -1000, initialY: 0
         },
         {
             id: 5,
-            giphyId: 'JWt9bLrBuM1p6fR9p6', 
+            staticSrc: galleryImg5,
+            gifSrc: 'https://i.giphy.com/media/JWt9bLrBuM1p6fR9p6/giphy.gif',
             title: 'System Error',
-            // Wide horizontal banner
-            size: 'md:col-span-2 row-span-1',
+            size: 'col-span-1 row-span-1 md:row-span-2', 
+            aspectRatio: 'aspect-[1/2]',
             color: 'bg-grey-300',
-            initialX: 1000, initialY: 0 // Flies in from Right
+            initialX: 1000, initialY: 0
         },
         {
             id: 6,
-            giphyId: 'xT9IgN8YKZh0JObIQU', 
+            staticSrc: galleryImg6,
+            gifSrc: 'https://i.giphy.com/media/xT9IgN8YKZh0JObIQU/giphy.gif',
             title: 'Geometry',
-            size: 'col-span-1 row-span-1',
+            size: 'md:col-span-2 md:row-span-2 col-span-1 row-span-1', 
+            aspectRatio: 'aspect-square',
             color: 'bg-grey-300',
-            initialX: -800, initialY: 800 // Flies in from Bottom-Left
+            initialX: -800, initialY: 800
         },
         {
             id: 7,
-            giphyId: 'BHNpk97Fp0eMnvyyBv', 
+            staticSrc: galleryImg7,
+            gifSrc: 'https://i.giphy.com/media/BHNpk97Fp0eMnvyyBv/giphy.gif',
             title: 'Night City',
-            size: 'md:col-span-2 md:row-span-2',
+            size: 'col-span-1 row-span-1', 
+            aspectRatio: 'aspect-square',
             color: 'bg-grey-300',
-            initialX: 0, initialY: 1000 // Flies in from Bottom
-        },
-        {
-            id: 8,
-            giphyId: '3o7TksjRzpUTAF7SuY', 
-            title: 'Deep Space',
-            size: 'col-span-1 row-span-1',
-            color: 'bg-grey-300',
-            initialX: 800, initialY: 800 // Flies in from Bottom-Right
+            initialX: 0, initialY: 1000
         },
         {
             id: 9,
-            giphyId: 'L0JwN6UvW2SZO', 
-            title: 'Dreamy',
-            // Wide footer block
-            size: 'md:col-span-2 row-span-1',
+            staticSrc: galleryImg8,
+            gifSrc: 'https://i.giphy.com/media/L0JwN6UvW2SZO/giphy.gif',
+            title: 'Dreamy 9',
+            size: 'md:col-span-1 md:row-span-1 col-span-1 row-span-1', 
+            aspectRatio: 'aspect-square', 
             color: 'bg-grey-300',
-            initialX: 0, initialY: 1200 // Flies in from far Bottom
+            initialX: 0, initialY: 1200
         },
         {
-            id: 10,
-            giphyId: 'L0JwN6UvW2SZO', 
-            title: 'Dreamy',
-            // Wide footer block
-            size: 'md:col-span-2 row-span-1',
+            id: 11,
+            staticSrc: galleryImg9,
+            gifSrc: 'https://i.giphy.com/media/L0JwN6UvW2SZO/giphy.gif',
+            title: 'Dreamy 11',
+            size: 'md:col-span-2 md:row-span-2 col-span-1 row-span-1',
+            aspectRatio: 'aspect-square', 
             color: 'bg-grey-300',
-            initialX: 0, initialY: 1000 // Flies in from far Bottom
+            initialX: 0, initialY: 1100
         },
+        {
+            id: 12,
+            staticSrc: galleryImg10,
+            gifSrc: 'https://i.giphy.com/media/L0JwN6UvW2SZO/giphy.gif',
+            title: 'Dreamy 12',
+            size: 'md:col-span-2 md:row-span-2 col-span-1 row-span-1',
+            aspectRatio: 'aspect-square',
+            color: 'bg-grey-300',
+            initialX: 0, initialY: 900
+        }
     ];
 
     return (
         <div className="min-h-screen pt-6 m-auto bg-black text-white">
 
-            <main className="max-w-[1600px] mx-auto px-4 md:px-6 pb-24">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[200px] grid-flow-dense">
+            <main className="max-w-[1600px] mx-auto px-4 md:px-6 pb-7">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:grid-flow-dense">
                     {GALLERY_ITEMS.map((item, index) => (
                         <Card
                             key={item.id}
@@ -230,7 +265,7 @@ export default Gallery;
 //                         >
 //                             {/* Giphy embed */}
 //                             <img
-//                                 src={`https://media.giphy.com/media/${item.giphyId}/giphy.gif`}
+//                                 Src={`https://media.giphy.com/media/${item.giphyId}/giphy.gif`}
 //                                 alt={item.title}
 //                                 className="w-full h-full object-cover"
 //                             />

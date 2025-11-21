@@ -5,18 +5,17 @@ import { X } from 'lucide-react';
 const Modal = ({ item, onClose }) => {
     if (!item) return null;
 
-    const gifSrc = `https://media.giphy.com/media/${item.giphyId}/giphy.gif`;
+    const gifSrc = item.staticSrc;
 
     return (
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/95 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-transparent backdrop-blur-sm"
             onClick={onClose}
         >
             <motion.div
-                layoutId={`card-${item.id}`}
                 className="relative w-full max-w-6xl bg-gray-900 rounded-xl overflow-hidden shadow-2xl border border-white/10"
                 onClick={(e) => e.stopPropagation()}
             >
@@ -27,8 +26,8 @@ const Modal = ({ item, onClose }) => {
                     <X className="w-6 h-6" />
                 </button>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 h-full max-h-[85vh]">
-                    <div className="h-[50vh] md:h-full relative bg-black flex items-center justify-center overflow-hidden">
+                <div className="grid grid-cols-1 md:grid-cols-2 h-full max-h-[85vh] ">
+                    <div className="h-[50vh] md:h-full relative bg-black flex items-center justify-center overflow-hidden ">
                         <img
                             src={gifSrc}
                             alt={item.title}
