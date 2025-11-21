@@ -207,3 +207,12 @@
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* index.css */
+.bg-team {
+  background-image: url('/src/assets/bg-team.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* nice scrolling effect */
+}
