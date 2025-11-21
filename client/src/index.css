@@ -155,3 +155,55 @@
     @apply bg-background text-foreground;
   }
 }
+
+.neon-text {
+  color: #00f7ff;
+  text-shadow: 0 0 10px #00f7ff, 0 0 20px #00f7ff;
+}
+
+.neon-thin {
+  color: #7dfcff;
+  text-shadow: 0 0 6px #00f7ff60;
+}
+
+.neon-btn {
+  box-shadow: 0 0 12px #00eaff60;
+}
+
+.cyber-card {
+  position: relative;
+  border-radius: 16px;
+}
+.cyber-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(0, 255, 255, 0.15);
+  clip-path: polygon(
+    0 8px,
+    8px 0,
+    calc(100% - 8px) 0,
+    100% 8px,
+    100% calc(100% - 8px),
+    calc(100% - 8px) 100%,
+    8px 100%,
+    0 calc(100% - 8px)
+  );
+  pointer-events: none;
+}
+
+.cyber-panel {
+  box-shadow: 0 -4px 25px rgba(0, 255, 255, 0.2);
+}
+.scrollbar-hide {
+  /* For IE and Edge */
+  -ms-overflow-style: none;
+  /* For Firefox */
+  scrollbar-width: none;
+}
+
+/* For Chrome, Safari, and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

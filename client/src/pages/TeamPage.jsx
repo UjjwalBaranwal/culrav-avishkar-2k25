@@ -4,6 +4,7 @@ import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import CardTeam from "../components/General/CardTeam";
+//import AmandeepSingh from "../assets/fs_and_leads/AmandeepSingh"
 
 export function TeamPage() {
     const teamData = [
@@ -11,29 +12,29 @@ export function TeamPage() {
             id: "fs",
             name: "Festival Secretary",
             members: [
-                { name: "Shreya Rakesh", reg: "20223546", driveUrl: "https://drive.google.com/uc?export=view&id=1fDdFp2HKxbXK11R0J_LE6bP00uRg6HKV" },
+                { name: "Aditya Singh", reg: null, driveUrl: null },
+                { name: "Amandeep Singh", reg: "20223033", driveUrl: "https://drive.google.com/uc?export=view&id=1QWceqOMOEJyO_g1CO6_t_WXIDWizipzr" },
+                { name: "Ansh Bhatnagar", reg: null, driveUrl: null },
+                { name: "Appani Chidvilas Varma", reg: "20225027", driveUrl: "https://drive.google.com/uc?export=view&id=19kVyWAv4PRhiVn8YUQUNg7vmvB6GgCsT" },
+                { name: "Aritra Mahara", reg: null, driveUrl: null },
+                { name: "Ashmit Pramanik", reg: null, driveUrl: null },
                 { name: "Garv Gupta", reg: "20223097", driveUrl: "https://drive.google.com/uc?export=view&id=1_wpn-NXWt_VliZsNUIl2XofxT2qm33v9" },
                 { name: "Hariom Kumar", reg: "20221044", driveUrl: "https://drive.google.com/uc?export=view&id=1sld6kyQhLWCkzsPMspaE_yiwxVb9N1PO" },
-                { name: "Sakshi Singh", reg: "20224128", driveUrl: "https://drive.google.com/uc?export=view&id=1c0X1sWON_FLKe3nFkdOw_L0LAjNngQso" },
-                { name: "Shrasti Agarwal", reg: "20225084", driveUrl: "https://drive.google.com/uc?export=view&id=1y9Qr49vfZAjbqUG-fPQeDX3LajdjlGPW" },
-                { name: "Shreepriya Tiwari", reg: "20221092", driveUrl: "https://drive.google.com/uc?export=view&id=1bKJKRzkb1DFHBeWvzHn7vwa_6qsgTf8W" },
-                { name: "Aditya Singh", reg: null, driveUrl: null },
-                { name: "Ashmit Pramanik", reg: null, driveUrl: null },
                 { name: "Manav Bhatt", reg: null, driveUrl: null },
-                { name: "Ansh Bhatnagar", reg: null, driveUrl: null },
-                { name: "Aritra Mahara", reg: null, driveUrl: null },
-                { name: "Amandeep Singh", reg: "20223033", driveUrl: "https://drive.google.com/uc?export=view&id=1QWceqOMOEJyO_g1CO6_t_WXIDWizipzr" },
-                { name: "Appani Chidvilas Varma", reg: "20225027", driveUrl: "https://drive.google.com/uc?export=view&id=19kVyWAv4PRhiVn8YUQUNg7vmvB6GgCsT" },
+                { name: "Sakshi Singh", reg: "20224128", driveUrl: "https://drive.google.com/uc?export=view&id=1c0X1sWON_FLKe3nFkdOw_L0LAjNngQso" },
+                { name: "Shreepriya Tiwari", reg: "20221092", driveUrl: "https://drive.google.com/uc?export=view&id=1bKJKRzkb1DFHBeWvzHn7vwa_6qsgTf8W" },
+                { name: "Shreya Rakesh", reg: "20223546", driveUrl: "https://drive.google.com/uc?export=view&id=1fDdFp2HKxbXK11R0J_LE6bP00uRg6HKV" },
+                { name: "Shrasti Agarwal", reg: "20225084", driveUrl: "https://drive.google.com/uc?export=view&id=1y9Qr49vfZAjbqUG-fPQeDX3LajdjlGPW" },
             ],
         },
         {
             id: "web_lead",
             name: "Web Lead",
             members: [
-                { name: "Ujjwal Baranwal", reg: "20223294", driveUrl: "https://drive.google.com/uc?export=view&id=1LeQR5_9dCVGu5AseJgTLVSS79Dg0Xuc6" },
                 { name: "Ankit Raj", reg: "20224020", driveUrl: "https://drive.google.com/uc?export=view&id=1BwO-ObdBtk8_Ty7AeKcxZn6r2RIKOSxE" },
-                { name: "Varnika Goel", reg: "20223306", driveUrl: "https://drive.google.com/file/d/1hzIloa_71p-9invruS9UOl_USzeIk8Un/view?usp=drivesdk" },
                 { name: "Aryan Kesharwani", reg: "20224035", driveUrl: "https://drive.google.com/uc?export=view&id=1QAJGUYs054Qj5J401YMjirlSsdysxgOo" },
+                { name: "Ujjwal Baranwal", reg: "20223294", driveUrl: "https://drive.google.com/uc?export=view&id=1LeQR5_9dCVGu5AseJgTLVSS79Dg0Xuc6" },
+                { name: "Varnika Goel", reg: "20223306", driveUrl: "https://drive.google.com/uc?export=view&id=1LdH1ykriBneZ8V8wYWkcuJvJ-uZkIw-p" },
             ],
         },
         {
@@ -61,8 +62,8 @@ export function TeamPage() {
             id: "gnosiomania_lead",
             name: "Gnosiomania Lead",
             members: [
-                { name: "Shaghil Jawed", reg: "20223522", driveUrl: "https://drive.google.com/uc?export=view&id=1VBGKlhQNBlNJLrddD5FeFBMExkWHcrF7" },
                 { name: "Dhruv Maheshwari", reg: "20223085", driveUrl: "https://drive.google.com/uc?export=view&id=1rTBLTE7QTKOylqMXptJo4xT0Vk7IEHJa" },
+                { name: "Shaghil Jawed", reg: "20223522", driveUrl: "https://drive.google.com/uc?export=view&id=1VBGKlhQNBlNJLrddD5FeFBMExkWHcrF7" },
                 { name: "Shweta Tiwari", reg: "20221131", driveUrl: "https://drive.google.com/uc?export=view&id=16oGR5f2fQDLFYIF5L593_MFU-JPdBGG5" },
             ],
         },
@@ -71,19 +72,19 @@ export function TeamPage() {
             name: "PR Lead",
             members: [
                 { name: "Atharva Antapurkar", reg: "20224025", driveUrl: "https://drive.google.com/uc?export=view&id=1PWGp_KBBQHstwjSezw3n2JUa5v0qn8bd" },
-                { name: "Shubham Nareda", reg: "20221044", driveUrl: "https://drive.google.com/uc?export=view&id=1R7tD8jX521hlbp8qB-u1MesaCTTqgZ3F" },
-                { name: "Vivek Mishra", reg: "20221118", driveUrl: "https://drive.google.com/uc?export=view&id=1Of-qti1NKGbi1e_BqupoFVKJ-uUc9wPR" },
                 { name: "Dushyant Sharma", reg: "20224062", driveUrl: "https://drive.google.com/uc?export=view&id=1Lp_nMPOPLNvynwbc_OY7arnxtwmNHUIv" },
-                { name: "NIKHIL KUMAR", reg: "20227036", driveUrl: "https://drive.google.com/uc?export=view&id=1sGa6U3Brdzd-73qrrnkaSNkpF-226USn" },
-                { name: "Vishwam Singh", reg: "20223521", driveUrl: "https://drive.google.com/uc?export=view&id=1uvKeKnSztPuXq1gDZf_iF3nnXe3sJZjn" },
-                { name: "Shresth Gadhwala", reg: "20224148", driveUrl: "https://drive.google.com/uc?export=view&id=1V6lKdhGqHZnUL43U47OGN6ZJRJx2oPFb" },
-                { name: "Varun Nair", reg: "20223564", driveUrl: "https://drive.google.com/uc?export=view&id=1EODmkwcYNyd-a1V-POzzLLykhbmWJFsi" },
-                { name: "Sushant Nain", reg: "20223281", driveUrl: "https://drive.google.com/uc?export=view&id=1x9xP709Y00pCtYcMAeUxrexe34AYkW_c" },
-                { name: "Purushottam Dubey", reg: "20222041", driveUrl: "https://drive.google.com/uc?export=view&id=10iihC6xbHIzexH2EMAq3WN8QzzQcUN82" },
                 { name: "Gaurav Sharma", reg: "20223099", driveUrl: "https://drive.google.com/uc?export=view&id=1wpmYR1HdZGm58yWkoZwLAP7LIV02Uo6M" },
+                { name: "NIKHIL KUMAR", reg: "20227036", driveUrl: "https://drive.google.com/uc?export=view&id=1sGa6U3Brdzd-73qrrnkaSNkpF-226USn" },
+                { name: "Purushottam Dubey", reg: "20222041", driveUrl: "https://drive.google.com/uc?export=view&id=10iihC6xbHIzexH2EMAq3WN8QzzQcUN82" },
                 { name: "Shivam Pathak", reg: "20227048", driveUrl: "https://drive.google.com/uc?export=view&id=1Ilq6wYKAsJ35CdAtqagxCS_bVNK8uYmZ" },
-                { name: "Shubham senger", reg: "20224153", driveUrl: "https://drive.google.com/uc?export=view&id=19GY2_IODSO-1QDh0ALPr03jMNjsmM5c0" },
                 { name: "Shivesh Chaubey", reg: "20220050", driveUrl: "https://drive.google.com/uc?export=view&id=1T4XJGBtWNC0oChHzn6cbVpaT4ZDzMDFo" },
+                { name: "Shresth Gadhwala", reg: "20224148", driveUrl: "https://drive.google.com/uc?export=view&id=1V6lKdhGqHZnUL43U47OGN6ZJRJx2oPFb" },
+                { name: "Shubham Nareda", reg: "20221044", driveUrl: "https://drive.google.com/uc?export=view&id=1R7tD8jX521hlbp8qB-u1MesaCTTqgZ3F" },
+                { name: "Shubham senger", reg: "20224153", driveUrl: "https://drive.google.com/uc?export=view&id=19GY2_IODSO-1QDh0ALPr03jMNjsmM5c0" },
+                { name: "Sushant Nain", reg: "20223281", driveUrl: "https://drive.google.com/uc?export=view&id=1x9xP709Y00pCtYcMAeUxrexe34AYkW_c" },
+                { name: "Varun Nair", reg: "20223564", driveUrl: "https://drive.google.com/uc?export=view&id=1EODmkwcYNyd-a1V-POzzLLykhbmWJFsi" },
+                { name: "Vishwam Singh", reg: "20223521", driveUrl: "https://drive.google.com/uc?export=view&id=1uvKeKnSztPuXq1gDZf_iF3nnXe3sJZjn" },
+                { name: "Vivek Mishra", reg: "20221118", driveUrl: "https://drive.google.com/uc?export=view&id=1Of-qti1NKGbi1e_BqupoFVKJ-uUc9wPR" },
             ],
         },
     ];
@@ -103,7 +104,7 @@ export function TeamPage() {
             if (isClickScrolling.current) return;
 
             let currentSection = "";
-            const offset = 300;
+            const offset = 200;
             const scrollPosition = contentEl.scrollTop;
 
             for (const team of teamData) {
@@ -157,9 +158,9 @@ export function TeamPage() {
     };
 
     return (
-        <div className="flex h-screen w-full pt-[77px] bg-[#0a0a1a] text-white font-Anton">
+        <div className="flex h-screen w-full fixed bg-[#0a0a1a] text-white font-Anton">
             {/* --- Desktop Sidebar  --- */}
-            <aside className="hidden md:block w-64 h-full fixed left-0 top-[77px] overflow-y-auto bg-[#101020] border-r border-[#1a1a3d] p-6 space-y-2">
+            <aside className="hidden md:block w-64 h-full fixed left-0 top-[60px] overflow-y-auto bg-[#101020] border-r border-[#1a1a3d] p-6 space-y-2">
                 {teamData.map((team) => (
                     <a
                         key={team.id}
@@ -202,9 +203,9 @@ export function TeamPage() {
             {/* --- Main Content (Scrollable) --- */}
             <main
                 ref={mainContentRef}
-                className="w-full h-full overflow-y-auto md:ml-64 pt-20 md:pt-0"
+                className="w-full h-full overflow-y-auto md:ml-64 pt-20 md:pt-0 scrollbar-hide"
             >
-                <div className="p-6 md:p-12 max-w-7xl mx-auto">
+                <div className="p-6 md:pl-8 md:pt-3 max-w-7xl mx-auto">
                     {teamData.map((team) => (
                         <section
                             key={team.id}

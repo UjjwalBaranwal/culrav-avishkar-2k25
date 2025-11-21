@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 const items = [
   { to: "/dashboard/profile", label: "Profile" },
   { to: "/dashboard/upload-resume", label: "Upload Resume" },
-  { to: "/dashboard/my-teams", label: "My teams" },
   { to: "/dashboard/create-team", label: "Create Team" },
+  { to: "/dashboard/my-teams", label: "My teams" },
   { to: "/dashboard/view-invitation", label: "View Invitation" },
   { to: "/dashboard/logout", label: "Logout" },
 ];

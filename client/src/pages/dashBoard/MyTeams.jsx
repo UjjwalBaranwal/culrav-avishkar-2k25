@@ -1,101 +1,95 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import TeamList from './TeamList';
-import TeamDetail from './TeamDetails';
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { Users } from "lucide-react";
+import TeamCard from "../../components/General/TeamCard";
+import JoinedTeamCard from "../../components/General/JoinedTeamCard";
+import { getMyTeams } from "../../services/apiTeam";
 
 export default function MyTeams() {
-  const [selectedTeam, setSelectedTeam] = useState(null);
-  const mockMyTeams = [
-    {
-      id: 't1',
-      name: 'Trycatch',
-      stats: {
-        size: 3,
-        accepted: 2,
-        pending: 1,
-      },
-      events: [
-        { id: 'e1', name: 'General Quiz' },
-        { id: 'e2', name: 'MELA Quiz' },
-        { id: 'e3', name: 'BizTech Quiz' },
-        { id: 'e4', name: 'Sports Quiz' },
-        { id: 'e5', name: 'India Quiz' },
-        { id: 'e6', name: 'Another Quiz' },
-      ],
-      members: [
-        { id: 'm1', name: 'Tina Turner', carId: 'CAR372R' },
-        { id: 'm2', name: 'James Thomas', carId: 'CAR372R' },
-        { id: 'm3', name: 'Lilly Potter', carId: 'CAR372R' },
-        { id: 'm4', name: 'Nicki Minaj', carId: 'CAR372R' },
-      ],
-    },
-    { id: 't2', name: 'Trycatch-2' },
-    { id: 't3', name: 'Trycatch-3' },
-    { id: 't4', name: 'Trycatch-4' },
-    { id: 't5', name: 'Trycatch-5' },
-    { id: 't6', name: 'Trycatch-6' },
-  ];
+  const navigate = useNavigate();
 
+  const [myTeams, setMyTeams] = useState([]);
+  const [joinedTeams, setJoinedTeams] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSelectTeam = (team) => {
-    const fullTeam = mockMyTeams.find(t => t.id === team.id);
-    // Only switch views if the team has details
-    if (fullTeam && fullTeam.stats) {
-      setSelectedTeam(fullTeam);
-    } else {
-      console.log("This team has no details to show.");
+  useEffect(() => {
+    async function fetchTeams() {
+      try {
+        setIsLoading(true);
+        const res = await getMyTeams();
+        // console.log("API Response:", res);
+        setMyTeams(res?.myTeams || []);
+        setJoinedTeams(res?.participatingTeams || []);
+      } catch (error) {
+        // console.error("Error fetching teams:", error);
+      } finally {
+        setIsLoading(false);
+      }
     }
-  };
+    fetchTeams();
+  }, []);
 
-  const handleBack = () => {
-    setSelectedTeam(null);
-  };
-
-  const listItemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
+  // remove a team locally after successful delete
+  const handleRemoveTeam = (teamId) => {
+    setMyTeams((prev) => prev.filter((t) => (t.id ?? t._id) !== teamId));
   };
 
   return (
-    <div className="h-screen bg-gray-900 text-gray-200 p-4 md:p-8 relative overflow-hidden">
-      <AnimatePresence mode="wait">
-        {selectedTeam ? (
-
+    <div className="h-full bg-gray-900 text-gray-200 p-4 md:p-8 overflow-hidden flex flex-col">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto w-full h-full min-h-0">
+        {/* COLUMN 1: MY TEAMS */}
+        <div className="flex flex-col min-h-0">
+          <h2 className="text-xl font-semibold text-cyan-400 mb-4 flex items-center gap-2">
+            <Users className="w-5 h-5" /> My Teams
+          </h2>
           <motion.div
-            key="details"
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="absolute inset-0 bg-gray-900 p-4 md:p-8 flex flex-col"
+            className="bg-gray-800 rounded-lg border border-gray-700 p-4 space-y-3 overflow-y-auto scrollbar-hide flex-1"
+            initial="hidden"
+            animate="visible"
           >
-            <TeamDetail
-              team={selectedTeam}
-              onBack={handleBack}
-              listItemVariants={listItemVariants}
-            />
+            {isLoading ? (
+              <p className="text-gray-500 text-center py-4">Loading teams...</p>
+            ) : myTeams.length === 0 ? (
+              <p className="text-gray-500 text-center py-4">You haven't created any teams.</p>
+            ) : (
+              myTeams.map((team) => (
+                <motion.div key={team.id ?? team._id}>
+                  <TeamCard
+                    team={team}
+                    onSelect={() => navigate(`/dashboard/my-teams/${team.id ?? team._id}`)}
+                    onDelete={handleRemoveTeam}
+                  />
+                </motion.div>
+              ))
+            )}
           </motion.div>
-        ) : (
+        </div>
+
+        {/* COLUMN 2: JOINED TEAMS */}
+        <div className="flex flex-col min-h-0">
+          <h2 className="text-xl font-semibold text-green-400 mb-4 flex items-center gap-2">
+            <Users className="w-5 h-5" /> Teams Joined
+          </h2>
           <motion.div
-            key="list"
-            initial={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '-100%' }}
-            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="max-w-6xl mx-auto h-full flex flex-col"
-          >{mockMyTeams.length === 0 ? (
-            <div className="flex flex-col items-center justify-center h-full text-center text-gray-300">
-              <h2 className="text-2xl font-semibold mb-2">No teams</h2>
-              <p className="text-gray-400">You can create a team to get started!</p>
-            </div>
-          ) : (
-            <TeamList
-              onSelectTeam={handleSelectTeam}
-              listItemVariants={listItemVariants}
-            />
-          )}
-        </motion.div>
-        )}
-      </AnimatePresence>
+            className="bg-gray-800 rounded-lg border border-gray-700 p-4 space-y-3 overflow-y-auto scrollbar-hide flex-1"
+            initial="hidden"
+            animate="visible"
+          >
+            {isLoading ? (
+              <p className="text-gray-500 text-center py-4">Loading teams...</p>
+            ) : joinedTeams.length === 0 ? (
+              <p className="text-gray-500 text-center py-4">You haven't joined any teams.</p>
+            ) : (
+              joinedTeams.map((team) => (
+                <motion.div key={team.id ?? team._id}>
+                  <JoinedTeamCard team={team} />
+                </motion.div>
+              ))
+            )}
+          </motion.div>
+        </div>
+      </div>
     </div>
   );
 }

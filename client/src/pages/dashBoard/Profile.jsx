@@ -1,4 +1,13 @@
+import { useSelector } from "react-redux";
+
 export default function Profile() {
+  const { user } = useSelector((state) => state.auth);
+
+  const name = user?.name || "";
+  const branch = user?.branch || "";
+  const email = user?.email || "";
+  const resumeLink = user?.resumeLink || "";
+
   return (
     <div className="h-full flex flex-col">
       {/* Header */}
@@ -11,10 +20,10 @@ export default function Profile() {
       <div className="flex-1 flex items-center justify-center">
         <div className="w-full max-w-2xl bg-black/40 backdrop-blur-sm rounded-xl p-8 border border-white/20 shadow-xl">
           <div className="space-y-6">
-            <Field label="Name" value="James Thoms" />
-            <Field label="Branch" value="CA-34324" />
-            <Field label="Email" value="james@company.com" />
-            <Field label="Phone" value="xxxxxxxxxx" />
+            <Field label="Name" value={name} />
+            <Field label="Branch" value={branch} />
+            <Field label="Email" value={email} />
+            <Field label="Resume Link" value={resumeLink} />
           </div>
         </div>
       </div>

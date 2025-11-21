@@ -122,17 +122,10 @@ const Sponser_2 = () => {
               {/* Heading */}
               <div className="space-y-5">
                 <motion.h1 variants={itemVariants} className="text-center text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-cyan-100">
-                  <span className="block font-mono text-base sm:text-lg md:text-xl uppercase tracking-[0.45em] text-cyan-300/70">
-                    Sponsors Will Be Revealed
-                  </span>
                   <span className="mt-4 block bg-gradient-to-r from-cyan-300 via-fuchsia-400 to-amber-300 bg-clip-text text-transparent">
-                    Soon in the Neon Grid
+                   Sponsors Will Be Revealed Soon 
                   </span>
                 </motion.h1>
-
-                <motion.p variants={itemVariants} className="mx-auto max-w-2xl text-center text-lg sm:text-xl md:text-2xl leading-relaxed text-cyan-100/80">
-                  The sponsorship lineup is uploading. Expect <span className="text-cyan-300 font-bold">next-gen partners</span> to power the event. Stay tuned for the official reveal.
-                </motion.p>
               </div>
 
               {/* Bottom strip */}

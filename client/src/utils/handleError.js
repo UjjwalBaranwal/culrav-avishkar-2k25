@@ -12,6 +12,7 @@ export const handleError = (error) => {
     return {
       message: data?.message || "Server error",
       status: status,
+      errorCode: data?.errorCode,
     };
   }
 
