@@ -6,7 +6,6 @@ import { TeamPage } from "./pages/TeamPage";
 import Gallery from "./pages/Gallery.jsx";
 import { Toaster } from "sonner";
 import Navbar from "./components/General/Navbar";
-import Schedule from "./pages/Schedule";
 import ConfirmEmail from "./feature/auth/ConfirmEmail";
 import ResetPassword from "./feature/auth/ResetPassword";
 import { useDispatch } from "react-redux";
@@ -27,7 +26,7 @@ const CreateTeam = lazy(() => import("./pages/dashBoard/CreateTeam"));
 const ViewInvitation = lazy(() => import("./pages/dashBoard/ViewInvitation"));
 const Logout = lazy(() => import("./pages/dashBoard/Logout"));
 
-const Sponsers = lazy(() => import("./components/Sponsers/Sponsers.jsx"));
+const Sponsers = lazy(() => import("./components/Sponsers/Sponser_2.jsx"));
 const AvishkarEvents = lazy(() => import("./pages/AvishkarAllEvent"));
 
 // Culrav sub-event pages
@@ -106,9 +105,6 @@ function App() {
               <Route path="view-invitation" element={<ViewInvitation />} />
               <Route path="logout" element={<Logout />} />
             </Route>
-
-            {/* Other standalone pages */}
-            <Route path="/schedule" element={<Schedule />} />
             <Route path="/sponsors" element={<Sponsers />} />
             <Route path="/avishkar" element={<AvishkarEvents />} />
             <Route path="/login" element={<Login />} />

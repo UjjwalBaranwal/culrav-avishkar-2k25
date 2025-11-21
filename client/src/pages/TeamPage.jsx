@@ -4,6 +4,7 @@ import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import CardTeam from "../components/General/CardTeam";
+//import AmandeepSingh from "../assets/fs_and_leads/AmandeepSingh"
 
 export function TeamPage() {
     const teamData = [
