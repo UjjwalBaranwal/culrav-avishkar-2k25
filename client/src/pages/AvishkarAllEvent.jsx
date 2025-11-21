@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom";
 import RevealCard from "../components/ui/reveal-card";
 
 import AvishkarBgMobile from "../assets/Avishkar_bg-mobile.png";
-import AvishkarBG from "../assets/AvishkarBG.png";
-import base from "../assets/base.png";
+import AvishkarBG from "../assets/BG4.png";
+import base from "../assets/base1.png";
 import image from "../assets/avishkarrr.png";
+import EventImg from "../assets/EVENTyellow.png";
 function AvishkarEvents() {
   const navigate = useNavigate();
 
@@ -36,17 +37,8 @@ function AvishkarEvents() {
         backgroundPosition: "top center", // align how you want
       }}
     >
-<div className="relative w-full overflow-hidden">
+<div className="relative w-full overflow-hidden md:h-[300px] lg:h-[200px] sm:h-[300px] h-[450px]">
         {/* Base image - Increased min-height to ensure coverage */}
-        <img
-          src={base}
-          alt="Top Image"
-          className="
-            w-full
-            /* Increased base height, especially for desktop */
-            h-[570px] sm:h-[350px] md:h-[200px] lg:h-[200px] xl:h-[250px]
-        "
-        />
 
         <div className="absolute inset-0 flex flex-col justify-center sm:px-8">
 
@@ -91,12 +83,13 @@ function AvishkarEvents() {
 
       {/* Header */}
       <div className="w-full flex justify-center pt-16 md:pt-20">
-        <h1
+        {/* <h1
           className="text-center inline-block px-6 py-2 rounded-md font-bionix font-bold text-[#FFFAF0] bg-[#F54E25]"
           style={{ fontSize: "clamp(1.2rem, 3.5vw, 2.5rem)" }}
         >
           EVENTS
-        </h1>
+        </h1> */}
+        <img src={EventImg} alt="Events" className="w-[50%] max-w-[150px]" />
       </div>
 
       {/* Grid */}
