@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { createTeam } from "../../services/apiTeam";
 import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateTeam() {
   const { user } = useSelector((state) => state.auth);
@@ -17,10 +18,13 @@ export default function CreateTeam() {
     },
   });
 
+  const navigate = useNavigate();
+
   async function onSubmit(values) {
     try {
-      await createTeam(values.teamName,user._id,Number(values.size));
+      await createTeam(values.teamName, user._id, Number(values.size));
       toast.success("Team created!");
+      navigate("/dashboard/my-teams");
     } catch (e) {
       console.log(e);
       toast.error(e.message);
@@ -47,7 +51,9 @@ export default function CreateTeam() {
               className="w-full rounded bg-white/80 text-black px-3 py-2"
             />
             {errors.teamName && (
-              <p className="text-red-400 text-sm mt-1">{errors.teamName.message}</p>
+              <p className="text-red-400 text-sm mt-1">
+                {errors.teamName.message}
+              </p>
             )}
           </div>
 

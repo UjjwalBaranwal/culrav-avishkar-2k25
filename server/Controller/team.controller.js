@@ -5,8 +5,6 @@ const User = require("../Model/user.model");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 
-
-
 exports.teamDetail = catchAsync(async (req, res, next) => {
   // console.log("Inside teamDetail controller");
   // console.log("Request body:", req);
@@ -39,10 +37,11 @@ exports.teamDetail = catchAsync(async (req, res, next) => {
       pending: team.pendingMembers?.length || 0,
     },
 
-    events: team.registeredEvents?.map((ev) => ({
-      id: ev._id,
-      name: ev.eventName,
-    })) || [],
+    events:
+      team.registeredEvents?.map((ev) => ({
+        id: ev._id,
+        name: ev.eventName,
+      })) || [],
 
     members: [
       ...team.acceptedMembers.map((m) => ({
@@ -52,12 +51,8 @@ exports.teamDetail = catchAsync(async (req, res, next) => {
     ],
   };
   // console.log("Formatted team detail:", formatted);
-  res.status(200).json({
-    success: true,
-    team: formatted,
-  });
+  res.status(200).json(formatted);
 });
-
 
 exports.createTeam = catchAsync(async (req, res, next) => {
   const { teamName, size } = req.body;
@@ -135,6 +130,59 @@ exports.createTeam = catchAsync(async (req, res, next) => {
   }
 });
 // if a team wants to change its name before registering an event
+
+exports.createTeamWT = catchAsync(async (req, res, next) => {
+  const { teamName, size } = req.body;
+  const leader = req.user.id;
+
+  if (!teamName?.trim()) {
+    return next(new AppError("Team name is missing", 400));
+  }
+
+  if (size !== undefined && (!Number.isInteger(size) || size <= 0)) {
+    return next(new AppError("Size must be a positive integer.", 400));
+  }
+
+  if (!leader) {
+    return next(new AppError("Leader ID is missing.", 400));
+  }
+
+  const leaderUser = await User.findById(leader);
+  if (!leaderUser) {
+    return next(
+      new AppError("Leader ID is invalid or user does not exist.", 422),
+    );
+  }
+
+  const existingTeam = await Team.findOne({ teamName, leader });
+  if (existingTeam) {
+    return next(
+      new AppError(
+        "A team with this name already exists for this leader.",
+        409,
+      ),
+    );
+  }
+
+  const team = await Team.create({
+    teamName: teamName.trim(),
+    leader,
+    size,
+    acceptedMembers: [leader], // auto-add leader
+  });
+
+  // update user
+  leaderUser.participatingTeam = Array.from(
+    new Set([...(leaderUser.participatingTeam || []), team._id]),
+  );
+  await leaderUser.save();
+
+  return res.status(201).json({
+    success: true,
+    message: "Team created successfully!",
+    team,
+  });
+});
 
 exports.getAllTeams = catchAsync(async (req, res, next) => {
   const { email, id } = req.user;
@@ -297,9 +345,10 @@ exports.deleteTeam = catchAsync(async (req, res, next) => {
   }
 });
 exports.sendTeamInvite = catchAsync(async (req, res, next) => {
-  const { teamName, sendToEmail, leaderId } = req.body;
-  if (!teamName) {
-    return next(new AppError("TeamName is Missing", 400));
+  const { teamId, sendToEmail } = req.body;
+  const leaderId = req.user._id;
+  if (!teamId) {
+    return next(new AppError("TeamId is Missing", 400));
   }
   if (!sendToEmail) {
     return next(new AppError("Email is Missing", 400));
@@ -308,9 +357,9 @@ exports.sendTeamInvite = catchAsync(async (req, res, next) => {
     return next(new AppError("LeaderId is Missing", 400));
   }
   try {
-    const tm = await Team.findOne({ teamName, leader: leaderId });
+    const tm = await Team.findOne({ _id: teamId, leader: leaderId });
     if (!tm) {
-      return next(new AppError("Invalid team name or invalid leaderID", 404));
+      return next(new AppError("Invalid team id or invalid leaderID", 404));
     }
     //check if this team is participating in any event, if so you can't add members.
     if (tm.registeredEvents.length > 0) {
@@ -417,7 +466,7 @@ exports.acceptInvite = catchAsync(async (req, res, next) => {
     const tm = await Team.findById({ _id: teamId });
 
     if (!tm) {
-      return next(new AppError("team not found", 404));
+      return next(new AppError("Team not found", 404));
     }
 
     //check if team is participating in any event. [even though team can't participate in any event if it has any pending memeber].
@@ -485,7 +534,7 @@ exports.rejectInvite = catchAsync(async (req, res, next) => {
     const tm = await Team.findById({ _id: teamId });
 
     if (!tm) {
-      return next(new AppError("team not found", 404));
+      return next(new AppError("Team not found", 404));
     }
 
     // first check if user have this team invite or not.
@@ -525,19 +574,12 @@ exports.rejectInvite = catchAsync(async (req, res, next) => {
   }
 });
 exports.leaveTeam = catchAsync(async (req, res, next) => {
-  const { userId, teamId } = req.body;
-
+  const { teamId } = req.body;
+  const userId = req.user._id;
   if (!teamId) {
     return res.status(400).json({
       success: false,
       message: "teamId missing, can't leave this team",
-    });
-  }
-
-  if (!userId) {
-    return res.status(400).json({
-      success: false,
-      message: "userId missing, can't leave this team",
     });
   }
 
@@ -623,28 +665,17 @@ exports.leaveTeam = catchAsync(async (req, res, next) => {
   }
 });
 exports.kickMember = catchAsync(async (req, res, next) => {
-  const { leaderId, teamId, userTobeKickedId } = req.body;
-
-  if (!leaderId) {
-    return next(new AppError("leaderId missing", 400));
-  }
+  const { teamId, userTobeKickedId } = req.body;
+  const leaderId = req.user._id;
 
   if (!teamId) {
     return next(new AppError("teamId is missing", 400));
   }
-
   if (!userTobeKickedId) {
-    return next(new AppError("userTobeKeckedId is missing", 400));
+    return next(new AppError("userTobeKickedId is missing", 400));
   }
 
   try {
-    const ld = await User.findById({ _id: leaderId });
-    if (!ld) {
-      return next(
-        new AppError("leader id is invalid or does not exist in db", 404),
-      );
-    }
-
     const tm = await Team.findById({ _id: teamId });
     if (!tm) {
       return next(new AppError("team does not exist with teamId", 404));
@@ -666,12 +697,7 @@ exports.kickMember = catchAsync(async (req, res, next) => {
       );
     }
 
-    // check if user is authorized to kick user [only team creator can kick members]
-
-    const currentUserId = leaderId;
-    const teamLeaderId = tm.leader;
-
-    if (currentUserId != teamLeaderId) {
+    if (String(leaderId) != String(tm.leader)) {
       return next(
         new AppError("You are not authorized to kick this user", 403),
       );
@@ -679,7 +705,7 @@ exports.kickMember = catchAsync(async (req, res, next) => {
 
     //team leader can't kick himself from the team.
 
-    if (JSON.stringify(userToBeKicked) === JSON.stringify(tm.leader)) {
+    if (String(userToBeKicked._id) === String(tm.leader)) {
       return next(
         new AppError(
           "leader can't kick himself, however leader can delete the team",
@@ -690,28 +716,18 @@ exports.kickMember = catchAsync(async (req, res, next) => {
 
     //check if userToBeKicked is in the team
 
-    if (!tm.acceptedMembers.includes(userTobeKickedId)) {
+    if (!tm.acceptedMembers.some((id) => String(id) === userTobeKickedId)) {
       return next(new AppError("user is not the in team", 400));
     }
 
-    //remove this user from team's accpeted members.
-    const currentTeamAcceptedMembers = tm.acceptedMembers;
-    const userKicking = userTobeKickedId;
-
-    const newTeamAcceptedMembers = currentTeamAcceptedMembers.filter(
-      (us) => JSON.stringify(us) != JSON.stringify(userKicking),
+    tm.acceptedMembers = tm.acceptedMembers.filter(
+      (id) => String(id) !== userTobeKickedId,
     );
-
-    tm.acceptedMembers = newTeamAcceptedMembers;
 
     //remove this team from user's participating teams
-    const currentParticipatingTeams = userToBeKicked.participatingTeam;
-    const teamToBeRemoved = teamId;
-
-    const newParticipatingTeams = currentParticipatingTeams.filter(
-      (team) => JSON.stringify(team) != JSON.stringify(teamToBeRemoved),
+    userToBeKicked.participatingTeam = userToBeKicked.participatingTeam.filter(
+      (id) => String(id) != teamId,
     );
-    userToBeKicked.participatingTeam = newParticipatingTeams;
 
     await tm.save();
     await userToBeKicked.save();
