@@ -32,6 +32,8 @@ import Mukesh from "./mhm lead/Mukesh.jpg";
 import SAMMED_MNNIT from "./mhm lead/SAMMED MNNIT.JPG";
 import SREYIA_MNNIT from "./mhm lead/SREYIA MNNIT.jpeg";
 import SUVENDRA_SINGH from "./mhm lead/SUVENDRA SINGH.jpg";
+import SACHI from "./mhm lead/goatsaachi.jpg";
+import SIDDHI from "./mhm lead/Siddhi_Prasad.jpeg"
 
 // ------------- 📌 Arts Lead -------------
 import ANJALI_SHARMA from "./arts lead/ANJALI SHARMA.jpg";
@@ -116,9 +118,12 @@ export const teamData = [
         name: "MHM Lead",
         members: [
             { name: "Arpit Gami", img: ARPIT_GAMI, reg: null },
-            { name: "Sri Mukesh Akula", img: Mukesh, reg: null },
-            { name: "Sammed Tare", img: SAMMED_MNNIT, reg: "20223555" },
+            { name: "Saachi Pandey", img: SACHI, reg: null },
+             { name: "Sammed Tare", img: SAMMED_MNNIT, reg: "20223555" },
+                 
+            { name: "Siddhi Prasad ", img: SIDDHI, reg: null },
             { name: "Sreyia Gupta", img: SREYIA_MNNIT, reg: "20223547" },
+            { name: "Sri Mukesh Akula", img: Mukesh, reg: null }, 
             { name: "Suvendra Singh", img: SUVENDRA_SINGH, reg: null },
         ]
     },
