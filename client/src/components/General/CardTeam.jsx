@@ -1,21 +1,8 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// 🔥 Safe Converter (NEVER breaks)
-// function convertDriveUrl(url) {
-//   if (!url || typeof url !== "string") return null;
 
-//   const match = url.match(/[-\w]{20,}/); // extract ID safely
-//   if (!match) return null;
-
-//   return `https://lh3.googleusercontent.com/d/${match[0]}`;
-// }
-
-// 🔥 Placeholder for missing / invalid images
-const FALLBACK_IMG =
-  "https://images.pexels.com/photos/31542399/pexels-photo-31542399.jpeg"; // (you can replace this)
-
-const CardTeam = ({ name, reg, img }) => {
+const CardTeam = ({ name, img }) => {
   const [isHovered, setIsHovered] = useState(false);
  // const [imgSrc, setImgSrc] = useState(convertDriveUrl(driveUrl) || FALLBACK_IMG);
 
@@ -62,19 +49,6 @@ const CardTeam = ({ name, reg, img }) => {
         >
           {name}
         </motion.h3>
-
-        <AnimatePresence>
-          {isHovered && reg && (
-            <motion.p
-              className="text-green-300 font-anton text-xs sm:text-sm absolute bottom-4"
-              initial={{ y: "100%", opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: "100%", opacity: 0 }}
-            >
-              {reg}
-            </motion.p>
-          )}
-        </AnimatePresence>
       </div>
     </motion.div>
   );
