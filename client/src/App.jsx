@@ -18,6 +18,7 @@ const CulravEvent = lazy(() => import("./pages/culravEvent"));
 const DashboardLayout = lazy(
   () => import("./feature/dashBoard/DashboardLayout"),
 );
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 const Profile = lazy(() => import("./pages/dashBoard/Profile"));
 const UploadResume = lazy(() => import("./pages/dashBoard/UploadResume"));
@@ -26,7 +27,7 @@ const CreateTeam = lazy(() => import("./pages/dashBoard/CreateTeam"));
 const ViewInvitation = lazy(() => import("./pages/dashBoard/ViewInvitation"));
 const Logout = lazy(() => import("./pages/dashBoard/Logout"));
 
-const Sponsers = lazy(() => import("./components/Sponsers/Sponser_2.jsx"));
+const Sponsers = lazy(() => import("./pages/Sponsers/Sponser_2.jsx"));
 const AvishkarEvents = lazy(() => import("./pages/AvishkarAllEvent"));
 
 // Culrav sub-event pages
@@ -110,6 +111,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/confirm-email" element={<ConfirmEmail />} />
             <Route path="/reset-password" element={<ResetPassword />} />
+            {/* FALLBACK PAGE */}
+            <Route path="*" element={<NotFoundPage/>} />
           </Routes>
         </Suspense>
       </BrowserRouter>

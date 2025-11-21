@@ -201,15 +201,112 @@ const Navbar = ({ mobileMenuOpen, setMobileMenuOpen }) => {
   );
 };
 
+// const HeroSection = () => {
+//   return (
+//     <section
+//       id="home"
+//       className="relative h-screen flex items-center justify-center overflow-hidden mb-1"
+//     >
+//       {/* Background Layer */}
+//       <div className="absolute inset-0 z-0">
+//         {/* Gradient Overlay to ensure logo pops against video */}
+//         <div className="absolute inset-0 bg-black/40 z-10 bg-[radial-gradient(circle_at_center,transparent_0%,#000_90%)]"></div>
+
+//         {VIDEO_URLS.heroBg ? (
+//           <video
+//             autoPlay
+//             loop
+//             muted
+//             playsInline
+//             className="w-full h-full object-cover opacity-100 filter contrast-200 brightness-145"
+//           >
+//             <source src={VIDEO_URLS.heroBg} type="video/webm" />
+//           </video>
+//         ) : (
+//           <div className="w-full h-full bg-grid-pattern animate-grid-move opacity-30 bg-gradient-to-b from-gray-900 to-black">
+//             <div className="absolute inset-0 bg-gradient-to-tr from-cyan-900/20 via-transparent to-fuchsia-900/20 animate-pulse"></div>
+//           </div>
+//         )}
+//       </div>
+
+//       {/* Content */}
+//       <div className="relative z-20 text-center px-4 w-full max-w-7xl mx-auto flex flex-col items-center justify-center h-full pt-16">
+//         <div className="mb-8 inline-flex items-center gap-3 px-4 py-1 border border-cyan-500/30 rounded-full bg-black/50 backdrop-blur-sm intro-text shadow-[0_0_15px_rgba(34,211,238,0.2)]">
+//           <div className="w-2 h-2 bg-green-500 rounded-full animate-ping"></div>
+//           <span className="text-cyan-400 font-mono text-xs tracking-[0.2em]">
+//             SYSTEM ONLINE // 2025
+//           </span>
+//         </div>
+
+//         {/* MAIN LOGO REPLACEMENT - RESPONSIVE CONTAINER */}
+//         <div className="hero-title mb-8 w-full flex justify-center">
+//           {LOGO_URLS.main ? (
+//             <img
+//               src={LOGO_URLS.main}
+//               alt="Culrav x Avishkar Theme Logo"
+//               className="w-[85vw] max-w-[500px] md:max-w-[700px] lg:max-w-[800px] h-auto object-contain drop-shadow-[0_0_25px_rgba(34,211,238,0.25)] filter brightness-110 animate-float"
+//             />
+//           ) : (
+//             /* FALLBACK TEXT IF NO LOGO URL IS PROVIDED */
+//             <h1 className="text-6xl md:text-9xl font-black text-white tracking-tighter leading-[0.85] mix-blend-difference">
+//               <div className="overflow-hidden">
+//                 <span className="block transform hover:scale-105 transition-transform duration-500 cursor-default">
+//                   CULRAV
+//                 </span>
+//               </div>
+//               <div className="text-2xl md:text-4xl font-mono text-gray-400 my-2 tracking-[0.5em] opacity-70">
+//                 ×
+//               </div>
+//               <div className="overflow-hidden">
+//                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-fuchsia-500 transform hover:scale-105 transition-transform duration-500 cursor-default">
+//                   AVISHKAR
+//                 </span>
+//               </div>
+//             </h1>
+//           )}
+//         </div>
+
+//         <p className="max-w-xl mx-auto text-lg md:text-xl text-gray-300 font-mono hero-sub border-l-2 border-fuchsia-500 pl-4 text-left bg-black/30 backdrop-blur-sm p-2 rounded-r-lg ">
+//           The annual convergence of{" "}
+//           <span className="text-cyan-400 font-bold">Technology</span> and{" "}
+//           <span className="text-fuchsia-500 font-bold">Culture</span>. Step into
+//           the glitch.
+//         </p>
+
+//         <div className="mt-10 flex flex-wrap justify-center gap-6 hero-btns lg:mt-6 lg:mb-10">
+//           <button className="group relative px-8 py-4 bg-white text-black font-bold tracking-widest overflow-hidden skew-x-[-10deg] hover:scale-105 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+//             <div className="absolute inset-0 w-0 bg-cyan-500 transition-all duration-300 ease-out group-hover:w-full opacity-100"></div>
+//             <span className="relative flex items-center gap-2 skew-x-[10deg]">
+//               ENTER_WORLD <ChevronRight size={20} />
+//             </span>
+//           </button>
+//           <button className="px-8 py-4 border border-white/30 hover:border-fuchsia-500 text-white font-mono text-sm tracking-widest hover:bg-fuchsia-500/10 transition-all skew-x-[-10deg] backdrop-blur-md bg-black/20">
+//             <span className="block skew-x-[10deg]">[ WATCH_TEASER ]</span>
+//           </button>
+//         </div>
+//       </div>
+
+//       {/* Scroll Indicator */}
+//       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60 animate-bounce z-20">
+//         <span className="text-[10px] font-mono tracking-widest text-cyan-500 shadow-black drop-shadow-md">
+//           SCROLL
+//         </span>
+//         <div className="w-[1px] h-12 bg-gradient-to-b from-cyan-500 to-transparent"></div>
+//       </div>
+//     </section>
+//   );
+// };
+
 const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative h-screen flex items-center justify-center overflow-hidden"
+      // CHANGE 1: Use h-[100dvh] (Dynamic Viewport Height) to fix mobile address bar issues
+      // CHANGE 2: Added min-h-[600px] to prevent squashing on extremely short screens
+      className="relative h-[100dvh] min-h-[600px] flex items-center justify-center overflow-hidden"
     >
       {/* Background Layer */}
       <div className="absolute inset-0 z-0">
-        {/* Gradient Overlay to ensure logo pops against video */}
         <div className="absolute inset-0 bg-black/40 z-10 bg-[radial-gradient(circle_at_center,transparent_0%,#000_90%)]"></div>
 
         {VIDEO_URLS.heroBg ? (
@@ -230,24 +327,29 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-20 text-center px-4 w-full max-w-7xl mx-auto flex flex-col items-center justify-center h-full pt-16">
-        <div className="mb-8 inline-flex items-center gap-3 px-4 py-1 border border-cyan-500/30 rounded-full bg-black/50 backdrop-blur-sm intro-text shadow-[0_0_15px_rgba(34,211,238,0.2)]">
+      {/* CHANGE 3: Reduced pt-16 to pt-12 for mobile to save vertical space */}
+      <div className="relative z-20 text-center px-4 w-full max-w-7xl mx-auto flex flex-col items-center justify-center h-full pt-12 md:pt-16">
+        {/* Intro Text Badge */}
+        {/* CHANGE 4: Reduced mb-8 to mb-4 on mobile */}
+        <div className="mb-4 md:mb-8 inline-flex items-center gap-3 px-4 py-1 border border-cyan-500/30 rounded-full bg-black/50 backdrop-blur-sm intro-text shadow-[0_0_15px_rgba(34,211,238,0.2)]">
           <div className="w-2 h-2 bg-green-500 rounded-full animate-ping"></div>
           <span className="text-cyan-400 font-mono text-xs tracking-[0.2em]">
             SYSTEM ONLINE // 2025
           </span>
         </div>
 
-        {/* MAIN LOGO REPLACEMENT - RESPONSIVE CONTAINER */}
-        <div className="hero-title mb-8 w-full flex justify-center">
+        {/* MAIN LOGO REPLACEMENT */}
+        {/* CHANGE 5: Reduced margins (mb-6) and added max-h constraints so logo doesn't get too tall */}
+        <div className="hero-title mb-6 md:mb-8 w-full flex justify-center">
           {LOGO_URLS.main ? (
             <img
               src={LOGO_URLS.main}
               alt="Culrav x Avishkar Theme Logo"
-              className="w-[85vw] max-w-[500px] md:max-w-[700px] lg:max-w-[800px] h-auto object-contain drop-shadow-[0_0_25px_rgba(34,211,238,0.25)] filter brightness-110 animate-float"
+              // CRITICAL FIX: Added max-h-[30vh] md:max-h-[40vh]
+              // This ensures the logo never takes up more than 30% of the screen height, leaving room for buttons
+              className="w-[85vw] max-w-[500px] md:max-w-[700px] lg:max-w-[800px] max-h-[30vh] md:max-h-[40vh] h-auto object-contain drop-shadow-[0_0_25px_rgba(34,211,238,0.25)] filter brightness-110 animate-float"
             />
           ) : (
-            /* FALLBACK TEXT IF NO LOGO URL IS PROVIDED */
             <h1 className="text-6xl md:text-9xl font-black text-white tracking-tighter leading-[0.85] mix-blend-difference">
               <div className="overflow-hidden">
                 <span className="block transform hover:scale-105 transition-transform duration-500 cursor-default">
@@ -266,28 +368,37 @@ const HeroSection = () => {
           )}
         </div>
 
-        <p className="max-w-xl mx-auto text-lg md:text-xl text-gray-300 font-mono hero-sub border-l-2 border-fuchsia-500 pl-4 text-left bg-black/30 backdrop-blur-sm p-2 rounded-r-lg ">
+        {/* Subtitle */}
+        <p className="max-w-xl mx-auto text-base md:text-xl text-gray-300 font-mono hero-sub border-l-2 border-fuchsia-500 pl-4 text-left bg-black/30 backdrop-blur-sm p-2 rounded-r-lg">
           The annual convergence of{" "}
           <span className="text-cyan-400 font-bold">Technology</span> and{" "}
           <span className="text-fuchsia-500 font-bold">Culture</span>. Step into
           the glitch.
         </p>
 
-        <div className="mt-10 flex flex-wrap justify-center gap-6 hero-btns">
-          <button className="group relative px-8 py-4 bg-white text-black font-bold tracking-widest overflow-hidden skew-x-[-10deg] hover:scale-105 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+        {/* Buttons */}
+        {/* CHANGE 6: Reduced top margin (mt-6) for mobile and gap */}
+        <div className="mt-6 md:mt-10 flex flex-wrap justify-center gap-4 md:gap-6 hero-btns pb-12 md:pb-0">
+          <button className="group relative px-6 py-3 md:px-8 md:py-4 bg-white text-black font-bold tracking-widest overflow-hidden skew-x-[-10deg] hover:scale-105 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.3)]">
             <div className="absolute inset-0 w-0 bg-cyan-500 transition-all duration-300 ease-out group-hover:w-full opacity-100"></div>
-            <span className="relative flex items-center gap-2 skew-x-[10deg]">
+            <span className="relative flex items-center gap-2 skew-x-[10deg] text-sm md:text-base">
               ENTER_WORLD <ChevronRight size={20} />
             </span>
           </button>
-          <button className="px-8 py-4 border border-white/30 hover:border-fuchsia-500 text-white font-mono text-sm tracking-widest hover:bg-fuchsia-500/10 transition-all skew-x-[-10deg] backdrop-blur-md bg-black/20">
+          <a
+            href="https://www.instagram.com/reel/DRSakAxkvsq/?hl=en"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-3 md:px-8 md:py-4 border border-white/30 hover:border-fuchsia-500 text-white font-mono text-xs md:text-sm tracking-widest hover:bg-fuchsia-500/10 transition-all skew-x-[-10deg] backdrop-blur-md bg-black/20"
+          >
             <span className="block skew-x-[10deg]">[ WATCH_TEASER ]</span>
-          </button>
+          </a>
         </div>
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60 animate-bounce z-20">
+      {/* CHANGE 7: Position adjustment to ensure it doesn't overlap buttons on short screens */}
+      <div className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60 animate-bounce z-20 hidden sm:flex">
         <span className="text-[10px] font-mono tracking-widest text-cyan-500 shadow-black drop-shadow-md">
           SCROLL
         </span>
@@ -296,6 +407,7 @@ const HeroSection = () => {
     </section>
   );
 };
+
 const AboutSection = () => {
   return (
     <section id="about" className="relative py-32 bg-black">

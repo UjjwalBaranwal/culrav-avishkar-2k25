@@ -65,7 +65,7 @@ const Sponser_2 = () => {
   };
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-black text-cyan-100">
+    <div className="relative min-h-screen w-full overflow-hidden bg-black text-cyan-100 font-sans">
       {/* Background */}
       <div ref={backgroundRef} className="pointer-events-none absolute inset-0 opacity-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#22d3ee33,_transparent_60%),_radial-gradient(circle_at_bottom,_#a855f733,_transparent_60%)]" />

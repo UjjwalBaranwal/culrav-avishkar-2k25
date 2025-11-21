@@ -11,21 +11,94 @@ function AvishkarEvents() {
   const navigate = useNavigate();
 
   // Placeholder images (replace these URLs with actual event images)
-  const defaultPoster = "https://raw.githubusercontent.com/MihirJaiswal/hero-hq/main/public/spidermanposter.jpg";
-  const defaultTitleImg = "https://raw.githubusercontent.com/MihirJaiswal/hero-hq/main/public/pngwing1.png";
-  const defaultCharacterImg = "https://raw.githubusercontent.com/MihirJaiswal/hero-hq/main/public/spidermanpng.png";
+  const defaultPoster =
+    "https://raw.githubusercontent.com/MihirJaiswal/hero-hq/main/public/spidermanposter.jpg";
+  const defaultTitleImg =
+    "https://raw.githubusercontent.com/MihirJaiswal/hero-hq/main/public/pngwing1.png";
+  const defaultCharacterImg =
+    "https://raw.githubusercontent.com/MihirJaiswal/hero-hq/main/public/spidermanpng.png";
 
   const events = [
-    { id: "av1", name: "CyberQuest", slug: "cyberquest", coverImage: defaultPoster, titleImage: defaultTitleImg, characterImage: defaultCharacterImg },
-    { id: "av2", name: "Electromania", slug: "electromania", coverImage: defaultPoster, titleImage: defaultTitleImg, characterImage: defaultCharacterImg },
-    { id: "av3", name: "Genesis", slug: "genesis", coverImage: defaultPoster, titleImage: defaultTitleImg, characterImage: defaultCharacterImg },
-    { id: "av4", name: "Kreedomania", slug: "kreedomania", coverImage: defaultPoster, titleImage: defaultTitleImg, characterImage: defaultCharacterImg },
-    { id: "av5", name: "Mechrocosm", slug: "mechrocosm", coverImage: defaultPoster, titleImage: defaultTitleImg, characterImage: defaultCharacterImg },
-    { id: "av6", name: "Monopoly", slug: "monopoly", coverImage: defaultPoster, titleImage: defaultTitleImg, characterImage: defaultCharacterImg },
-    { id: "av7", name: "Nirmaan", slug: "nirmaan", coverImage: defaultPoster, titleImage: defaultTitleImg, characterImage: defaultCharacterImg },
-    { id: "av8", name: "Oligopoly", slug: "oligopoly", coverImage: defaultPoster, titleImage: defaultTitleImg, characterImage: defaultCharacterImg },
-    { id: "av9", name: "PowerSurge", slug: "powersurge", coverImage: defaultPoster, titleImage: defaultTitleImg, characterImage: defaultCharacterImg },
-    { id: "av10", name: "Rasayans", slug: "rasayans", coverImage: defaultPoster, titleImage: defaultTitleImg, characterImage: defaultCharacterImg },
+    {
+      id: "av1",
+      name: "CyberQuest",
+      slug: "cyberquest",
+      coverImage: defaultPoster,
+      titleImage: defaultTitleImg,
+      characterImage: defaultCharacterImg,
+    },
+    {
+      id: "av2",
+      name: "Electromania",
+      slug: "electromania",
+      coverImage: defaultPoster,
+      titleImage: defaultTitleImg,
+      characterImage: defaultCharacterImg,
+    },
+    {
+      id: "av3",
+      name: "Genesis",
+      slug: "genesis",
+      coverImage: defaultPoster,
+      titleImage: defaultTitleImg,
+      characterImage: defaultCharacterImg,
+    },
+    {
+      id: "av4",
+      name: "Kreedomania",
+      slug: "kreedomania",
+      coverImage: defaultPoster,
+      titleImage: defaultTitleImg,
+      characterImage: defaultCharacterImg,
+    },
+    {
+      id: "av5",
+      name: "Mechrocosm",
+      slug: "mechrocosm",
+      coverImage: defaultPoster,
+      titleImage: defaultTitleImg,
+      characterImage: defaultCharacterImg,
+    },
+    {
+      id: "av6",
+      name: "Monopoly",
+      slug: "monopoly",
+      coverImage: defaultPoster,
+      titleImage: defaultTitleImg,
+      characterImage: defaultCharacterImg,
+    },
+    {
+      id: "av7",
+      name: "Nirmaan",
+      slug: "nirmaan",
+      coverImage: defaultPoster,
+      titleImage: defaultTitleImg,
+      characterImage: defaultCharacterImg,
+    },
+    {
+      id: "av8",
+      name: "Oligopoly",
+      slug: "oligopoly",
+      coverImage: defaultPoster,
+      titleImage: defaultTitleImg,
+      characterImage: defaultCharacterImg,
+    },
+    {
+      id: "av9",
+      name: "PowerSurge",
+      slug: "powersurge",
+      coverImage: defaultPoster,
+      titleImage: defaultTitleImg,
+      characterImage: defaultCharacterImg,
+    },
+    {
+      id: "av10",
+      name: "Rasayans",
+      slug: "rasayans",
+      coverImage: defaultPoster,
+      titleImage: defaultTitleImg,
+      characterImage: defaultCharacterImg,
+    },
   ];
 
   return (
@@ -37,49 +110,45 @@ function AvishkarEvents() {
         backgroundPosition: "top center", // align how you want
       }}
     >
-<div className="relative w-full overflow-hidden md:h-[300px] lg:h-[200px] sm:h-[300px] h-[450px]">
-        {/* Base image - Increased min-height to ensure coverage */}
-
-        <div className="absolute inset-0 flex flex-col justify-center sm:px-8">
-
-  {/* TOP GROUP — stays together on small screens */}
-  <div className="
+      <div className="relative w-full overflow-hidden md:h-[300px] lg:h-[200px] sm:h-[300px] h-[450px] lg:mt-12 lg:mr-5">
+                {/* Base image - Increased min-height to ensure coverage */}   
+           {" "}
+        <div className="absolute inset-0 flex flex-col justify-center sm:px-8">
+          {/* TOP GROUP — stays together on small screens */}
+          <div
+            className="
       w-full flex flex-col md:flex-row
       items-center md:items-center   /* <-- FIX: center vertically on large screens */
        md:gap-6
        justify-center
     "
-  >
+          >
+            {/* IMAGE */}
+            <div className="flex justify-center md:justify-center w-full md:w-1/3">
+              <img
+                src={image}
+                className="w-75 sm:w-80 md:w-full max-w-[400px]"
+                alt="Logo"
+              />
+            </div>
 
-    {/* IMAGE */}
-    <div className="flex justify-center md:justify-center w-full md:w-1/3">
-      <img
-        src={image}
-        className="w-75 sm:w-80 md:w-full max-w-[400px]"
-        alt="Logo"
-      />
-    </div>
+            {/* TEXT */}
+            <div className="w-full md:w-2/3 flex justify-center">
+              <p className="text-white text-base sm:text-sm font-bold text-center p-6">
+                The innovation mainframe spins up for a high-bandwidth cycle of
+                pure tech. From neural-net hackathons to combat robotics,
+                interface with the bleeding edge of progress. Compile your
+                vision, debug the impossible, and upgrade the future. This isn't
+                just a tech fest; it’s the source code of tomorrow.
+              </p>
+            </div>
+          </div>
 
-    {/* TEXT */}
-    <div className="w-full md:w-2/3 flex justify-center md:justify-start">
-      <p className="text-white text-base sm:text-sm font-bold text-center md:text-left">
-        Culrav, a 4-day-long annual cultural extravaganza of MNNIT Allahabad,
-        is a vibrant celebration of art, music, and creativity. With its diverse
-        range of activities, including pronites featuring performances by
-        renowned artists or bands, kavsAndhya highlighting poetry and literature,
-        and appearances by comedians or big figures, Culrav offers entertainment
-        and engagement for all attendees.
-      </p>
-    </div>
-
-  </div>
-
-  {/* BOTTOM EMPTY SPACE */}
-  <div className="w-full h-4"></div>
-</div>
-
-
-      </div>
+          {/* BOTTOM EMPTY SPACE */}
+          <div className="w-full h-4"></div>
+        </div>
+             {" "}
+      </div>
 
       {/* Header */}
       <div className="w-full flex justify-center pt-16 md:pt-20">
@@ -89,7 +158,7 @@ function AvishkarEvents() {
         >
           EVENTS
         </h1> */}
-        <img src={EventImg} alt="Events" className="w-[50%] max-w-[150px]" />
+        <img src={EventImg} alt="Events" className="w-[50%] max-w-[200px]" />
       </div>
 
       {/* Grid */}

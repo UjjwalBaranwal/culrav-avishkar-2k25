@@ -28,17 +28,66 @@ function CulravEvent() {
   const navigate = useNavigate();
 
   const events = [
-    { id: "ce1", name: "ANUNAAD", slug: "anunaad", coverImage: EventCardBG, titleImage: AnunaadText, characterImage: AnunaadImage },
-    { id: "ce2", name: "RANGMANCH", slug: "rangmanch", coverImage: EventCardBG, titleImage: RangmanchText, characterImage: RangmanchImage },
-    { id: "ce3", name: "DARKROOM", slug: "darkroom", coverImage: EventCardBG, titleImage: DarkroomText, characterImage: DarkroomImage },
-    { id: "ce4", name: "LITMUSE", slug: "litmuse", coverImage: EventCardBG, titleImage: LitmuseText, characterImage: LitmuseImage },
-    { id: "ce5", name: "SPANDAN", slug: "spandan", coverImage: EventCardBG, titleImage: SpandanText, characterImage: SpandanImage },
-    { id: "ce6", name: "RANGSAZZI", slug: "rangsazzi", coverImage: EventCardBG, titleImage: RangsazziText, characterImage: RangsazziImage },
-    { id: "ce7", name: "RAZZMATAZZ", slug: "razzmatazz", coverImage: EventCardBG, titleImage: RazzmatazzText, characterImage: RazzmatazzImage },
+    {
+      id: "ce1",
+      name: "ANUNAAD",
+      slug: "anunaad",
+      coverImage: EventCardBG,
+      titleImage: AnunaadText,
+      characterImage: AnunaadImage,
+    },
+    {
+      id: "ce2",
+      name: "RANGMANCH",
+      slug: "rangmanch",
+      coverImage: EventCardBG,
+      titleImage: RangmanchText,
+      characterImage: RangmanchImage,
+    },
+    {
+      id: "ce3",
+      name: "DARKROOM",
+      slug: "darkroom",
+      coverImage: EventCardBG,
+      titleImage: DarkroomText,
+      characterImage: DarkroomImage,
+    },
+    {
+      id: "ce4",
+      name: "LITMUSE",
+      slug: "litmuse",
+      coverImage: EventCardBG,
+      titleImage: LitmuseText,
+      characterImage: LitmuseImage,
+    },
+    {
+      id: "ce5",
+      name: "SPANDAN",
+      slug: "spandan",
+      coverImage: EventCardBG,
+      titleImage: SpandanText,
+      characterImage: SpandanImage,
+    },
+    {
+      id: "ce6",
+      name: "RANGSAZZI",
+      slug: "rangsazzi",
+      coverImage: EventCardBG,
+      titleImage: RangsazziText,
+      characterImage: RangsazziImage,
+    },
+    {
+      id: "ce7",
+      name: "RAZZMATAZZ",
+      slug: "razzmatazz",
+      coverImage: EventCardBG,
+      titleImage: RazzmatazzText,
+      characterImage: RazzmatazzImage,
+    },
   ];
 
   return (
-    <section
+    <main
       className="relative min-h-screen w-full flex flex-col items-center justify-start text-white"
       style={{
         backgroundImage: `url(${CulravBG})`,
@@ -46,48 +95,44 @@ function CulravEvent() {
         backgroundPosition: "top center", // align how you want
       }}
     >
-<div className="relative w-full overflow-hidden md:h-[300px] lg:h-[200px] sm:h-[300px] h-[450px]">
-
-        <div className="absolute inset-0 flex flex-col justify-center sm:px-8">
-
-  {/* TOP GROUP — stays together on small screens */}
-  <div className="
+      <div className="relative w-full overflow-hidden md:h-[300px] lg:h-[200px] sm:h-[300px] h-[450px] lg:mt-12 lg:mr-5">
+               {" "}
+        <div className="absolute inset-0 flex flex-col justify-center sm:px-8">
+          {/* TOP GROUP — stays together on small screens */}
+          <div
+            className="
       w-full flex flex-col md:flex-row
       items-center md:items-center   /* <-- FIX: center vertically on large screens */
        md:gap-6
        justify-center
     "
-  >
+          >
+            {/* IMAGE */}
+            <div className="flex justify-center md:justify-center w-full md:w-1/3 mt-10">
+              <img
+                src={image}
+                className="w-75 sm:w-80 md:w-full max-w-[400px]"
+                alt="Logo"
+              />
+            </div>
 
-    {/* IMAGE */}
-    <div className="flex justify-center md:justify-center w-full md:w-1/3 mt-10">
-      <img
-        src={image}
-        className="w-75 sm:w-80 md:w-full max-w-[400px]"
-        alt="Logo"
-      />
-    </div>
+            {/* TEXT */}
+            <div className="w-full md:w-2/3 flex justify-center">
+              <p className="text-white text-base sm:text-sm font-bold text-center p-6">
+                The cultural mainframe glitches into a three-day neon riot. From
+                high-voltage pronites to competitive circuits, jack into the
+                ultimate campus simulation. Upload your talent, sync the vibe,
+                and rewrite reality. This isn't just a fest; it’s a total system
+                reset.
+              </p>
+            </div>
+          </div>
 
-    {/* TEXT */}
-    <div className="w-full md:w-2/3 flex justify-center md:justify-start">
-      <p className="text-white text-base sm:text-sm font-bold text-center md:text-left">
-        Culrav, a 4-day-long annual cultural extravaganza of MNNIT Allahabad,
-        is a vibrant celebration of art, music, and creativity. With its diverse
-        range of activities, including pronites featuring performances by
-        renowned artists or bands, kavsAndhya highlighting poetry and literature,
-        and appearances by comedians or big figures, Culrav offers entertainment
-        and engagement for all attendees.
-      </p>
-    </div>
-
-  </div>
-
-  {/* BOTTOM EMPTY SPACE */}
-  <div className="w-full h-4"></div>
-</div>
-
-
-      </div>
+          {/* BOTTOM EMPTY SPACE */}
+          <div className="w-full h-4"></div>
+        </div>
+             {" "}
+      </div>
 
       {/* Header */}
       <div className="w-full flex justify-center pt-20 md:pt-20">
@@ -118,7 +163,7 @@ function CulravEvent() {
           ))}
         </div>
       </div>
-    </section>
+    </main>
   );
 }
 
