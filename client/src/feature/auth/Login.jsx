@@ -251,7 +251,7 @@ const Login = () => {
                       }
                     }}
                   >
-                    Request new link?
+                    Request new confirmation link?
                   </button>
                 </p>
               )}
@@ -329,7 +329,7 @@ const Login = () => {
                       }
                     }}
                   >
-                    Request new link?
+                    Request new confirmation link?
                   </button>
                 </p>
               )}
