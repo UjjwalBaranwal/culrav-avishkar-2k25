@@ -14,7 +14,6 @@ function Navbar() {
     { name: "GALLERY", path: "/gallery" },
     { name: "TEAM", path: "/team" },
     { name: "SPONSORS", path: "/sponsors" },
-    { name: "SCHEDULE", path: "/schedule" },
   ];
 
   const handleNavigation = (path) => {
@@ -42,7 +41,7 @@ function Navbar() {
               onClick={() => handleNavigation(item.path)}
               className="group relative cursor-pointer"
             >
-              <h1 className="text-[#d9faff] font-bebas tracking-wider text-lg transition-all duration-300 group-hover:text-[#00e5ff] group-hover:drop-shadow-[0_0_8px_#00e5ff]">
+              <h1 className="text-[#d9faff] font-anton font-extrabold text-4xl tracking-wider text-lg transition-all duration-300 group-hover:text-[#00e5ff] group-hover:drop-shadow-[0_0_8px_#00e5ff]">
                 {item.name}
               </h1>
               <span className="absolute left-0 bottom-[-3px] w-0 h-0.5 bg-linear-to-r from-[#00e5ff] to-[#7f00ff] transition-all duration-300 group-hover:w-full group-hover:shadow-[0_0_10px_#00e5ff]"></span>

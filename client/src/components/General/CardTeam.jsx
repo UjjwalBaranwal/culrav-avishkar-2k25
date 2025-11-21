@@ -1,23 +1,10 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// 🔥 Safe Converter (NEVER breaks)
-function convertDriveUrl(url) {
-  if (!url || typeof url !== "string") return null;
 
-  const match = url.match(/[-\w]{20,}/); // extract ID safely
-  if (!match) return null;
-
-  return `https://lh3.googleusercontent.com/d/${match[0]}`;
-}
-
-// 🔥 Placeholder for missing / invalid images
-const FALLBACK_IMG =
-  "https://images.pexels.com/photos/31542399/pexels-photo-31542399.jpeg"; // (you can replace this)
-
-const CardTeam = ({ name, reg, driveUrl }) => {
+const CardTeam = ({ name, img }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [imgSrc, setImgSrc] = useState(convertDriveUrl(driveUrl) || FALLBACK_IMG);
+ // const [imgSrc, setImgSrc] = useState(convertDriveUrl(driveUrl) || FALLBACK_IMG);
 
   const handleImgError = () => {
     setImgSrc(FALLBACK_IMG); // use fallback only once
@@ -46,7 +33,7 @@ const CardTeam = ({ name, reg, driveUrl }) => {
       whileTap={{ scale: 0.97 }}
     >
       <motion.img
-        src={imgSrc}
+        src={img}
         onError={handleImgError} // 🔥 prevents infinite loading / flicker
         alt={name}
         className="absolute inset-0 w-full h-full object-cover"
@@ -62,19 +49,6 @@ const CardTeam = ({ name, reg, driveUrl }) => {
         >
           {name}
         </motion.h3>
-
-        <AnimatePresence>
-          {isHovered && reg && (
-            <motion.p
-              className="text-green-300 font-anton text-xs sm:text-sm absolute bottom-4"
-              initial={{ y: "100%", opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: "100%", opacity: 0 }}
-            >
-              {reg}
-            </motion.p>
-          )}
-        </AnimatePresence>
       </div>
     </motion.div>
   );
