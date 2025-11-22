@@ -3,10 +3,10 @@ import dummy from "../../assets/sample.jpg";
 
 const Sponsers = () => {
   return (
-    <div className="relative min-h-screen overflow-hidden flex flex-col items-center px-6 bg-[#0a0a1a] font-Anton">
+    <div className="relative min-h-screen overflow-hidden flex flex-col items-center px-6 bg-[#0a0a1a] font-display">
       
       {/* Title */}
-      <h1 className="font-anton bg-linear-to-r from-[#00e5ff] to-[#7f00ff] bg-clip-text text-transparent text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-[6px] mb-10 mt-10">
+      <h1 className="font-sans bg-linear-to-r from-[#00e5ff] to-[#7f00ff] bg-clip-text text-transparent text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-[6px] mb-10 mt-10">
   
         Sponsors
       </h1>
@@ -16,7 +16,7 @@ const Sponsers = () => {
         
         {/* Row 1 */}
         <div className="text-center">
-          <h2 className="font-anton bg-linear-to-r from-[#00e5ff] to-[#7f00ff] bg-clip-text text-transparent text-3xl sm:text-4xl font-extrabold mb-5 uppercase tracking-[6px]">
+          <h2 className="font-sans bg-linear-to-r from-[#00e5ff] to-[#7f00ff] bg-clip-text text-transparent text-3xl sm:text-4xl font-extrabold mb-5 uppercase tracking-[6px]">
             ASSOCIATE SPONSOR
           </h2>
           <div className="flex justify-center gap-6">
@@ -32,7 +32,7 @@ const Sponsers = () => {
 
         {/* Row 2 */}
         <div className="text-center">
-          <h2 className="font-anton text-outline text-outline-blue text-3xl sm:text-4xl font-extrabold mb-5 uppercase tracking-[6px]">
+          <h2 className="font-display text-outline text-outline-blue text-3xl sm:text-4xl font-extrabold mb-5 uppercase tracking-[6px]">
             ASSOCIATE SPONSOR
           </h2>
           <div className="flex justify-center gap-8 flex-wrap">
@@ -52,7 +52,7 @@ const Sponsers = () => {
 
         {/* Row 3 */}
         <div className="text-center">
-          <h2 className="font-anton text-outline text-outline-blue text-3xl sm:text-4xl font-extrabold mb-5 uppercase tracking-[6px]">
+          <h2 className="font-sans text-outline text-outline-blue text-3xl sm:text-4xl font-extrabold mb-5 uppercase tracking-[6px]">
             ASSOCIATE SPONSOR
           </h2>
           <div className="flex justify-center gap-8 flex-wrap">

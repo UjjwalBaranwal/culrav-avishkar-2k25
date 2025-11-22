@@ -3,6 +3,37 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useSearchParams } from "react-router";
 import { resetPass } from "./authSlice";
 
+
+// === INPUT STYLE ===
+const neonInput =
+  "w-full px-4 py-3 text-lg rounded-md bg-[#050816]/80 border border-cyan-400/70 text-cyan-100 placeholder-cyan-400/40 focus:outline-none focus:border-fuchsia-400 shadow-[0_0_12px_rgba(56,189,248,0.45)]";
+
+// === BUTTON STYLE ===
+const buttonClass =
+  "mt-6 w-full py-3 bg-gradient-to-r from-cyan-400 via-sky-400 to-fuchsia-500 text-black text-lg font-semibold rounded-lg hover:brightness-125 transition shadow-[0_0_20px_rgba(236,72,153,0.8)]";
+
+// === SMALL LINK STYLE ===
+const smallLinkClass =
+  "text-fuchsia-400 cursor-pointer hover:underline hover:text-fuchsia-300 transition";
+
+// === HANDLING AF INPUTS BACKGROUND ===
+const css = `
+input:-webkit-autofill,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:hover,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  box-shadow: 0 0 0px 1000px #050816 inset !important;
+  -webkit-text-fill-color: #a0faff !important;
+  caret-color: #a0faff !important;
+}
+`;
+const style = document.createElement("style");
+style.appendChild(document.createTextNode(css));
+document.head.appendChild(style);
+
+
+
 export default function ResetPassword() {
   const [searchParams] = useSearchParams();
   const [pwd, setPwd] = useState("");
