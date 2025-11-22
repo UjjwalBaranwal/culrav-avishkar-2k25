@@ -103,6 +103,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 import clsx from "clsx";
 import gsap from "gsap";
 
@@ -115,7 +116,6 @@ const navItems = [
   { name: "GALLERY", path: "/gallery" },
   { name: "TEAM", path: "/team" },
   { name: "SPONSORS", path: "/sponsors" },
-  { name: "LOGIN", path: "/login" },
 ];
 
 const NavBar = () => {
@@ -125,6 +125,9 @@ const NavBar = () => {
   const [isNavVisible, setIsNavVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const { isAuthenticated, user } = useSelector((state) => state.auth);
+  const firstName = user?.name.split(" ")[0];
 
   // const audioElementRef = useRef(null);
   const navContainerRef = useRef(null);
@@ -217,6 +220,16 @@ const NavBar = () => {
                     {item.name}
                   </Link>
                 ))}
+                <Link
+                  to={isAuthenticated ? "/dashboard/profile" : "/login"}
+                  className={clsx("nav-hover-btn", {
+                    "text-blue-400":
+                      location.pathname ===
+                      (isAuthenticated ? "/dashboard/profile" : "/login"),
+                  })}
+                >
+                  {isAuthenticated ? `Welcome, ${firstName}!` : "LOGIN"}
+                </Link>
               </div>
 
               {/* Audio Indicator Button */}
@@ -255,7 +268,7 @@ const NavBar = () => {
                     "w-6 h-0.5 bg-white transition-all duration-300",
                     {
                       "rotate-45 translate-y-2": isMobileMenuOpen,
-                    }
+                    },
                   )}
                 />
                 <span
@@ -263,7 +276,7 @@ const NavBar = () => {
                     "w-6 h-0.5 bg-white transition-all duration-300",
                     {
                       "opacity-0": isMobileMenuOpen,
-                    }
+                    },
                   )}
                 />
                 <span
@@ -271,7 +284,7 @@ const NavBar = () => {
                     "w-6 h-0.5 bg-white transition-all duration-300",
                     {
                       "-rotate-45 -translate-y-2": isMobileMenuOpen,
-                    }
+                    },
                   )}
                 />
               </button>
@@ -287,7 +300,7 @@ const NavBar = () => {
           {
             "opacity-100 pointer-events-auto": isMobileMenuOpen,
             "opacity-0 pointer-events-none": !isMobileMenuOpen,
-          }
+          },
         )}
       >
         {/* Backdrop */}
@@ -303,7 +316,7 @@ const NavBar = () => {
             {
               "translate-y-0 opacity-100": isMobileMenuOpen,
               "-translate-y-4 opacity-0": !isMobileMenuOpen,
-            }
+            },
           )}
         >
           <div className="flex flex-col gap-2">
@@ -318,12 +331,22 @@ const NavBar = () => {
                       location.pathname === item.path,
                     "text-white hover:text-blue-300 hover:bg-white/5":
                       location.pathname !== item.path,
-                  }
+                  },
                 )}
               >
                 {item.name}
               </Link>
             ))}
+            <Link
+              to={isAuthenticated ? "/dashboard/profile" : "/login"}
+              className={clsx("nav-hover-btn", {
+                "text-blue-400":
+                  location.pathname ===
+                  (isAuthenticated ? "/dashboard/profile" : "/login"),
+              })}
+            >
+              {isAuthenticated ? `Welcome, ${firstName}!` : "LOGIN"}
+            </Link>
           </div>
 
           {/* <div className="mt-4 pt-4 border-t border-white/10">
