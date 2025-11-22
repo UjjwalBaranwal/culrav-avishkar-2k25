@@ -236,17 +236,17 @@ export function TeamPage() {
   };
 
   return (
-    <div className="flex h-screen w-full fixed text-white font-Anton bg-team">
+    <div className="flex h-screen w-full fixed text-white font-Anton bg-team pt-18">
       {/* Overlay for better text visibility */}
       <div className="absolute inset-0 bg-[#000000aa]"></div>
 
       {/* --- Desktop Sidebar  --- */}
-      <aside className="hidden md:block w-64 h-full fixed left-0 top-[60px] overflow-y-auto bg-[#101020bb] backdrop-blur-md border-r border-[#1a1a3d] p-6 space-y-2 z-20">
+      <aside className="hidden md:block w-64 h-full fixed left-0 top-[58px] overflow-y-auto bg-[#0a0a1a] backdrop-blur-md border-r border-[#1a1a3d] p-6 space-y-2 z-20">
         {teamData.map((team) => (
           <a
             key={team.id}
             onClick={() => handleNavClick(team.id)}
-            className={`relative block w-full text-center font-Anton tracking-wider text-lg p-3 rounded-md cursor-pointer transition-colors duration-200 ${
+            className={`relative block w-full text-center font-Anton tracking-wider p-3 rounded-md cursor-pointer transition-colors duration-200 ${
               activeSection === team.id
                 ? "text-cyan-400"
                 : "text-gray-300 hover:bg-gray-700/50 hover:text-white"
@@ -298,14 +298,14 @@ export function TeamPage() {
             >
               {/* Section Heading */}
               <motion.h2
-                className="text-3xl md:text-4xl font-Anton tracking-widest mb-8 text-cyan-200 relative inline-block"
+                className="text-2xl md:text-3xl font-Anton tracking-widest mb-8 text-cyan-300 relative inline-block"
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.5 }}
               >
                 {team.name}
-                <span className="absolute -bottom-2 left-0 w-1/2 h-1 bg-linear-to-r from-[#00e5ff] to-[#7f00ff]"></span>
+                <span className="absolute -bottom-2 left-0 w-1/2 h-1 bg-linear-to-r from-[#4acedc] to-[rgb(217,73,230)]"></span>
               </motion.h2>
 
               {/* Team Grid */}

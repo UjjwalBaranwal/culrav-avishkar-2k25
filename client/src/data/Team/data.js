@@ -121,7 +121,7 @@ export const teamData = [
     },
     {
         id: "mhm_lead",
-        name: "MHM Lead",
+        name: "Media Lead",
         members: [
             { name: "Arpit Gami", img: ARPIT_GAMI},
             { name: "Saachi Pandey", img: SACHI},

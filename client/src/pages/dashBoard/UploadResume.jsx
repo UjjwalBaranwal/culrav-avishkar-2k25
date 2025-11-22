@@ -62,7 +62,7 @@ export default function UploadResume() {
           placeholder="Enter link" 
         />
         
-        <p className="text-sm text-center text-pink-300">
+        <p className="text-sm text-center text-sky-200">
           Only Google Drive and Google Docs links are supported. Make sure the link is public.
         </p>
         
@@ -70,7 +70,7 @@ export default function UploadResume() {
           type="button"
           onClick={handleUpload}
           disabled={isLoading}
-          className="w-full bg-pink-500 hover:bg-pink-600 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold py-3 px-6 rounded-lg transition-colors duration-200 shadow-md"
+          className="w-full bg-cyan-400 hover:bg-cyan-500 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold py-3 px-6 rounded-lg transition-colors duration-200 shadow-md"
         >
           {isLoading ? "UPLOADING..." : "UPLOAD"}
         </button>
