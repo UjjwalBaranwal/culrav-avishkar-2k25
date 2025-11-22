@@ -26,8 +26,9 @@ const Modal = ({ item, onClose }) => {
                     <X className="w-6 h-6" />
                 </button>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 h-full max-h-[85vh] ">
-                    <div className="h-[50vh] md:h-full relative bg-black flex items-center justify-center overflow-hidden ">
+                <div className="grid grid-cols-1 md:grid-cols-2 h-full max-h-[85vh] overflow-hidden">
+                    <div className="h-[40vh] md:h-full relative bg-black flex items-center justify-center overflow-hidden">
+
                         <img
                             src={gifSrc}
                             alt={item.title}
@@ -35,10 +36,10 @@ const Modal = ({ item, onClose }) => {
                         />
                     </div>
 
-                    <div className="p-4 md:p-16 flex flex-col justify-center bg-[#111]">
+                    <div className="p-3 md:p-16 flex flex-col justify-start md:justify-center bg-cyan-950 overflow-y-auto">
                         <div className="mb-8">
                             <motion.h2
-                                className="text-4xl md:text-6xl font-bold text-white mb-6"
+                                className="text-3xl md:text-6xl font-bold text-white mb-6"
                                 initial={{ opacity: 0, x: 50 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.2 }}
@@ -46,12 +47,12 @@ const Modal = ({ item, onClose }) => {
                                 {item.title}
                             </motion.h2>
                             <motion.p
-                                className="text-gray-400 text-lg leading-relaxed font-light"
+                                className="text-gray-400 text-sm md:text-lg leading-relaxed font-light"
                                 initial={{ opacity: 0, x: 50 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.3 }}
                             >
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam veritatis minus accusantium, iusto doloribus soluta expedita repellendus veniam dignissimos at natus, numquam a, praesentium ab laboriosam explicabo hic quia odio.
+                                {item.text}
                             </motion.p>
                         </div>
                     </div>
