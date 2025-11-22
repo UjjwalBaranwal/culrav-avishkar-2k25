@@ -36,7 +36,7 @@ const Modal = ({ item, onClose }) => {
                         />
                     </div>
 
-                    <div className="p-3 md:p-16 flex flex-col justify-start md:justify-center bg-cyan-950 overflow-y-auto">
+                    <div className="p-3 md:p-16 flex flex-col justify-start md:justify-center bg-[#000000] overflow-y-auto">
                         <div className="mb-8">
                             <motion.h2
                                 className="text-3xl md:text-6xl font-bold text-white mb-6"
