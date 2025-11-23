@@ -17,12 +17,11 @@ import { useDispatch } from "react-redux";
 import { loadUser } from "./feature/auth/authSlice.js";
 import TeamDetail from "./pages/dashBoard/TeamDetails.jsx";
 
-
 // lazy loaded pages
 const Homepage = lazy(() => import("./pages/Homepage"));
 const CulravEvent = lazy(() => import("./pages/culravEvent"));
-const DashboardLayout = lazy(
-  () => import("./feature/dashBoard/DashboardLayout"),
+const DashboardLayout = lazy(() =>
+  import("./feature/dashBoard/DashboardLayout")
 );
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
@@ -58,32 +57,11 @@ const PowerSurgePage = lazy(() => import("./pages/avishkar/PowerSurge"));
 const RasayansPage = lazy(() => import("./pages/avishkar/Rasayans"));
 
 function App() {
-<<<<<<< HEAD
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const hasSeenIntro = localStorage.getItem("introPlayed");
-
-    if (!hasSeenIntro) {
-      setLoading(true);
-    }
-  }, []);
-
-  const handleVideoEnd = () => {
-    localStorage.setItem("introPlayed", "true");
-    setLoading(false);
-  };
-
-  if (loading) {
-    return <VideoLoader onVideoEnd={handleVideoEnd} />;
-  }
-=======
   const dispatch = useDispatch();
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) dispatch(loadUser());
   }, [dispatch]);
->>>>>>> 5868a8edb1ca70a9ac9a26c53fda31c3a3bb9f1a
 
   return (
     <>
@@ -139,7 +117,7 @@ function App() {
             <Route path="/confirm-email" element={<ConfirmEmail />} />
             <Route path="/reset-password" element={<ResetPassword />} />
             {/* FALLBACK PAGE */}
-            <Route path="*" element={<NotFoundPage/>} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
