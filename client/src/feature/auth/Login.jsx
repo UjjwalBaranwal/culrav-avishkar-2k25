@@ -37,11 +37,13 @@ style.appendChild(document.createTextNode(css));
 document.head.appendChild(style);
 
 const Login = () => {
-  const [view, setView] = useState("login"); 
+  const [view, setView] = useState("login");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { loading, isAuthenticated, errorCode } = useSelector((state) => state.auth);
+  const { loading, isAuthenticated, errorCode } = useSelector(
+    (state) => state.auth,
+  );
 
   useEffect(() => {
     if (isAuthenticated) navigate("/");
@@ -114,7 +116,6 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center h-screen bg-[#020617] font-[Jost] relative overflow-hidden overflow-y-auto">
-
       {/* Background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#22d3ee22,_transparent_70%),_radial-gradient(circle_at_bottom,_#a855f722,_transparent_70%)] opacity-70" />
       <div
@@ -131,15 +132,15 @@ const Login = () => {
         className="login-card relative w-[500px] max-w-[92vw] rounded-[2rem] border border-cyan-400/40 bg-slate-950/60 px-10 py-11 backdrop-blur-xl"
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-         transition={{ duration: 0.45, ease: "easeOut" }}
+        transition={{ duration: 0.45, ease: "easeOut" }}
       >
-         {/* Neon Corners - Fixed INSIDE Card */}
-<div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[2rem]">
-  <div className="absolute top-[1px] left-[12px] h-2 w-20 bg-cyan-400 rounded-tl-full " />
-  <div className="absolute top-[1.5px] right-[4px] h-2 w-20 bg-fuchsia-500 rounded-tr-full" />
-  <div className="absolute bottom-[1.5px] right-[4px] h-2 w-20 bg-cyan-400 rounded-br-full" />
-  <div className="absolute bottom-[1.5px] left-[4px] h-2 w-20 bg-fuchsia-500 rounded-bl-full" />
-</div>
+        {/* Neon Corners - Fixed INSIDE Card */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[2rem]">
+          <div className="absolute top-[1px] left-[12px] h-2 w-20 bg-cyan-400 rounded-tl-full " />
+          <div className="absolute top-[1.5px] right-[4px] h-2 w-20 bg-fuchsia-500 rounded-tr-full" />
+          <div className="absolute bottom-[1.5px] right-[4px] h-2 w-20 bg-cyan-400 rounded-br-full" />
+          <div className="absolute bottom-[1.5px] left-[4px] h-2 w-20 bg-fuchsia-500 rounded-bl-full" />
+        </div>
         <AnimatePresence mode="wait">
           {/* ============ REGISTER ============ */}
           {view === "register" && (
@@ -179,10 +180,6 @@ const Login = () => {
                 placeholder="College mail id"
                 {...registerRegister("email", {
                   required: "Email is required",
-                  pattern: {
-                    value: /^[^\s@]+@(mnnit|iitk|iiitp)\.ac\.in$/,
-                    message: "Enter a valid Gsuit email",
-                  },
                 })}
                 className={neonInput}
               />
@@ -195,7 +192,9 @@ const Login = () => {
               <input
                 type="text"
                 placeholder="College Name"
-                {...registerRegister("college", { required: "College is required" })}
+                {...registerRegister("college", {
+                  required: "College is required",
+                })}
                 className={neonInput}
               />
               {registerErrors.college && (
@@ -205,7 +204,9 @@ const Login = () => {
               )}
 
               <select
-                {...registerRegister("branch", { required: "Branch is required" })}
+                {...registerRegister("branch", {
+                  required: "Branch is required",
+                })}
                 className={neonInput}
                 defaultValue=""
               >
@@ -213,7 +214,11 @@ const Login = () => {
                   Select Branch
                 </option>
                 {branches.map((b) => (
-                  <option key={b} value={b} className="bg-[#020617] text-cyan-100">
+                  <option
+                    key={b}
+                    value={b}
+                    className="bg-[#020617] text-cyan-100"
+                  >
                     {b}
                   </option>
                 ))}
@@ -224,7 +229,10 @@ const Login = () => {
                 placeholder="Create a password"
                 {...registerRegister("password", {
                   required: "Password is required",
-                  minLength: { value: 6, message: "Minimum 6 characters required" },
+                  minLength: {
+                    value: 6,
+                    message: "Minimum 6 characters required",
+                  },
                 })}
                 className={neonInput}
               />
@@ -242,9 +250,12 @@ const Login = () => {
                     className={smallLinkClass}
                     onClick={async () => {
                       try {
-                        await apiClient.post("/auth/request-confirmation-mail", {
-                          email: getRegisterValues("email"),
-                        });
+                        await apiClient.post(
+                          "/auth/request-confirmation-mail",
+                          {
+                            email: getRegisterValues("email"),
+                          },
+                        );
                         toast.success("Confirmation mail sent!");
                       } catch {
                         toast.error("Error requesting confirmation mail");
@@ -262,7 +273,10 @@ const Login = () => {
 
               <p className="text-cyan-100 text-lg text-center">
                 Already registered?{" "}
-                <span className={smallLinkClass} onClick={() => setView("login")}>
+                <span
+                  className={smallLinkClass}
+                  onClick={() => setView("login")}
+                >
                   Log in
                 </span>
               </p>
@@ -289,21 +303,21 @@ const Login = () => {
                 placeholder="Enter your college mail id"
                 {...registerLogin("email", {
                   required: "Email is required",
-                  pattern: {
-                    value: /^[^\s@]+@(mnnit|iitk|iiitp)\.ac\.in$/,
-                    message: "Enter a valid email",
-                  },
                 })}
                 className={neonInput}
               />
               {loginErrors.email && (
-                <p className="text-red-400 text-sm">{loginErrors.email.message}</p>
+                <p className="text-red-400 text-sm">
+                  {loginErrors.email.message}
+                </p>
               )}
 
               <input
                 type="password"
                 placeholder="Enter your password"
-                {...registerLogin("password", { required: "Password is required" })}
+                {...registerLogin("password", {
+                  required: "Password is required",
+                })}
                 className={neonInput}
               />
               {loginErrors.password && (
@@ -320,9 +334,12 @@ const Login = () => {
                     className={smallLinkClass}
                     onClick={async () => {
                       try {
-                        await apiClient.post("/auth/request-confirmation-mail", {
-                          email: getLoginValues("email"),
-                        });
+                        await apiClient.post(
+                          "/auth/request-confirmation-mail",
+                          {
+                            email: getLoginValues("email"),
+                          },
+                        );
                         toast.success("Confirmation mail sent!");
                       } catch {
                         toast.error("Error requesting confirmation mail");
@@ -339,10 +356,16 @@ const Login = () => {
               </button>
 
               <div className="flex justify-between text-lg text-cyan-100">
-                <span className={smallLinkClass} onClick={() => setView("register")}>
+                <span
+                  className={smallLinkClass}
+                  onClick={() => setView("register")}
+                >
                   Register
                 </span>
-                <span className={smallLinkClass} onClick={() => setView("reset")}>
+                <span
+                  className={smallLinkClass}
+                  onClick={() => setView("reset")}
+                >
                   Forgot Password?
                 </span>
               </div>
@@ -377,7 +400,9 @@ const Login = () => {
                 className={neonInput}
               />
               {resetErrors.email && (
-                <p className="text-red-400 text-sm">{resetErrors.email.message}</p>
+                <p className="text-red-400 text-sm">
+                  {resetErrors.email.message}
+                </p>
               )}
 
               <button type="submit" className={buttonClass}>
@@ -385,7 +410,10 @@ const Login = () => {
               </button>
 
               <p className="text-center text-lg text-cyan-100">
-                <span className={smallLinkClass} onClick={() => setView("login")}>
+                <span
+                  className={smallLinkClass}
+                  onClick={() => setView("login")}
+                >
                   Back to Login
                 </span>
               </p>
