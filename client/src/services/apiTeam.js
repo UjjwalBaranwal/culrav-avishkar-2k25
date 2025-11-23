@@ -27,15 +27,37 @@ export const teamDetail = catchAsync(async (teamId) => {
   const { data } = await apiClient.post(`${baseUrl}/teamDetails`, { teamId });
   return data;
 });
-export const acceptInvitation = catchAsync(async (teamID) => {
-  const { data } = await apiClient.post(`${baseUrl}/acceptInvite`, {
-    teamID,
+
+export const sendInvite = catchAsync(async (sendToEmail, teamId) => {
+  const { data } = await apiClient.post(`${baseUrl}/sendTeamInvite`, {
+    sendToEmail,
+    teamId,
   });
   return data;
 });
-export const rejectInvitation = catchAsync(async (teamID) => {
+
+export const acceptInvitation = catchAsync(async (teamId) => {
+  const { data } = await apiClient.post(`${baseUrl}/acceptInvite`, {
+    teamId,
+  });
+  return data;
+});
+export const rejectInvitation = catchAsync(async (teamId) => {
   const { data } = await apiClient.post(`${baseUrl}/rejectInvite`, {
-    teamID,
+    teamId,
+  });
+  return data;
+});
+
+export const leaveTeam = catchAsync(async (teamId) => {
+  const { data } = await apiClient.post(`${baseUrl}/leaveTeam`, { teamId });
+  return data;
+});
+
+export const kickMember = catchAsync(async (teamId, userTobeKickedId) => {
+  const { data } = await apiClient.post(`${baseUrl}/kickMember`, {
+    teamId,
+    userTobeKickedId,
   });
   return data;
 });

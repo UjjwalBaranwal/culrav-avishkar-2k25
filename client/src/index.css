@@ -1,6 +1,19 @@
+/* ---------------------------------------------
+   1) FONT IMPORTS
+---------------------------------------------- */
+@import url("https://fonts.cdnfonts.com/css/general-sans");
+
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Share+Tech+Mono&display=swap");
 @import "tailwindcss";
 
-/* === Custom Fonts === */
+body {
+  width: 100dvw;
+  overflow-x: hidden;
+  background-color: #dfdff0;
+  font-family: "General Sans", sans-serif;
+}
+
+/* Local Fonts */
 @font-face {
   font-family: "Dragz";
   src: url("/src/assets/fonts/62DRAGZ.otf") format("opentype");
@@ -11,199 +24,226 @@
   src: url("/src/assets/fonts/Anton-Regular.ttf") format("truetype");
 }
 
-/* === Theme Variables === */
+@font-face {
+  font-family: "zentry";
+  src: url("/src/assets/fonts/zentry-regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "general";
+  src: url("/src/assets/fonts/general.woff2") format("woff2");
+}
+
+/* ---------------------------------------------
+   2) THEME VARIABLES (Tailwind v4 format)
+---------------------------------------------- */
 @theme {
   --font-dragz: "Dragz", sans-serif;
   --font-anton: "Anton", sans-serif;
-}
+  --font-zentry: "zentry", sans-serif;
+  --font-general: "general", sans-serif;
+  --font-circular-web: "circular-web", sans-serif;
+  --font-display: "Orbitron", sans-serif;
+  --font-mono: "Share Tech Mono", monospace;
 
-/* === Text Outline Utilities === */
-@layer utilities {
-  .text-outline {
-    color: white;
-    -webkit-text-stroke: 2px var(--outline-color);
-    text-stroke: 2px var(--outline-color);
-    text-shadow:
-      0 0 10px color-mix(in srgb, var(--outline-color) 50%, transparent),
-      0 0 20px color-mix(in srgb, var(--outline-color) 30%, transparent);
-  }
-
-  .text-outline-pink {
-    --outline-color: #ff1493;
-  }
-
-  .text-outline-blue {
-    --outline-color: #00ffff;
-  }
-}
-@import "tw-animate-css";
-
-@custom-variant dark (&:is(.dark *));
-
-@theme inline {
+  --radius: 0.625rem;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-blue-50: #dfdff0;
+  --color-blue-75: #dfdff2;
+  --color-blue-100: #f0f2fa;
+  --color-blue-200: #010101;
+  --color-blue-300: #4fb7dd;
+
+  --color-violet-300: #5724ff;
+
+  --color-yellow-100: #8e983f;
+  --color-yellow-300: #edff66;
 }
 
-:root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.147 0.004 49.25);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.147 0.004 49.25);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.147 0.004 49.25);
-  --primary: oklch(0.216 0.006 56.043);
-  --primary-foreground: oklch(0.985 0.001 106.423);
-  --secondary: oklch(0.97 0.001 106.424);
-  --secondary-foreground: oklch(0.216 0.006 56.043);
-  --muted: oklch(0.97 0.001 106.424);
-  --muted-foreground: oklch(0.553 0.013 58.071);
-  --accent: oklch(0.97 0.001 106.424);
-  --accent-foreground: oklch(0.216 0.006 56.043);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.923 0.003 48.717);
-  --input: oklch(0.923 0.003 48.717);
-  --ring: oklch(0.709 0.01 56.259);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0.001 106.423);
-  --sidebar-foreground: oklch(0.147 0.004 49.25);
-  --sidebar-primary: oklch(0.216 0.006 56.043);
-  --sidebar-primary-foreground: oklch(0.985 0.001 106.423);
-  --sidebar-accent: oklch(0.97 0.001 106.424);
-  --sidebar-accent-foreground: oklch(0.216 0.006 56.043);
-  --sidebar-border: oklch(0.923 0.003 48.717);
-  --sidebar-ring: oklch(0.709 0.01 56.259);
+/* ---------------------------------------------
+   3) GLOBAL STYLES
+---------------------------------------------- */
+body {
+  width: 100dvw;
+  overflow-x: hidden;
+  background-color: var(--color-blue-50);
+  font-family: "General Sans", sans-serif;
 }
 
+/* Dark mode variables */
 .dark {
   --background: oklch(0.147 0.004 49.25);
   --foreground: oklch(0.985 0.001 106.423);
-  --card: oklch(0.216 0.006 56.043);
-  --card-foreground: oklch(0.985 0.001 106.423);
-  --popover: oklch(0.216 0.006 56.043);
-  --popover-foreground: oklch(0.985 0.001 106.423);
-  --primary: oklch(0.923 0.003 48.717);
-  --primary-foreground: oklch(0.216 0.006 56.043);
-  --secondary: oklch(0.268 0.007 34.298);
-  --secondary-foreground: oklch(0.985 0.001 106.423);
-  --muted: oklch(0.268 0.007 34.298);
-  --muted-foreground: oklch(0.709 0.01 56.259);
-  --accent: oklch(0.268 0.007 34.298);
-  --accent-foreground: oklch(0.985 0.001 106.423);
-  --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.553 0.013 58.071);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.216 0.006 56.043);
-  --sidebar-foreground: oklch(0.985 0.001 106.423);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0.001 106.423);
-  --sidebar-accent: oklch(0.268 0.007 34.298);
-  --sidebar-accent-foreground: oklch(0.985 0.001 106.423);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.553 0.013 58.071);
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
+/* ---------------------------------------------
+   4) TEXT OUTLINE EFFECTS
+---------------------------------------------- */
+.text-outline {
+  color: white;
+  -webkit-text-stroke: 2px var(--outline-color);
+  text-shadow: 0 0 10px
+      color-mix(in srgb, var(--outline-color) 50%, transparent),
+    0 0 20px color-mix(in srgb, var(--outline-color) 30%, transparent);
+}
+
+.text-outline-pink {
+  --outline-color: #ff1493;
+}
+
+.text-outline-blue {
+  --outline-color: #00ffff;
+}
+
+/* ---------------------------------------------
+   5) CUSTOM UTILITIES (Tailwind v4)
+---------------------------------------------- */
+
+@layer utilities {
+  .nav-hover-btn {
+    @apply relative ms-10 font-general text-xs uppercase text-blue-50 cursor-pointer 
+           after:absolute after:-bottom-0.5 after:left-0 after:h-[2px] after:w-full 
+           after:origin-bottom-right after:scale-x-0 after:bg-neutral-800 
+           after:transition-transform after:duration-300 
+           after:ease-[cubic-bezier(0.65_0.05_0.36_1)]
+           hover:after:origin-bottom-left hover:after:scale-x-100 
+           dark:after:bg-white;
   }
-  body {
-    @apply bg-background text-foreground;
+
+  .floating-nav {
+    @apply bg-black rounded-lg border;
+  }
+  .font-sans {
+    font-family: var(--font-display);
+  }
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+  .bg-grid-pattern {
+    background-size: 50px 50px;
+    background-image: linear-gradient(
+        to right,
+        rgba(34, 211, 238, 0.05) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(34, 211, 238, 0.05) 1px, transparent 1px);
+  }
+  .animate-glitch-1 {
+    animation: glitch-1 2.5s infinite linear alternate-reverse;
+  }
+  .animate-glitch-2 {
+    animation: glitch-2 3s infinite linear alternate-reverse;
+  }
+
+  /* Scanlines */
+  .scanlines {
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0) 50%,
+      rgba(0, 0, 0, 0.3) 50%,
+      rgba(0, 0, 0, 0.3)
+    );
+    background-size: 100% 3px;
+  }
+  .glitch-static {
+  text-shadow: 
+    0 0 5px #ff0000, /* Red glow for ERROR */
+    0 0 10px #ff0000,
+    0 0 20px #ff0000,
+    0 0 40px rgba(255, 0, 0, 0.7);
+}
+
+.glitch-static .text-cyan-400 {
+    text-shadow: 
+    0 0 5px #22d3ee, /* Cyan glow for 404 */
+    0 0 10px #22d3ee,
+    0 0 20px #22d3ee,
+    0 0 40px rgba(34, 211, 238, 0.7);
+}
+
+/* Cyber Button Glow */
+.cyber-button-glow {
+    position: relative;
+    overflow: hidden;
+    /* This will be the base glow */
+    box-shadow: 0 0 5px rgba(34, 211, 238, 0.5), 0 0 15px rgba(34, 211, 238, 0.3);
+}
+
+.cyber-button-glow:hover {
+    box-shadow: 0 0 10px #22d3ee, 0 0 30px #22d3ee, 0 0 60px #22d3ee;
+}
+
+/* Subtle Grid Overlay for Futuristic Feel */
+.grid-overlay {
+    background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px; /* Adjust grid size as needed */
+    animation: grid-scroll 60s linear infinite; /* Slow, continuous scroll */
+    pointer-events: none; /* Ensure it doesn't block interactions */
+}
+}
+
+.bg-team {
+  background-image: url('/src/assets/bg-team.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* nice scrolling effect */
+}
+
+
+/* Custom Animations */
+
+@keyframes grid-move {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(50px);
+  }
+}
+.animate-grid-move {
+  animation: grid-move 4s linear infinite;
+}
+.animate-spin-slow {
+  animation: spin 10s linear infinite;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 
-.neon-text {
-  color: #00f7ff;
-  text-shadow: 0 0 10px #00f7ff, 0 0 20px #00f7ff;
+/* Glitch Animations */
+@keyframes glitch-1 {
+  0% {
+    clip-path: inset(20% 0 80% 0);
+  }
+  20% {
+    clip-path: inset(60% 0 10% 0);
+  }
+  100% {
+    clip-path: inset(30% 0 50% 0);
+  }
 }
-
-.neon-thin {
-  color: #7dfcff;
-  text-shadow: 0 0 6px #00f7ff60;
-}
-
-.neon-btn {
-  box-shadow: 0 0 12px #00eaff60;
-}
-
-.cyber-card {
-  position: relative;
-  border-radius: 16px;
-}
-.cyber-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  border: 1px solid rgba(0, 255, 255, 0.15);
-  clip-path: polygon(
-    0 8px,
-    8px 0,
-    calc(100% - 8px) 0,
-    100% 8px,
-    100% calc(100% - 8px),
-    calc(100% - 8px) 100%,
-    8px 100%,
-    0 calc(100% - 8px)
-  );
-  pointer-events: none;
-}
-
-.cyber-panel {
-  box-shadow: 0 -4px 25px rgba(0, 255, 255, 0.2);
-}
-.scrollbar-hide {
-  /* For IE and Edge */
-  -ms-overflow-style: none;
-  /* For Firefox */
-  scrollbar-width: none;
-}
-
-/* For Chrome, Safari, and Opera */
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
+@keyframes glitch-2 {
+  0% {
+    clip-path: inset(10% 0 60% 0);
+  }
+  20% {
+    clip-path: inset(30% 0 20% 0);
+  }
+  100% {
+    clip-path: inset(0% 0 80% 0);
+  }
 }

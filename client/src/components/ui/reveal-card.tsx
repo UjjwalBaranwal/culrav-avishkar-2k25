@@ -160,7 +160,7 @@ const RevealCard: React.FC<CardProps> = ({
   return (
     <div
       ref={cardRef}
-      className={`group relative flex justify-center items-end perspective-[2500px] cursor-pointer border p-0 mx-3 ${className}`}
+      className={`group relative flex justify-center items-end perspective-[2500px] cursor-pointer p-0 mx-3 ${className}`}
       style={containerStyle}
       onClick={handleCardClick}
     >
@@ -231,7 +231,7 @@ const RevealCard: React.FC<CardProps> = ({
       </div>
 
       {/* REGISTER BUTTON */}
-      <button
+      {/* <button
         onClick={(e) => {
           e.stopPropagation();
           onRegister();
@@ -246,7 +246,7 @@ const RevealCard: React.FC<CardProps> = ({
         style={{ pointerEvents: "auto" }}
       >
         {buttonText}
-      </button>
+      </button> */}
 
       {/* Mobile toggle icon */}
       {isMobile && (
