@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import { useState } from "react";
 import { User, Menu, X } from "lucide-react";
 import bgDashboard from "../../assets/bg_dashboard.jpg";
-import Sidebar from "./Sidebar.jsx";
+import Sidebar from "./SideBar.jsx";
 
 export default function DashboardLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -14,18 +14,14 @@ export default function DashboardLayout() {
 
   return (
     <div className="min-h-screen bg-neutral-900 text-white relative">
-      <div
-        className="relative"
-        style={{ paddingTop: NAVBAR_H }}
-      >
+      <div className="relative" style={{ paddingTop: NAVBAR_H }}>
         {/* Mobile User Icon Toggle */}
         <button
           onClick={toggleSidebar}
           className={`lg:hidden fixed top-20 left-4 z-50 bg-[#0E1A20]/90
           backdrop-blur-sm border border-white/20 rounded-full p-3
           hover:bg-[#0E1A20] transition-all duration-200 shadow-lg
-          ${isSidebarOpen ? "hidden" : ""}`
-          }
+          ${isSidebarOpen ? "hidden" : ""}`}
         >
           <User className="w-5 h-5 text-white" />
         </button>
@@ -72,8 +68,9 @@ export default function DashboardLayout() {
         <div className="lg:hidden">
           {/* Mobile Sidebar */}
           <aside
-            className={`fixed bg-[#0E1A20]/95 backdrop-blur-sm border-r border-white/10 z-40 transition-transform duration-300 ease-in-out ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-              }`}
+            className={`fixed bg-[#0E1A20]/95 backdrop-blur-sm border-r border-white/10 z-40 transition-transform duration-300 ease-in-out ${
+              isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+            }`}
             style={{
               top: NAVBAR_H,
               left: 0,
@@ -89,7 +86,9 @@ export default function DashboardLayout() {
                       <User className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <p className="text-white font-medium text-sm">James Thoms</p>
+                      <p className="text-white font-medium text-sm">
+                        James Thoms
+                      </p>
                       <p className="text-white/60 text-xs">CA-34324</p>
                     </div>
                   </div>
