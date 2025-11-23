@@ -190,20 +190,19 @@ function AvishkarEvents() {
 
       {/* Grid */}
       <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 mt-27 mb-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-20 justify-items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-20 justify-items-center" >
           {events.map((event) => (
-            <div
+            <button
               key={event.id}
+              onClick={() => navigate(`/avishkar/${event.slug}`)}
               className="w-[90%] sm:w-[320px] lg:w-[300px] max-w-[340px] text-center relative z-10"
             >
               <RevealCard
                 coverImage={event.coverImage}
                 titleImage={event.titleImage}
                 characterImage={event.characterImage}
-                buttonText="Explore"
-                onRegister={() => navigate(`/avishkar/${event.slug}`)}
               />
-            </div>
+            </button>
           ))}
         </div>
       </div>

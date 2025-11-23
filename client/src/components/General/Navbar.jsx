@@ -111,8 +111,8 @@ import gsap from "gsap";
 import { TiLocationArrow } from "react-icons/ti";
 
 const navItems = [
-  { name: "CULRAV", path: "/culrav" },
   { name: "AVISHKAR", path: "/avishkar" },
+  { name: "CULRAV", path: "/culrav" },
   { name: "GALLERY", path: "/gallery" },
   { name: "TEAM", path: "/team" },
   { name: "SPONSORS", path: "/sponsors" },

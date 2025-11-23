@@ -64,6 +64,22 @@ import VISHWAM_SINGH from "./pr/VISHWAM SINGH.jpeg";
 import VIVEK_MISHRA from "./pr/VIVEK MISHRA.jpg";
 
 
+
+// ====================== Faculty_Coordinator Cult ===================
+import indu from './Faculty_cor_Cul/indu.jpg';
+import karthik from './Faculty_cor_Cul/karthik.jpg';
+import satish_chandra from './Faculty_cor_Cul/satish_chandra.png';
+import Somen from './Faculty_cor_Cul/Somen.jpeg';
+import subham from './Faculty_cor_Cul/subham.jpeg';
+
+
+// ====================== Faculty_Coordinator Tech ===================
+import Vibhav_Prkash from './Faculty_Cor_Tech/Vibhav_Prakash.jpg';
+import Abhishek_kundu from './Faculty_Cor_Tech/Abhishek_kundu.jpeg';
+import Jagat_jyoti from './Faculty_Cor_Tech/jagat_jyoti.jpg';
+import jitendra_kumar from './Faculty_Cor_Tech/jitendra_kumar.jpg';
+import Sandeep_kumar_singh from './Faculty_Cor_Tech/Sandeep_kumar_singh.jpeg';
+
 // ====================== 🟦 EXPORT FINAL DATA ======================
 export const teamData = [
      {
@@ -74,15 +90,6 @@ export const teamData = [
         ]
     },
     {
-
-        id:"treasurer",
-        name:"Treasurer",
-        members:[
-            {name: "Dr Satish Chandra", img: Satish_Chandra}
-        ]
-    },
-   
-    {
         id:"fac_inc",
         name:"Faculty Incharge",
         members:[
@@ -90,6 +97,39 @@ export const teamData = [
             {name: "Dr. V.P. Singh", img: VP_Singh},
         ]
     },
+    {
+
+        id:"treasurer",
+        name:"Treasurer",
+        members:[
+            {name: "Dr Satish Chandra", img: Satish_Chandra}
+        ]
+    },
+    {
+
+        id:"fac_cor_tech",
+        name:"Faculty Coordinator(Tech)",
+        members:[
+            {name: "Dr Vibhav Prakash Singh", img: Vibhav_Prkash},
+            {name: "Dr Sandeep Kumar Singh", img: Sandeep_kumar_singh},
+            {name: "Dr Jitendra N. Gangwar", img: jitendra_kumar},
+            {name: "Dr Abhishek Kundu", img: Abhishek_kundu},
+            {name: "Dr Jagat Jyoti Rath", img: Jagat_jyoti}
+        ]
+    },
+    {
+
+        id:"fac_cor_cul",
+        name:"Faculty Coordinator(Cultural)",
+        members:[
+            {name: "Dr Somen Dey", img: Somen},
+            {name: "Dr Satish Chandra", img: satish_chandra},
+            {name: "Dr Karthick Senthil Kumar", img: karthik},
+            {name: "Dr Shubham Gupta", img: subham},
+            {name: "Dr Indu Dohore", img: indu}
+        ]
+    },
+   
     {
         id: "fs",
         name: "Festival Secretary",
