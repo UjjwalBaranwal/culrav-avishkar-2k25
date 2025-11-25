@@ -122,6 +122,10 @@ exports.confirmEmail = catchAsync(async (req, res, next) => {
   if (!user) {
     return next(new AppError("Invalid or expired confirmation token", 400));
   }
+
+  if (user.isConfirmed)
+    return next(new AppError("Email already verified", 400));
+
   user.isConfirmed = true;
   user.confirmedAt = Date.now();
   user.emailConfirmToken = undefined;
