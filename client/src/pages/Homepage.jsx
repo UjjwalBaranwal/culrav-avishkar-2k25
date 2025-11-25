@@ -22,6 +22,7 @@ import f5 from "/videos/f5.webm";
 import f1 from "/videos/f1.webm";
 
 import TimeStampCard from "../components/TimeStampCard";
+// import GallerySection from "./Homepage/GallerySection";
 
 // --- CONFIGURATION: ADD YOUR ASSETS HERE ---
 // Leave as "" to use the futuristic placeholders
@@ -288,9 +289,12 @@ const HeroSection = () => {
         <div className="mt-6 md:mt-10 flex flex-wrap justify-center gap-4 md:gap-6 hero-btns pb-12 md:pb-0">
           <button className="group relative px-6 py-3 md:px-8 md:py-4 bg-white text-black font-bold tracking-widest overflow-hidden skew-x-[-10deg] hover:scale-105 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.3)]">
             <div className="absolute inset-0 w-0 bg-cyan-500 transition-all duration-300 ease-out group-hover:w-full opacity-100"></div>
-            <span className="relative flex items-center gap-2 skew-x-[10deg] text-sm md:text-base">
+            <Link
+              to={"/login"}
+              className="relative flex items-center gap-2 skew-x-[10deg] text-sm md:text-base"
+            >
               ENTER_WORLD <ChevronRight size={20} />
-            </span>
+            </Link>
           </button>
           <a
             href="https://www.instagram.com/reel/DRSakAxkvsq/?hl=en"
@@ -457,7 +461,7 @@ const GallerySection = () => {
     { id: 1, type: "large", title: "DJKD", src: dj },
     { id: 2, type: "tall", title: "DJKD", src: f3 },
     // { id: 3, type: "small", title: "TECH_LAB", src: f5 },
-    { id: 4, type: "small", title: "GLITCH_ART", src: f4 },
+    { id: 4, type: "small", title: "Dj Pheonix", src: f4 },
     { id: 5, type: "wide", title: "JULIE", src: f1 },
   ];
 
@@ -489,11 +493,11 @@ const GallerySection = () => {
                 loop
                 muted
                 playsInline
-                className="absolute inset-0 w-full h-full object-cover transition-all duration-700 
-        
+                className="absolute inset-0 w-full h-full object-cover transition-all duration-700
+
         /* MOBILE DEFAULTS (Full Color, Full Opacity) */
         grayscale-0 opacity-100
-        
+
         /* DESKTOP DEFAULTS (Grayscale, Dimmed -> Color on Hover) */
         md:grayscale md:opacity-60 md:group-hover:grayscale-0 md:group-hover:opacity-100"
               >
@@ -506,10 +510,10 @@ const GallerySection = () => {
               {/* Gradient Overlay */}
               <div
                 className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent transition-opacity duration-500
-      
+
       /* MOBILE DEFAULT (Light overlay so video is visible) */
       opacity-30
-      
+
       /* DESKTOP DEFAULT (Dark overlay -> Light on Hover) */
       md:opacity-90 md:group-hover:opacity-30"
               ></div>
