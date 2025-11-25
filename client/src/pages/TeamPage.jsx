@@ -238,7 +238,7 @@ export function TeamPage() {
   return (
     <div className="flex h-screen w-full fixed text-white font-Anton bg-team pt-18">
       {/* Overlay for better text visibility */}
-      <div className="absolute inset-0 bg-[#000000aa]"></div>
+      <div className="absolute inset-0 bg-[#000000]"></div>
 
       {/* --- Desktop Sidebar  --- */}
       <aside className="hidden md:block w-64 h-full fixed left-0 top-[58px] overflow-y-auto bg-[#0a0a1a] backdrop-blur-md border-r border-[#1a1a3d] p-6 space-y-2 z-20">

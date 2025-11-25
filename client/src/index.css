@@ -152,52 +152,64 @@ body {
     background-size: 100% 3px;
   }
   .glitch-static {
-  text-shadow: 
-    0 0 5px #ff0000, /* Red glow for ERROR */
-    0 0 10px #ff0000,
-    0 0 20px #ff0000,
-    0 0 40px rgba(255, 0, 0, 0.7);
-}
+    text-shadow: 0 0 5px #ff0000, /* Red glow for ERROR */ 0 0 10px #ff0000,
+      0 0 20px #ff0000, 0 0 40px rgba(255, 0, 0, 0.7);
+  }
 
-.glitch-static .text-cyan-400 {
-    text-shadow: 
-    0 0 5px #22d3ee, /* Cyan glow for 404 */
-    0 0 10px #22d3ee,
-    0 0 20px #22d3ee,
-    0 0 40px rgba(34, 211, 238, 0.7);
-}
+  .glitch-static .text-cyan-400 {
+    text-shadow: 0 0 5px #22d3ee, /* Cyan glow for 404 */ 0 0 10px #22d3ee,
+      0 0 20px #22d3ee, 0 0 40px rgba(34, 211, 238, 0.7);
+  }
 
-/* Cyber Button Glow */
-.cyber-button-glow {
+  /* Cyber Button Glow */
+  .cyber-button-glow {
     position: relative;
     overflow: hidden;
     /* This will be the base glow */
-    box-shadow: 0 0 5px rgba(34, 211, 238, 0.5), 0 0 15px rgba(34, 211, 238, 0.3);
-}
+    box-shadow: 0 0 5px rgba(34, 211, 238, 0.5),
+      0 0 15px rgba(34, 211, 238, 0.3);
+  }
 
-.cyber-button-glow:hover {
+  .cyber-button-glow:hover {
     box-shadow: 0 0 10px #22d3ee, 0 0 30px #22d3ee, 0 0 60px #22d3ee;
-}
+  }
 
-/* Subtle Grid Overlay for Futuristic Feel */
-.grid-overlay {
-    background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  /* Subtle Grid Overlay for Futuristic Feel */
+  .grid-overlay {
+    background-image: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.05) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
     background-size: 40px 40px; /* Adjust grid size as needed */
     animation: grid-scroll 60s linear infinite; /* Slow, continuous scroll */
     pointer-events: none; /* Ensure it doesn't block interactions */
-}
+  }
+  .cyber-grid {
+    background-size: 40px 40px;
+    background-image: linear-gradient(
+        to right,
+        rgba(6, 182, 212, 0.1) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(6, 182, 212, 0.1) 1px, transparent 1px);
+    mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+  }
+
+  /* Utility for the angled button corners */
+  .clip-path-polygon {
+    clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+  }
 }
 
 .bg-team {
-  background-image: url('/src/assets/bg-team.jpg');
+  background-image: url("/src/assets/bg-team.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed; /* nice scrolling effect */
 }
-
 
 /* Custom Animations */
 

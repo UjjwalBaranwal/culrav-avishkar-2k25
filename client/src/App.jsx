@@ -24,6 +24,7 @@ const DashboardLayout = lazy(() =>
   import("./feature/dashBoard/DashboardLayout")
 );
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
+const ComingSoonPage = lazy(() => import("./pages/ComingSoonPage.jsx"));
 
 const Profile = lazy(() => import("./pages/dashBoard/Profile"));
 const UploadResume = lazy(() => import("./pages/dashBoard/UploadResume"));
@@ -113,7 +114,8 @@ function App() {
             </Route>
             <Route path="/sponsors" element={<Sponsers />} />
             <Route path="/avishkar" element={<AvishkarEvents />} />
-            <Route path="/login" element={<Login />} />
+            {/* <Route path="/login" element={<Login />} /> */}
+            <Route path="/login" element={<ComingSoonPage />} />
             <Route path="/confirm-email" element={<ConfirmEmail />} />
             <Route path="/reset-password" element={<ResetPassword />} />
             {/* FALLBACK PAGE */}

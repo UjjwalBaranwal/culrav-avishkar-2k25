@@ -120,8 +120,7 @@ const navItems = [
 
 const NavBar = () => {
   const location = useLocation();
-  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
-  const [isIndicatorActive, setIsIndicatorActive] = useState(false);
+
   const [isNavVisible, setIsNavVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -129,21 +128,7 @@ const NavBar = () => {
   const { isAuthenticated, user } = useSelector((state) => state.auth);
   const firstName = user?.name.split(" ")[0];
 
-  // const audioElementRef = useRef(null);
   const navContainerRef = useRef(null);
-
-  // const toggleAudioIndicator = () => {
-  //   setIsAudioPlaying((prev) => !prev);
-  //   setIsIndicatorActive((prev) => !prev);
-  // };
-
-  // useEffect(() => {
-  //   if (isAudioPlaying) {
-  //     audioElementRef.current.play();
-  //   } else {
-  //     audioElementRef.current.pause();
-  //   }
-  // }, [isAudioPlaying]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -268,7 +253,7 @@ const NavBar = () => {
                     "w-6 h-0.5 bg-white transition-all duration-300",
                     {
                       "rotate-45 translate-y-2": isMobileMenuOpen,
-                    },
+                    }
                   )}
                 />
                 <span
@@ -276,7 +261,7 @@ const NavBar = () => {
                     "w-6 h-0.5 bg-white transition-all duration-300",
                     {
                       "opacity-0": isMobileMenuOpen,
-                    },
+                    }
                   )}
                 />
                 <span
@@ -284,7 +269,7 @@ const NavBar = () => {
                     "w-6 h-0.5 bg-white transition-all duration-300",
                     {
                       "-rotate-45 -translate-y-2": isMobileMenuOpen,
-                    },
+                    }
                   )}
                 />
               </button>
@@ -300,7 +285,7 @@ const NavBar = () => {
           {
             "opacity-100 pointer-events-auto": isMobileMenuOpen,
             "opacity-0 pointer-events-none": !isMobileMenuOpen,
-          },
+          }
         )}
       >
         {/* Backdrop */}
@@ -316,7 +301,7 @@ const NavBar = () => {
             {
               "translate-y-0 opacity-100": isMobileMenuOpen,
               "-translate-y-4 opacity-0": !isMobileMenuOpen,
-            },
+            }
           )}
         >
           <div className="flex flex-col gap-2">
@@ -331,7 +316,7 @@ const NavBar = () => {
                       location.pathname === item.path,
                     "text-white hover:text-blue-300 hover:bg-white/5":
                       location.pathname !== item.path,
-                  },
+                  }
                 )}
               >
                 {item.name}

@@ -453,8 +453,8 @@ const AboutSection = () => {
                 <h3 className="text-3xl md:text-4xl font-black text-white font-sans tracking-wide uppercase">
                   CULRAV
                 </h3>
-                <span className="text-fuchsia-500 font-mono text-xs tracking-[0.3em] ml-auto">
-                  EST. 2025
+                <span className="text-fuchsia-500 font-mono text-sm tracking-[0.3em] ml-auto">
+                  10 DEC - 12 DEC
                 </span>
               </div>
 
@@ -515,8 +515,8 @@ const AboutSection = () => {
                 <h3 className="text-3xl md:text-4xl font-black text-white font-sans tracking-wide uppercase">
                   Avishkar
                 </h3>
-                <span className="text-cyan-500 font-mono text-xs tracking-[0.3em] ml-auto">
-                  VER 2.0
+                <span className="text-cyan-500 font-mono text-sm tracking-[0.3em] ml-auto ">
+                  7 DEC - 9 DEC
                 </span>
               </div>
 
