@@ -11,6 +11,7 @@ import {
   Disc,
   Radio,
   Play,
+  Instagram,
 } from "lucide-react";
 import { Link } from "react-router";
 
@@ -19,6 +20,8 @@ import f3 from "/videos/f3.webm";
 import f4 from "/videos/f4.webm";
 import f5 from "/videos/f5.webm";
 import f1 from "/videos/f1.webm";
+
+import TimeStampCard from "../components/TimeStampCard";
 
 // --- CONFIGURATION: ADD YOUR ASSETS HERE ---
 // Leave as "" to use the futuristic placeholders
@@ -200,102 +203,6 @@ const Navbar = ({ mobileMenuOpen, setMobileMenuOpen }) => {
     </nav>
   );
 };
-
-// const HeroSection = () => {
-//   return (
-//     <section
-//       id="home"
-//       className="relative h-screen flex items-center justify-center overflow-hidden mb-1"
-//     >
-//       {/* Background Layer */}
-//       <div className="absolute inset-0 z-0">
-//         {/* Gradient Overlay to ensure logo pops against video */}
-//         <div className="absolute inset-0 bg-black/40 z-10 bg-[radial-gradient(circle_at_center,transparent_0%,#000_90%)]"></div>
-
-//         {VIDEO_URLS.heroBg ? (
-//           <video
-//             autoPlay
-//             loop
-//             muted
-//             playsInline
-//             className="w-full h-full object-cover opacity-100 filter contrast-200 brightness-145"
-//           >
-//             <source src={VIDEO_URLS.heroBg} type="video/webm" />
-//           </video>
-//         ) : (
-//           <div className="w-full h-full bg-grid-pattern animate-grid-move opacity-30 bg-gradient-to-b from-gray-900 to-black">
-//             <div className="absolute inset-0 bg-gradient-to-tr from-cyan-900/20 via-transparent to-fuchsia-900/20 animate-pulse"></div>
-//           </div>
-//         )}
-//       </div>
-
-//       {/* Content */}
-//       <div className="relative z-20 text-center px-4 w-full max-w-7xl mx-auto flex flex-col items-center justify-center h-full pt-16">
-//         <div className="mb-8 inline-flex items-center gap-3 px-4 py-1 border border-cyan-500/30 rounded-full bg-black/50 backdrop-blur-sm intro-text shadow-[0_0_15px_rgba(34,211,238,0.2)]">
-//           <div className="w-2 h-2 bg-green-500 rounded-full animate-ping"></div>
-//           <span className="text-cyan-400 font-mono text-xs tracking-[0.2em]">
-//             SYSTEM ONLINE // 2025
-//           </span>
-//         </div>
-
-//         {/* MAIN LOGO REPLACEMENT - RESPONSIVE CONTAINER */}
-//         <div className="hero-title mb-8 w-full flex justify-center">
-//           {LOGO_URLS.main ? (
-//             <img
-//               src={LOGO_URLS.main}
-//               alt="Culrav x Avishkar Theme Logo"
-//               className="w-[85vw] max-w-[500px] md:max-w-[700px] lg:max-w-[800px] h-auto object-contain drop-shadow-[0_0_25px_rgba(34,211,238,0.25)] filter brightness-110 animate-float"
-//             />
-//           ) : (
-//             /* FALLBACK TEXT IF NO LOGO URL IS PROVIDED */
-//             <h1 className="text-6xl md:text-9xl font-black text-white tracking-tighter leading-[0.85] mix-blend-difference">
-//               <div className="overflow-hidden">
-//                 <span className="block transform hover:scale-105 transition-transform duration-500 cursor-default">
-//                   CULRAV
-//                 </span>
-//               </div>
-//               <div className="text-2xl md:text-4xl font-mono text-gray-400 my-2 tracking-[0.5em] opacity-70">
-//                 ×
-//               </div>
-//               <div className="overflow-hidden">
-//                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-fuchsia-500 transform hover:scale-105 transition-transform duration-500 cursor-default">
-//                   AVISHKAR
-//                 </span>
-//               </div>
-//             </h1>
-//           )}
-//         </div>
-
-//         <p className="max-w-xl mx-auto text-lg md:text-xl text-gray-300 font-mono hero-sub border-l-2 border-fuchsia-500 pl-4 text-left bg-black/30 backdrop-blur-sm p-2 rounded-r-lg ">
-//           The annual convergence of{" "}
-//           <span className="text-cyan-400 font-bold">Technology</span> and{" "}
-//           <span className="text-fuchsia-500 font-bold">Culture</span>. Step into
-//           the glitch.
-//         </p>
-
-//         <div className="mt-10 flex flex-wrap justify-center gap-6 hero-btns lg:mt-6 lg:mb-10">
-//           <button className="group relative px-8 py-4 bg-white text-black font-bold tracking-widest overflow-hidden skew-x-[-10deg] hover:scale-105 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-//             <div className="absolute inset-0 w-0 bg-cyan-500 transition-all duration-300 ease-out group-hover:w-full opacity-100"></div>
-//             <span className="relative flex items-center gap-2 skew-x-[10deg]">
-//               ENTER_WORLD <ChevronRight size={20} />
-//             </span>
-//           </button>
-//           <button className="px-8 py-4 border border-white/30 hover:border-fuchsia-500 text-white font-mono text-sm tracking-widest hover:bg-fuchsia-500/10 transition-all skew-x-[-10deg] backdrop-blur-md bg-black/20">
-//             <span className="block skew-x-[10deg]">[ WATCH_TEASER ]</span>
-//           </button>
-//         </div>
-//       </div>
-
-//       {/* Scroll Indicator */}
-//       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60 animate-bounce z-20">
-//         <span className="text-[10px] font-mono tracking-widest text-cyan-500 shadow-black drop-shadow-md">
-//           SCROLL
-//         </span>
-//         <div className="w-[1px] h-12 bg-gradient-to-b from-cyan-500 to-transparent"></div>
-//       </div>
-//     </section>
-//   );
-// };
 
 const HeroSection = () => {
   return (
@@ -547,11 +454,11 @@ const AboutSection = () => {
 const GallerySection = () => {
   // Replace 'src' with your actual local video paths (e.g., "/assets/video1.mp4")
   const galleryItems = [
-    { id: 1, type: "large", title: "CYBER_CITY", src: dj },
-    { id: 2, type: "tall", title: "NEON_DANCE", src: f3 },
-    { id: 3, type: "small", title: "TECH_LAB", src: f5 },
+    { id: 1, type: "large", title: "DJKD", src: dj },
+    { id: 2, type: "tall", title: "DJKD", src: f3 },
+    // { id: 3, type: "small", title: "TECH_LAB", src: f5 },
     { id: 4, type: "small", title: "GLITCH_ART", src: f4 },
-    { id: 5, type: "wide", title: "ROBO_ARM", src: f1 },
+    { id: 5, type: "wide", title: "JULIE", src: f1 },
   ];
 
   return (
@@ -650,6 +557,9 @@ const GallerySection = () => {
               ACCESS_ALL_LOGS
             </span>
           </Link>
+          <div className="col-span-2">
+            <TimeStampCard />
+          </div>
         </div>
       </div>
     </section>
@@ -774,15 +684,19 @@ function Footer() {
             experience beyond reality.
           </p>
           <div className="flex gap-4">
-            {[1, 2, 3, 4].map((i) => (
-              <div
-                key={i}
-                className="w-8 h-8 bg-gray-900 flex items-center justify-center hover:bg-cyan-500 hover:text-black transition-colors cursor-pointer"
+            <div className="w-8 h-8 bg-gray-900 flex items-center justify-center hover:bg-cyan-500 hover:text-black transition-colors cursor-pointer">
+              {/* <div className="w-1 h-1 bg-white rounded-full"></div>
+               */}
+              <a
+                href="https://www.instagram.com/culrav/"
+                target="_blank"
+                rel="noreferrer"
               >
-                <div className="w-1 h-1 bg-white rounded-full"></div>
-              </div>
-            ))}
+                <Instagram className="w-5 h-5" />
+              </a>
+            </div>
           </div>
+          <div className="mt-2">Build by Web Team 💓 </div>
         </div>
 
         <div>
@@ -808,14 +722,34 @@ function Footer() {
 
         <div>
           <h4 className="text-white font-bold mb-4 uppercase tracking-widest text-xs">
-            System
+            Important Links
           </h4>
           <ul className="space-y-2 text-gray-500">
-            <li className="hover:text-cyan-400 cursor-pointer">Register</li>
-            <li className="hover:text-cyan-400 cursor-pointer">Sponsors</li>
-            <li className="hover:text-cyan-400 cursor-pointer">Team</li>
             <li className="hover:text-cyan-400 cursor-pointer">
-              Contact_Admin
+              <Link to="/login" className="hover:text-cyan-400 cursor-pointer">
+                Register
+              </Link>
+            </li>
+            <li className="hover:text-cyan-400 cursor-pointer">
+              <Link
+                to="/sponsors"
+                className="hover:text-cyan-400 cursor-pointer"
+              >
+                Sponser
+              </Link>
+            </li>
+            <li className="hover:text-cyan-400 cursor-pointer">
+              <Link to="/team" className="hover:text-cyan-400 cursor-pointer">
+                Team
+              </Link>
+            </li>
+            <li className="hover:text-cyan-400 cursor-pointer">
+              <Link
+                to="/gallery"
+                className="hover:text-cyan-400 cursor-pointer"
+              >
+                Gallery
+              </Link>
             </li>
           </ul>
         </div>

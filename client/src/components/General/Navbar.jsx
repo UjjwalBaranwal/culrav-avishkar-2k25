@@ -324,11 +324,17 @@ const NavBar = () => {
             ))}
             <Link
               to={isAuthenticated ? "/dashboard/profile" : "/login"}
-              className={clsx("nav-hover-btn", {
-                "text-blue-400":
-                  location.pathname ===
-                  (isAuthenticated ? "/dashboard/profile" : "/login"),
-              })}
+              className={clsx(
+                "px-4 py-3 text-base font-medium rounded-lg transition-all duration-300",
+                {
+                  "text-blue-400 bg-blue-500/10":
+                    location.pathname ===
+                    (isAuthenticated ? "/dashboard/profile" : "/login"),
+                  "text-white hover:text-blue-300 hover:bg-white/5":
+                    location.pathname !==
+                    (isAuthenticated ? "/dashboard/profile" : "/login"),
+                }
+              )}
             >
               {isAuthenticated ? `Welcome, ${firstName}!` : "LOGIN"}
             </Link>
