@@ -8,29 +8,41 @@ const Darkroom = {
   eventName: "Darkroom",
   tagline: "",
   events: [
+    // =============== PICTURE TALE ===============
     {
       id: 1,
       name: "Picture Tale",
       desc: [
         "Unleash your inner storyteller by crafting an unforgettable tale through imagery.",
-        "Depict a story based on the theme in a series of 5-10 pictures."
+        "Depict a story based on the theme in a series of 5–10 pictures."
       ],
       rules: [
-        "Only one round will be conducted for this event",
-        "Theme: To be announced",
-        "Participants are required to submit a maximum of 10 photos(minimum 5 photos are required)",
-        "Last date for submission is 13th November 2024, 11:59 PM",
+        "Team Size: Solo.",
+        "Only one round will be conducted for this event.",
+        "Themes: 1) The power of friendship 2) A day in the life 3) Memories.",
+        "Participants are required to submit a maximum of 10 photos (minimum 5 photos).",
         "Judging Criteria: Relevance to the theme, Clarity of Storyline, Composition, Creativity, and Editing.",
-        "Participants have to depict a story based on the given theme through series of photos. You can send a PDF file containing the theme, the title and an overall photo-story description of maximum 30 words along with the photos",
-        "Camera Resolution should be at least 3.2 megapixels(Any cameras may be used DSLRs,SLRs,Mobile cameras,etc). Photographs must be clicked on a date later than 01-01-2024",
-        "Make sure that your camera date is set before you click a picture",
-        "TEAM SIZE-SOLO"
+        "Participants have to depict a story based on the given theme through a series of photos. You can send a PDF file containing the theme, the title and an overall photo-story description of maximum 30 words along with the photos.",
+        "Camera resolution should be at least 3.2 megapixels (any camera may be used: DSLRs, SLRs, mobile cameras, etc.). Photographs must be clicked on a date later than 01-01-2025.",
+        "Make sure that your camera date is set before you click a picture.",
+        "In photo editing only global editing is allowed, i.e., cropping and adjustment of hue/saturation and brightness/contrast levels are allowed. Photo-morphing, manipulations or local editing is not allowed.",
+        "Do not include your credentials (name, address etc.) or watermarks in the picture or the frame. Such photos will be disqualified.",
+        "The decision of judges will be final and binding.",
+        "Any sign of plagiarism will lead to disqualification.",
+        "Media House of MNNIT reserves the right to share any of the submissions on its page as well as on allied handles with due credits of the creator.",
+        "The PDF file should be named as 'FullName_Year_RegistrationNumber'.",
+        "The format of the PDF should be as follows: 1. The Theme 2. The Title 3. Description of picture tale 4. The photos (each photo should be numbered).",
+        "Contact details in the PDF should include: Name, Year, Registration number, Phone number.",
+        "Entries can be shared using Drive by uploading on Google Drive or any other such website (like OneDrive, etc.) and uploading the link to the PDF."
       ],
       coords: [
-        { name: "Aryan Jangir", phone: "+91 8440878429" },
-        { name: "Pratiksha Singh", phone: "+91 9369667178" }
-      ],
+        { name: "Ankit Raj", phone: "9680905523" },
+        { name: "Lavanyaa Belokar", phone: "9730548528" },
+        { name: "Akshita Agrawal", phone: "9950754850" }
+      ]
     },
+
+    // ================= TASVEER ===================
     {
       id: 8,
       name: "Tasveer",
@@ -38,93 +50,94 @@ const Darkroom = {
         "Pick up your cameras to capture the essence of the moments and expressions to present that vivid imagery."
       ],
       rules: [
-        "Only one round will be conducted for this event",
-        "Theme: 1. To be announced",
-        "Last date for submission is 13th November 2024, 11:59 PM",
-        "Participants are required to submit a maximum of 3 submissions under one or more themes",
-        "Judging Criteria: Relevance to the theme, Composition, Concept, Technical Accuracy, Creativity and Editing",
-        "Camera Resolution should be at least 3.2 megapixels(Any cameras may be used DSLRs,SLRs,Mobile cameras,etc).",
-        "Photographs must be clicked on a date later than 01-01-2024",
-        "The entry must be submitted in a folder with the pictures and a text file containing the caption(not more than 30 words).",
-        "Participants can be asked to submit the original photographs too",
-        "Make sure that your camera date is set before you click a picture",
-        "In photo editing only global editing i.e. cropping and adjustment of hue/saturation; brightness/contrast levels are allowed",
-        "Do not include your credentials (name, address etc) or watermarks in the picture or the frame. Such photos will be disqualified",
-        "The decisions of judges will be final and binding.",
-        "Any sign of plagiarism will lead to disqualification.",
-        "The decision of judges will be final and binding",
-        "Media house of MNNIT reserves the right to share any of the submissions on its page as well as on allied handles with due credits of the creator.",
-        "The PDF file should be named as 'FullName_Year_Registration Number'",
-        "The format of the PDF should be as follows: 1. The Theme 2. The Title 3. Description of picture tale 4. The photos (each photo should be numbered)",
-        "Contact details in the PDF should include: - Name - Year - Registration number - Phone number",
-        "Entries can be shared using drive by uploading on google drive or any other such website and uploading the link to the PDF. fill all the details in the google form correctly on or before 13th November 2024, 11:59 PM.",
-        "In photo editing, only global editing is allowed, i.e., cropping and adjustment of hue/saturation/brightness/contrast levels are allowed. photo-morphing, manipulations, or local editing is not allowed.",
+        "Only one round will be conducted for this event.",
+        "Participants are required to submit a maximum of 3 submissions under one or more themes: Life in Black and White, Euphoria, Colours.",
+        "Judging Criteria: Relevance to theme, Composition, Concept, Technical Accuracy, Creativity and Editing.",
+        "Camera resolution should be at least 3.2 megapixels (any cameras may be used: DSLRs, SLRs, mobile cameras, etc.).",
+        "Photographs must be clicked later than or on 01-01-2025.",
+        "The entry must be submitted in a folder with the pictures and a text file containing the caption (not more than 30 words).",
+        "Participants can be asked to submit the original photographs too.",
+        "Make sure that your camera date is set before you click a picture.",
+        "In photo editing only global editing is allowed, i.e., cropping and adjustment of hue/saturation and brightness/contrast levels are allowed. Photo-morphing, manipulations or local editing is not allowed.",
         "Individual photo-captions are allowed.",
-        "Do not include your name or watermarks in the picture or the frame. such photos will be disqualified.",
+        "Do not include your name or watermarks in the picture or the frame. Such photos will be disqualified.",
         "The decision of judges will be final and binding.",
-        "Media house of MNNIT reserves the right to share any of the submissions on its page as well as on allied handles with due credits of the creator.",
+        "Media House of MNNIT reserves the right to share any of the submissions on its page as well as on allied handles with due credits of the creator.",
         "Any sign of plagiarism will lead to disqualification.",
-        "Entries can be shared using drive by uploading on google drive or any other such website and sharing it in the google form provided. the name of the folder should be as: 'FullName_year_registrationnumber'",
+        "Entries can be shared using Drive by uploading on Google Drive or any other such website (like OneDrive, etc.) and sharing it in the Google form provided.",
+        "The name of the folder should be 'FullName_Year_RegistrationNumber'.",
         "The folder should contain the submissions under the selected one or more themes along with a text file containing the captions for the respective photos.",
         "The caption for each photo should not be more than 30 words.",
-        "Dont forget to give public access to the link; otherwise, the entries might not be considered.",
-        "Form Link- To be released",
-        "Solo Participation"
+        "Don't forget to give public access to the link, otherwise the entries shall not be considered."
       ],
       coords: [
-        { name: "Abhinav Pandey", phone: "+91 7007996095" },
-        { name: "Prabal Pratap Singh", phone: "+91 8290429739" }
-      ],
+        { name: "Ashmit Pramanik", phone: "9832055882" },
+        { name: "Mukesh Akula", phone: "7993960865" },
+        { name: "Saachi Pandey", phone: "7905466289" },
+        { name: "Sammed Tare", phone: "7820985938" }
+      ]
     },
+
+    // ================ SALES PITCH ================
     {
       id: 9,
       name: "Sales-Pitch",
-      desc: ["Revolutionize your marketing with design: Attend our event"],
+      desc: ["Revolutionize your marketing with design: Attend our event."],
       rules: [
-        "Rounds: Direct online finals",
+        "Rounds: Direct online finals.",
         "Problem Statement: Released on official Facebook page 20 days prior to the fest.",
-        "Last date for submission: 13th November 2024, 11:59PM",
-        "Judging Criteria: Creativity, Quality, Originality, Composition and Layout, Visual Impact",
-        "Participating teams shall decide the brand name according to the problem statement",
-        "The submission portfolio must necessarily consist of the following: ● Company Name ● Corporate Logo ● Corporate Tagline/Slogan, Mission, Vision ● Marketing Strategy ● Product and it’s details ● Corporate Logistics: Letterhead (21.59 cm x 27.94 cm), Envelope (22 cm x 11 cm), Business Card (9 cm x 5 cm), Email Signature, Stationery ● Anything relevant can be added. Bonus points for creativity and ideas",
-        "The decision of judges will be final and binding",
-        "No external Psd, Ai or any other project files to be used.",
-        "Rename your entry as ''(Your Registration Number) - Movie_Name'' Participants have to submit their entry in Google Drive format in the Google form attached below by keeping the access Open To All",
-        "Participants are expected to send their portfolio in one of the following formats: jpeg, .tiff, .png, .pdf.",
-        "Please mail your portfolio to mhm.mnnit@gmail.com on or before 13th November 2024 11:59 pm. The subject of the mail should be Identity Stroke: ‘your_name’. Mails with improper subjects will not be accepted.",
-        "Entries can also be shared using drive by uploading on Google Drive or any other such website and emailing the link to mhm.mnnit@gmail.comwith subject of the email to be : ‘your_name’/Link.",
-        "Solo Participation"
+        "Judging Criteria: Creativity, Quality, Originality, Composition and Layout, Visual Impact.",
+        "Participating teams shall decide the brand name according to the problem statement.",
+        "The submission portfolio must necessarily consist of the following:",
+        "• Company Name",
+        "• Corporate Logo",
+        "• Corporate Tagline/Slogan, Mission, Vision",
+        "• Marketing Strategy",
+        "• Product and its details",
+        "• Corporate Logistics: Letterhead (21.59 cm x 27.94 cm), Envelope (22 cm x 11 cm), Business Card (9 cm x 5 cm), Email Signature, Stationery",
+        "Anything relevant can be added. Bonus points for creativity and ideas.",
+        "The decision of judges will be final and binding.",
+        "No external PSD, AI or any other project files to be used.",
+        "Rename your entry as '(Your Registration Number) - Team_Name'. Participants have to submit their entry in Google Drive format in the Google form attached below by keeping the access Open To All.",
+        "Participants are expected to send their portfolio in one of the following formats: jpeg, .tiff, .png, .pdf."
       ],
       coords: [
-        { name: "Aditya Maurya", phone: "+91 8354857211" },
-        { name: "Divyanshu", phone: "+91 8824449820" }
-      ],
+        { name: "Arpit Gami", phone: "7987035960" },
+        { name: "Shikhar Gupta", phone: "6386680769" },
+        { name: "Siddhi Prasad", phone: "9348938647" }
+      ]
     },
+
+    // ================== LAYERS ===================
     {
       id: 10,
       name: "Layers",
       desc: [
-        "Dissecting imagination with colors and fill them with colors of your imagination."
+        "Dissecting imagination with colours and fill them with colours of your imagination."
       ],
       rules: [
         "Problem Statement: The photos will be submitted before Culrav starts. Themes for the event will be released before Culrav.",
-        "Last date for submission: 13th November 2024, 11:59PM",
-        "Judging Criteria: Design, Colour Palette, Cleanliness of the composition, Problem Approach and Quality of Presentation",
-        "Make a composition based on the theme",
-        "Only Adobe Photoshop,Adobe Illustrator, Corel Draw, GIMP are allowed for designing",
-        "Candidates must take 6 screenshots of their work at different stages before submission",
-        "The project file and the .png file of the artwork has to be mailed to the official  MHM email ID",
-        "Use of external brushes is strictly prohibited",
-        "Photos to be used for photo composition/Manipulation: To be announced",
-        "Submissions 1.Participants are expected to send their submissions in one of the following formats: jpeg, .tiff, .png, .pdf. 2.Please mail your submission to mhm.mnnit@gmail.com on or before 13th November 2024, 11:59PM. The subject of the mail should be Layers: ‘your_name’. Mails with improper subjects will not be accepted 3.Entries can also be shared by uploading on Google Drive or any other such website and emailing the link to mhm.mnnit@gmail.com with the subject of the email to be Layers: ‘your_name’/Link.",
-        "Entries can also be shared using drive by uploading on Google Drive or any other such website and emailing the link to mhm.mnnit@gmail.comwith subject of the email to be : ‘your_name’/Link.",
-        "Solo Participation"
+        "Judging Criteria: Design, Colour Palette, Cleanliness of the composition, Problem Approach and Quality of Presentation.",
+        "Make a composition based on the theme.",
+        "Only Adobe Photoshop, Adobe Illustrator, Corel Draw, GIMP are allowed for designing.",
+        "Candidates must take 6 screenshots of their work at different stages before submission.",
+        "The project file and the .png file of the artwork has to be mailed to the official MHM email ID.",
+        "Use of external brushes is strictly prohibited.",
+        "Photos to be used for photo composition/manipulation: To be announced.",
+        "Submissions:",
+        "Participants are expected to send their submissions in one of the following formats: jpeg, .tiff, .png, .pdf.",
+        "Please mail your submission to mhm.mnnit@gmail.com. The subject of the mail should be 'Layers: your_name'. Mails with improper subjects will not be accepted.",
+        "Entries can also be shared by uploading on Google Drive or any other such website and emailing the link to mhm.mnnit@gmail.com with the subject of the email to be 'Layers: your_name'.",
+        "Team Size: Solo."
       ],
       coords: [
-        { name: "Aditya Maurya", phone: "+91 8354857211" },
-        { name: "Divyanshu", phone: "+91 8824449820" }
-      ],
+        { name: "Manav Bhatt", phone: "8791865158" },
+        { name: "Khushi Singh", phone: "8976528050" },
+        { name: "Suvendra Singh", phone: "9557017770" }
+      ]
     },
+
+    // ================== B-ROLL ===================
     {
       id: 11,
       name: "B-Roll",
@@ -133,52 +146,58 @@ const Darkroom = {
         "Use your lens to tell a story and create a compelling narrative."
       ],
       rules: [
-        "Rounds: Direct online finals",
-        "Time Limit: 45-90 seconds",
-        "Last date for submission: 13th November 2024, 11:59PM",
-        "Judging Criteria: Relevance to theme, Editing, Cinematography,Script (originality), Overall impact",
-        "The Movie should be in English or Hindi or both and must have subtitles",
-        "Entries must be the original work of the entrant and must not infringe third-party's rights",
+        "Team Size: Max 4 members.",
+        "Rounds: Direct online finals.",
+        "Time Limit: 45–90 seconds.",
+        "Judging Criteria: Relevance to theme, Editing, Cinematography, Script (originality), Overall impact.",
+        "The movie should be in English or Hindi or both and must have subtitles.",
+        "Entries must be the original work of the entrant and must not infringe third-party's rights.",
         "There is no restriction on the number and age of the actors in the movie.",
         "The content of the movie should be appropriate for public screening and thus have no vulgarity. Obscenity (at the discretion of the judges) of any kind is not allowed and will lead to immediate disqualification.",
-        "Please avoid photo animation, slideshows, remixes, spoofs and advertisements",
+        "Please avoid photo animation, slideshows, remixes, spoofs and advertisements.",
         "Plagiarism is strictly prohibited.",
-        "Sound tracks (no max time limit) and stock footage (time limit: max of 15 seconds) can be borrowed, but with due credits.",
-        "Submissions ○ Please mail your entries to mhm.mnnit@gmail.com on or before 13th November 2024, 11:59PM. The subject of the mail should be B-Roll:’your_name’. Mails with improper subjects will not be accepted. ○ Entries can also be shared using drive by uploading on Google Drive or any other such website and emailing the link to mhm.mnnit@gmail.com with subject of the email to be Shortfilm:’your_name’/ Link",
-        "Max 4 members"
+        "Soundtracks (no max time limit) and stock footage (time limit: max of 15 seconds) can be borrowed, but with due credits.",
+        "Submissions:",
+        "Please mail your entries to mhm.mnnit@gmail.com. The subject of the mail should be 'B-Roll: your_name'. Mails with improper subjects will not be accepted.",
+        "Entries can also be shared using Google Drive or any other such website and emailing the link to mhm.mnnit@gmail.com with the subject of the email to be 'B-Roll: your_name'."
       ],
       coords: [
-        { name: "Alaukik", phone: "+91 6306768979" },
-        { name: "Khushi Saini", phone: "+91 7357438998" }
-      ],
+        { name: "Sreyia Gupta", phone: "8849846339" },
+        { name: "Satyam Prajapati", phone: "9452549006" },
+        { name: "Aritra Mahara", phone: "8250015439" }
+      ]
     },
+
+    // ================= SHORT FILM =================
     {
       id: 12,
       name: "Short-Film",
       desc: [
-        "Fancy yourself as a film maker? Create a captivating narrative by using visuals and dialgues that will keep the audience engaged"
+        "Fancy yourself as a filmmaker? Create a captivating narrative by using visuals and dialogues that will keep the audience engaged."
       ],
       rules: [
-        "Rounds: Direct online finals",
-        "Time Limit: 3-7 minutes (including the credits)",
-        "Last date for submission: 13th November 2024, 11:59PM",
-        "Judging Criteria: Editing, Cinematography, Script (originality), Acting, Sound effects, overall impact",
+        "Rounds: Direct online finals.",
+        "Time Limit: 3–7 minutes (including the credits).",
+        "Judging Criteria: Editing, Cinematography, Script (originality), Acting, Sound effects, Overall impact.",
         "The movie should be in Hindi or English or both. If you choose to make a film in Hindi, it must contain English subtitles. For finals, subtitles are mandatory for movies of both languages. No other languages will be allowed.",
-        "Entries must be the original work of the entrant and must not infringe third-party's rights",
+        "Entries must be the original work of the entrant and must not infringe third-party's rights.",
         "The content of the movie should be appropriate for public screening and thus have no vulgarity. Obscenity (at the discretion of the judges) of any kind is not allowed and will lead to immediate disqualification.",
-        "Please avoid photo animation, slideshows, remixes, spoofs and advertisements",
+        "Please avoid photo animation, slideshows, remixes, spoofs and advertisements.",
         "Plagiarism is strictly prohibited.",
         "Sound tracks (no max time limit) and stock footage (time limit: max of 1 min 30 seconds) can be borrowed, but with due credits.",
-        "Submissions ○ Please mail your entries to mhm.mnnit@gmail.com on or before 13th November 2024, 11:59PM. The subject of the mail should be ShortFilm:’your_name’. Mails with improper subjects will not be accepted. ○ Entries can also be shared using drive by uploading on Google Drive or any other such website and emailing the link to mhm.mnnit@gmail.com with subject of the email to be Shortfilm:’your_name’/ Link",
-        "At most 4 in the core team"
+        "Team Size: 1–4.",
+        "Submissions:",
+        "The subject of the mail should be \"ShortFilm: your_name\". Mails with improper subjects will not be accepted.",
+        "Entries can also be shared using Drive by uploading on Google Drive or any other such website and emailing the link to mhm.mnnit@gmail.com with the subject of the email to be \"Shortfilm: your_name / Link\"."
       ],
       coords: [
-        { name: "Alaukik", phone: "+91 6306768979" },
-        { name: "Khushi Saini", phone: "+91 7357438998" }
-      ],
+        { name: "Aditya Sharma", phone: "7878589193" },
+        { name: "Vaibhawi Ranjan", phone: "7004621331" }
+      ]
     }
-  ],
+  ]
 };
+
 
 const DarkroomPage = () => {
   const [selected, setSelected] = useState(null);

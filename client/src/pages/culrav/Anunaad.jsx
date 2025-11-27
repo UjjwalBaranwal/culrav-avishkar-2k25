@@ -7,120 +7,186 @@ const TOP_IMAGE = dummy;
 const Anunaad = {
   eventName: "Anunaad",
   tagline: "",
+  mainCoords: [
+    { name: "Puneet Yadav", phone: "8004371101" },
+    { name: "Aditya", phone: "8863983770" },
+    { name: "Mansi Maavi", phone: "9958380777" }
+  ],
   events: [
+    // 1. Voice of Culrav
     {
       id: 2,
       name: "Voice of Culrav",
       desc: [
-        "Let your voice be heard and let the world sing along!"
+        "Let your voice be heard and let the world sing along!",
+        "This is a solo singing event with two rounds: auditions and a grand finale on the VOC stage."
       ],
       rules: [
+        "This is a solo singing event.",
+        "The event consists of 2 rounds.",
+        "Round 1: Auditions. Selected participants will perform in the final round (Round 2) on the main event day.",
+        "Round 2: Final round on the VOC stage, judged by guest judges.",
+        "Each round is an elimination round.",
+        "Any non-MNNIT participants must submit a video recording of them singing any song of their choice. Chosen participants will be invited to compete in the final round on the VOC stage.",
         "Time limit for performance will be 3 minutes 30 seconds.",
-        "The final round requires all shortlisted candidates to submit one choice and we'll provide a second song (from the same list). Participants have to perform both songs.",
-        "The second song will be provided immediately after you submit your response, so submit early.",
-        "Songs in the form are final; no additions will be made.",
-        "Note: Background music is compulsory. Bring an instrumentalist or your own Karaoke for spot submission.",
-        "Only singing is judged.",
-        "Judging based on Pitch Accuracy, Vocal Range, Voice Quality, Improvisations, etc.",
-        "Judges' decision is final."
+        "The final round requires all shortlisted candidates to submit one song of their choice from a provided list. A second song from the same list will be allotted by the organizers. Participants have to perform both songs.",
+        "The second song will be provided as soon as you submit your response, so submit as early as possible.",
+        "The songs present in the form are final and no additions will be made to the list at any cost.",
+        "Background music is compulsory. You may either bring an accompanying instrumentalist or your own karaoke, which has to be submitted on the spot.",
+        "Only singing will be considered for judgment.",
+        "The judging will be based solely on singing parameters like Pitch Accuracy, Vocal Range, Voice Quality, Improvisations, etc.",
+        "The decision of the judges will be final and binding."
       ],
-      coords: [],
+      coords: [
+        { name: "Mansi Maavi", phone: "9958380777" },
+        { name: "Chetan Kumar", phone: "9116506017" }
+      ]
     },
+
+    // 2. Harmony
     {
       id: 3,
       name: "Harmony",
       desc: [
-        "Twice the talent, twice the magic."
+        "Twice the talent, twice the magic.",
+        "A duet singing competition with two rounds: eliminations and a finale in MP Hall."
       ],
       rules: [
-        "Time allotted: 5 minutes (plus 2 minutes for sound check).",
-        "Teams may use karaoke or one instrumentalist.",
-        "Judged on vocals only.",
-        "Judging parameters: Pitch Accuracy, Vocal Range, Voice Quality, Improvisations, Harmonization.",
-        "Judges’ decision is final."
+        "This is a duet singing competition.",
+        "The competition will consist of 2 rounds.",
+        "Round 1 is the elimination round which will be conducted before the main event.",
+        "Outside participants will have direct entry to Round 2 for this event.",
+        "Round 2 is the finale between selected contestants, which will be conducted on the date of the main event in MP Hall.",
+        "Time allotted is 5 minutes (plus 2 minutes extra for sound check).",
+        "Contestant teams may use a karaoke track or have at most one instrumentalist.",
+        "Judgment will be made based on the vocals alone.",
+        "Judging parameters include Pitch Accuracy, Vocal Range, Voice Quality, Improvisations, Harmonization, etc.",
+        "The judge’s decision will be final and binding."
       ],
-      coords: [],
+      coords: [
+        { name: "Ankita Pandey", phone: "8084131840" },
+        { name: "Prasansha Sthul", phone: "7620535205" },
+        { name: "Kabeer Uppal", phone: "9599691573" }
+      ]
     },
+
+    // 3. Ijaad
     {
       id: 4,
       name: "Ijaad",
       desc: [
-        "Get Ready to drop the beat, Unleash the Rhythm.",
-        "Non-conventional music talents (EDM, Beat-Boxing, Rapping, etc.), solo and group.",
-        "Combinations highly preferred."
+        "Get ready to drop the beat, unleash the rhythm.",
+        "A platform for non-conventional music talents like EDM, beat-boxing, rapping, etc., in both solo and group formats."
       ],
       rules: [
-        "Performance time limit: 5 minutes (plus 2 minutes for sound check).",
-        "Up to 4 participants per group; single participation only.",
-        "First round is an elimination round before the main event.",
-        "Second round: finale for selected contestants on main event date.",
-        "Backing track/instruments allowed.",
-        "Judging on complexity, creativity, etc.",
-        "Original Composition gets extra points.",
-        "Judges' decision is final and binding."
+        "This event is for non-conventional music talents (like EDM, beat-boxing, rapping, etc.).",
+        "It is both a solo and group event.",
+        "Combinations such as beat-boxing & rapping or vocals & rapping are highly preferred.",
+        "Time limit for a performance will be 5 minutes (plus 2 minutes extra for sound check).",
+        "A maximum of 4 participants can participate in a group.",
+        "A participant can only have a single participation in this event (either solo or in one group).",
+        "Round 1 is the elimination round which will be conducted before the main event.",
+        "Round 2 is the finale between selected contestants, which will be conducted on the date of the main event.",
+        "Backing track or accompanying instruments are allowed.",
+        "Judging criteria will be based on complexity, creativity, etc.",
+        "Original composition will get extra points.",
+        "The decision of the judges will be final and binding."
       ],
-      coords: [],
+      coords: [
+        { name: "Aaruni Awasthi", phone: "8127767202" },
+        { name: "Chinmay Malve", phone: "7757905825" }
+      ]
     },
+
+    // 4. Rocktave
     {
       id: 5,
       name: "Rocktave",
       desc: [
-        "Flagship band event: soul, rock, and energy.",
-        "Two rounds: pre-elims for in-house bands (MP Hall, Swaarang Day).",
-        "Finale at Gymkhana Ground.",
-        "External selection by video submitted with registration."
+        "From soulful ballads to headbanging anthems, we’ve got your rock fix covered!",
+        "This is the flagship band event of ANUNAAD’24.",
+        "Two rounds: pre-elims for in-house bands (SWAARANG Day at MP Hall) and a grand finale at Gymkhana Ground.",
+        "External participants are selected via video submissions during registration."
       ],
       rules: [
-        "Final round: selected bands get 25 minutes (20 mins performance + 5 mins soundcheck).",
-        "Bands: 3-8 members.",
-        "Each individual may join only one team.",
-        "At least one vocalist, guitarist and percussionist is mandatory.",
-        "No professional bands allowed.",
-        "Original Composition awarded extra points.",
-        "Judges’ decision is final and binding."
+        "This is a band event.",
+        "There will be two rounds:",
+        "• Pre-elimination round only for in-house (MNNIT) bands, held at MP Hall on SWAARANG Day.",
+        "• Final round at the Gymkhana Ground.",
+        "For Pre-Elims (MNNIT bands only): Each band will be given 15 minutes stage time (including soundcheck).",
+        "For External Participants: Selection will be based on a video submitted while registering (via form).",
+        "The final round will consist of the selected bands and each will be given 25 minutes of stage time – 20 minutes performance + 5 minutes soundcheck.",
+        "Bands can have 3–8 members.",
+        "Any individual can be a part of only one team.",
+        "At least one vocalist, one guitarist, and one percussionist is compulsory.",
+        "No professional bands are allowed.",
+        "Original composition will get extra points.",
+        "The decision of the judges will be final and binding."
       ],
-      coords: [],
+      coords: [
+        { name: "Puneet Yadav", phone: "8004371101" },
+        { name: "Aditya", phone: "8863983770" },
+        { name: "Moyush", phone: "9365520268" }
+      ]
     },
+
+    // 5. Vadya
     {
       id: 6,
       name: "Vadya",
       desc: [
-        "Solo/group purely instrumental event.",
-        "All genres welcome.",
-        "In-house screening; external screening by video.",
-        "Final round at Culrav."
+        "An instrumental-only event celebrating all genres and instruments.",
+        "Open to solo and group performances with in-house screening and video-based external screening.",
+        "Final round will be conducted during Culrav."
       ],
       rules: [
-        "Up to 5 members per team.",
-        "All music genres entertained.",
-        "No restriction on instrument type (digital, acoustic, electric).",
-        "Pieces can be composed, covered, or improvised.",
-        "Stage time: 8 minutes (5 mins performance + 3 mins soundcheck).",
-        "Judges’ decision is final."
+        "This is both a solo and group instrumental event.",
+        "The event will consist of an initial screening round for in-house participants.",
+        "For participants from other colleges, a video link showcasing their skills will be required for screening.",
+        "Up to 5 members can participate in a team.",
+        "All genres of music are entertained (Rock, Classical, Jazz, Blues, Hip-Hop, etc.).",
+        "There is no restriction on the types of instruments used (Digital, Acoustic or Electric).",
+        "Instrumental pieces can be self-composed, covered or improvised.",
+        "Each participant (solo/group) is allowed a stage time of 8 minutes – 5 minutes of performance + 3 minutes sound check.",
+        "The decision of the judges is final."
       ],
-      coords: [],
+      coords: [
+        { name: "Rachit Yadav", phone: "9119800805" },
+        { name: "Priyanshu Anand", phone: "9430274017" },
+        { name: "Manudev Verma", phone: "9336182425" }
+      ]
     },
+
+    // 6. Euphony
     {
       id: 7,
       name: "Euphony",
       desc: [
-        "Acoustic band event.",
-        "Two rounds; pre-elims and finale at Gymkhana Ground.",
-        "Finale: 15 minutes stage time (10 mins performance + 5 mins soundcheck)."
+        "Let the acoustic rhythm take you on a journey.",
+        "An acoustic band event with pre-elims and a finale at the Gymkhana Ground."
       ],
       rules: [
-        "Final round: selected bands get 15 minutes (10 mins performance + 5 mins soundcheck).",
-        "Bands: 3-5 members.",
-        "Each individual may join only one team.",
-        "At least one vocalist, guitarist and percussionist required.",
-        "Only non-electrical instruments allowed (no drums/distortion).",
-        "No professional bands allowed.",
-        "Original Composition awarded extra points."
+        "This is an acoustic band event.",
+        "There will be two rounds: a pre-elimination round held before the main event, and a final round at the Gymkhana Ground.",
+        "For the final round, each selected band will be given 15 minutes stage time (including soundcheck).",
+        "The final round will consist of the selected bands and each will be given 15 minutes of stage time – 10 minutes performance + 5 minutes soundcheck.",
+        "3–5 members are allowed to participate in a band.",
+        "Any individual can be a part of only one team.",
+        "At least one vocalist, one guitarist and one percussionist is compulsory.",
+        "Only non-electrical instruments (acoustic guitar, acoustic bass, flutes, cajons etc.) are allowed.",
+        "No drums and distortion are allowed.",
+        "No professional bands are allowed.",
+        "Original composition will get extra points."
       ],
-      coords: [],
+      coords: [
+        { name: "Sneha Sharma", phone: "8299112458" },
+        { name: "Vishnu Som Sahu", phone: "8200871791" },
+        { name: "Deeksha Singh", phone: "8604907159" }
+      ]
     }
   ]
 };
+
 
 const SpandanPage = () => {
   const [selected, setSelected] = useState(null);

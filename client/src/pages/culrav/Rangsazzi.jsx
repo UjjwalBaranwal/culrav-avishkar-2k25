@@ -5,110 +5,119 @@ import dummy from "../../assets/dummy.png"; // Adjust path as needed
 const HERO_IMAGE = dummy;
 
 const Rangsaazi = {
-  eventName: "Rangsazzi",
+  eventName: "Rangsaazi",
   tagline: "",
   events: [
     {
       id: 20,
       name: "PAINT THE WAY",
       desc: [
-        "The world is your canvas, paint it without inhibitions."
+        "THE WORLD IS YOUR CANVAS, PAINT IT WITHOUT INHIBITIONS."
       ],
       rules: [
         "This is a team event with a minimum size of 4 and a maximum size of 5.",
         "Time limit is 3 hrs.",
         "There will be an elimination round based on sketching and ideas. Entries have to be verified beforehand on the spot for participation in further rounds.",
         "Necessary items for road painting such as brushes, paints, chalks, etc. will be provided on the spot.",
-        "Restrict the size of your painting within the block of the road assigned to you.",
+        "You will have to restrict the size of your painting within the block of the road assigned to you.",
         "Further details will be shared on the spot.",
-        "The evaluation will be based on the judges' discretion and interpretation of the painting, with marks based on the portrayal of the theme, creativity, and overall presentation.",
-        "The coordinators have the authority to change the rule of the event as per need."
+        "The evaluation will be based on the judges' discretion and interpretation of the painting, with marks based on the portrayal of the theme, creativity and overall presentation.",
+        "The coordinators have the authority to change the rules of the event as per need."
       ],
       coords: [
-        { name: "Sattwik Jana", phone: "7908773477" },
-        { name: "Anil Patidar", phone: "8000736097" },
-        { name: "Pratiksha Anuragi", phone: "8470884880" },
-        { name: "Saurav Sagar", phone: "7645926785" }
+        { name: "Tanishka Thakur", phone: "7089526552" },
+        { name: "Rishiraj Poswal", phone: "7668816959" },
+        { name: "Subham Kumar Choudhary", phone: "8507666101" },
+        { name: "Meemansha Singh", phone: "6389574220" }
       ]
     },
     {
       id: 21,
       name: "LET’S FACE IT",
-      desc: ["Brushing on smiles, one face at a time."],
+      desc: [
+        "Brushing on smiles, one face at a time."
+      ],
       rules: [
         "A team of 2 members will be allowed.",
         "Time limit is 2 hours.",
-        "The face of a participant is to be painted with watercolors, sketches, and the materials provided during the event.",
+        "The face of a participant is to be painted with water colour, sketches and the materials provided during the event.",
         "The painting must represent the theme given at the time of the event.",
-        "The evaluation will be based on the judges' discretion and interpretation of the painting, with marks based on the portrayal of the theme, creativity, and overall presentation.",
-        "The coordinators have the authority to change the rule of the event as per need."
+        "The evaluation will be based on the judges' discretion and interpretation of the painting, with marks based on the portrayal of the theme, creativity and overall presentation.",
+        "The coordinators have the authority to change the rules of the event as per need."
       ],
       coords: [
-        { name: "Saurav Sagar", phone: "7645926785" },
-        { name: "Mehak Singh", phone: "7985432090" },
-        { name: "Shyam Bathvar", phone: "6353945873" }
+        { name: "Abhay Agrawal", phone: "9695666222" },
+        { name: "Shiksha Vishwakarma", phone: "6387054430" },
+        { name: "Abhineet Agarwal", phone: "8791179718" },
+        { name: "Simran Behera", phone: "7011206149" }
       ]
     },
     {
       id: 22,
       name: "SWADDLE",
-      desc: ["From paper to runway, creativity unfolds."],
+      desc: [
+        "FROM PAPER TO RUNWAY, CREATIVITY UNFOLDS."
+      ],
       rules: [
         "This is a team event with a minimum size of 2 and a maximum size of 4. One team member will act as the model, while another will be tasked with designing the outfit.",
         "Time limit is 3 hours.",
         "Participating teams need to make a dress from the logistics provided to them on the spot.",
         "Newspapers, staplers, pins, and cello tape will be given to each team. No additional logistics, apart from the ones provided, can be used.",
         "Each team will have to give a presentation before the judges after the dress designing is over.",
-        "The evaluation will be based on the judges' discretion and interpretation of the outfit, with marks based on the portrayal of the theme (if any), creativity, and overall presentation.",
-        "The coordinators have the authority to change the rule of the event as per need."
+        "The evaluation will be based on the judges' discretion and interpretation of the outfit, with marks based on the portrayal of the theme (if any), creativity and overall presentation.",
+        "The coordinators have the authority to change the rules of the event as per need."
       ],
       coords: [
-        { name: "Sattwik Jana", phone: "7908773477" },
-        { name: "Ashisha Tulsian", phone: "7307810743" },
-        { name: "Ayush Singh", phone: "9877943429" }
+        { name: "Meemansha Singh", phone: "6389574220" },
+        { name: "Shiksha Vishwakarma", phone: "6387054430" },
+        { name: "Subham Kr Chaudhary", phone: "8507666101" },
+        { name: "Karun", phone: "9667176881" }
       ]
     },
     {
       id: 23,
-      name: "Blind Art",
-      desc: ["Art transcends sight, born from the heart."],
+      name: "BLIND ART",
+      desc: [
+        "ART TRANSCENDS SIGHT, BORN FROM THE HEART."
+      ],
       rules: [
         "A team of 2 members will be allowed.",
         "Time limit is 1.5 hours.",
-        "Only one of the two members will be allowed to sketch/color.",
+        "Only one of the two members will be allowed to sketch/colour.",
         "The one drawing will be blindfolded. The teammate (if any) will only be allowed to instruct/help the person in the drawing orally.",
         "Only the blindfolded person is allowed to touch the drawing sheet.",
         "Only the provided stationaries should be used.",
         "Discussing or cheating with other teams will immediately lead to disqualification.",
-        "The evaluation will be based on the judges' discretion and interpretation of the artwork, with marks based on the portrayal of the theme (if any), creativity, and overall presentation.",
-        "The coordinators have the authority to change the rule of the event as per need."
+        "The evaluation will be based on the judges' discretion and interpretation of the artwork, with marks based on the portrayal of the theme (if any), creativity and overall presentation.",
+        "The coordinators have the authority to change the rules of the event as per need."
       ],
       coords: [
-        { name: "Anil Patidar", phone: "8000736097" },
-        { name: "Yakshita Ojha", phone: "8107242221" },
-        { name: "Shyam Bathvar", phone: "6353945873" }
+        { name: "Tanishka Thakur", phone: "7089526552" },
+        { name: "Abhay Agrawal", phone: "9695666222" }
       ]
     },
     {
       id: 24,
       name: "Momento Vinci",
-      desc: ["Sketching moments, etching memories."],
+      desc: [
+        "SKETCHING MOMENTS, ETCHING MEMORIES."
+      ],
       rules: [
         "This is a solo event.",
         "Time limit is 2 hours.",
-        "Participants are needed to make a sketch based on a theme given to them on the spot.",
+        "Participants are required to create an artwork based on a theme revealed on the spot. They may use sketching, painting, crayons, or any other creative medium to express their imagination.",
         "All logistics shall be provided on the spot. You won't be able to use additional logistics apart from those provided initially.",
-        "The evaluation will be based on the judges' discretion and interpretation of the artwork with marks based on the portrayal of the theme (if any), creativity, and overall presentation.",
-        "The coordinators have the authority to change the rule of the event as per need."
+        "The evaluation will be based on the judges' discretion and interpretation of the artwork with marks based on the portrayal of the theme (if any), creativity and overall presentation.",
+        "The coordinators have the authority to change the rules of the event as per need."
       ],
       coords: [
-        { name: "Anil Patidar", phone: "8000736097" },
-        { name: "Yakshita Ojha", phone: "8107242221" },
-        { name: "Shyam Bathvar", phone: "6353945873" }
+        { name: "Abhineet Agarwal", phone: "8791179718" },
+        { name: "Rishiraj Poswal", phone: "7668816959" }
       ]
     }
   ]
 };
+
 
 const RangsazziPage = () => {
   const [selected, setSelected] = useState(null);
