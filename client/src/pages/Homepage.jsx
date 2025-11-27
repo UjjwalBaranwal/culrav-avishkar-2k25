@@ -15,11 +15,11 @@ import {
 } from "lucide-react";
 import { Link } from "react-router";
 
-import dj from "/videos/dj.webm";
-import f3 from "/videos/f3.webm";
-import f4 from "/videos/f4.webm";
-import f5 from "/videos/f5.webm";
-import f1 from "/videos/f1.webm";
+import dj from "/videos/v4.webm";
+import f2 from "/videos/v2.webm";
+import f5 from "/videos/v5.webm";
+import f1 from "/videos/v1.webm";
+
 
 import TimeStampCard from "../components/TimeStampCard";
 // import GallerySection from "./Homepage/GallerySection";
@@ -459,9 +459,9 @@ const GallerySection = () => {
   // Replace 'src' with your actual local video paths (e.g., "/assets/video1.mp4")
   const galleryItems = [
     { id: 1, type: "large", title: "DJKD", src: dj },
-    { id: 2, type: "tall", title: "DJKD", src: f3 },
-    // { id: 3, type: "small", title: "TECH_LAB", src: f5 },
-    { id: 4, type: "small", title: "Dj Pheonix", src: f4 },
+    { id: 2, type: "tall", title: "DJKD", src: f2 },
+   // { id: 3, type: "small", title: "TECH_LAB", src: f5 },
+    { id: 4, type: "small", title: "Dj Pheonix", src: f5 },
     { id: 5, type: "wide", title: "JULIE", src: f1 },
   ];
 
@@ -700,7 +700,7 @@ function Footer() {
               </a>
             </div>
           </div>
-          <div className="mt-2">Build by Web Team 💓 </div>
+          <div className="mt-2">Built by Web Team 💓 </div>
         </div>
 
         <div>
