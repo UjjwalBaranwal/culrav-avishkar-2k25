@@ -113,7 +113,9 @@ const LitmusePage = () => {
 
       {/* EVENTS GRID */}
       <div className="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 sm:grid-cols-2 gap-10">
-        {Litmuse.events.map((event) => (
+        {[...Litmuse.events]
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .map((event) => (
           <motion.div
             key={event.id}
             initial={{ scale: 1, boxShadow: "0 0 10px rgba(0,0,0,0.2)" }}

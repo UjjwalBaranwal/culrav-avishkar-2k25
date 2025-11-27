@@ -1,228 +1,232 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import AvishkarBgMobile from "../../assets/Avishkar_bg-mobile.png";
-import AvishkarBG from "../../assets/AvishkarBG.png";
+import AvishkarBG from "../../assets/a_s_bg.png";
 
 const NirmaanData = {
   eventName: "Nirmaan",
   tagline: "Self-Development Through Self-Awareness",
   instagramLink: "",
-  events: [
-    {
-      eventName: "COGNIZANCE",
-      eventId: "74",
-      description:
-        "True self-development starts with self-awareness. Join us for COGNIZANCE, where you'll undergo a comprehensive evaluation of your competencies and versatility.",
-      rules: [
-        "Compulsory for all Civil Engineering students.",
-        "Three rounds: Written Test, Group Discussion, Interview",
-      ],
-      maxTeamSize: 1,
-      minTeamSize: 1,
-      PsLink: "",
-      coordinators: [
-        { name: "Priyanshu Ranjan Srivastava", contact: "9118272807" },
-        { name: "Pawan Kumar Agarwal", contact: "9358116201" },
-        { name: "Saksham Sangal", contact: "9058112901" },
-      ],
-    },
-    {
-      eventName: "Linkidge",
-      eventId: "75",
-      description:
-        "An event about bridge construction using popsicle sticks, glue, and analysis.",
-      rules: [
-        "Team size: 3-4 members.",
-        "Cross-year participation not allowed.",
-        "Each team must include at least one Civil Engineering student.",
-        "Average CPI of the group should be less than 8.",
-      ],
-      maxTeamSize: 4,
-      minTeamSize: 3,
-      PsLink: "",
-      coordinators: [
-        { name: "Vishal Kumawat", contact: "9571779076" },
-        { name: "Nikita Raj", contact: "G-65 KNGH" },
-        { name: "Anuj Kumar Lamba", contact: "7820061653" },
-        { name: "Ashu Singh", contact: "9721819532" },
-      ],
-    },
-    {
-      eventName: "Constrengtho",
-      eventId: "76",
-      description:
-        "Test your skills in mix designing to create the strongest concrete block while maximizing efficiency.",
-      rules: [
-        "No inter-year teams allowed.",
-        "Average CPI of team < 8.",
-        "Team size: 4 members.",
-        "Branches allowed: Civil (2nd & 3rd year only).",
-      ],
-      maxTeamSize: 4,
-      minTeamSize: 4,
-      PsLink: "",
-      coordinators: [
-        { name: "Pawan Kumar Agarwal", contact: "9358116201" },
-        { name: "Deepesh Baberwal", contact: "8502882858" },
-        { name: "Sachin Meena", contact: "8824435162" }
-      ],
-    },
-    {
-      eventName: "ZIGGURARE",
-      eventId: "77",
-      description:
-        "Showcase your drafting skills in this building design event.",
-      rules: [
-        "No inter-year teams allowed.",
-        "Average CPI of team < 8.",
-        "Team size: 3-4 members.",
-        "At least one Civil Engineering student required.",
-      ],
-      maxTeamSize: 4,
-      minTeamSize: 3,
-      PsLink: "",
-      coordinators: [
-        { name: "Pawan Kumar Agarwal", contact: "9358116201" },
-        { name: "Dharam Singh Meena", contact: "9621712097" },
-        { name: "Shubham Saurav", contact: "8709956325" },
-        { name: "Ashish Maurya", contact: "9621249054" }
-      ],
-    },
-    {
-      eventName: "CODIGO",
-      eventId: "78",
-      description:
-        "A coding event focused on DSA, CS fundamentals, and placement preparation.",
-      rules: [
-        "Individual event for 2nd and 3rd years & MCA 2nd year.",
-        "Branches allowed: CE, CHE, BT, PIE, ME, ECM, MCA.",
-        "Multiple rounds including online tests and mock interviews.",
-      ],
-      maxTeamSize: 1,
-      minTeamSize: 1,
-      PsLink: "",
-      coordinators: [
-        { name: "Shiv Gupta", contact: "" },
-        { name: "Prince Kumar", contact: "6394209338" },
-        { name: "Saksham Sangal", contact: "9058112901" },
-      ],
-    },
-    {
-      eventName: "Just In Case",
-      eventId: "79",
-      description:
-        "A consulting challenge involving case studies, puzzles, and real-world problems.",
-      rules: [
-        "All branches allowed.",
-        "Individual event for 1st, 2nd, and 3rd years.",
-      ],
-      maxTeamSize: 1,
-      minTeamSize: 1,
-      PsLink: "",
-      coordinators: [
-        { name: "Priyanshu Ranjan Srivastava", contact: "9118272807" },
-        { name: "Raj Anil Nistane", contact: "9672434425" },
-        { name: "Aditya Jatav", contact: "7878991547" },
-      ],
-    },
-    {
-      eventName: "TERRAQUIZ",
-      eventId: "80",
-      description:
-        "A quizzing event challenging your general knowledge and aptitude.",
-      rules: [
-        "Team size: 3-4 members.",
-        "All branches allowed.",
-        "No cross-year teams allowed.",
-      ],
-      maxTeamSize: 4,
-      minTeamSize: 3,
-      PsLink: "",
-      coordinators: [
-        { name: "Sahil Meena", contact: "9660043221" },
-        { name: "Deepesh Baberwal", contact: "8502882858" },
-        { name: "Dharam Singh Meena", contact: "9621712097" },
-      ],
-    },
-    {
-      eventName: "Civismic",
-      eventId: "81",
-      description:
-        "An event to illustrate structural dynamics using popsicle sticks, focusing on earthquake resistance.",
-      rules: [
-        "No inter-year teams allowed.",
-        "Average CPI of team < 8.",
-        "Team size: 4 members.",
-        "Branches allowed: All (at least 2 Civil students).",
-      ],
-      maxTeamSize: 4,
-      minTeamSize: 4,
-      PsLink: "",
-      coordinators: [
-        { name: "Pawan Kumar Agarwal", contact: "9358116201" },
-        { name: "Dharam Singh Meena", contact: "9621712097" },
-        { name: "Priyanshu Ranjan Srivastava", contact: "9118272807" },
-      ],
-    },
-  ],
+ events: [
+  {
+    eventName: "COGNIZANCE ",
+    eventId: "01",
+    description:
+      "An exclusive mock placement event for Civil Engineers.",
+    rules: [
+      "Individual Participation",
+      "Round 1: Online Test",
+      "Round 2: Group Discussion",
+      "Round 3: Interview"
+    ],
+    maxTeamSize: 1,
+    minTeamSize: 1,
+    PsLink: "",
+    coordinators: [
+      { name: "Shreyas Mishra", contact: "" },
+      { name: "Priyanshu Ranjan", contact: "" },
+      { name: "Shrey Srivastav", contact: "" },
+    ],
+  },
+  {
+    eventName: "LINKIDGE",
+    eventId: "02",
+    description:
+      "A Popsicle Stick Bridge Building competition.",
+    rules: [
+      "Team Event",
+      "Round 1: Abstract Submission",
+      "Round 2: Mid Evaluation & Viva",
+      "Round 3: Testing Phase"
+    ],
+    maxTeamSize: 4,
+    minTeamSize: 3,
+    PsLink: "",
+    coordinators: [
+      { name: "Siddhant Singh Bisht", contact: "" },
+      { name: "Rishikesh Kumar", contact: "" },
+      { name: "Modasshir Khan", contact: "" },
+    ],
+  },
+  {
+    eventName: "CONSTRENGTHO",
+    eventId: "03",
+    description:
+      "A Concrete Mix Design Challenge to create the strongest block while maximizing efficiency.",
+    rules: [
+      "Team Event",
+      "Round 1: Online Test",
+      "Round 2: Abstract Submission",
+      "Round 3: Laboratory Testing"
+    ],
+    maxTeamSize: 4,
+    minTeamSize: 4,
+    PsLink: "",
+    coordinators: [
+      { name: "Kushagra Tiwari", contact: "" },
+      { name: "Shweta Sinha", contact: "" },
+      { name: "Tanya Singh", contact: "" },
+    ],
+  },
+  {
+    eventName: "ZIGGURAE",
+    eventId: "04",
+    description:
+      "The ultimate AutoCAD and building design showdown.\n Design Top view and plan of existing building.\n Design views with surprise constraints.",
+    rules: [
+      "Team Event",
+      "Round 1: Building Top View & Plan Drafting",
+      "Round 2: Constraint Based Redesigning",
+      "Round 3: Design + Analysis Presentation"
+    ],
+    maxTeamSize: 4,
+    minTeamSize: 3,
+    PsLink: "",
+    coordinators: [
+      { name: "Abhay", contact: "" },
+      { name: "Abhijit Rai", contact: "" },
+      { name: "Chandani", contact: "" },
+    ],
+  },
+  {
+    eventName: "CODIGO",
+    eventId: "05",
+    description:
+      "A coding odyssey to test innovation, problem-solving skills & technical depth. Designed to prepare students for placements.",
+    rules: [
+      "Solo Participation",
+      "Round 1: CS Fundamentals Test",
+      "Round 2: Coding Challenge",
+      "Round 3: Interview"
+    ],
+    maxTeamSize: 1,
+    minTeamSize: 1,
+    PsLink: "",
+    coordinators: [
+      { name: "Swetabh Salampuria", contact: "" },
+      { name: "Shreyas Mishra", contact: "" },
+      { name: "Saurabh Khare", contact: "" },
+    ],
+  },
+  {
+    eventName: "JUST IN CASE",
+    eventId: "06",
+    description:
+      "The Consulting Challenge focusing on case studies, guesstimates, and real-world business problems.",
+    rules: [
+      "Solo Event",
+      "Round 1: Online Test",
+      "Round 2: Guesstimate + Case Studies",
+      "Round 3: Interview Round"
+    ],
+    maxTeamSize: 1,
+    minTeamSize: 1,
+    PsLink: "",
+    coordinators: [
+      { name: "Vivek Saroj", contact: "" },
+      { name: "Priyeranjan", contact: "" },
+      { name: "Upasna Verma", contact: "" },
+    ],
+  },
+  {
+    eventName: "TERRAQUIZ",
+    eventId: "07",
+    description:
+      "Nirmaan Fun Event featuring rounds such as 'Real vs Reel' and Treasure Hunt.",
+    rules: [
+      "Team Event",
+      "Round 1: Quiz Round",
+      "Round 2: Surprise Round",
+      "Round 3: Treasure Hunt"
+    ],
+    maxTeamSize: 3,
+    minTeamSize: 3,
+    PsLink: "",
+    coordinators: [
+      { name: "Swetabh Salampuria", contact: "" },
+      { name: "Prakhar Srivastav", contact: "" },
+      { name: "Abhay", contact: "" },
+    ],
+  },
+  {
+    eventName: "SAMADHAN",
+    eventId: "08",
+    description:
+      "The Engineering Ideathon where teams identify a societal issue and propose a civil engineering solution.",
+    rules: [
+      "Team Event",
+      "Round 1: Problem Statement Evaluation",
+      "Round 2: Draft Submission",
+      "Round 3: Final Presentation"
+    ],
+    maxTeamSize: 4,
+    minTeamSize: 3,
+    PsLink: "",
+    coordinators: [
+      { name: "Saksham Singh", contact: "" },
+      { name: "Suvendra Singh", contact: "" },
+      { name: "Tanya Singh", contact: "" },
+    ],
+  }
+]
+
 };
 
 const NirmaanPage = () => {
   const [selected, setSelected] = useState(null);
 
   return (
-    <div className="relative min-h-screen bg-black font-sans text-gray-300">
+    <div className="relative min-h-screen font-sans text-gray-300">
       {/* Responsive Background */}
       <div className="absolute inset-0 w-full h-full -z-10">
         <img
-          src={AvishkarBgMobile}
+          src={AvishkarBG}
           alt="Mobile Background"
           className="block sm:hidden w-full h-full object-cover"
-          style={{ position: "absolute", top: 0, left: 0 }}
         />
         <img
           src={AvishkarBG}
           alt="Desktop Background"
           className="hidden sm:block w-full h-full object-cover"
-          style={{ position: "absolute", top: 0, left: 0 }}
         />
       </div>
 
       {/* Header */}
-      <main className="flex flex-col md:flex-row justify-center items-center px-8 py-16 relative">
-        <div className="md:w-1/2 mt-12 md:mt-0 text-center md:text-left">
-          <h1 className="text-5xl font-bold neon-shadow text-cyan-400 mb-4 tracking-wide uppercase">
+      <main className="flex flex-col justify-center items-center px-0 py-20 relative">
+        <div className="w-full mt-12 text-center flex flex-col items-center">
+          <h1 className="text-5xl font-bold neon-shadow text-gray-300 mb-4 drop-shadow-xl tracking-wide uppercase">
             {NirmaanData.eventName}
           </h1>
           {NirmaanData.tagline && (
-            <p className="text-lg text-cyan-300 mb-8 max-w-md">{NirmaanData.tagline}</p>
+            <p className="text-lg text-gray-300 mb-8 max-w-md">{NirmaanData.tagline}</p>
           )}
         </div>
       </main>
 
       {/* Events Grid */}
       <div className="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 sm:grid-cols-2 gap-10">
-        {NirmaanData.events.map((event) => (
+        {[...NirmaanData.events]
+          .sort((a, b) => a.eventName.localeCompare(b.eventName))
+          .map((event) => (
           <motion.div
             key={event.eventId}
             initial={{ scale: 1, boxShadow: "0 0 10px rgba(0,0,0,0.2)" }}
             whileHover={{
               scale: 1.05,
-              boxShadow: "0 15px 30px rgba(0,255,255,0.4)",
+              boxShadow: "0 15px 30px rgba(255,115,0,0.5)",
               transition: { duration: 0.3, ease: "easeInOut" },
             }}
             whileTap={{ scale: 0.98 }}
-            className="relative p-6 border border-cyan-600 rounded-xl bg-black/90 backdrop-blur-md shadow-md cursor-pointer text-center select-none"
+            className="relative p-6 border border-gray-400 rounded-xl bg-black/90 backdrop-blur-md shadow-md cursor-pointer text-center select-none"
             onClick={() => setSelected(event)}
           >
-            <h2 className="text-2xl font-bold neon-shadow text-cyan-400 mb-2">{event.eventName}</h2>
+            <h2 className="text-2xl font-bold neon-shadow text-gray-300 mb-2">{event.eventName}</h2>
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 setSelected(event);
               }}
-              className="mt-4 py-2 w-full border border-cyan-400 rounded-lg bg-cyan-500 text-black font-semibold hover:bg-cyan-300 transition"
+              className="mt-4 py-2 w-full border border-gray-300 rounded-lg bg-gray-300 text-black font-semibold hover:bg-gray-200 transition"
             >
               Explore
             </button>
@@ -238,40 +242,40 @@ const NirmaanPage = () => {
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ duration: 0.45, ease: "easeOut" }}
-            className="fixed top-0 left-0 w-full h-full bg-black/80 backdrop-blur-md z-50 p-8 overflow-y-auto neon-shadow"
-            style={{ overscrollBehavior: "contain" }}
+            className="fixed top-0 left-0 w-full h-full bg-black/95 backdrop-blur-xl border-t border-gray-300/50 z-50 p-8 overflow-y-auto neon-shadow"
+            style={{ overflowX: "hidden", overscrollBehavior: "contain" }}
           >
             <button
               onClick={() => setSelected(null)}
-              className="absolute top-6 right-10 text-4xl text-cyan-400 hover:text-cyan-600 font-bold focus:outline-none"
+              className="absolute top-6 right-10 text-4xl text-gray-300 hover:text-gray-200 font-bold focus:outline-none"
               aria-label="Close Explore Panel"
             >
               ✕
             </button>
-            <h2 className="text-4xl font-bold mt-4 neon-shadow text-cyan-400 mb-8 text-center">{selected.eventName}</h2>
+            <h2 className="text-4xl font-bold mt-4 neon-shadow text-gray-400 mb-8 text-center">{selected.eventName}</h2>
             <section className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
               <div>
-                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">About the Event</h3>
-                <p className="text-cyan-300 whitespace-pre-wrap">{selected.description}</p>
+                <h3 className="text-2xl font-bold text-gray-400 mb-4 text-center">About the Event</h3>
+                <p className="text-gray-300 whitespace-pre-wrap">{selected.description}</p>
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">Rules</h3>
-                <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 max-h-[60vh] overflow-y-auto pr-4">
+                <h3 className="text-2xl font-bold text-gray-400 mb-4 text-center">Rules</h3>
+                <ul className="list-disc list-inside ml-6 space-y-2 text-gray-300 max-h-[60vh] overflow-y-auto pr-4">
                   {selected.rules.map((rule, i) => (
                     <li key={i}>{rule}</li>
                   ))}
                 </ul>
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">Coordinators</h3>
-                <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 text-center">
+                <h3 className="text-2xl font-bold text-gray-400 mb-4 text-center">Coordinators</h3>
+                <ul className="list-disc list-inside ml-6 space-y-2 text-gray-300 text-left">
                   {selected.coordinators.map((c, i) => (
-                    <li key={i}>{c.name} — {c.contact}</li>
+                    <li key={i}>{c.name} {c.contact}</li>
                   ))}
                 </ul>
-                <p className="mt-6 text-cyan-300 text-left">
+                {/* <p className="mt-6 text-gray-300 text-left">
                   <strong>Team size:</strong> {selected.minTeamSize} - {selected.maxTeamSize}
-                </p>
+                </p> */}
               </div>
             </section>
           </motion.div>

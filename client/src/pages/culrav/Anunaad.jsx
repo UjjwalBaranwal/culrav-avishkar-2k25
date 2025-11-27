@@ -222,7 +222,9 @@ const SpandanPage = () => {
 
       {/* EVENTS GRID */}
       <div className="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 sm:grid-cols-2 gap-10">
-        {Anunaad.events.map((event) => (
+        {[...Anunaad.events]
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .map((event) => (
           <motion.div
             key={event.id}
             initial={{ scale: 1, boxShadow: "0 0 10px rgba(0,0,0,0.2)" }}

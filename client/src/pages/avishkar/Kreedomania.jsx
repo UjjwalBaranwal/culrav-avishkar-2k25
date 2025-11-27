@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import AvishkarBgMobile from "../../assets/Avishkar_bg-mobile.png";
-import AvishkarBG from "../../assets/AvishkarBG.png";
+import AvishkarBG from "../../assets/a_s_bg.png";
 import dummy from "../../assets/dummy.png";
 
 const KreedomaniaData = {
@@ -30,11 +29,7 @@ const KreedomaniaData = {
       minTeamSize: 5,
       maxTeamSize: 5,
       PsLink: "",
-      coordinators: [
-        { name: "Kumar Hotabya", contact: "+91-7488183939" },
-        { name: "Shashank Shivam", contact: "+91-6203830907" },
-        { name: "Abhiraj Ganwani", contact: "+91-6203830907" },
-      ],
+      coordinators: [],
     },
     {
       eventName: "BGMI",
@@ -52,11 +47,7 @@ const KreedomaniaData = {
       minTeamSize: 4,
       maxTeamSize: 4,
       PsLink: "",
-      coordinators: [
-        { name: "Sanjay Dutta", contact: "+91-9981523512" },
-        { name: "Divyanshu Verma", contact: "+91-9981523512" },
-        { name: "Aniket Mohanty", contact: "+91-9981523512" },
-      ],
+      coordinators: [],
     },
     {
       eventName: "Mini Militia",
@@ -73,10 +64,7 @@ const KreedomaniaData = {
       minTeamSize: 3,
       maxTeamSize: 3,
       PsLink: "",
-      coordinators: [
-        { name: "Shashank Shivam", contact: "+91-6203830907" },
-        { name: "Harsh Maharshi", contact: "+91-9079039894" },
-      ],
+      coordinators: [],
     },
     {
       eventName: "Stumble Guys",
@@ -92,7 +80,7 @@ const KreedomaniaData = {
       minTeamSize: 1,
       maxTeamSize: 1,
       PsLink: "",
-      coordinators: [{ name: "Abhiraj Ganwani", contact: "+91-6203830907" }],
+      coordinators: [],
     },
     {
       eventName: "FIFA 23",
@@ -111,10 +99,7 @@ const KreedomaniaData = {
       minTeamSize: 1,
       maxTeamSize: 1,
       PsLink: "",
-      coordinators: [
-        { name: "Sarthak Dwivedi", contact: "+91-9079039894" },
-        { name: "Aniket Mohanty", contact: "+91-9079039894" },
-      ],
+      coordinators: [],
     },
     {
       eventName: "Clash Royale",
@@ -132,11 +117,7 @@ const KreedomaniaData = {
       minTeamSize: 1,
       maxTeamSize: 1,
       PsLink: "",
-      coordinators: [
-        { name: "Sanjay Dutta", contact: "+91-9956269745" },
-        { name: "Aniket Mohanty", contact: "+91-9079039894" },
-        { name: "Harsh Maharshi", contact: "+91-9079039894" },
-      ],
+      coordinators: [],
     },
     {
       eventName: "COD Mobile",
@@ -156,10 +137,7 @@ const KreedomaniaData = {
       minTeamSize: 5,
       maxTeamSize: 5,
       PsLink: "",
-      coordinators: [
-        { name: "Sanjay Dutta", contact: "+91-9956269745" },
-        { name: "Ritik Kumar", contact: "+91-9079039894" },
-      ],
+      coordinators: [],
     },
     {
       eventName: "Free Fire",
@@ -179,10 +157,7 @@ const KreedomaniaData = {
       minTeamSize: 4,
       maxTeamSize: 4,
       PsLink: "",
-      coordinators: [
-        { name: "Sanjay Dutta", contact: "+91-9956269745" },
-        { name: "Pushpendra Verma", contact: "+91-9079039894" },
-      ],
+      coordinators: [],
     },
   ],
 };
@@ -191,57 +166,57 @@ const KreedomaniaPage = () => {
   const [selected, setSelected] = useState(null);
 
   return (
-    <div className="relative min-h-screen bg-black font-sans text-gray-300">
+    <div className="relative min-h-screen font-sans text-gray-300">
       {/* Responsive Background */}
       <div className="absolute inset-0 w-full h-full -z-10">
         <img
-          src={AvishkarBgMobile}
+          src={AvishkarBG}
           alt="Mobile Background"
           className="block sm:hidden w-full h-full object-cover"
-          style={{ position: "absolute", top: 0, left: 0 }}
         />
         <img
           src={AvishkarBG}
           alt="Desktop Background"
           className="hidden sm:block w-full h-full object-cover"
-          style={{ position: "absolute", top: 0, left: 0 }}
         />
       </div>
 
       {/* Header */}
-      <main className="flex flex-col md:flex-row justify-center items-center px-8 py-16 relative">
-        <div className="md:w-1/2 mt-12 md:mt-0 text-center md:text-left">
-          <h1 className="text-5xl font-bold neon-shadow text-cyan-400 mb-4 tracking-wide uppercase">
+      <main className="flex flex-col justify-center items-center px-0 py-20 relative">
+        <div className="w-full mt-12 text-center flex flex-col items-center">
+          <h1 className="text-5xl font-bold neon-shadow text-gray-300 mb-4 drop-shadow-xl tracking-wide uppercase">
             {KreedomaniaData.eventName}
           </h1>
           {KreedomaniaData.tagline && (
-            <p className="text-lg text-cyan-300 mb-8 max-w-md">{KreedomaniaData.tagline}</p>
+            <p className="text-lg text-gray-300 mb-8 max-w-md">{KreedomaniaData.tagline}</p>
           )}
         </div>
       </main>
 
       {/* Events Grid */}
       <div className="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 sm:grid-cols-2 gap-10">
-        {KreedomaniaData.events.map((event) => (
+        {[...KreedomaniaData.events]
+          .sort((a, b) => a.eventName.localeCompare(b.eventName))
+          .map((event) => (
           <motion.div
             key={event.eventId}
             initial={{ scale: 1, boxShadow: "0 0 10px rgba(0,0,0,0.2)" }}
             whileHover={{
               scale: 1.05,
-              boxShadow: "0 15px 30px rgba(0,255,255,0.4)",
+              boxShadow: "0 15px 30px rgba(255,115,0,0.5)",
               transition: { duration: 0.3, ease: "easeInOut" },
             }}
             whileTap={{ scale: 0.98 }}
-            className="relative p-6 border border-cyan-600 rounded-xl bg-black/90 backdrop-blur-md shadow-md cursor-pointer text-center select-none"
+            className="relative p-6 border border-gray-400 rounded-xl bg-black/90 backdrop-blur-md shadow-md cursor-pointer text-center select-none"
             onClick={() => setSelected(event)}
           >
-            <h2 className="text-2xl font-bold neon-shadow text-cyan-400 mb-2">{event.eventName}</h2>
+            <h2 className="text-2xl font-bold neon-shadow text-gray-300 mb-2">{event.eventName}</h2>
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 setSelected(event);
               }}
-              className="mt-4 py-2 w-full border border-cyan-400 rounded-lg bg-cyan-500 text-black font-semibold hover:bg-cyan-300 transition"
+              className="mt-4 py-2 w-full border border-gray-300 rounded-lg bg-gray-300 text-black font-semibold hover:bg-gray-200 transition"
             >
               Explore
             </button>
@@ -257,38 +232,38 @@ const KreedomaniaPage = () => {
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ duration: 0.45, ease: "easeOut" }}
-            className="fixed top-0 left-0 w-full h-full bg-black/80 backdrop-blur-md z-50 p-8 overflow-y-auto neon-shadow"
-            style={{ overscrollBehavior: "contain" }}
+            className="fixed top-0 left-0 w-full h-full bg-black/95 backdrop-blur-xl border-t border-gray-300/50 z-50 p-8 overflow-y-auto neon-shadow"
+            style={{ overflowX: "hidden", overscrollBehavior: "contain" }}
           >
             <button
               onClick={() => setSelected(null)}
-              className="absolute top-6 right-10 text-4xl text-cyan-400 hover:text-cyan-600 font-bold focus:outline-none"
+              className="absolute top-6 right-10 text-4xl text-gray-300 hover:text-gray-200 font-bold focus:outline-none"
               aria-label="Close Explore Panel"
             >
               ✕
             </button>
-            <h2 className="text-4xl font-bold mt-4 neon-shadow text-cyan-400 mb-8 text-center">{selected.eventName}</h2>
+            <h2 className="text-4xl font-bold mt-4 neon-shadow text-gray-400 mb-8 text-center">{selected.eventName}</h2>
             <section className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
               <div>
-                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">About the Event</h3>
-                <p className="text-cyan-300 whitespace-pre-wrap">{selected.description}</p>
+                <h3 className="text-2xl font-bold text-gray-400 mb-4 text-center">About the Event</h3>
+                <p className="text-gray-300 whitespace-pre-wrap">{selected.description}</p>
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">Rules</h3>
-                <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 max-h-[60vh] overflow-y-auto pr-4">
+                <h3 className="text-2xl font-bold text-gray-400 mb-4 text-center">Rules</h3>
+                <ul className="list-disc list-inside ml-6 space-y-2 text-gray-300 max-h-[60vh] overflow-y-auto pr-4">
                   {selected.rules.map((r, i) => (
                     <li key={i}>{r}</li>
                   ))}
                 </ul>
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">Coordinators</h3>
-                <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 text-center">
+                <h3 className="text-2xl font-bold text-gray-400 mb-4 text-center">Coordinators</h3>
+                <ul className="list-disc list-inside ml-6 space-y-2 text-gray-300 text-center">
                   {selected.coordinators.map((c, i) => (
                     <li key={i}>{c.name} — {c.contact}</li>
                   ))}
                 </ul>
-                <p className="mt-6 text-cyan-300 text-left"><strong>Team size:</strong> {selected.minTeamSize} - {selected.maxTeamSize}</p>
+                {/* <p className="mt-6 text-gray-300 text-left"><strong>Team size:</strong> {selected.minTeamSize} - {selected.maxTeamSize}</p> */}
               </div>
             </section>
           </motion.div>

@@ -1,130 +1,151 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 
 
-import AvishkarBgMobile from "../../assets/Avishkar_bg-mobile.png";
-import AvishkarBG from "../../assets/AvishkarBG.png";
+import AvishkarBG from "../../assets/a_s_bg.png";
+
 
 const GenesisData = {
   eventName: "Genesis",
   tagline: "",
-  
   instagramLink: "",
   events: [
     {
       eventName: "Palladin",
       eventId: "57",
       description:
-        "Placement-oriented event focused on preparing biotech students for upcoming placements and internship sessions through core, consultancy, and software skill assessments.",
+        "A placement-focused event designed to equip biotechnology students for internships and full-time opportunities. The competition evaluates participants across core biotechnology knowledge, consultancy thinking, and software/application skills — helping them sharpen industry-ready problem-solving and communication abilities.",
       rules: [
-        "Solo participation",
-        "2 Rounds: Round 1 - CBT (Aptitude + Domain Specific), Round 2 - Group Discussion + Interview",
-        "Compulsory for biotech students",
+        "Solo participation only",
+        "Round 1  –  Computer-Based Test (Aptitude + Core Biotech Assessment)",
+        "Round 2  –  Group Discussion followed by Personal Interview",
+        "Participation is mandatory for all biotechnology students"
       ],
       maxTeamSize: 1,
       minTeamSize: 1,
-      
       PsLink: "",
       coordinators: [
-        { name: "Dipesh Ladha", contact: "8560822989" },
-        { name: "Ritesh Kumar Maurya", contact: "7897461387" },
-        { name: "Harshita Agrawal", contact: "8303575832" },
-        { name: "Siddhant Jain", contact: "9265720118" },
-        { name: "Aniket", contact: "7070843109" }
-      ],
+        { name: "Vaishnavi Srivastava", contact: "9473815982" },
+        { name: "Akash Baghel", contact: "7300894145" },
+        { name: "Karthik Prakash", contact: "7306898487" },
+        { name: "Shree Ram Goliya", contact: "7427813219" },
+      ]
     },
     {
       eventName: "Central Dogma",
       eventId: "58",
       description:
-        "A core biotechnology event combining knowledge with fun, featuring rounds on biotech concepts, puzzles, anagrams, and theme-based questions.",
+        "An engaging core biotechnology event that blends technical knowledge with fun and creativity. Participants will progress through interactive rounds featuring biotech concepts, visual challenges, puzzles, anagrams, and themed question sets designed to test both understanding and quick thinking.",
       rules: [
-        "Team size: 3 (at least one member from biotech department)",
-        "3 Rounds: Round 1 - Written test (PCM + Core BT), Round 2 - Live round with pictures, puzzles, anagrams, etc., Round 3 - Buzzer final round",
+        "Team size: 3 members (minimum one participant from the Biotechnology department)",
+        "Event consists of 3 rounds:",
+        "Round 1 – Written test covering PCM fundamentals and core biotechnology",
+        "Round 2 – Live interactive round including images, puzzles, anagrams, and more",
+        "Round 3 – High-pressure buzzer finale to determine the winning team"
       ],
       maxTeamSize: 3,
       minTeamSize: 3,
-      
       PsLink: "",
       coordinators: [
-        { name: "Dipesh Ladha", contact: "8560822989" },
-        { name: "Harshita Agrawal", contact: "8303575832" },
-        { name: "Aniket Kumar", contact: "8083660818" },
-        { name: "Vemirso", contact: "9127533498" },
-      ],
+        { name: "Akhilesh Kumar", contact: "8384872346" },
+        { name: "Karthik Prakash", contact: "7306898487" }
+      ]
     },
-    {
-      eventName: "Clue Quest",
-      eventId: "59",
-      description:
-        "A fun, theme-based event that involves puzzles, TV series, anime, and more, culminating in a treasure hunt.",
-      rules: [
-        "Team size: 3-5",
-        "Open to all branches and years",
-        "3-4 Rounds, with the last round being a treasure hunt",
-      ],
-      maxTeamSize: 5,
-      minTeamSize: 3,
-    
-      PsLink: "",
-      coordinators: [
-        { name: "Siddhant Jain", contact: "9265720118" },
-        { name: "Manjeet Singh", contact: "8410156377" },
-        { name: "Pratima Krishna", contact: "9660771107" },
-      ],
-    },
+    // {
+    //   eventName: "Clue Quest",
+    //   eventId: "59",
+    //   description:
+    //     "A high-energy, theme-based event packed with puzzles, references from popular TV series, anime, riddles, and engaging challenges — all leading to an exciting final treasure hunt.",
+    //   rules: [
+    //     "Team size: 3–5 members",
+    //     "All branches allowed",
+    //     "All years allowed except final year",
+    //     "3 rounds in total",
+    //     "Round 1 and 2 will have question based upon puzzles, movies, music, memes, and pop culture references",
+    //     "Round 3 will be a thrilling treasure hunt with clues leading to the final destination"
+    //   ],
+    //   maxTeamSize: 5,
+    //   minTeamSize: 3,
+    //   PsLink: "",
+    //   coordinators: [
+    //     { name: "Siddhant Jain", contact: "9265720118" },
+    //     { name: "Manjeet Singh", contact: "8410156377" },
+    //     { name: "Pratima Krishna", contact: "9660771107" }
+    //   ]
+    // },
     {
       eventName: "IQ Odyssey",
       eventId: "60",
       description:
-        "An event centered on current affairs combined with entertaining game activities, blending education with fun.",
+        "An engaging event that blends current affairs with interactive game-based challenges — designed to make learning more exciting, competitive, and fun.",
       rules: [
-        "Solo or Duo participation",
-        "Open to all branches and years",
-        "2 Rounds: Round 1 - Quiz, Round 2 - Buzzer round",
+        "Participation allowed in Solo or Duo format",
+        "Open to all branches and academic years",
+        "2 Rounds: Round 1 – Quiz based on current affairs, Round 2 – Fast-paced Buzzer Round"
       ],
       maxTeamSize: 2,
       minTeamSize: 1,
-     
       PsLink: "",
       coordinators: [
-        { name: "Aniket Kumar", contact: "8083660818" },
-        { name: "Vemirso Timungpi", contact: "9127533498" },
-        { name: "Ritesh Kumar Maurya", contact: "7897461387" },
-      ],
+        { name: "Madan Mohan", contact: "9548421317" },
+        { name: "Govind Singh Tanwar", contact: "7828087932" }
+      ]
     },
     {
       eventName: "Case & Climb",
       eventId: "61",
       description:
-        "A case study analysis event that challenges participants to apply analytical, problem-solving, and decision-making skills to real-world scenarios.",
+        "A case-study driven event where participants analyze real-world scenarios and demonstrate their analytical thinking, problem-solving approach, and decision-making abilities.",
       rules: [
-        "Solo participation",
-        "3 Rounds: Round 1 - Aptitude Test, Round 2 - Case Study, Round 3 - Interview",
+        "3 Rounds in total:",
+        "Round 1 – Aptitude Assessment",
+        "Round 2 – Case Study Analysis & Presentation",
+        "Round 3 – Personal Interview based on solution approach",
+        "Team Size: 1 to 3 members"
       ],
-      maxTeamSize: 1,
+      maxTeamSize: 3,
       minTeamSize: 1,
-    
       PsLink: "",
       coordinators: [
-        { name: "Dipesh Ladha", contact: "8560822989" },
-        { name: "Sandip Kumar Kushwaha", contact: "9838354272" },
-        { name: "Saras", contact: "9457600155" },
-      ],
+        { name: "Priyanka Yadav", contact: "705432354" },
+        { name: "Sukrati Shrivastava", contact: "7985774994" }
+      ]
     },
-  ],
+    {
+      eventName: "Dashboarding",
+      eventId: "62",
+      description:
+        "The Consultancy & Software Project Competition is a multidisciplinary event that encourages students to think, build, analyse, and present solutions with real-world relevance. The event blends software development and consultancy/data analytics, requiring collaboration between technology and biotechnology domains. Participants will either develop a biotech-related software solution or create analytical dashboards using real datasets, drawing meaningful insights and presenting them through strong storytelling.",
+      rules: [
+        "This event consists of two categories — Software Development & Consultancy/Dashboard.",
+        "Software Track Rules: Team size 2–3, at least one member must be from Biotechnology, problem statement will be provided, Git & GitHub usage is mandatory, 2 rounds → Idea & Progress Presentation + Final Solution Demonstration.",
+        "Consultancy Track Rules: Team size 2, one participant must be from Biotechnology, dashboard should be built using real data, themes may relate to health/environment/biotech, 3 rounds → BI Tools Quiz + Dashboard Creation + Final Presentation.",
+        "Tools allowed (for Consultancy): Power BI, Tableau, Excel.",
+        "Judging will be based on innovation, design, insights, storytelling, and teamwork.",
+        "Team Size 2-3 members"
+      ],
+      maxTeamSize: 3,
+      minTeamSize: 2,
+      PsLink: "",
+      coordinators: [
+        { name: "Vaishnavi Srivastava", contact: "9473815982" },
+        { name: "Priyanka Yadav", contact: "705432354" }
+      ]
+    }
+  ]
 };
+
 
 const GenesisPage = () => {
   const [selected, setSelected] = useState(null);
 
   return (
-    <div className="relative min-h-screen bg-black font-sans text-gray-300">
+    <div className="relative min-h-screen  font-sans text-gray-300">
       {/* Responsive Background Images */}
       <div className="absolute inset-0 w-full h-full -z-10">
         <img
-          src={AvishkarBgMobile}
+          src={AvishkarBG}
           alt="Mobile Background"
           className="w-full h-full object-cover block sm:hidden"
         />
@@ -136,46 +157,43 @@ const GenesisPage = () => {
       </div>
 
       {/* Header Section */}
-      <main className="flex flex-col md:flex-row justify-center items-center px-8 py-16 relative">
-        <div className="relative flex justify-center md:w-1/2">
-          <img
-            src={GenesisData.BGImageLink}
-            alt={`${GenesisData.eventName} Banner`}
-            className="w-[330px] h-[300px] object-cover brightness-90 rounded-xl shadow-lg border border-cyan-600/60 neon-shadow"
-          />
-        </div>
-        <div className="md:w-1/2 mt-12 md:mt-0 text-center md:text-left">
-          <h1 className="text-5xl font-bold neon-shadow text-cyan-400 mb-4 drop-shadow-xl tracking-wide uppercase">
-            {GenesisData.eventName}
-          </h1>
-          {GenesisData.tagline && (
-            <p className="text-lg text-cyan-300 mb-8 max-w-md">{GenesisData.tagline}</p>
-          )}
-        </div>
-      </main>
+      <main className="flex flex-col justify-center items-center px-0 py-20 relative">
+    <div className="w-full mt-12 text-center flex flex-col items-center">
+      <h1 className="text-5xl font-bold neon-shadow text-gray-300 mb-4 drop-shadow-xl tracking-wide uppercase">
+        {GenesisData.eventName}
+      </h1>
+      {GenesisData.tagline && (
+        <p className="text-lg text-gray-300 mb-8 max-w-md">
+          {GenesisData.tagline}
+        </p>
+      )}
+    </div>
+  </main>
 
       {/* Event Cards */}
       <div className="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 sm:grid-cols-2 gap-10">
-        {GenesisData.events.map((event) => (
+        {[...GenesisData.events]
+          .sort((a, b) => a.eventName.localeCompare(b.eventName))
+          .map((event) => (
           <motion.div
             key={event.eventId}
             initial={{ scale: 1, boxShadow: "0 0 10px rgba(0,0,0,0.2)" }}
             whileHover={{
               scale: 1.05,
-              boxShadow: "0 15px 30px rgba(0,255,255,0.4)",
+              boxShadow: "0 15px 30px rgba(255,115,0,0.5)", // orange glow
               transition: { duration: 0.3, ease: "easeInOut" },
             }}
             whileTap={{ scale: 0.98 }}
-            className="relative cyber-card p-6 border border-cyan-600 rounded-xl bg-black/90 backdrop-blur-md shadow-md cursor-pointer text-center select-none"
+            className="relative cyber-card p-6 border border-gray-400 rounded-xl bg-black/90 backdrop-blur-md shadow-md cursor-pointer text-center select-none"
             onClick={() => setSelected(event)}
           >
-            <h2 className="text-2xl font-bold neon-shadow text-cyan-400 mb-2">{event.eventName}</h2>
+            <h2 className="text-2xl font-bold neon-shadow text-gray-300 mb-2">{event.eventName}</h2>
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 setSelected(event);
               }}
-              className="mt-4 py-2 w-full border border-cyan-400 rounded-lg bg-cyan-500 text-black font-semibold hover:bg-cyan-300 transition"
+              className="mt-4 py-2 w-full border border-gray-300 rounded-lg bg-gray-300 text-black font-semibold hover:bg-gray-200 transition"
             >
               Explore
             </button>
@@ -191,40 +209,37 @@ const GenesisPage = () => {
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ duration: 0.45, ease: "easeOut" }}
-            className="fixed top-0 left-0 w-full h-full bg-black/95 backdrop-blur-xl border-t border-cyan-600/50 z-50 p-8 overflow-y-auto neon-shadow"
+            className="fixed top-0 left-0 w-full h-full bg-black/95 backdrop-blur-xl border-t border-gray-300/50 z-50 p-8 overflow-y-auto neon-shadow"
             style={{ overflowX: "hidden", overscrollBehavior: "contain" }}
           >
             <button
               onClick={() => setSelected(null)}
-              className="absolute top-6 right-10 text-4xl text-cyan-400 hover:text-cyan-600 font-bold focus:outline-none"
+              className="absolute top-6 right-10 text-4xl text-gray-300 hover:text-gray-200 font-bold focus:outline-none"
               aria-label="Close Explore Panel"
             >
               ✕
             </button>
-            <h2 className="text-4xl font-bold mt-4 neon-shadow text-cyan-400 mb-8 text-center">{selected.eventName}</h2>
+            <h2 className="text-4xl font-bold mt-4 neon-shadow text-gray-400 mb-8 text-center">{selected.eventName}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
               <section>
-                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">About the Event</h3>
-                <p className="text-cyan-300 px-4 whitespace-pre-wrap break-words">{selected.description}</p>
+                <h3 className="text-2xl font-bold text-gray-400 mb-4 text-center">About the Event</h3>
+                <p className="text-gray-300 px-4 whitespace-pre-wrap wrap-break-word">{selected.description}</p>
               </section>
               <section>
-                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">Rules</h3>
-                <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 max-h-[60vh] overflow-y-auto pr-4">
-                  {selected.rules.map((rule, i) => (
+                <h3 className="text-2xl font-bold text-gray-400 mb-4 text-center">Rules</h3>
+                <ul className="list-disc list-inside ml-6 space-y-2 text-gray-300 max-h-[60vh] overflow-y-auto pr-4">
+                  {selected.rules.map((rule, i) => (  
                     <li key={i}>{rule}</li>
                   ))}
                 </ul>
               </section>
               <section>
-                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">Coordinators</h3>
-                <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 text-center">
+                <h3 className="text-2xl font-bold text-gray-400 mb-4 text-center">Coordinators</h3>
+                <ul className="list-disc list-inside ml-6 space-y-2 text-gray-300 text-left">
                   {selected.coordinators.map((c, i) => (
                     <li key={i}>{c.name} — {c.contact}</li>
                   ))}
                 </ul>
-                <div className="mt-6 text-left">
-                  <p className="text-cyan-300"><strong>Team Size: </strong>{selected.minTeamSize} - {selected.maxTeamSize}</p>
-                </div>
               </section>
             </div>
           </motion.div>
