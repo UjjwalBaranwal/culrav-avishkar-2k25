@@ -5,60 +5,86 @@ import dummy from "../../assets/dummy.png"; // Replace with your hero image path
 const HERO_IMAGE = dummy;
 
 const Spandan = {
-  eventName: "FOOTPRINTS",
-  tagline: "Style that distinguish you and Walk that gives you confidence",
-  BGImageLink: null, // Image not used in this component directly
-  instagramLink: "https://www.facebook.com/genesis.avishkar.mnnit",
+  eventName: "Spandan",
+  tagline: "Style that distinguishes you and walk that gives you confidence",
+  BGImageLink: null,
+  instagramLink: "https://www.instagram.com/spandan_mnnit",
   events: [
+    // =================== EVENT 1 ===================
     {
       id: 30,
-      name: "Desfile de moda (Rampwalk)",
+      name: "Desfile de Moda (Ramp Show)",
       desc: [
-        "Style that distinguishes you and Walk that gives you confidence.",
-        "When we talk about Spandan, it all comes down to Fashion.",
-        "So, let's celebrate the evolution of fashion through decades by taking part in this exhilarating event called Rampwalk."
+        "The Ramp Show is a celebration of fashion, creativity, and confidence.",
+        "Teams will showcase themed performances that blend style with storytelling.",
+        "The event will be conducted on the main day of Spandan.",
+        "Themes will be revealed soon on the official Spandan Instagram page (@spandan_mnnit)."
       ],
       rules: [
-        "This is a team event with a team size of 10-15 members. The duration of the ramp walk will be strictly 6-10 minutes.",
-        "There will be two rounds. The first is the elimination round (Elims) with the same duration, where the theme for the ramp walk is chosen by the team.",
-        "The second round is the final round, taking place on the main day of Spandan, with the theme to be revealed after Elims.",
-        "The team is responsible for the background music, makeup, and dresses for both rounds.",
-        "Teams can use props in the final round but not in Elims.",
-        "The ramp walk should resemble a professional show, without any dance steps or indecent poses."
+        "This is a team event with 10–15 members in each team.",
+        "The duration of the performance must be strictly between 10–15 minutes.",
+        "Music, costumes, and makeup are to be arranged by the teams themselves.",
+        "Prop usage is encouraged and should complement the theme without obstructing the flow of the performance.",
+        "The ramp show should resemble a professional fashion show, emphasizing style, elegance, and confidence.",
+        "Dance moves or indecent poses are strictly prohibited."
+      ],
+      evaluation: [
+        "Teams will be judged on creativity, fashion styling, self-expression, theme interpretation, coordination, and overall presentation.",
+        "Teams are encouraged to showcase innovation through their outfits and choreography.",
+        "The background music must align with the chosen theme and enhance the overall impact of the performance."
       ],
       minTeamSize: 10,
       maxTeamSize: 15,
       coords: [
-        { name: "Aadya Shukla", phone: "9518243648" },
-        { name: "Aatman Upreti", phone: "8791030527" }
-      ],
+        { name: "Aarushi Sinha", phone: "7738898174" },
+        { name: "Jaya Sharma", phone: "9098498385" }
+      ]
     },
+
+    // =================== EVENT 2 ===================
     {
       id: 31,
-      name: "Mr. and Miss Spandan",
+      name: "Mr. & Miss Spandan",
       desc: [
-        "A dream is a picture of a possibility.",
-        "We should have a strong heart and a prepared mind to turn that into reality.",
-        "Ever wonder about earning the title of fashion icon for the day?",
-        "Here we invite you to take part in this title event and seize the opportunity to become Mr. or Miss Spandan."
+        "Mr. & Miss Spandan is an individual fashion and personality-based competition that celebrates confidence and self-expression.",
+        "Participants will compete across three engaging rounds: Photoshoot, Personality, and Questionnaire."
       ],
       rules: [
-        "This is an individual event with three rounds.",
-        "The first round is a photoshoot round where participants must prepare 3-4 poses and come to the venue in decent attire for the photoshoot. More details can be found on the Spandan page @spandan_mnnit.",
-        "The second round takes place on the main day. Participants should prepare an introduction and wear attire that reflects their personality in a decent manner.",
-        "The final round is a questionnaire session where the judges will announce the results immediately afterward.",
-        "The second and final rounds are conducted together.",
-        "Each round is an elimination round, held on the main event day at MP Hall."
-      ],
-      coords: [
-        { name: "Aadya Shukla", phone: "9518243648" },
-        { name: "Aatman Upreti", phone: "8791030527" }
+        "This is an individual event consisting of three rounds.",
+
+        // Round 1
+        "Round 1 – Photoshoot Round:",
+        "Participants must prepare 3–4 creative poses and attend the photoshoot in stylish outfits reflecting individuality, creativity, and fashion sense.",
+        "Details regarding timing and venue will be shared on the official Spandan Instagram page (@spandan_mnnit).",
+
+        // Round 2
+        "Round 2 – Personality Round:",
+        "Conducted on the main event day.",
+        "Participants will give a brief self-introduction highlighting their personality, interests, and what fashion means to them.",
+        "Participants must wear outfits that reflect their style and confidence.",
+
+        // Round 3
+        "Round 3 – Questionnaire Round:",
+        "Participants will answer on-stage questions designed to test confidence, spontaneity, and presence of mind.",
+        "Final results will be announced after this round.",
+
+        // Evaluation
+        "Evaluation Criteria: Creativity, fashion sense, self-expression, stage presence, and confidence.",
+
+        // Elimination
+        "Each round will be elimination-based.",
+        "Round 2 and Round 3 will be conducted on the same day."
       ],
       minTeamSize: 1,
       maxTeamSize: 1,
+      coords: [
+        { name: "Aarushi Sinha", phone: "7738898174" },
+        { name: "Jaya Sharma", phone: "9098498385" }
+      ]
     }
-  ],
+  ]
 };
+
 
 const SpandanPage = () => {
   const [selected, setSelected] = useState(null);

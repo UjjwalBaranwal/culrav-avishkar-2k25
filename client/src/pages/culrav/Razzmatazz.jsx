@@ -8,67 +8,112 @@ const Razzmatazz = {
   eventName: "Razzmatazz",
   tagline: "",
   events: [
+    // ================= DESI SYNC =================
     {
       id: 112,
       name: "DESI SYNC",
       desc: [
-        "Folklore Group Dance Competition DANCE – Defeat All Negativity (via) Creative Expression.",
-        "The spirited dance moves of cultural dance charge with your energy, so as the harmonious melodies handed down precisely through ages reverberate through the air, brace yourself to live through this shared experience of humanity and a celebration of diverse cultures.",
+        "Folklore Group Dance Competition.",
+        "DANCE – Defeat All Negativity via Creative Expression.",
+        "The spirited dance moves of cultural dance charge with your energy, as harmonious melodies handed down through ages reverberate through the air.",
         "Get in the groove, bring out your best moves, and set the stage of DESI SYNC on fire."
       ],
       rules: [
-        "First year, Second year, and third year can participate.",
-        "The time limit of the performance will be 8-11+1 minute. (1 minute is for clear and set up the stage)",
-        "Props can be used for performance.",
-        "Team must have a minimum of 4 active members and maximum stage limit will be 25. (Team size – unlimited)",
-        "Participants should get their songs/music in a pen drive. Live music is not allowed.",
-        "Decision of Judges will be supreme, everyone has to accept it.",
-        "Judging criteria: synchronization (10%), choreography (10%), energy levels (10%), theme (10%), expressions (10%), creativity (10%), costumes + props (10%), overall impact (10%).",
-        "Final year students can perform but won’t be a part of the competition.",
-        "The performance should be in cohesion with the integrity of the fest. The song selected must not contain any vulgarity."
+        // Eligibility
+        "First-year, second-year, and third-year students are eligible to participate.",
+        "Final-year students may perform with their final-year teams but will not be a part of the competition.",
+
+        // Team composition
+        "Each team must have a minimum of 4 active members.",
+        "The maximum stage limit is 25 performers. Team size beyond this limit is permitted, but only 25 can perform on stage at a time.",
+
+        // Performance duration
+        "The time limit for each performance is 8 to 10 minutes, with an additional 1 minute for stage clearance and setup.",
+
+        // Props & music
+        "Props are allowed during the performance.",
+        "Participants must bring their music in a pen drive. Live music is not permitted.",
+
+        // Dance style restrictions
+        "Western dance styles such as Hip-Hop, Popping, Locking, Waacking, Krumping, Breaking (B-Boying), House Dance, etc. are strictly prohibited.",
+        "Committees are only allowed to perform their respective folk dance form and styles other than the ones listed above.",
+        "Any violation of these rules will result in disqualification of the committee.",
+
+        // 50% Rule for non-folk elements
+        "Participants must ensure that allowed non-folk elements (including Bollywood songs and other permitted styles) do not exceed 50% of the total performance duration.",
+        "The only permitted styles apart from folk may include limited elements within this 50% allowance.",
+        "For example, in a 10-minute performance, the combined duration of allowed dance forms other than folk must not exceed 5 minutes.",
+        "If the permitted elements other than folk collectively exceed 50% of the total performance time, the team will be subject to disqualification.",
+
+        // Judging criteria
+        "Judging Criteria:",
+        "Synchronization – 15%",
+        "Choreography – 20%",
+        "Energy Levels – 15%",
+        "Theme – 10%",
+        "Expressions – 10%",
+        "Creativity (Formations + Transitions) – 10%",
+        "Costumes (Including Props) – 10%",
+        "Cultural Representation – 10%",
+
+        // General conduct
+        "The performance must align with the integrity and spirit of the fest.",
+        "The song selection should not contain vulgar or inappropriate content.",
+        "Use of any substance or practices that may cause damage to the stage or any sort of inconvenience to other teams is strictly prohibited.",
+        "Obscenity of any kind is strictly prohibited."
       ],
       coords: [
-        { name: "Ananya Jain", phone: "963474830" },
-        { name: "Dipesh Duhan", phone: "9813988999" },
-        { name: "Abhangi Nishika", phone: "9033594565" }
-      ],
+        { name: "Koona Rajarshi", phone: "6303565060" },
+        { name: "Nidhi Bhagat", phone: "7068079707" },
+        { name: "Vaibhav Kothary", phone: "7080074018" }
+      ]
     },
+
+    // ============== THE VAULT OF DANCE ============
     {
       id: 26,
-      name: "The Vault of Dance",
+      name: "Vault of Dance (Western Group Dance Competition)",
       desc: [
-        "Western Group Dance Competition",
-        "Every fall counts as a move if you own it with grace.",
+        "\"Every fall counts as a move if you own it with grace.\"",
         "We believe self-expression has no rules, so when you dance, it is uniquely you!",
         "If your body moves with the beats of the music as your soul syncs with the emotions, or maybe you just love to go wild and have fun, the moment is now.",
-        "Get ready for the most awaited Western night of foot-stomping, toe-tapping fun as we bring the spirit of the Wild West to life with our Vault of Dance event."
+        "Get ready for the most awaited Western night of foot-stomping, toe-tapping fun as we bring the spirit of the Wild West to life with our 'Vault of Dance' event."
       ],
       rules: [
-        "Time limit: 8 minutes - 12 minutes (including performance and set up time)",
-        "Team size: 6-30",
+        "Time limit: 8 minutes - 12 minutes (including performance and set-up time).",
+        "Team size: 6–30.",
         "Points will be deducted if the performance exceeds or falls short of the specified duration.",
         "At least 4 members should be present on the stage for any 10 seconds during the performance.",
         "Participants should get their own props. All props that will be used must be specified to the event coordinator.",
         "Use of any substances or practices that may cause damage to the stage or cause any sort of inconvenience to other teams is strictly prohibited.",
-        "The audio track should be mailed to dancesubmission.razzmatazz@gmail.com by 14th November 2024. The subject of the email should be in the format: VaultOfDance_TeamName_CollegeName.",
+        "Participants are free to perform any dance style(s).",
+        "Display of obscenity, vulgarity, and sensuality in any way will lead to disqualification.",
+        "Multiple teams from the same college are allowed; however, one person can be a member of only one team.",
+        "The audio track should be mailed to westerncommittee21@gmail.com by 30th November 2025. The subject of the email should be: 'VaultOfDance_TeamName_CollegeName'.",
         "The decision of the judges will be final and binding.",
-        "Judging criteria: Choreography and Versatility (25%), Coordination (25%), Energy + Body Language (20%), Creativity and Originality (20%), Overall impact (10%)."
+        "Judging Criteria:",
+        "Choreography & Versatility – 25%",
+        "Coordination – 25%",
+        "Energy + Body Language (expressions) – 20%",
+        "Creativity and Originality – 20%",
+        "Overall impact – 10%"
       ],
       coords: [
-        { name: "Sanidhya Diwakar", phone: "808502396" },
-        { name: "Snehal Tripathi", phone: "9911349987" },
-        { name: "Ayan Basak", phone: "9804545597" }
-      ],
+        { name: "Garv Gupta", phone: "9548171773" },
+        { name: "Ayush Pratap Singh", phone: "8979765044" },
+        { name: "Amandeep Singh", phone: "7520459672" }
+      ]
     },
+
+    // ================== REVEL =====================
     {
       id: 27,
-      name: "REVEL",
+      name: "Revel (Solo/Duet Dance Competition)",
       desc: [
-        "Solo Duet Dance is the hidden language of the soul.",
         "Stepping into the spotlight, one beat at a time!",
         "Embracing the solo and duet dance vibes at Confluence, where your passion becomes the choreography.",
         "Each move is a celebration; each step is a story.",
-        "Join us in this dance of self-expression at Revel."
+        "Join us in this dance of self-expression at 'Revel'."
       ],
       rules: [
         "Time limit: 2.5 minutes - 3 minutes (including performance and set-up time).",
@@ -76,62 +121,89 @@ const Razzmatazz = {
         "The choice of song and dance form is open to the participants.",
         "Participants should get their own props. All props that will be used must be specified to the event coordinator.",
         "Use of any substances or practices that may cause damage to the stage or cause any sort of inconvenience to other teams is strictly prohibited.",
-        "The audio track should be mailed to dancesubmission.razzmatazz@gmail.com by 14th November 2024. The subject of the email should be in the format: 'Revel_ParticipantName_CollegeName'.",
+        "The audio track should be mailed to westerncommittee21@gmail.com by 30th November 2025. The subject of the email should be: 'Revel_ParticipantName_CollegeName'.",
         "The decision of the judges will be final and binding.",
-        "Judging criteria:",
-        "1. Choreography and Versatility - 30 percent",
-        "2. Coordination - 30 percent",
-        "3. Energy + Body Language (expressions) - 30 percent",
-        "4. Creativity and Originality - 10 percent"
+        "Judging Criteria:",
+        "Choreography & Versatility – 30%",
+        "Coordination – 30%",
+        "Energy + Body Language (expressions) – 30%",
+        "Creativity and Originality – 10%"
       ],
       coords: [
-        { name: "Srishti", phone: "9144514209" },
-        { name: "Pratyush Mehta", phone: "9804545597" },
-        { name: "Ayan Basak", phone: "9804545597" }
-      ],
+        { name: "Bhavya Soni", phone: "9558382581" },
+        { name: "Humanshi Singh", phone: "7060801673" },
+        { name: "Karnika Singh", phone: "8171703908" }
+      ]
     },
+
+    // ================= LEAP OF FAITH =============
     {
       id: 28,
-      name: "LEAP OF FAITH",
-      desc: ["Solo Dance Battle. Dancing is like dreaming with your feet."],
+      name: "Leap of Faith",
+      desc: [
+        "1v1 and Group Street Battle.",
+        "\"Dancing is like dreaming with your feet.\""
+      ],
       rules: [
-        "It will be a face-off between two participants decided by chit basis.",
-        "Every round consists of 3 battles, each of 30-50 seconds.",
+        // 1v1 Street Battle
+        "1v1 Street Battle:",
+        "It will be a face-off between two participants decided by a draw system.",
+        "Every round consists of 3 battles, each of 30–50 seconds.",
         "Same music will be played for both the participants and the participant with 2 out of 3 wins moves to the next round.",
         "In case of a tie, an extra battle will be conducted to decide the qualifier.",
         "Only street styles are allowed.",
         "Any kind of obscene or inappropriate action will lead to disqualification.",
-        "The decision of the judges will be final and binding.",
-        "Judging criteria:",
-        "Musicality - 35 percent",
-        "Energy - 20 percent",
-        "Synchronization and execution - 20 percent",
-        "Creativity and uniqueness - 15 percent",
-        "Overall impact - 10 percent"
+        "The decision of the judges will be final and binding for all rounds of the battle.",
+        "Judging Criteria (1v1):",
+        "Musicality – 35%",
+        "Energy – 20%",
+        "Attitude and Execution – 10%",
+        "Creativity and Uniqueness – 15%",
+        "Crowd response – 10%",
+        "Overall Impact – 10%",
+
+        // Group Street Battle
+        "Group Street Battle:",
+        "\"Have you got what it takes to sweep the crowd off its feet? Bring your gang and prove it!\"",
+
+        "Round 1 | The Jump-Off:",
+        "Each crew performs a prepared routine showcasing signature style, musicality, and stage presence.",
+        "Performance Duration: 45 seconds to 1 minute.",
+        "The music track for this round will be given by the participating crew to the fest team at the venue.",
+        "The top 4 ranked crews will advance to the next round.",
+        "In case of ties, the decision of the judges will be final and binding.",
+
+        "Round 2 | Final Showdown:",
+        "Crews qualifying for this round will go against each other in a face-off competition.",
+        "The order of the crews will be decided through a draw system.",
+        "Battle 1: Crew 1 vs. Crew 2.",
+        "Battle 2: Crew 3 vs. Crew 4.",
+        "Final Battle: Winner of Battle 1 vs. Winner of Battle 2.",
+        "3rd Position Battle: Runner-up of Battle 1 vs. Runner-up of Battle 2.",
+        "The music tracks will be random and provided by the Fest Team at the venue.",
+        "Same music will be provided to both the crews in each battle.",
+        "Each battle will be in three rounds. In each round, a maximum of 4 members from each crew can go one after the other.",
+        "The time limit for each round is 1 minute per crew (music on to music off), i.e., 1 min × 2 crews × 3 rounds = total 6 minutes for each battle.",
+        "In case of a tie, an extra round may be provided and the decision of the judges will be final and binding.",
+
+        "Judging Criteria (Group Battle):",
+        "Choreography and Musicality – 15%",
+        "Energy Level – 20%",
+        "Attitude and Execution – 10%",
+        "Creativity and Uniqueness – 15%",
+        "Stage Utilisation – 10%",
+        "Crowd response – 10%",
+        "Overall Impact – 10%",
+        "Overshadowing the opposite team – 10%"
       ],
       coords: [
-        { name: "Dipesh Duhan", phone: "9813988999" },
-        { name: "Sanidhya Diwakar", phone: "808502396" },
-        { name: "Snehal Tripathi", phone: "9911349987" }
-      ],
+        { name: "Garv Gupta", phone: "9548171773" },
+        { name: "Nidhi Bhagat", phone: "7068079707" }
+      ]
     },
-    {
-      id: 29,
-      name: "NRITYANJALI",
-      desc: [],
-      rules: [
-        "First-year, second-year, and third-year students can participate.",
-        "All forms of pure Indian Classical Dance recognized by Sangeet Natak Academy are allowed. Usage of props is allowed.",
-        "Obscenity of any kind will lead to immediate disqualification.",
-        "The time limit for the performance is 3 to 5 ± 1 minutes (1 minute for stage clearance and setup).",
-        "Dance must be purely classical. Freestyle, hip-hop, or western styles (such as popping, locking, etc.) are prohibited. Any violation of this rule will result in disqualification.",
-        "Participants should bring their own track in drive. Live music is not allowed.",
-        "Choreography, musicality, expressions, creativity, costume and makeup, energy, stage coverage."
-      ],
-      coords: [],
-    }
   ]
 };
+
 
 const RazzmatazzPage = () => {
   const [selected, setSelected] = useState(null);
