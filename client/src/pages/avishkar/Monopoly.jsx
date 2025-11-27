@@ -119,13 +119,20 @@ const MonopolyPage = () => {
       </div>
 
       {/* Header */}
-       <main className="flex flex-col justify-center items-center px-0 py-20 relative">
-        <div className="w-full mt-12 text-center flex flex-col items-center">
-          <h1 className="text-5xl font-bold neon-shadow text-gray-300 mb-4 drop-shadow-xl tracking-wide uppercase">
+       <main className="relative flex flex-col items-center justify-center px-4 py-16 sm:py-20 lg:py-24">
+        <div className="w-full max-w-4xl text-center">
+          <h1
+            className="font-bold uppercase tracking-wide neon-shadow drop-shadow-xl text-gray-100 text-3xl sm:text-5xl lg:text-6xl leading-tight sm:leading-snug mb-3 sm:mb-4"
+          >
             {MonopolyData.eventName}
           </h1>
+
           {MonopolyData.tagline && (
-            <p className="text-lg text-gray-300 mb-8 max-w-md">{MonopolyData.tagline}</p>
+            <p
+              className="mx-auto text-gray-200 text-sm sm:text-base lg:text-lg max-w-2xl leading-relaxed mt-2 sm:mt-3"
+            >
+              {MonopolyData.tagline}
+            </p>
           )}
         </div>
       </main>
