@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import AvishkarBgMobile from "../../assets/Avishkar_bg-mobile.png";
-import AvishkarBG from "../../assets/AvishkarBG.png";
+import AvishkarBG from "../../assets/a_s_bg.png";
 
 
 
@@ -10,7 +10,6 @@ import AvishkarBG from "../../assets/AvishkarBG.png";
 const CyberQuestData = {
   eventName: "CyberQuest",
   tagline: "",
- 
   instagramLink: "",
   events: [
     {
@@ -21,17 +20,14 @@ const CyberQuestData = {
       rules: [
         "Team size: 1-3",
         "Team Eligibility: All branches",
-        "Winners: 3 students overall",
-        "Rounds 2",
+        "All year allowed except final year",
       ],
       maxTeamSize: 3,
       minTeamSize: 1,
       
       PsLink: "",
       coordinators: [
-        { name: "Aditya Raj Rai", contact: "7054420733" },
-        { name: "Aman Singh", contact: "8470982174" },
-        { name: "Kirti Kumar", contact: "7880499153" },
+        { name: "CC Club", contact: "" }
       ],
     },
     {
@@ -50,9 +46,7 @@ const CyberQuestData = {
     
       PsLink: "",
       coordinators: [
-        { name: "Aditya Raj Rai", contact: "7054420733" },
-        { name: "Aman Singh", contact: "8470982174" },
-        { name: "Kirti Kumar", contact: "7880499153" },
+        { name: "CC Club", contact: "" },
       ],
     },
     {
@@ -71,8 +65,8 @@ const CyberQuestData = {
     
       PsLink: "",
       coordinators: [
-        { name: "Aditya Raj Rai", contact: "7054420733" },
-        { name: "Kirti Kumar", contact: "7880499153" },
+        { name: "Ish Singhal", contact: "" },
+        { name: "Ujjawal Baranwal", contact: "" },
       ],
     },
     {
@@ -91,112 +85,9 @@ const CyberQuestData = {
      
       PsLink: "",
       coordinators: [
-        { name: "Eleena Sarah Mathew", contact: "8931044470" },
-        { name: "Nandika Agarwal", contact: "6397585012" },
-      ],
-    },
-    {
-      eventName: "Webster",
-      eventId: "111",
-      description:
-        "WEBSTER IS A WEB DEVELOPMENT EVENT ORGANIZED TO INTRODUCE THE STUDENTS TO WEBSITE BUILDING TOOLS AND TECHNOLOGIES SUCH AS HTML, CSS, BOOTSTRAP, ANGULAR, REACT, NODE, DJANGO, ETC. INTERESTING PROBLEM STATEMENTS MAKE THE DEVELOPMENT EXPERIENCE FUN-FILLED AND ENRICHING.",
-      rules: [
-        "Team size: 1-3",
-        "Team Eligibility: All branches",
-        "Winners: 3 Team overall + Track prices",
-        "Rounds 3",
-      ],
-      maxTeamSize: 3,
-      minTeamSize: 1,
-      
-      PsLink: "",
-      coordinators: [
-        { name: "Abhishek Patel", contact: "8299841144" },
-        { name: "Utkarsh Sharma", contact: "9027332533" },
-      ],
-    },
-    {
-      eventName: "DroidRush",
-      eventId: "32",
-      description:
-        "AN EVENT THAT PROVIDES A PLATFORM TO STUDENTS TO SHOWCASE THEIR ANDROID APPLICATION DEVELOPMENT SKILLS. INNOVATIVE AND CHALLENGING PROBLEM STATEMENTS ARE SPECIALLY DESIGNED TO CAPTURE THE INTEREST OF STUDENTS TO MOTIVATE THEM TO BUILD ATTRACTIVE APPLICATIONS",
-      rules: [
-        "Team size: 1-3",
-        "Team Eligibility: All branches",
-        "Winners: 3 Team overall + Track prices",
-        "Rounds 3",
-      ],
-      maxTeamSize: 3,
-      minTeamSize: 1,
-      
-      PsLink: "",
-      coordinators: [
-        { name: "Peketi Sai Dheeraj", contact: "8333843856" },
-        { name: "Amith Kumar Choran", contact: "9567097106" },
-        { name: "Pranav Sanand Puligandla", contact: "8978906823" },
-      ],
-    },
-    {
-      eventName: "Logical Rhythm",
-      eventId: "33",
-      description:
-        "PREDICT THE FUTURE! BUILD INTELLIGENT MODELS TO SOLVE REAL WORLD PROBLEMS, BOOST YOUR SKILLS, CONFIDENCE, AND POTENTIAL IN THIS COMPETITIVE FORUM",
-      rules: [
-        "Team size: 1-3",
-        "Team Eligibility: All branches",
-        "Winners: 3 Team overall + Track prices",
-        "Rounds 2",
-      ],
-      maxTeamSize: 3,
-      minTeamSize: 1,
-     
-      PsLink: "",
-      coordinators: [
-        { name: "Eleena Sarah Mathew", contact: "8931044470" },
-        { name: "Nandika Agarwal", contact: "6397585012" },
-        { name: "Alok Kumar Singh", contact: "8299564125" },
-      ],
-    },
-    {
-      eventName: "Softablitz",
-      eventId: "34",
-      description:
-        "A SOFTWARE DEVELOPMENT EVENT THAT TARGETS BUILDING SOLUTIONS FOR PROBLEM STATEMENTS USING OBJECT ORIENTED CONCEPTS. THIS EVENT NOT ONLY EVALUATES THE PARTICIPANTS ON THE IMPLEMENTATION OF FEATURES OF THE APPLICATION BUT ALSO INNOVATION, CODE MODULARITY, AND OVERALL EFFICIENCY OF THE APPLICATION",
-      rules: [
-        "Team size: 1-3",
-        "Team Eligibility: All branches",
-        "Winners: 3 Team overall + Track prices",
-        "Rounds 3",
-      ],
-      maxTeamSize: 3,
-      minTeamSize: 1,
-      
-      PsLink: "",
-      coordinators: [
-        { name: "Charitra Agarwal", contact: "9110990660" },
-        { name: "Vinayak Kushwaha", contact: "9307160530" },
-        { name: "Akshat Kumar Singh", contact: "6388419573" },
-      ],
-    },
-    {
-      eventName: "Contrihub",
-      eventId: "35",
-      description:
-        "STUDENTS START OPEN SOURCE CONTRIBUTIONS BY RAISING ISSUE AND MERGING THEIR PULL REQUESTS IN THE PROJECTS GIVEN BY SENIORS. ITS HELPS IN GETTING THEM THEIR 4PRS NEEDED FOR HACKTOBER FEST",
-      rules: [
-        "Team size: 1",
-        "Team Eligibility: All branches",
-        "Winners: 3 students",
-        "Rounds: A month long event",
-      ],
-      maxTeamSize: 1,
-      minTeamSize: 1,
-     
-      PsLink: "",
-      coordinators: [
-        { name: "Eleena Sarah Mathew", contact: "8931044470" },
-        { name: "Abhishek Patel", contact: "8299841144" },
-        { name: "Nandika Agarwal", contact: "6397585012" },
+        { name: "Humanshi", contact: "" },
+        { name: "Meenakshi Gupta", contact: "" },
+        { name: "Disha Vaish", contact: "" },
       ],
     },
     {
@@ -215,9 +106,8 @@ const CyberQuestData = {
   
       PsLink: "",
       coordinators: [
-        { name: "Pranav Sanand Puligandla", contact: "8978906823" },
-        { name: "Peketi Sai Dheeraj", contact: "8333843856" },
-        { name: "Amith Kumar Choran", contact: "9567097106" },
+        { name: "Saurabh Chaudhary", contact: "" },
+        { name: "Yash Sharma", contact: "" },
       ],
     },
     {
@@ -236,8 +126,7 @@ const CyberQuestData = {
       
       PsLink: "",
       coordinators: [
-        { name: "Garima Bothra", contact: "9654119468" },
-        { name: "Saket Kumar", contact: "8789178268" },
+        { name: "Ujjawal Baranwal", contact: "" },
       ],
     },
     {
@@ -256,9 +145,9 @@ const CyberQuestData = {
     
       PsLink: "",
       coordinators: [
-        { name: "Aditya Raj Rai", contact: "7054420733" },
-        { name: "Aman Singh", contact: "8470982174" },
-        { name: "Kirti Kumar", contact: "7880499153" },
+        { name: "Bishal Kedia", contact: "" },
+        { name: "Anvesh Singh", contact: "" },
+        { name: "Saurabh Chaudhary", contact: "" },
       ],
     },
     {
@@ -277,9 +166,8 @@ const CyberQuestData = {
    
       PsLink: "",
       coordinators: [
-        { name: "Aditya Roysha", contact: "8368128141" },
-        { name: "Shashwat Mehrotra", contact: "8076421895" },
-        { name: "Ayush Kumar Nishod", contact: "8357806421" },
+        { name: "Garv Gupta", contact: "" },
+        { name: "Amandeep Singh", contact: "" },
       ],
     },
     {
@@ -298,21 +186,19 @@ const CyberQuestData = {
       
       PsLink: "",
       coordinators: [
-        { name: "Vikrant Singh", contact: "9651117667" },
-        { name: "Seemant Singh", contact: "6307425144" },
-        { name: "Shreya Dadhich", contact: "8875698422" },
-        { name: "Mansi", contact: "9508394056" },
+        { name: "Ujjawal Barnawal", contact: "" },
+        { name: "Meenakshi Gupta", contact: "" },
       ],
     },
     {
-      eventName: "Revengg",
+      eventName: "Debugging Olympics",
       eventId: "41",
       description:
-        'LOAD UP YOUR WEAPONS FOR REVENGG IN THIS ACTION-PACKED CHALLENGE, YOU’LL DODGE DIGITAL BULLETS AND CRACK CODES LIKE A CYBER-NINJA. SOLVE PUZZLES TO UNCOVER HIDDEN "FLAGS" . HONE YOUR SKILLS IN VULNERABILITY DETECTION, CRYPTOGRAPHY, AND NETWORK FORENSICS. YOU’LL EXPLOIT WEB VULNERABILITIES, DECODE ENCRYPTED MESSAGES, AND ANALYZE MEMORY DUMPS LIKE A PRO. TEAM UP WITH YOUR FELLOW MERCENARIES, CONQUER CHALLENGES, AND SNAG THE ULTIMATE VICTORY. EMBRACE YOUR INNER HERO, AND LET’S CAPTURE THOSE FLAGS—NO CAPES ALLOWED!',
+        'Test your debugging skills in this intense coding challenge. Solve complex problems under time pressure and showcase your ability to identify and fix code issues efficiently.',
       rules: [
         "Team size: 2",
         "Team Eligibility: All branches",
-        "Winners: 3 Team overall",
+        "Winners: 1 Team overall",
         "Rounds 1",
       ],
       maxTeamSize: 2,
@@ -320,21 +206,20 @@ const CyberQuestData = {
       
       PsLink: "",
       coordinators: [
-        { name: "Shubhankar Tiwari", contact: "9691670343" },
-        { name: "Aditya Gulati", contact: "8299747643" },
-        { name: "Vikash Singh", contact: "8354823013" },
-        { name: "Suraj Bhan", contact: "9336289192" },
+        { name: "Haseeb", contact: "" },
+        { name: "Manvith Reddy", contact: "" },
+  
       ],
     },
     {
-      eventName: "Code Clash",
+      eventName: "Worst UI designs",
       eventId: "42",
       description:
-        "PREPARE FOR THE ULTIMATE SHOWDOWN! TWO CODERS STAND FACE TO FACE, KEYBOARDS READY, CODE BLAZING LIKE REVOLVERS IN THE WILD WEST. ONLY ONE WILL EMERGE VICTORIOUS. WILL YOU PULL THE TRIGGER FAST ENOUGH, OR WILL YOU BE LEFT IN THE DUST? ⚡ THE CLOCK IS TICKING, AND THERE'S NO ROOM FOR HESITATION. IT'S CODE OR BE CODED. READY... SET... DRAW",
+        "Showcase your worst UI designs in this hilarious competition. Create the most confusing, counterintuitive, and frustrating user interfaces possible. The most absurd and poorly designed interfaces will win prizes!",
       rules: [
-        "Team size: 1",
+        "Team size: 2",
         "Team Eligibility: All branches",
-        "Winners: 2",
+        "Winners: 1",
         "Rounds 5",
       ],
       maxTeamSize: 1,
@@ -342,8 +227,8 @@ const CyberQuestData = {
   
       PsLink: "",
       coordinators: [
-        { name: "Bharat Adhikari", contact: "9319770845" },
-        { name: "Rohan Rao", contact: "8770573891" },
+        { name: "Ujjawal Barnawal", contact: "" },
+        { name: "Saurabh Chaudhary", contact: "" },
       ],
     },
     {
@@ -362,9 +247,9 @@ const CyberQuestData = {
   
       PsLink: "",
       coordinators: [
-        { name: "Sarthak Agarwal", contact: "7906194815" },
-        { name: "Utkarsh Jha", contact: "8700103918" },
-        { name: "Ayush Varshney", contact: "8630214891" },
+        { name: "Shantanu Gaur", contact: "" },
+        { name: "Iqra Abbasi", contact: "" },
+        { name: "Bishal Kedia", contact: "" },
       ],
     },
     {
@@ -383,9 +268,8 @@ const CyberQuestData = {
     
       PsLink: "",
       coordinators: [
-        { name: "Vikrant Singh", contact: "9651117667" },
-        { name: "Rohan Singh", contact: "8920815421" },
-        { name: "Shreyansh Singh", contact: "8765626232" },
+        { name: "Ish Singhal", contact: "" },
+        { name: "Yash Sharma", contact: "" },
       ],
     },
   ],
@@ -395,11 +279,11 @@ const CyberQuestPage = () => {
   const [selected, setSelected] = useState(null);
 
   return (
-    <div className="relative min-h-screen bg-black font-sans text-gray-300">
+    <div className="relative min-h-screen font-sans text-gray-300">
       {/* Responsive Background */}
       <div className="absolute inset-0 w-full h-full -z-10">
                <img
-          src={AvishkarBgMobile}
+          src={AvishkarBG}
           alt="Mobile Background"
           className="w-full h-full object-cover block sm:hidden"
         />
@@ -411,46 +295,41 @@ const CyberQuestPage = () => {
       </div>
 
       {/* Header Section */}
-      <main className="flex flex-col md:flex-row justify-center items-center px-8 py-16 relative">
-        <div className="relative flex justify-center md:w-1/2">
-          <img
-            src={CyberQuestData.BGImageLink}
-            alt={`${CyberQuestData.eventName} Banner`}
-            className="w-[330px] h-[300px] object-cover brightness-90 rounded-xl shadow-lg border border-cyan-600/60 neon-shadow"
-          />
-        </div>
-        <div className="md:w-1/2 mt-12 md:mt-0 text-center md:text-left">
-          <h1 className="text-5xl font-bold neon-shadow text-cyan-400 mb-4 drop-shadow-xl tracking-wide uppercase">
+      <main className="flex flex-col justify-center items-center px-0 py-20 relative">
+        <div className="w-full mt-12 text-center flex flex-col items-center">
+          <h1 className="text-5xl font-bold neon-shadow text-gray-300 mb-4 drop-shadow-xl tracking-wide uppercase">
             {CyberQuestData.eventName}
           </h1>
           {CyberQuestData.tagline && (
-            <p className="text-lg text-cyan-300 mb-8 max-w-md">{CyberQuestData.tagline}</p>
+            <p className="text-lg text-gray-300 mb-8 max-w-md">{CyberQuestData.tagline}</p>
           )}
         </div>
       </main>
 
       {/* Event Cards */}
       <div className="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 sm:grid-cols-2 gap-10">
-        {CyberQuestData.events.map((event) => (
+        {[...CyberQuestData.events]
+          .sort((a, b) => a.eventName.localeCompare(b.eventName))
+          .map((event) => (
           <motion.div
             key={event.eventId}
             initial={{ scale: 1, boxShadow: "0 0 10px rgba(0,0,0,0.2)" }}
             whileHover={{
               scale: 1.05,
-              boxShadow: "0 15px 30px rgba(0,255,255,0.4)",
+              boxShadow: "0 15px 30px rgba(255,115,0,0.5)",
               transition: { duration: 0.3, ease: "easeInOut" },
             }}
             whileTap={{ scale: 0.98 }}
-            className="relative cyber-card p-6 border border-cyan-600 rounded-xl bg-black/90 backdrop-blur-md shadow-md cursor-pointer text-center select-none"
+            className="relative cyber-card p-6 border border-gray-400 rounded-xl bg-black/90 backdrop-blur-md shadow-md cursor-pointer text-center select-none"
             onClick={() => setSelected(event)}
           >
-            <h2 className="text-2xl font-bold neon-shadow text-cyan-400 mb-2">{event.eventName}</h2>
+            <h2 className="text-2xl font-bold neon-shadow text-gray-300 mb-2">{event.eventName}</h2>
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 setSelected(event);
               }}
-              className="mt-4 py-2 w-full border border-cyan-400 rounded-lg bg-cyan-500 text-black font-semibold hover:bg-cyan-300 transition"
+              className="mt-4 py-2 w-full border border-gray-300 rounded-lg bg-gray-300 text-black font-semibold hover:bg-gray-200 transition"
             >
               Explore
             </button>
@@ -466,40 +345,37 @@ const CyberQuestPage = () => {
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ duration: 0.45, ease: "easeOut" }}
-            className="fixed top-0 left-0 w-full h-full bg-black/95 backdrop-blur-xl border-t border-cyan-600/50 z-50 p-8 overflow-y-auto neon-shadow"
+            className="fixed top-0 left-0 w-full h-full bg-black/95 backdrop-blur-xl border-t border-gray-300/50 z-50 p-8 overflow-y-auto neon-shadow"
             style={{ overflowX: "hidden", overscrollBehavior: "contain" }}
           >
             <button
               onClick={() => setSelected(null)}
-              className="absolute top-6 right-10 text-4xl text-cyan-400 hover:text-cyan-600 font-bold focus:outline-none"
+              className="absolute top-6 right-10 text-4xl text-gray-300 hover:text-gray-200 font-bold focus:outline-none"
               aria-label="Close Explore Panel"
             >
               ✕
             </button>
-            <h2 className="text-4xl font-bold mt-4 neon-shadow text-cyan-400 mb-8 text-center">{selected.eventName}</h2>
+            <h2 className="text-4xl font-bold mt-4 neon-shadow text-gray-400 mb-8 text-center">{selected.eventName}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
               <section>
-                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">About the Event</h3>
-                <p className="text-cyan-300 px-4 whitespace-pre-wrap break-words">{selected.description}</p>
+                <h3 className="text-2xl font-bold text-gray-400 mb-4 text-center">About the Event</h3>
+                <p className="text-gray-300 px-4 whitespace-pre-wrap break-words">{selected.description}</p>
               </section>
               <section>
-                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">Rules</h3>
-                <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 max-h-[60vh] overflow-y-auto pr-4">
+                <h3 className="text-2xl font-bold text-gray-400 mb-4 text-center">Rules</h3>
+                <ul className="list-disc list-inside ml-6 space-y-2 text-gray-300 max-h-[60vh] overflow-y-auto pr-4">
                   {selected.rules.map((rule, i) => (
                     <li key={i}>{rule}</li>
                   ))}
                 </ul>
               </section>
               <section>
-                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">Coordinators</h3>
-                <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 text-center">
+                <h3 className="text-2xl font-bold text-gray-400 mb-4 text-center">Coordinators</h3>
+                <ul className="list-disc list-inside ml-6 space-y-2 text-gray-300 text-left">
                   {selected.coordinators.map((c, i) => (
-                    <li key={i}>{c.name} — {c.contact}</li>
+                    <li key={i}>{c.name} {c.contact}</li>
                   ))}
                 </ul>
-                <div className="mt-6 text-left">
-                  <p className="text-cyan-300"><strong>Team Size: </strong>{selected.minTeamSize} - {selected.maxTeamSize}</p>
-                </div>
               </section>
             </div>
           </motion.div>

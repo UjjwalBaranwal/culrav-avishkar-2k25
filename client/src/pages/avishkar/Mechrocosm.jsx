@@ -1,236 +1,284 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import AvishkarBgMobile from "../../assets/Avishkar_bg-mobile.png";
-import AvishkarBG from "../../assets/AvishkarBG.png";
+import AvishkarBG from "../../assets/a_s_bg.png";
 
 const MechrocosmData = {
   eventName: "Mechrocosm",
   tagline: "",
   instagramLink: "",
   events: [
+    // --------------------------------- TRIATHLON ---------------------------------
     {
       eventName: "Triathlon",
       eventId: "62",
       description:
-        "This event focuses on providing real-time experience of the campus recruitment process, preparing you to stand out and succeed in the competitive job market.",
+        "A placement-simulation event designed to provide real-time exposure to campus recruitment. Participants face aptitude rounds, technical/consultancy interviews and behavioural assessments—mimicking real company hiring formats.",
       rules: [
-        "Branches allowed: Mech, PIE, ECM, MTE.",
-        "Individual participation.",
-        "Compulsory for 1st, 2nd and 3rd Year Mech, PIE, ECM, and Material Engg students.",
-        "Individuals can apply for one profile only or choose from combinations (Core and Consultancy, Software and Consultancy).",
+        "Branches allowed: ME, PIE, ECM, MTE.",
+        "Individual participation only.",
+        "Compulsory for 1st, 2nd & 3rd year ME/PIE/ECM/Material Engg students.",
+        "Participants may attempt ONLY ONE TRACK or a specified combination.",
+        "CORE TRACK → (2 + 3) Rounds",
+        "CONSULTANCY TRACK → (1 + 2 + 3) Rounds",
+        "SOFTWARE TRACK → (1 + 2 + 3) Rounds",
+        "Round 1. Aptitude / Technical Screening",
+        "Round 2. HR / Behavioural + Technical Interview",
+        "Round 3. Final Round (Offline)",
       ],
       minTeamSize: 1,
       maxTeamSize: 1,
-      PsLink: "",
+      expectedParticipation: "400+",
+      goodies: "24 (expected)",
       coordinators: [
-        { name: "Sumit Mishra", contact: "8853818768" },
-        { name: "Kamal Ahmad", contact: "8006058289" },
-        { name: "Shretank Prakash", contact: "8006058289" },
-        { name: "Pulkit SInghal", contact: "7906696918" },
-        { name: "Shreepati Kamlesh thakur", contact: "7906696918" },
-        { name: "Shivam kumar", contact: "7906696918" },
-        { name: "Satyam Singh", contact: "7906696918" },
-      ],
+        { name: "Krishnendu", contact: "" },
+        { name: "Kuber", contact: "" },
+        { name: "Ujjwal Gupta", contact: "" },
+        { name: "Aakarsh", contact: "" },
+        { name: "Manish", contact: "" },
+        { name: "Kavya", contact: "" },
+        { name: "Aditya Verma", contact: "" },
+        { name: "Shaan", contact: "" },
+        { name: "Iqra", contact: "" },
+        { name: "Manmeet", contact: "" },
+        { name: "Ankit", contact: "" }
+      ]
     },
-    {
-      eventName: "Industrial Monopoly",
-      eventId: "63",
-      description:
-        "Now’s your opportunity to demonstrate your leadership and business acumen. Join the auction, leverage your expertise and bidding powers to secure the capital needed to build your dream enterprise.",
-      rules: [
-        "Open to all years and courses (except B.Tech final year).",
-        "Team size: 3-4.",
-        "Inter-branch teams allowed; inter-year teams not allowed.",
-      ],
-      minTeamSize: 3,
-      maxTeamSize: 4,
-      PsLink: "",
-      coordinators: [
-        { name: "Uttam Kumar Gupta", contact: "8828100580" },
-        { name: "Prashant Gupta", contact: "8417065947" },
-        { name: "Anshika Kushwaha", contact: "7800173762" },
-        { name: "Suyash Tiwari", contact: "9839479590" },
-      ],
-    },
+
+    // --------------------------------- CRACK THE CASE ---------------------------------
     {
       eventName: "Crack the Case",
-      eventId: "64",
+      eventId: "CTC01",
       description:
-        "Dive into innovative challenges with machine learning, web development, and more. Create, compete, and shine in this skill-boosting event. Are you ready to tackle case studies and guesstimates? Join us for an event packed with multiple rounds designed to challenge your analytical thinking, decision-making, and creativity!",
+        "A high-pressure consulting & business case championship featuring Case Solving + Guesstimates + PPT analysis rounds. One of the biggest participation events—built to test structured thinking, storytelling & decision-making.",
       rules: [
-        "B.Tech all branches (1st, 2nd, and 3rd years), MBA (1st year).",
-        "Inter-year teams not allowed.",
-        "Team size: 4 (B.Tech 1st year) / 3 (all others).",
-        "Inter-branch teams allowed.",
-      ],
-      minTeamSize: 3,
-      maxTeamSize: 4,
-      PsLink: "",
-      coordinators: [
-        { name: "Uttam Kumar Gupta", contact: "8863001919" },
-        { name: "Prashant Gupta", contact: "8417065947" },
-        { name: "Samridhi Singh", contact: "9450118252" },
-      ],
-    },
-    {
-      eventName: "Mechathon",
-      eventId: "65",
-      description:
-        "Collaborate to solve real-world engineering challenges in this hands-on event. Compete through multiple stages and present your solutions. Get ready to dive into a world of innovation, where we explore everythingfrom cutting-edge machine learning to the latest in web development. This event has everything you need to create, compete, and shine—perfect for leveling up your skills and adding that extra edge to your resume.",
-      rules: [
-        "Branches allowed: ME, PIE, ECM, Material Engg.",
-        "Team Size: 3.",
-        "Eligibility: B.Tech 1st, 2nd, and 3rd years.",
-        "Inter-year teams not allowed.",
+        "Eligibility: All branches (ME preference as given).",
+        "Team Structure: 3 members.",
+        "For 1st years → 2 ME + 1 any branch mandatory.",
+        "Round 1 → Database Round (Excel / SQL / Python Libraries)",
+        "Round 2 → Spot Guesstimates + Puzzles",
+        "Round 3 → Business Case PPT + PowerBI dashboard presentation",
       ],
       minTeamSize: 3,
       maxTeamSize: 3,
-      PsLink: "",
+      expectedParticipation: "900+",
+      goodies: "9",
       coordinators: [
-        { name: "Vishal Pal", contact: "6387674208" },
-        { name: "Shubham Nirmal", contact: "8828100580" },
-        { name: "Kamal Ahmad", contact: "9837594686" },
-        { name: "Uttam Kumar Gupta", contact: "7060036209" },
-      ],
+        { name: "Aditya Verma", contact: "" },
+        { name: "Priyanshu", contact: "" },
+        { name: "Ujjwal", contact: "" },
+        { name: "Utkarsh", contact: "" }
+      ]
     },
+
+    // --------------------------------- INDUSTRIAL MONOPOLY ---------------------------------
     {
-      eventName: "Automax",
-      eventId: "66",
+      eventName: "Industrial Monopoly",
+      eventId: "IM01",
       description:
-        "Attention, auto engineering enthusiasts! Here’s your chance to dive into real-world challenges, pushing your design skills to new limits. Get hands-on and show what you’re truly made of !",
+        "A business-building simulation where participants bid, acquire & grow companies. Use strategy, analysis & auction skills to dominate the market—winner builds the most profitable enterprise.",
       rules: [
-        "Branches allowed: ME, PIE, ECM, Material Engg.",
-        "Team Size: 4.",
-        "Eligibility: B.Tech 1st, 2nd, and 3rd years.",
-        "Inter-year teams not allowed.",
+        "Team Size: 3 members → (2 ME + 1 any)",
+        "Inter-branch allowed, inter-year not allowed",
+        "Round 1. Online Case Submission Round",
+        "Round 2. Offline Auction + Bidding War",
+        "Round 3. Business Plan Presentation (Offline)",
+      ],
+      minTeamSize: 3,
+      maxTeamSize: 3,
+      expectedParticipation: "Approx. 900",
+      goodies: "9",
+      coordinators: [
+        { name: "Manish", contact: "" },
+        { name: "Aakarsh", contact: "" },
+        { name: "Kavya", contact: "" }
+      ]
+    },
+
+    // --------------------------------- MECHATHON ---------------------------------
+    {
+      eventName: "Mechathon",
+      eventId: "MH01",
+      description:
+        "A Dev + ML based product-building event where participants develop real engineering solutions through Machine Learning & Software Development modules.",
+      rules: [
+        "Team of 4 → 2 ME + 2 ANY",
+        "( If ≤ 2 members → 1 ME compulsory )",
+        "Round 1 → Abstract Submission (Online)",
+        "Round 2 → Mid-Evaluation (Online)",
+        "Round 3 → Final Evaluation (Offline) + PPT + QA",
       ],
       minTeamSize: 4,
       maxTeamSize: 4,
-      PsLink: "",
+      expectedParticipation: "70+ Teams",
+      goodies: "12",
       coordinators: [
-        { name: "Suryansh Pathak", contact: "9569827409" },
-        { name: "Shloak Pandey", contact: "8960870435" },
-      ],
+        { name: "Shaan", contact: "" },
+        { name: "Iqra", contact: "" },
+        { name: "Ankit", contact: "" },
+        { name: "Devansh", contact: "" }
+      ]
     },
+
+    // --------------------------------- DeSim (Blueprint + Automax) ---------------------------------
     {
-      eventName: "Blueprint",
-      eventId: "67",
+      eventName: "DeSim (Blueprint + Automax)",
+      eventId: "DS01",
       description:
-        "Step into the world of 3D modeling- where creativity meets geometry, bringing ideas to life in immersive virtual reality. Enhance your skills, explore real-world design, and watch concepts take shape in stunning detail.",
+        "A new simulation-based event where teams solve engineering problems in-lab and present computational analysis models for evaluation.",
       rules: [
-        "Branches allowed: ME, PIE, ECM, Material Engg.",
-        "Team Size: 3 (1st and 2nd years), 2 (3rd year).",
-        "Eligibility: B.Tech 1st, 2nd, and 3rd years.",
-        "Inter-year teams not allowed.",
+        "NEW EVENT",
+        "Team of 3 Members",
+        "Round 1. Problem Statement Assessment in Lab ( Evaluated by Professors )",
+        "Round 2. Simulation + Analysis Presentation Round ( Evaluated by EC )",
       ],
-      minTeamSize: 2,
+      minTeamSize: 3,
       maxTeamSize: 3,
-      PsLink: "",
+      expectedParticipation: "500+",
+      goodies: "9",
       coordinators: [
-        { name: "Sumit Mishra", contact: "8853818768" },
-        { name: "Harsh Maharshi", contact: "9079039894" },
-        { name: "Anu Priya", contact: "9065028187" },
-      ],
+        { name: "Krishnendu", contact: "" },
+        { name: "Manudev", contact: "" },
+        { name: "Ankur", contact: "" }
+      ]
     },
+
+    // --------------------------------- Survivor Series ---------------------------------
     {
       eventName: "Survivor Series",
-      eventId: "68",
+      eventId: "SS01",
       description:
-        "Hola survivors! Since you've incredibly survived your JEE or college journey so far, we now summon you to face a new set of thrilling challenges! Brace yourselves to tackle mind-bending questions and overcome obstacles as you quest forward— remember only the sharpest will survive!",
+        "A fun + smart survival-based challenge event featuring puzzles, pop-culture quizzes, logic tasks & a surprise round. Only the sharpest minds survive.",
       rules: [
-        "Eligibility: Open to all (except B.Tech final years).",
-        "Team Size: 2-3.",
-        "All branches allowed.",
-        "Inter-year teams not allowed.",
+        "Team of 3 members",
+        "All branches allowed (Except B .Tech Final Year)",
+        "ROUNDS INCLUDE : ",
+        " Quiz – puzzles, logic & teasers",
+        " Pop culture (Music + Riddles + Shows)",
+        " Secret Survival Round",
       ],
-      minTeamSize: 2,
+      minTeamSize: 3,
       maxTeamSize: 3,
-      PsLink: "",
+      expectedParticipation: "1200+",
+      goodies: "9",
       coordinators: [
-        { name: "Siddhesh dongare", contact: "7060036209" },
-        { name: "Shivam Kumar Singh", contact: "9837594686" },
-        { name: "Taniya Singh", contact: "7818949254" },
-      ],
+        { name: "Aakarsh Kumar", contact: "" },
+        { name: "Manish Kumar", contact: "" },
+        { name: "Shaan Kapoor", contact: "" },
+        { name: "Ujjwal Gupta", contact: "" },
+        { name: "Utkarsh", contact: "" },
+      ]
     },
+
+    // --------------------------------- Turbo Speed Showdown ---------------------------------
     {
       eventName: "Turbo Speed Showdown",
-      eventId: "69",
+      eventId: "TS01",
       description:
-        "Welcome to the world of turbo speed showdown... Do you have that adrenaline rush to go beyond the boundaries and venture off to turbulent domains? If so we urge you to come up, unleash your creativity and compete for the crown.",
+        "A high-rush motorsport-style event—build, tune, race & compete for the ultimate speed title.",
       rules: [
-        "Eligibility: B.Tech 1st, 2nd, and 3rd years.",
-        "All branches allowed.",
-        "Team Size: 4-6.",
-        "Inter-branch teams allowed; inter-year teams not allowed.",
+        "Team Size: 4 – 6 members",
+        "All Branches Allowed | Inter-branch Allowed",
+        "Inter-year NOT allowed",
+        "Round 1: Workshop Round",
+        "Round 2: Test-n-Tune",
+        "Round 3: Arena Challenge",
       ],
       minTeamSize: 4,
       maxTeamSize: 6,
-      PsLink: "",
+      expectedParticipation: "500+",
+      goodies: "9",
       coordinators: [
-        { name: "Uttam Kumar Gupta", contact: "8853818768" },
-        { name: "Ayush Srivastav", contact: "8006058289" },
-        { name: "Prashant Gupta", contact: "8006058289" },
-      ],
+        { name: "Mahindra Sonkar", contact: "" },
+        { name: "Kuber Agrawal", contact: "" }
+      ]
     },
+
+    // --------------------------------- Game of Codes ---------------------------------
+    {
+      eventName: "Game of Codes",
+      eventId: "GOC01",
+      description:
+        "A coding battle tournament with knockout duels. Solve problems faster than opponents—No AI tools allowed. Clean logic & full test-case pass required.",
+      rules: [
+        "Team of 3 → 1 ME compulsory + 2 ANY",
+        "NO AI Models Allowed",
+        "All test cases must pass to be considered correct",
+        "IF TEAMS > 16 → Round 1 Activated",
+        "ROUND 1 : Online Qualifier (Timed problem solving)",
+        "Ranking = Time + Accuracy",
+        "ROUND 2 : Offline Knockout Bracket",
+        "Head-to-head coding war → Faster team wins",
+      ],
+      minTeamSize: 3,
+      maxTeamSize: 3,
+      expectedParticipation: "30+ Teams",
+      goodies: "12",
+      coordinators: [
+        { name: "Shaan", contact: "" },
+        { name: "Ankit", contact: "" },
+        { name: "Iqra", contact: "" }
+      ]
+    }
   ],
 };
+
 
 const MechrocosmPage = () => {
   const [selected, setSelected] = useState(null);
 
   return (
-    <div className="relative min-h-screen bg-black font-sans text-gray-300">
+    <div className="relative min-h-screen font-sans text-gray-300">
       {/* Responsive Background */}
       <div className="absolute inset-0 w-full h-full -z-10">
         <img
-          src={AvishkarBgMobile}
+          src={AvishkarBG}
           alt="Mobile Background"
           className="block sm:hidden w-full h-full object-cover"
-          style={{ position: "absolute", top: 0, left: 0 }}
         />
         <img
           src={AvishkarBG}
           alt="Desktop Background"
           className="hidden sm:block w-full h-full object-cover"
-          style={{ position: "absolute", top: 0, left: 0 }}
         />
       </div>
 
       {/* Header */}
-      <main className="flex flex-col md:flex-row justify-center items-center px-8 py-16 relative">
-        <div className="md:w-1/2 mt-12 md:mt-0 text-center md:text-left">
-          <h1 className="text-5xl font-bold neon-shadow text-cyan-400 mb-4 tracking-wide uppercase">
+      <main className="flex flex-col justify-center items-center px-0 py-20 relative">
+        <div className="w-full mt-12 text-center flex flex-col items-center">
+          <h1 className="text-5xl font-bold neon-shadow text-gray-300 mb-4 drop-shadow-xl tracking-wide uppercase">
             {MechrocosmData.eventName}
           </h1>
           {MechrocosmData.tagline && (
-            <p className="text-lg text-cyan-300 mb-8 max-w-md">{MechrocosmData.tagline}</p>
+            <p className="text-lg text-gray-300 mb-8 max-w-md">{MechrocosmData.tagline}</p>
           )}
         </div>
       </main>
 
       {/* Events Grid */}
       <div className="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 sm:grid-cols-2 gap-10">
-        {MechrocosmData.events.map((event) => (
+        {[...MechrocosmData.events]
+          .sort((a, b) => a.eventName.localeCompare(b.eventName))
+          .map((event) => (
           <motion.div
             key={event.eventId}
             initial={{ scale: 1, boxShadow: "0 0 10px rgba(0,0,0,0.2)" }}
             whileHover={{
               scale: 1.05,
-              boxShadow: "0 15px 30px rgba(0,255,255,0.4)",
+              boxShadow: "0 15px 30px rgba(255,115,0,0.5)",
               transition: { duration: 0.3, ease: "easeInOut" },
             }}
             whileTap={{ scale: 0.98 }}
-            className="relative p-6 border border-cyan-600 rounded-xl bg-black/90 backdrop-blur-md shadow-md cursor-pointer text-center select-none"
+            className="relative p-6 border border-gray-400 rounded-xl bg-black/90 backdrop-blur-md shadow-md cursor-pointer text-center select-none"
             onClick={() => setSelected(event)}
           >
-            <h2 className="text-2xl font-bold neon-shadow text-cyan-400 mb-2">{event.eventName}</h2>
+            <h2 className="text-2xl font-bold neon-shadow text-gray-300 mb-2">{event.eventName}</h2>
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 setSelected(event);
               }}
-              className="mt-4 py-2 w-full border border-cyan-400 rounded-lg bg-cyan-500 text-black font-semibold hover:bg-cyan-300 transition"
+              className="mt-4 py-2 w-full border border-gray-300 rounded-lg bg-gray-300 text-black font-semibold hover:bg-gray-200 transition"
             >
               Explore
             </button>
@@ -246,38 +294,38 @@ const MechrocosmPage = () => {
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ duration: 0.45, ease: "easeOut" }}
-            className="fixed top-0 left-0 w-full h-full bg-black/80 backdrop-blur-md z-50 p-8 overflow-y-auto neon-shadow"
-            style={{ overscrollBehavior: "contain" }}
+            className="fixed top-0 left-0 w-full h-full bg-black/95 backdrop-blur-xl border-t border-gray-300/50 z-50 p-8 overflow-y-auto neon-shadow"
+            style={{ overflowX: "hidden", overscrollBehavior: "contain" }}
           >
             <button
               onClick={() => setSelected(null)}
-              className="absolute top-6 right-10 text-4xl text-cyan-400 hover:text-cyan-600 font-bold focus:outline-none"
+              className="absolute top-6 right-10 text-4xl text-gray-300 hover:text-gray-200 font-bold focus:outline-none"
               aria-label="Close Explore Panel"
             >
               ✕
             </button>
-            <h2 className="text-4xl font-bold mt-4 neon-shadow text-cyan-400 mb-8 text-center">{selected.eventName}</h2>
+            <h2 className="text-4xl font-bold mt-4 neon-shadow text-gray-400 mb-8 text-center">{selected.eventName}</h2>
             <section className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
               <div>
-                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">About the Event</h3>
-                <p className="text-cyan-300 whitespace-pre-wrap">{selected.description}</p>
+                <h3 className="text-2xl font-bold text-gray-400 mb-4 text-center">About the Event</h3>
+                <p className="text-gray-300 whitespace-pre-wrap">{selected.description}</p>
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">Rules</h3>
-                <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 max-h-[60vh] overflow-y-auto pr-4">
+                <h3 className="text-2xl font-bold text-gray-400 mb-4 text-center">Rules</h3>
+                <ul className="list-disc list-inside ml-6 space-y-2 text-gray-300 max-h-[60vh] overflow-y-auto pr-4">
                   {selected.rules.map((r, i) => (
                     <li key={i}>{r}</li>
                   ))}
                 </ul>
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-cyan-400 mb-4 text-center">Coordinators</h3>
-                <ul className="list-disc list-inside ml-6 space-y-2 text-cyan-300 text-center">
+                <h3 className="text-2xl font-bold text-gray-400 mb-4 text-center">Coordinators</h3>
+                <ul className="list-disc list-inside ml-6 space-y-2 text-gray-300 text-left">
                   {selected.coordinators.map((c, i) => (
-                    <li key={i}>{c.name} — {c.contact}</li>
+                    <li key={i}>{c.name}  {c.contact}</li>
                   ))}
                 </ul>
-                <p className="mt-6 text-cyan-300 text-left"><strong>Team size:</strong> {selected.minTeamSize} - {selected.maxTeamSize}</p>
+                {/* <p className="mt-6 text-gray-300 text-left"><strong>Team size:</strong> {selected.minTeamSize} - {selected.maxTeamSize}</p> */}
               </div>
             </section>
           </motion.div>
