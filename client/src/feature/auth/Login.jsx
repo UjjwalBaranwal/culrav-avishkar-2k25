@@ -115,7 +115,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-[#020617] font-[Jost] relative overflow-hidden overflow-y-auto">
+    <div className="flex items-center justify-center min-h-screen bg-[#020617] font-[Jost] relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#22d3ee22,_transparent_70%),_radial-gradient(circle_at_bottom,_#a855f722,_transparent_70%)] opacity-70" />
       <div
@@ -129,7 +129,8 @@ const Login = () => {
 
       {/* CARD */}
       <motion.div
-        className="login-card relative w-[500px] max-w-[92vw] rounded-[2rem] border border-cyan-400/40 bg-slate-950/60 px-10 py-11 backdrop-blur-xl"
+      className="login-card relative w-[380px] max-w-[92vw] rounded-[2rem] border border-cyan-400/40 bg-slate-950/60 px-5 py-6 backdrop-blur-xl"
+
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.45, ease: "easeOut" }}
@@ -151,9 +152,9 @@ const Login = () => {
               exit="exit"
               key="register"
               onSubmit={handleSubmitRegister(onRegisterSubmit)}
-              className="space-y-6"
+              className="space-y-4"
             >
-              <h2 className="text-4xl font-extrabold text-cyan-300 flex gap-2">
+              <h2 className="text-3xl font-extrabold text-cyan-300 flex gap-2">
                 Register 🚀
               </h2>
 
