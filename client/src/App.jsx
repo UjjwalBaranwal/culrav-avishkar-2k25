@@ -20,8 +20,8 @@ import TeamDetail from "./pages/dashBoard/TeamDetails.jsx";
 // lazy loaded pages
 const Homepage = lazy(() => import("./pages/Homepage"));
 const CulravEvent = lazy(() => import("./pages/culravEvent"));
-const DashboardLayout = lazy(() =>
-  import("./feature/dashBoard/DashboardLayout")
+const DashboardLayout = lazy(
+  () => import("./feature/dashBoard/DashboardLayout"),
 );
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 const ComingSoonPage = lazy(() => import("./pages/ComingSoonPage.jsx"));
