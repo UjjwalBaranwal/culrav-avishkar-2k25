@@ -1,8 +1,9 @@
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { useState } from "react";
 import { User, Menu, X } from "lucide-react";
 import bgDashboard from "../../assets/bg_dashboard.jpg";
 import Sidebar from "./SideBar.jsx";
+import { useSelector } from "react-redux";
 
 export default function DashboardLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -12,7 +13,11 @@ export default function DashboardLayout() {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  return (
+  const { loading, isAuthenticated } = useSelector((state) => state.auth);
+
+  return loading ? (
+    "Loading..."
+  ) : isAuthenticated ? (
     <div className="min-h-screen bg-neutral-900 text-white relative">
       <div className="relative" style={{ paddingTop: NAVBAR_H }}>
         {/* Mobile User Icon Toggle */}
@@ -125,5 +130,7 @@ export default function DashboardLayout() {
         </div>
       </div>
     </div>
+  ) : (
+    <Navigate to={"/login"} replace />
   );
 }

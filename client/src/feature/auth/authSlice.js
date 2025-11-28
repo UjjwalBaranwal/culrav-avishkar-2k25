@@ -97,7 +97,7 @@ export const confirmEmailToken = createAsyncThunk(
 const initialState = {
   user: null,
   token: localStorage.getItem("token") || null,
-  isAuthenticated: !!localStorage.getItem("token"),
+  isAuthenticated: false,
   loading: false,
   error: null,
   errorCode: null,
