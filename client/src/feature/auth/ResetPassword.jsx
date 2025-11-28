@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useSearchParams } from "react-router";
 import { resetPass } from "./authSlice";
-
+import { motion, AnimatePresence } from "framer-motion";
+import { gsap } from "gsap";
+import { Toaster, toast } from "sonner";
 
 // === INPUT STYLE ===
 const neonInput =
@@ -12,28 +14,6 @@ const neonInput =
 const buttonClass =
   "mt-6 w-full py-3 bg-gradient-to-r from-cyan-400 via-sky-400 to-fuchsia-500 text-black text-lg font-semibold rounded-lg hover:brightness-125 transition shadow-[0_0_20px_rgba(236,72,153,0.8)]";
 
-// === SMALL LINK STYLE ===
-const smallLinkClass =
-  "text-fuchsia-400 cursor-pointer hover:underline hover:text-fuchsia-300 transition";
-
-// === HANDLING AF INPUTS BACKGROUND ===
-const css = `
-input:-webkit-autofill,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:hover,
-textarea:-webkit-autofill,
-select:-webkit-autofill {
-  box-shadow: 0 0 0px 1000px #050816 inset !important;
-  -webkit-text-fill-color: #a0faff !important;
-  caret-color: #a0faff !important;
-}
-`;
-const style = document.createElement("style");
-style.appendChild(document.createTextNode(css));
-document.head.appendChild(style);
-
-
-
 export default function ResetPassword() {
   const [searchParams] = useSearchParams();
   const [pwd, setPwd] = useState("");
@@ -42,50 +22,94 @@ export default function ResetPassword() {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.auth);
   const navigate = useNavigate();
+  
+  // GSAP animation
+  useEffect(() => {
+    gsap.to(".login-card", {
+      boxShadow: "0 0 55px rgba(34,211,238,0.45)",
+      duration: 2,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+  }, []);
 
-  async function handleClick() {
-    if (pwd != rpwd || pwd.length < 6) return;
-    const token = searchParams.get("token");
-    const id = searchParams.get("id");
+  async function handleSubmit(e) {
+    e.preventDefault();
 
-    const run = async () => {
-      try {
-        await dispatch(resetPass({ token, id, newPassword: pwd })).unwrap();
-        navigate("/login");
-      } catch (e) {
-        console.error(e);
-      }
-    };
-    run();
+    if (pwd.length < 6) {
+      toast.error("Password must be at least 6 characters long");
+      return;
+    }
+    if (pwd !== rpwd) {
+      toast.error("Passwords do not match");
+      return;
+    }
+
+    try {
+      await dispatch(
+        resetPass({
+          token: searchParams.get("token"),
+          id: searchParams.get("id"),
+          newPassword: pwd,
+        })
+      ).unwrap();
+
+      toast.success("Password reset successfully");
+      setTimeout(() => navigate("/login"), 1000);
+    } catch (err) {
+      toast.error("Failed to reset password. Try again.");
+    }
   }
 
   return (
-    <div className="flex flex-col gap-3 p-5 max-w-sm mx-auto mt-20">
-      <h1 className="text-center text-2xl">Reset Your Password</h1>
-      <input
-        type="password"
-        value={pwd}
-        onChange={(e) => setPwd(e.target.value)}
-        placeholder="Enter new password"
-        className={`p-2 border rounded ${(pwd != rpwd || pwd.length < 6) && "border-red-600"} outline-none`}
-      />
-      {pwd.length < 6 && (
-        <p className="text-red-600">Minimum 6 characters required.</p>
-      )}
-      <input
-        type="password"
-        value={rpwd}
-        onChange={(e) => setRPwd(e.target.value)}
-        placeholder="Confirm your password"
-        className={`p-2 border rounded ${(pwd != rpwd || pwd.length < 6) && "border-red-600"} outline-none`}
-      />
-      {pwd != rpwd && <p className="text-red-600">Passwords do not match.</p>}
-      <button
-        onClick={handleClick}
-        className={`${pwd == rpwd && pwd.length >= 6 ? "bg-red-600" : "bg-gray-400"} text-white py-2 rounded`}
+    <div className="flex items-center justify-center min-h-screen bg-[#020617] font-[Jost] relative">
+      <Toaster position="top-center" richColors />
+
+      <motion.div
+        className="login-card relative w-[380px] max-w-[92vw] rounded-4xl border border-cyan-400/40 bg-slate-950/60 px-5 py-6 backdrop-blur-xl"
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
       >
-        {loading ? "Resetting..." : "Submit"}
-      </button>
+        <AnimatePresence mode="wait">
+          <motion.form
+            className="space-y-4"
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            onSubmit={handleSubmit}
+          >
+            <h1 className="text-3xl font-extrabold text-cyan-300">
+              Reset Your Password
+            </h1>
+
+            <input
+              type="password"
+              placeholder="Enter new password"
+              value={pwd}
+              onChange={(e) => setPwd(e.target.value)}
+              className={neonInput}
+            />
+            {pwd.length > 0 && pwd.length < 6 && (
+              <p className="text-cyan-300 text-sm">Minimum 6 characters required.</p>
+            )}
+
+            <input
+              type="password"
+              placeholder="Confirm password"
+              value={rpwd}
+              onChange={(e) => setRPwd(e.target.value)}
+              className={neonInput}
+            />
+            {rpwd.length > 0 && pwd !== rpwd && (
+              <p className="text-cyan-300 text-sm">Passwords do not match.</p>
+            )}
+
+            <button type="submit" className={buttonClass}>
+              {loading ? "Resetting..." : "Submit"}
+            </button>
+          </motion.form>
+        </AnimatePresence>
+      </motion.div>
     </div>
   );
 }
