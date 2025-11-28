@@ -84,26 +84,13 @@ export default function DashboardLayout() {
             }}
           >
             <div className="h-full p-4">
-              <div className="mb-4 pb-4 border-b border-white/10">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-linear-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                      <User className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <p className="text-white font-medium text-sm">
-                        James Thoms
-                      </p>
-                      <p className="text-white/60 text-xs">CA-34324</p>
-                    </div>
-                  </div>
-                  <button
-                    onClick={() => setIsSidebarOpen(false)}
-                    className="p-2 hover:bg-white/10 rounded-lg transition-colors duration-200"
-                  >
-                    <X className="w-4 h-4 text-white/70 hover:text-white" />
-                  </button>
-                </div>
+              <div className="justify-end flex">
+                <button
+                  onClick={() => setIsSidebarOpen(false)}
+                  className="p-2 hover:bg-white/10 rounded-lg transition-colors duration-200"
+                >
+                  <X className="w-4 h-4 text-white/70 hover:text-white" />
+                </button>
               </div>
               <Sidebar onItemClick={() => setIsSidebarOpen(false)} />
             </div>
