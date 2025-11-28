@@ -15,12 +15,6 @@ import {
 } from "lucide-react";
 import { Link } from "react-router";
 
-import dj from "/videos/v4.webm";
-import f2 from "/videos/v2.webm";
-import f5 from "/videos/v5.webm";
-import f1 from "/videos/v1.webm";
-
-
 import TimeStampCard from "../components/TimeStampCard";
 // import GallerySection from "./Homepage/GallerySection";
 
@@ -456,13 +450,13 @@ const AboutSection = () => {
 };
 
 const GallerySection = () => {
-  // Replace 'src' with your actual local video paths (e.g., "/assets/video1.mp4")
+  // Replace 'src' with your actual local video paths (served from /public/videos)
   const galleryItems = [
-    { id: 1, type: "large", title: "DJKD", src: dj },
-    { id: 2, type: "tall", title: "DJKD", src: f2 },
-   // { id: 3, type: "small", title: "TECH_LAB", src: f5 },
-    { id: 4, type: "small", title: "Dj Pheonix", src: f5 },
-    { id: 5, type: "wide", title: "JULIE", src: f1 },
+    { id: 1, type: "large", title: "DJKD", src: "/videos/v4.webm" },
+    { id: 2, type: "tall", title: "DJKD", src: "/videos/v2.webm" },
+    // { id: 3, type: "small", title: "TECH_LAB", src: "/videos/v5.webm" },
+    { id: 4, type: "small", title: "Dj Pheonix", src: "/videos/v5.webm" },
+    { id: 5, type: "wide", title: "JULIE", src: "/videos/v1.webm" },
   ];
 
   return (
@@ -493,6 +487,9 @@ const GallerySection = () => {
                 loop
                 muted
                 playsInline
+                preload="auto"
+                onLoadedData={() => console.log("Gallery video loaded:", item.src)}
+                onError={(e) => console.error("Gallery video error:", item.src, e)}
                 className="absolute inset-0 w-full h-full object-cover transition-all duration-700
 
         /* MOBILE DEFAULTS (Full Color, Full Opacity) */
@@ -892,13 +889,6 @@ export default function App() {
       });
 
       // Gallery Stagger
-      gsap.from(".gallery-item", {
-        scrollTrigger: { trigger: "#gallery", start: "top 75%" },
-        y: 30,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.1,
-      });
     }
   }, [gsapLoaded]);
 
