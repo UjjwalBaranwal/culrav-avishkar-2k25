@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 export default function DashboardLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const NAVBAR_H = "0px";
+  const NAVBAR_H = "80px";
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
