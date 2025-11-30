@@ -142,7 +142,7 @@ const RasayansData = {
       ],
     },
     {
-      eventName: "CasEstimates",
+      eventName: "CaseFlow",
       eventId: "07",
       description:
         "A case-solving + estimation competition involving analytical reasoning, solution modelling and presentation. Pen-paper round followed by PPT & Q/A. Cross-branch teams allowed. Max 4 for 1st year and 2 for 2nd-3rd year teams.",
@@ -161,25 +161,25 @@ const RasayansData = {
         { name: "Jaanvi Saxena", contact: "" }
       ],
     },
-    {
-      eventName: "Scavenger Hunt",
-      eventId: "08",
-      description:
-        "A fun competitive hunt featuring multiple energetic rounds. Begins with a fun-paper test followed by unpredictable surprise rounds. Cross-branch & cross-year collaboration allowed. Max 4 per team.",
-      rules: [
-        "Round 1: Paper-Based Fun Test",
-        "Round 2: Surprise Rounds",
-        "Cross-year and Cross-branch permitted",
-        "Max 4 per team"
-      ],
-      maxTeamSize: 4,
-      minTeamSize: 2,
-      PsLink: "",
-      coordinators: [
-        { name: "Purushottam Dubey", contact: "" },
-        { name: "Divyanshu Purbey", contact: "" }
-      ],
-    },
+    // {
+    //   eventName: "Scavenger Hunt",
+    //   eventId: "08",
+    //   description:
+    //     "A fun competitive hunt featuring multiple energetic rounds. Begins with a fun-paper test followed by unpredictable surprise rounds. Cross-branch & cross-year collaboration allowed. Max 4 per team.",
+    //   rules: [
+    //     "Round 1: Paper-Based Fun Test",
+    //     "Round 2: Surprise Rounds",
+    //     "Cross-year and Cross-branch permitted",
+    //     "Max 4 per team"
+    //   ],
+    //   maxTeamSize: 4,
+    //   minTeamSize: 2,
+    //   PsLink: "",
+    //   coordinators: [
+    //     { name: "Purushottam Dubey", contact: "" },
+    //     { name: "Divyanshu Purbey", contact: "" }
+    //   ],
+    // },
   ],
 };
 

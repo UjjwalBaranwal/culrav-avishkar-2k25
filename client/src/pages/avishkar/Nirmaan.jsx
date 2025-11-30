@@ -69,7 +69,7 @@ const NirmaanData = {
     ],
   },
   {
-    eventName: "ZIGGURAE",
+    eventName: "ZIGGURARE",
     eventId: "04",
     description:
       "The ultimate AutoCAD and building design showdown.\n Design Top view and plan of existing building.\n Design views with surprise constraints.",
@@ -115,9 +115,8 @@ const NirmaanData = {
       "The Consulting Challenge focusing on case studies, guesstimates, and real-world business problems.",
     rules: [
       "Solo Event",
-      "Round 1: Online Test",
-      "Round 2: Guesstimate + Case Studies",
-      "Round 3: Interview Round"
+      "Round 1: Pen and Paper Test",
+      "Round 2: Presentation",
     ],
     maxTeamSize: 1,
     minTeamSize: 1,
@@ -128,26 +127,26 @@ const NirmaanData = {
       { name: "Upasna Verma", contact: "" },
     ],
   },
-  {
-    eventName: "TERRAQUIZ",
-    eventId: "07",
-    description:
-      "Nirmaan Fun Event featuring rounds such as 'Real vs Reel' and Treasure Hunt.",
-    rules: [
-      "Team Event",
-      "Round 1: Quiz Round",
-      "Round 2: Surprise Round",
-      "Round 3: Treasure Hunt"
-    ],
-    maxTeamSize: 3,
-    minTeamSize: 3,
-    PsLink: "",
-    coordinators: [
-      { name: "Swetabh Salampuria", contact: "" },
-      { name: "Prakhar Srivastav", contact: "" },
-      { name: "Abhay", contact: "" },
-    ],
-  },
+  // {
+  //   eventName: "TERRAQUIZ",
+  //   eventId: "07",
+  //   description:
+  //     "Nirmaan Fun Event featuring rounds such as 'Real vs Reel' and Treasure Hunt.",
+  //   rules: [
+  //     "Team Event",
+  //     "Round 1: Quiz Round",
+  //     "Round 2: Surprise Round",
+  //     "Round 3: Treasure Hunt"
+  //   ],
+  //   maxTeamSize: 3,
+  //   minTeamSize: 3,
+  //   PsLink: "",
+  //   coordinators: [
+  //     { name: "Swetabh Salampuria", contact: "" },
+  //     { name: "Prakhar Srivastav", contact: "" },
+  //     { name: "Abhay", contact: "" },
+  //   ],
+  // },
   {
     eventName: "SAMADHAN",
     eventId: "08",
