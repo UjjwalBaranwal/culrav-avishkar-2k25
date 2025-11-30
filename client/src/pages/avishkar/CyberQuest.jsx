@@ -150,26 +150,6 @@ const CyberQuestData = {
       ],
     },
     {
-      eventName: "Checkmate and Chill",
-      eventId: "40",
-      description:
-        "UNLEASH YOUR STRATEGY, MASTER THE BOARD! JOIN THE CHESS TOURNAMENT AT OUR TECHNICAL FEST FOR AN EXCITING TEST OF SKILL AND STRATEGY. OPEN TO ALL LEVELS, IT’S A KNOCKOUT COMPETITION WITH PRIZES FOR THE TOP PLAYERS.WHETHER YOU'RE COMPETING OR SPECTATING, IT’S A FUN CHALLENGE FOR EVERYONE!",
-      rules: [
-        "Team size: 1",
-        "Team Eligibility: All branches",
-        "Winners: 3 Team overall",
-        "Rounds 2",
-      ],
-      maxTeamSize: 1,
-      minTeamSize: 1,
-      
-      PsLink: "",
-      coordinators: [
-        { name: "Ujjawal Barnawal", contact: "" },
-        { name: "Meenakshi Gupta", contact: "" },
-      ],
-    },
-    {
       eventName: "Debugging Olympics",
       eventId: "41",
       description:
@@ -274,7 +254,7 @@ const CyberQuestData = {
   ],
 },
 {
-  eventName: "CODECLASH 2025",
+  eventName: "CODECLASH",
   eventId: "46",
   description:
     "A competitive coding tournament featuring an online Codeforces qualifier followed by offline one-on-one knockout battles. Designed to identify the strongest competitive programmers across MCA, B.Tech, and M.Sc students.",
