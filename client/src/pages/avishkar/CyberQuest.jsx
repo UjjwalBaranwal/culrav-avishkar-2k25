@@ -70,27 +70,6 @@ const CyberQuestData = {
       ],
     },
     {
-      eventName: "TechMaiden",
-      eventId: "48",
-      description:
-        "YOU'VE GOT THE PASSION, WE'VE GOT THE PLATFORM. THIS EXCLUSIVE EVENT AIMS AT PROVIDING ARDENT FEMALES LIKE YOU WITH OVERALL DEVELOPMENT AS A TECHIE. THE EVENT CONSISTS OF A CODING+TECHNICAL ROUND FOLLOWED BY INTERVIEWS. SO DON'T SHY AWAY AND GRAB THE OPPORTUNITY!",
-      rules: [
-        "Team size: 1",
-        "Team Eligibility: All branches",
-        "Winners: 3",
-        "Rounds 2",
-      ],
-      maxTeamSize: 1,
-      minTeamSize: 1,
-     
-      PsLink: "",
-      coordinators: [
-        { name: "Humanshi", contact: "" },
-        { name: "Meenakshi Gupta", contact: "" },
-        { name: "Disha Vaish", contact: "" },
-      ],
-    },
-    {
       eventName: "Tux Wars",
       eventId: "36",
       description:
@@ -272,6 +251,50 @@ const CyberQuestData = {
         { name: "Yash Sharma", contact: "" },
       ],
     },
+    {
+  eventName: "RAGQUEST",
+  eventId: "45",
+  description:
+    "A hands-on AI event where participants build a Retrieval-Augmented Generation (RAG) chatbot using a curated Knowledge Base, combining retrieval and LLM reasoning. This challenge tests real-world AI skills across development and quiz rounds.",
+  rules: [
+    "Team size: 1–3",
+    "Eligibility: Open to all branches and all years",
+    "Rounds: 2 (Development Round + Online Quiz Round)",
+    "Bot must use retrieval from provided Knowledge Base",
+    "No hardcoded answers allowed",
+    "Original implementations only",
+    "Submission: Working bot, GitHub repo + detailed README, and demo video",
+  ],
+  maxTeamSize: 3,
+  minTeamSize: 1,
+
+  PsLink: "",
+  coordinators: [
+    { name: "Application Club", contact: "" },
+  ],
+},
+{
+  eventName: "CODECLASH 2025",
+  eventId: "46",
+  description:
+    "A competitive coding tournament featuring an online Codeforces qualifier followed by offline one-on-one knockout battles. Designed to identify the strongest competitive programmers across MCA, B.Tech, and M.Sc students.",
+  rules: [
+    "Event Format: Online Qualifier + Offline Knockout",
+    "Platform: CC Codeforces Group (participants must have active Codeforces account)",
+    "Two groups shortlisted: 16 participants each",
+    "Strict anti-cheating and plagiarism monitoring",
+    "Offline Round: 1v1 battles — first to solve advances",
+    "Tie-breaker: Earlier accepted submission wins",
+  ],
+  maxTeamSize: 1,
+  minTeamSize: 1,
+
+  PsLink: "",
+  coordinators: [
+    { name: "Bhuwan", contact: "6202677308" },
+    { name: "Hariom", contact: "9758685822" },
+  ],
+},
   ],
 };
 

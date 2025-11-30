@@ -109,7 +109,7 @@ const NirmaanData = {
     ],
   },
   {
-    eventName: "JUST IN CASE",
+    eventName: "CaseFlow",
     eventId: "06",
     description:
       "The Consulting Challenge focusing on case studies, guesstimates, and real-world business problems.",
