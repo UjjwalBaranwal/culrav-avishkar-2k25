@@ -56,6 +56,9 @@ const NirmaanPage = lazy(() => import("./pages/avishkar/Nirmaan"));
 const OligopolyPage = lazy(() => import("./pages/avishkar/Oligopoly"));
 const PowerSurgePage = lazy(() => import("./pages/avishkar/PowerSurge"));
 const RasayansPage = lazy(() => import("./pages/avishkar/Rasayans"));
+const AerodynamixPage = lazy(() => import("./pages/avishkar/Aerodynamix"));
+const AstrowingPage = lazy(() => import("./pages/avishkar/Astrowing"));
+const RobomaniaPage = lazy(() => import("./pages/avishkar/Robomania"));
 
 function App() {
   const dispatch = useDispatch();
@@ -96,6 +99,9 @@ function App() {
             <Route path="/avishkar/oligopoly" element={<OligopolyPage />} />
             <Route path="/avishkar/powersurge" element={<PowerSurgePage />} />
             <Route path="/avishkar/rasayans" element={<RasayansPage />} />
+            <Route path="/avishkar/aerodynamix" element={<AerodynamixPage />} />
+            <Route path="/avishkar/astrowing" element={<AstrowingPage />} />
+            <Route path="/avishkar/robomania" element={<RobomaniaPage />} />
 
             {/* Team Page */}
             <Route path="/team" element={<TeamPage />} />
