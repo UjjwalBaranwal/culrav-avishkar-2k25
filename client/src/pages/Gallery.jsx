@@ -19,11 +19,11 @@ const Gallery = () => {
 
   const GALLERY_ITEMS = [
     {
-      id: 1,
-      staticSrc: galleryImg2,
-      title: "Mame Khan",
-      text: "Folk Maestro of India. One of India’s most celebrated folk voices, known for carrying the rich Manganiyar tradition to global audiences. His powerful vocals and vibrant stage presence make every performance unforgettable.",
-      size: "md:col-span-2 md:row-span-1 col-span-1 row-span-1",
+      id: 2,
+      staticSrc: galleryImg1,
+      title: "Mohit chauhan",
+      text: "Mohit Chauhan is one of India’s most loved playback singers, known for his soulful tone and heartfelt melodies.With chart-topping hits across decades, his voice has become a defining sound of modern Indian music.Live or recorded, his performances carry emotion, nostalgia, and timeless charm.",
+     size: "md:col-span-2 md:row-span-1 col-span-1 row-span-1",
       aspectRatio: "aspect-[2/1]",
       color: "bg-grey-300",
       initialX: -800,
@@ -41,27 +41,28 @@ const Gallery = () => {
       initialY: 900,
     },
     {
-      id: 2,
-      staticSrc: galleryImg1,
-      title: "Mohit chauhan",
-      text: "Mohit Chauhan is one of India’s most loved playback singers, known for his soulful tone and heartfelt melodies.With chart-topping hits across decades, his voice has become a defining sound of modern Indian music.Live or recorded, his performances carry emotion, nostalgia, and timeless charm.",
+      id: 8,
+      staticSrc: galleryImg8,
+      title: "Suhani Shah",
+      text: "India’s Leading Illusionist & Mentalist. Captivating audiences with mind-reading, psychological tricks, and immersive storytelling. She is a trailblazer in modern magic.",
       size: "col-span-1 row-span-1 md:row-span-2",
       aspectRatio: "aspect-[1/2]",
       color: "bg-grey-300",
       initialX: 0,
       initialY: -1000,
-    },
-    {
-      id: 3,
-      staticSrc: galleryImg3,
-      title: "Rajat Chauhan",
-      text: "The Relatable Comedy Storyteller. Known for his clean, witty humour and everyday observations, his effortless storytelling makes him a favourite among audiences of all ages.",
-      size: "md:col-span-2 md:row-span-2 col-span-1 row-span-1",
-      aspectRatio: "aspect-square",
+    }, 
+     {
+      id: 10,
+      staticSrc: galleryImg10,
+      title: "Monali Thakur",
+      text: "National Award–Winning Playback Sensation. A versatile singer with an expressive voice and wide musical range. Her songs blend clarity, finesse, and emotion.",
+       size: "md:col-span-2 md:row-span-2 col-span-1 row-span-1",
+      aspectRatio: "aspect-[1/1]",
       color: "bg-grey-300",
       initialX: 800,
       initialY: -800,
     },
+   
     {
       id: 4,
       staticSrc: galleryImg4,
@@ -106,17 +107,18 @@ const Gallery = () => {
       initialX: 0,
       initialY: 1000,
     },
-    {
-      id: 8,
-      staticSrc: galleryImg8,
-      title: "Suhani Shah",
-      text: "India’s Leading Illusionist & Mentalist. Captivating audiences with mind-reading, psychological tricks, and immersive storytelling. She is a trailblazer in modern magic.",
+     {
+      id: 1,
+      staticSrc: galleryImg2,
+      title: "Mame Khan",
+      text: "Folk Maestro of India. One of India’s most celebrated folk voices, known for carrying the rich Manganiyar tradition to global audiences. His powerful vocals and vibrant stage presence make every performance unforgettable.",
       size: "md:col-span-1 md:row-span-1 col-span-1 row-span-1",
       aspectRatio: "aspect-square",
       color: "bg-grey-300",
       initialX: 0,
       initialY: 1200,
     },
+    
     {
       id: 9,
       staticSrc: galleryImg9,
@@ -128,17 +130,18 @@ const Gallery = () => {
       initialX: 0,
       initialY: 1100,
     },
-    {
-      id: 10,
-      staticSrc: galleryImg10,
-      title: "Monali Thakur",
-      text: "National Award–Winning Playback Sensation. A versatile singer with an expressive voice and wide musical range. Her songs blend clarity, finesse, and emotion.",
+     {
+      id: 3,
+      staticSrc: galleryImg3,
+      title: "Rajat Chauhan",
+      text: "The Relatable Comedy Storyteller. Known for his clean, witty humour and everyday observations, his effortless storytelling makes him a favourite among audiences of all ages.",
       size: "md:col-span-2 md:row-span-2 col-span-1 row-span-1",
       aspectRatio: "aspect-square",
       color: "bg-grey-300",
       initialX: 0,
       initialY: 900,
     },
+   
   ];
 
   return (
