@@ -142,34 +142,7 @@ const MechrocosmData = {
         { name: "Ankur", contact: "" }
       ]
     },
-
-    // --------------------------------- Survivor Series ---------------------------------
-    {
-      eventName: "Survivor Series",
-      eventId: "SS01",
-      description:
-        "A fun + smart survival-based challenge event featuring puzzles, pop-culture quizzes, logic tasks & a surprise round. Only the sharpest minds survive.",
-      rules: [
-        "Team of 3 members",
-        "All branches allowed (Except B .Tech Final Year)",
-        "ROUNDS INCLUDE : ",
-        " Quiz – puzzles, logic & teasers",
-        " Pop culture (Music + Riddles + Shows)",
-        " Secret Survival Round",
-      ],
-      minTeamSize: 3,
-      maxTeamSize: 3,
-      expectedParticipation: "1200+",
-      goodies: "9",
-      coordinators: [
-        { name: "Aakarsh Kumar", contact: "" },
-        { name: "Manish Kumar", contact: "" },
-        { name: "Shaan Kapoor", contact: "" },
-        { name: "Ujjwal Gupta", contact: "" },
-        { name: "Utkarsh", contact: "" },
-      ]
-    },
-
+    
     // --------------------------------- Turbo Speed Showdown ---------------------------------
     {
       eventName: "Turbo Speed Showdown",
@@ -327,9 +300,13 @@ const MechrocosmPage = () => {
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-gray-400 mb-4 text-center">Coordinators</h3>
-                <ul className="list-disc list-inside ml-6 space-y-2 text-gray-300 text-left">
-                  {selected.coordinators.map((c, i) => (
-                    <li key={i}>{c.name}  {c.contact}</li>
+                <ul className="list-disc list-inside ml-6 space-y-2 text-gray-300 text-center">
+                  {selected.coordinators.length==0?
+                  <h1 >No coordinators listed</h1>:
+                  selected.coordinators.map((c, i) => (
+                    <li key={i}>
+                      {c.name} — {c.contact}
+                    </li>
                   ))}
                 </ul>
                 {/* <p className="mt-6 text-gray-300 text-left"><strong>Team size:</strong> {selected.minTeamSize} - {selected.maxTeamSize}</p> */}

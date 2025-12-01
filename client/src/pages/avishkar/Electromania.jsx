@@ -24,11 +24,11 @@ const ElectromaniaData = {
       minTeamSize: 1,
       PsLink: "",
       coordinators: [
-        { name: "Aryan Kesharwani", contact: "" },
-        { name: "Saurabh Gupta", contact: "" },
-        { name: "Shresth Gadhwala", contact: "" },
-        { name: "Yogesh Kumar", contact: "" },
-        { name: "Shreyansh Shah", contact: "" },
+        { name: "Aryan Kesharwani", contact: "8932017623" },
+        { name: "Saurabh Gupta", contact: "8168797882" },
+        { name: "Shresth Gadhwala", contact: "7679170402" },
+        { name: "Yogesh Kumar", contact: "9044412418" },
+        { name: "Shreyansh Shah", contact: "8874419806" },
       ],
     },
     {
@@ -37,12 +37,11 @@ const ElectromaniaData = {
       description:
         "A software development team event where participants build innovative, AI-powered solutions based on unique problem statements, focusing on creativity, implementation quality and impact.",
       rules: [
-        "Team-based development event.",
         "Round 1: Abstract Submission (Online).",
         "Round 2: Mid-Evaluation (Online).",
         "Round 3: Final Evaluation (Offline).",
         "Round 4: Offline Presentation and Q&A.",
-        "Eligibility: 2nd and 3rd year B.Tech (ECE + EE) students.",
+        "Eligibility: 2nd and 3rd year B.Tech All students.",
         "Each team must have at least one ECE student.",
         "Team size: 2 to 4 members.",
       ],
@@ -50,10 +49,10 @@ const ElectromaniaData = {
       minTeamSize: 2,
       PsLink: "",
       coordinators: [
-        { name: "Abhishek Kumar Yadav", contact: "" },
-        { name: "Amrisha", contact: "" },
-        { name: "Nandre Harish", contact: "" },
-        { name: "Meemansha Singh", contact: "" },
+        { name: "Abhishek Kumar Yadav", contact: "9569456856" },
+        { name: "Amrisha", contact: "9329996069" },
+        { name: "Nandre Harish", contact: "7995753789" },
+        { name: "Meemansha Singh", contact: "6389574220" },
       ],
     },
     {
@@ -62,19 +61,20 @@ const ElectromaniaData = {
       description:
         "A competitive coding event that evaluates participants on problem-solving ability, debugging skills and teamwork through contest and relay-style rounds.",
       rules: [
-        "Round 1: Coding Contest with 5–6 problems (team or individual).",
+        "Round 1: Coding Contest with 5–6 problems.",
         "Round 2: Debugging Relay Round – participants fix buggy code under time pressure.",
-        "Eligibility: B.Tech 2nd and 3rd year (ECE + EE) and M.Tech 1st year.",
+        "Eligibility: B.Tech 1st, 2nd and 3rd year all branch and M.Tech 1st year.",
         "Each team must have at least one ECE student.",
-        "Team size: 1 to 3 members.",
+        "Team size: 2 to 3 members.",
       ],
       maxTeamSize: 3,
       minTeamSize: 1,
       PsLink: "",
       coordinators: [
-        { name: "Abhishek Kumar Yadav", contact: "" },
-        { name: "Aryan Kesharwani", contact: "" },
-        { name: "Nandre Harish", contact: "" },
+        { name: "Abhishek Kumar Yadav", contact: "9569456856" },
+        { name: "Aryan Kesharwani", contact: "8932017623" },
+        { name: "Nandre Harish", contact: "7995753789" },
+        { name: "Chirag Murarka", contact: "6201376048" },
       ],
     },
     {
@@ -84,18 +84,16 @@ const ElectromaniaData = {
         "An AI/ML Kaggle competition where teams build end-to-end models and compete on a live leaderboard, gaining hands-on exposure to practical machine learning workflows.",
       rules: [
         "Round 1: Abstract Submission (Online).",
-        "Round 2: Mid Evaluation on model progress (Online).",
-        "Round 3: Final Evaluation and Presentation (Offline).",
+        "Round 2: Final Evaluation and Presentation (Offline).",
         "Eligibility: 1st, 2nd and 3rd year students.",
-        "Each team must have at least one ECE student.",
         "Team size: 2 to 3 members.",
       ],
       maxTeamSize: 3,
       minTeamSize: 2,
       PsLink: "",
       coordinators: [
-        { name: "Atharva Antapurkar", contact: "" },
-        { name: "Soumya Das", contact: "" },
+        { name: "Atharva Antapurkar", contact: "8668897685" },
+        { name: " Mohammed Haseeb", contact: "" },
       ],
     },
     {
@@ -114,9 +112,9 @@ const ElectromaniaData = {
       minTeamSize: 2,
       PsLink: "",
       coordinators: [
-        { name: "Akshat Mahanth", contact: "" },
-        { name: "Amrisha", contact: "" },
-        { name: "Shreyansh Shah", contact: "" },
+        { name: "Akshat Mahanth", contact: "8935078215" },
+        { name: "Amrisha", contact: "9329996069" },
+        { name: "Shreyansh Shah", contact: "8874419806" },
       ],
     },
     {
@@ -137,9 +135,9 @@ const ElectromaniaData = {
       minTeamSize: 2,
       PsLink: "",
       coordinators: [
-        { name: "Akshat Mahanth", contact: "" },
-        { name: "Chetanya Mishra", contact: "" },
-        { name: "Dheeraj Vuddagiri", contact: "" },
+        { name: "Akshat Mahanth", contact: "8935078215" },
+        { name: "Chetanya Mishra", contact: "8601877257" },
+        { name: "Dheeraj Vuddagiri", contact: "9392899382" },
       ],
     },
     {
@@ -159,10 +157,10 @@ const ElectromaniaData = {
       minTeamSize: 2,
       PsLink: "",
       coordinators: [
-        { name: "Akshat Mahanth", contact: "" },
-        { name: "Chetanya Mishra", contact: "" },
-        { name: "Dheeraj Vuddagiri", contact: "" },
-        { name: "Saurabh Gupta", contact: "" },
+        { name: "Akshat Mahanth", contact: "8935078215" },
+        { name: "Chetanya Mishra", contact: "8601877257" },
+        { name: "Dheeraj Vuddagiri", contact: "9392899382" },
+        { name: "Saurabh Gupta", contact: "8168797882" },
       ],
     },
     {
@@ -183,31 +181,9 @@ const ElectromaniaData = {
       minTeamSize: 2,
       PsLink: "",
       coordinators: [
-        { name: "Akshat Mahanth", contact: "" },
-        { name: "Atharva Antapurkar", contact: "" },
-        { name: "Soumya Das", contact: "" },
-      ],
-    },
-    {
-      eventName: "TO_BEE_OR_NOT_TO_BEE",
-      eventId: "9",
-      description:
-        "A fun quiz-based event with multiple puzzle and word rounds such as IDEA BEE, SPELL BEE and Integration Bee Bingo, aimed at testing creativity, vocabulary and problem-solving.",
-      rules: [
-        "Round 1: IDEA BEE – idea and creativity-based tasks.",
-        "Round 2: SPELL BEE – spelling and vocabulary challenges.",
-        "Round 3: Integration Bee Bingo – math/puzzle-based bingo round.",
-        "Eligibility: 1st, 2nd and 3rd year students.",
-        "Each team must have at least one ECE student.",
-        "Team size: 3 members.",
-      ],
-      maxTeamSize: 3,
-      minTeamSize: 3,
-      PsLink: "",
-      coordinators: [
-        { name: "Abhishek Kumar Yadav", contact: "" },
-        { name: "Aryan Kesharwani", contact: "" },
-        { name: "Chetanya Mishra", contact: "" },
+        { name: "Akshat Mahanth", contact: "8935078215" },
+        { name: "Atharva Antapurkar", contact: "8668897685" },
+        { name: "Soumya Das", contact: "7866041166" },
       ],
     },
   ],
@@ -328,8 +304,10 @@ const ElectromaniaPage = () => {
                 <h3 className="text-2xl font-bold text-gray-400 mb-4 text-center">
                   Coordinators
                 </h3>
-                <ul className="list-disc list-inside ml-6 space-y-2 text-gray-300 text-left">
-                  {selected.coordinators.map((c, i) => (
+                <ul className="list-disc list-inside ml-6 space-y-2 text-gray-300 text-center">
+                  {selected.coordinators.length==0?
+                  <h1 >No coordinators listed</h1>:
+                  selected.coordinators.map((c, i) => (
                     <li key={i}>
                       {c.name} — {c.contact}
                     </li>

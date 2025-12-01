@@ -274,9 +274,13 @@ const NirmaanPage = () => {
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-gray-400 mb-4 text-center">Coordinators</h3>
-                <ul className="list-disc list-inside ml-6 space-y-2 text-gray-300 text-left">
-                  {selected.coordinators.map((c, i) => (
-                    <li key={i}>{c.name} {c.contact}</li>
+                <ul className="list-disc list-inside ml-6 space-y-2 text-gray-300 text-center">
+                  {selected.coordinators.length==0?
+                  <h1 >No coordinators listed</h1>:
+                  selected.coordinators.map((c, i) => (
+                    <li key={i}>
+                      {c.name} — {c.contact}
+                    </li>
                   ))}
                 </ul>
                 {/* <p className="mt-6 text-gray-300 text-left">

@@ -302,7 +302,9 @@ const KreedomaniaPage = () => {
                   Coordinators
                 </h3>
                 <ul className="list-disc list-inside ml-6 space-y-2 text-gray-300 text-center">
-                  {selected.coordinators.map((c, i) => (
+                  {selected.coordinators.length==0?
+                  <h1 >No coordinators listed</h1>:
+                  selected.coordinators.map((c, i) => (
                     <li key={i}>
                       {c.name} — {c.contact}
                     </li>
