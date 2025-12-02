@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router";
 
 import AvishkarBG from "../../assets/a_s_bg.png";
 
@@ -10,6 +11,7 @@ const ElectromaniaData = {
   events: [
     {
       eventName: "QUINTATHALON",
+      registrationLink : "",
       eventId: "1",
       description:
         "Flagship placement-simulation event that replicates the actual internship and placement interview process for ECE students, helping them assess and improve their technical and behavioural interview skills. Participation is mandatory for ECE students who wish to take part in other events.",
@@ -33,6 +35,7 @@ const ElectromaniaData = {
     },
     {
       eventName: "INNODEV",
+      registrationLink : "",
       eventId: "2",
       description:
         "A software development team event where participants build innovative, AI-powered solutions based on unique problem statements, focusing on creativity, implementation quality and impact.",
@@ -57,6 +60,7 @@ const ElectromaniaData = {
     },
     {
       eventName: "CODOTRON",
+      registrationLink : "",
       eventId: "3",
       description:
         "A competitive coding event that evaluates participants on problem-solving ability, debugging skills and teamwork through contest and relay-style rounds.",
@@ -79,6 +83,7 @@ const ElectromaniaData = {
     },
     {
       eventName: "KAGGLE SPRINT",
+      registrationLink : "",
       eventId: "4",
       description:
         "An AI/ML Kaggle competition where teams build end-to-end models and compete on a live leaderboard, gaining hands-on exposure to practical machine learning workflows.",
@@ -98,6 +103,7 @@ const ElectromaniaData = {
     },
     {
       eventName: "MARKETPULSE",
+      registrationLink : "",
       eventId: "5",
       description:
         "A market simulation and strategy game where teams act as companies, make financial and strategic decisions, and trade over multiple simulated quarters. Winners are decided based on market capitalization.",
@@ -119,6 +125,7 @@ const ElectromaniaData = {
     },
     {
       eventName: "RTL RUSH",
+      registrationLink : "",
       eventId: "6",
       description:
         "A hardware design event where teams solve digital design problems using Verilog HDL. Separate problem sets for different years, with submissions including code, schematics and waveforms.",
@@ -142,6 +149,7 @@ const ElectromaniaData = {
     },
     {
       eventName: "CIRCUIT OF THE DAY",
+      registrationLink : "",
       eventId: "7",
       description:
         "A week-long circuit design challenge with daily problems of increasing difficulty. Participants design digital circuits and submit their solutions using LogisimEvolution.",
@@ -165,6 +173,7 @@ const ElectromaniaData = {
     },
     {
       eventName: "ENCODEWARS",
+      registrationLink : "",
       eventId: "8",
       description:
         "A decoding and puzzle-solving event combining core electronics and software concepts. Participants crack hidden messages in mixed formats like bitstreams, characters and images. Internet use is allowed, but AI tools are strictly prohibited.",
@@ -191,6 +200,18 @@ const ElectromaniaData = {
 
 const ElectromaniaPage = () => {
   const [selected, setSelected] = useState(null);
+
+  const navigate = useNavigate();
+
+  const handleRegister = (link) => {
+    if (link && link.trim() !== "") {
+      // Open Google Form in a new tab
+      window.open(link, "_blank");
+    } else {
+      // Redirect to Coming Soon page
+      navigate("/coming-soon")
+    }
+  };
 
   return (
     <div className="relative min-h-screen  font-sans text-gray-300">
@@ -315,6 +336,53 @@ const ElectromaniaPage = () => {
                 </ul>
               </section>
             </div>
+            <button
+  onClick={() => handleRegister(selected.registrationLink)}
+  className="
+    relative
+    block mx-auto mt-8
+    px-3 py-2 text-sm
+
+    md:fixed md:bottom-8 md:right-8 md:mx-0 md:mt-0
+    md:px-8 md:py-3 md:text-lg
+
+    lg:px-10 lg:py-4 lg:text-xl
+    z-50 group bg-black border-[3px] border-cyan-400 text-white 
+    font-bold uppercase tracking-[0.15em]
+    shadow-[4px_4px_0_#d946ef,-3px_-3px_0_#06b6d4]
+    hover:shadow-[-6px_-6px_0_#d946ef,6px_6px_0_#06b6d4]
+    hover:border-fuchsia-500 hover:text-cyan-300
+    transition-all duration-150 ease-linear 
+    active:translate-x-[2px] active:translate-y-[2px] active:shadow-none
+    select-none overflow-hidden
+  "
+>
+  {/* scanline overlay */}
+  <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.7)_50%)] bg-[length:100%_4px] pointer-events-none z-20 opacity-60"></div>
+
+  <span className="relative z-30 flex items-center gap-2 drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
+    Register Now
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      strokeWidth={3}
+      stroke="currentColor"
+      className="
+        w-4 h-4 
+        md:w-6 md:h-6
+        text-fuchsia-500 
+        group-hover:text-cyan-400 
+        group-hover:translate-x-2 
+        transition-all duration-150
+      "
+    >
+      <path strokeLinecap="square" strokeLinejoin="miter" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+    </svg>
+  </span>
+
+  <div className="absolute top-0 left-[-100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[25deg] group-hover:animate-[ping_0.3s_linear_1] opacity-0"></div>
+</button>
+
           </motion.div>
         )}
       </AnimatePresence>
