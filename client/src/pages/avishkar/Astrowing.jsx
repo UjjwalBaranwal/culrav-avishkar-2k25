@@ -11,6 +11,7 @@ const AstrowingData = {
   events: [
     {
       eventName: "Starfall Studio",
+      registrationLink : "",
       eventId: "01",
       description:
         "A creative astrophotography challenge where participants capture night-sky shots using any device—even a phone. Learn framing, long exposure, and techniques to bring cosmic beauty to life.",
@@ -28,6 +29,7 @@ const AstrowingData = {
     },
     {
       eventName: "The Death Star Escape",
+      registrationLink : "",
       eventId: "02",
       description:
         "A puzzle-solving escape challenge inspired by cosmic mysteries, astronomy, mythology and logic. Participants solve cryptic clues to escape before time runs out.",
@@ -45,6 +47,7 @@ const AstrowingData = {
     },
     {
       eventName: "The Jedi Trials",
+      registrationLink : "",
       eventId: "03",
       description:
         "A knowledge-based astronomy challenge testing speed, logic and celestial concepts. Participants compete in cosmic quizzes to earn the title of Master.",
@@ -61,6 +64,7 @@ const AstrowingData = {
     },
     {
       eventName: "The Skywalker Night",
+      registrationLink : "",
       eventId: "04",
       description:
         "A telescope observation night where participants witness planets, galaxies, nebulae and constellations through powerful optics—like gazing from a galaxy far away.",
@@ -77,6 +81,7 @@ const AstrowingData = {
     },
     {
       eventName: "Galactic ThinkTank",
+      registrationLink : "",
       eventId: "05",
       description:
         "An idea pitching event where participants propose innovations in space science, astronomy tools, and deep-space exploration solutions.",
@@ -93,6 +98,7 @@ const AstrowingData = {
     },
     {
       eventName: "AetherHack",
+      registrationLink : "",
       eventId: "06",
       description:
         "A tech hackathon focused on astronomy-inspired challenges — AI, automation, data analysis, celestial computation, radio astronomy and more.",
@@ -248,6 +254,26 @@ const AstrowingPage = () => {
                 </ul>
               </div>
             </section>
+
+            <button
+              onClick={() => handleRegister(selected.registrationLink)}
+              // Container classes: Fixed position, z-index, colors, borders, and sharp transitions
+              className="fixed bottom-8 right-8 z-50 group px-10 py-4 bg-blackborder-[3px] border-cyan-400 text-white font-bold text-xl uppercase tracking-[0.15em] shadow-[5px_5px_0_#d946ef,-4px_-4px_0_#06b6d4] hover:shadow-[-6px_-6px_0_#d946ef,6px_6px_0_#06b6d4] hover:border-fuchsia-500 hover:text-cyan-300 transition-all duration-150 ease-linear active:translate-x-[2px] active:translate-y-[2px] active:shadow-none overflow-hidden select-none" >
+              {/* Scanline Overlay Texture (CRT Monitor effect) */}
+              <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.7)_50%)] bg-[length:100%_4px] pointer-events-none z-20 opacity-60"></div>
+
+              {/* Text Content with slight glow */}
+              <span className="relative z-30 flex items-center gap-3 drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
+                Register Now
+                {/* An arrow that shifts color and position sharply on hover */}
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-6 h-6 text-fuchsia-500 group-hover:text-cyan-400 group-hover:translate-x-2 transition-all duration-150">
+                  <path strokeLinecap="square" strokeLinejoin="miter" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                </svg>
+              </span>
+
+              {/* Optional: A subtle flicker element that appears briefly on hover start */}
+              <div className="absolute top-0 left-[-100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[25deg] group-hover:animate-[ping_0.3s_linear_1] opacity-0"></div>
+            </button>
           </motion.div>
         )}
       </AnimatePresence>

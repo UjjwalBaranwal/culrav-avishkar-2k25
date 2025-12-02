@@ -56,6 +56,7 @@ const GenesisData = {
     },
     // {
     //   eventName: "Clue Quest",
+    //   registrationLink : "",
     //   eventId: "59",
     //   description:
     //     "A high-energy, theme-based event packed with puzzles, references from popular TV series, anime, riddles, and engaging challenges — all leading to an exciting final treasure hunt.",
