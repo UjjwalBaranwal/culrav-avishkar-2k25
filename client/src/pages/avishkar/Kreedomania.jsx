@@ -159,6 +159,34 @@ const KreedomaniaData = {
       PsLink: "",
       coordinators: [],
     },
+    {
+      eventName: "Chess",
+      eventId: "121",
+      description:
+        "A team-based chess tournament featuring league rounds with Swiss system pairing followed by finals. Fair play, strategy, and consistency will determine the champions.\n\nUseful Links:\nChess Resources: https://tinyurl.com/yn73pfja\nMNNIT Lichess Team: https://lichess.org/team/mnnit-chess-club\nInstagram: https://instagram.com/mnnit_chess_club",
+      rules: [
+        "The event consists of two stages: League Stage and Finals.",
+        "The League Stage will follow the Swiss system. Teams will be paired against each other every round and must maintain a fixed board order throughout the tournament.",
+        "Teams must play all games; no match can be skipped.",
+        "Players are not allowed to agree to draws. Only 3-fold repetition or 50-move rule can result in a draw.",
+        "Entry fee: ₹100 per team (MNNIT students) and ₹200 per team (others).",
+        "Teams must follow standard FIDE rules.",
+        "Outcome fixing or use of unfair means will lead to immediate disqualification.",
+        "Each tournament match consists of 2 games with opposite colors for each board.",
+        "Scoring: Win = 1 point, Draw = 0.5 point, Loss = 0 points.",
+        "A team wins the round if their cumulative score across the two games exceeds 4.",
+        "If a team wins both games or wins one and draws the other, they win the round.",
+        "If each team wins one game, or both games are drawn, the round is a draw.",
+        "Tiebreakers after League Stage: 1) Total Match Points, 2) Swiss Sonneborn-Berger, 3) Blitz tiebreak (3+0) until a decisive result.",
+        "Finals tiebreak: One 3+0 team game; higher-ranked team from League Stage gets White.",
+        "All participants are eligible for a separate individual bullet (1+1) tournament.",
+        "The organizers' decision will be final in case of disputes.",
+      ],
+      minTeamSize: 4,
+      maxTeamSize: 4,
+      PsLink: "",
+      coordinators: [],
+    },
   ],
 };
 
@@ -184,16 +212,12 @@ const KreedomaniaPage = () => {
       {/* Header */}
       <main className="relative flex flex-col items-center justify-center px-4 py-16 sm:py-20 lg:py-24">
         <div className="w-full max-w-4xl text-center">
-          <h1
-            className="font-bold uppercase tracking-wide neon-shadow drop-shadow-xl text-gray-100 text-3xl sm:text-5xl lg:text-6xl leading-tight sm:leading-snug mb-3 sm:mb-4"
-          >
+          <h1 className="font-bold uppercase tracking-wide neon-shadow drop-shadow-xl text-gray-100 text-3xl sm:text-5xl lg:text-6xl leading-tight sm:leading-snug mb-3 sm:mb-4">
             {KreedomaniaData.eventName}
           </h1>
 
           {KreedomaniaData.tagline && (
-            <p
-              className="mx-auto text-gray-200 text-sm sm:text-base lg:text-lg max-w-2xl leading-relaxed mt-2 sm:mt-3"
-            >
+            <p className="mx-auto text-gray-200 text-sm sm:text-base lg:text-lg max-w-2xl leading-relaxed mt-2 sm:mt-3">
               {KreedomaniaData.tagline}
             </p>
           )}
@@ -205,30 +229,32 @@ const KreedomaniaPage = () => {
         {[...KreedomaniaData.events]
           .sort((a, b) => a.eventName.localeCompare(b.eventName))
           .map((event) => (
-          <motion.div
-            key={event.eventId}
-            initial={{ scale: 1, boxShadow: "0 0 10px rgba(0,0,0,0.2)" }}
-            whileHover={{
-              scale: 1.05,
-              boxShadow: "0 15px 30px rgba(255,115,0,0.5)",
-              transition: { duration: 0.3, ease: "easeInOut" },
-            }}
-            whileTap={{ scale: 0.98 }}
-            className="relative p-6 border border-gray-400 rounded-xl bg-black/90 backdrop-blur-md shadow-md cursor-pointer text-center select-none"
-            onClick={() => setSelected(event)}
-          >
-            <h2 className="text-2xl font-bold neon-shadow text-gray-300 mb-2">{event.eventName}</h2>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setSelected(event);
+            <motion.div
+              key={event.eventId}
+              initial={{ scale: 1, boxShadow: "0 0 10px rgba(0,0,0,0.2)" }}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 15px 30px rgba(255,115,0,0.5)",
+                transition: { duration: 0.3, ease: "easeInOut" },
               }}
-              className="mt-4 py-2 w-full border border-gray-300 rounded-lg bg-gray-300 text-black font-semibold hover:bg-gray-200 transition"
+              whileTap={{ scale: 0.98 }}
+              className="relative p-6 border border-gray-400 rounded-xl bg-black/90 backdrop-blur-md shadow-md cursor-pointer text-center select-none"
+              onClick={() => setSelected(event)}
             >
-              Explore
-            </button>
-          </motion.div>
-        ))}
+              <h2 className="text-2xl font-bold neon-shadow text-gray-300 mb-2">
+                {event.eventName}
+              </h2>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelected(event);
+                }}
+                className="mt-4 py-2 w-full border border-gray-300 rounded-lg bg-gray-300 text-black font-semibold hover:bg-gray-200 transition"
+              >
+                Explore
+              </button>
+            </motion.div>
+          ))}
       </div>
 
       {/* Details Modal */}
@@ -249,14 +275,22 @@ const KreedomaniaPage = () => {
             >
               ✕
             </button>
-            <h2 className="text-4xl font-bold mt-4 neon-shadow text-gray-400 mb-8 text-center">{selected.eventName}</h2>
+            <h2 className="text-4xl font-bold mt-4 neon-shadow text-gray-400 mb-8 text-center">
+              {selected.eventName}
+            </h2>
             <section className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
               <div>
-                <h3 className="text-2xl font-bold text-gray-400 mb-4 text-center">About the Event</h3>
-                <p className="text-gray-300 whitespace-pre-wrap">{selected.description}</p>
+                <h3 className="text-2xl font-bold text-gray-400 mb-4 text-center">
+                  About the Event
+                </h3>
+                <p className="text-gray-300 whitespace-pre-wrap">
+                  {selected.description}
+                </p>
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-gray-400 mb-4 text-center">Rules</h3>
+                <h3 className="text-2xl font-bold text-gray-400 mb-4 text-center">
+                  Rules
+                </h3>
                 <ul className="list-disc list-inside ml-6 space-y-2 text-gray-300 max-h-[60vh] overflow-y-auto pr-4">
                   {selected.rules.map((r, i) => (
                     <li key={i}>{r}</li>
@@ -264,10 +298,16 @@ const KreedomaniaPage = () => {
                 </ul>
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-gray-400 mb-4 text-center">Coordinators</h3>
+                <h3 className="text-2xl font-bold text-gray-400 mb-4 text-center">
+                  Coordinators
+                </h3>
                 <ul className="list-disc list-inside ml-6 space-y-2 text-gray-300 text-center">
-                  {selected.coordinators.map((c, i) => (
-                    <li key={i}>{c.name} — {c.contact}</li>
+                  {selected.coordinators.length==0?
+                  <h1 >No coordinators listed</h1>:
+                  selected.coordinators.map((c, i) => (
+                    <li key={i}>
+                      {c.name} — {c.contact}
+                    </li>
                   ))}
                 </ul>
                 {/* <p className="mt-6 text-gray-300 text-left"><strong>Team size:</strong> {selected.minTeamSize} - {selected.maxTeamSize}</p> */}

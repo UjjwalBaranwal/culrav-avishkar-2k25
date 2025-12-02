@@ -203,13 +203,13 @@ const MonopolyPage = () => {
               <div>
                 <h3 className="text-2xl font-bold text-gray-400 mb-4 text-center">Coordinators</h3>
                 <ul className="list-disc list-inside ml-6 space-y-2 text-gray-300 text-center">
-                  {selected.coordinators.length > 0 ? (
-                    selected.coordinators.map((c, i) => (
-                      <li key={i}>{c.name} — {c.contact}</li>
-                    ))
-                  ) : (
-                    <li className="text-gray-500">Coordinators not available</li>
-                  )}
+                  {selected.coordinators.length==0?
+                  <h1 >No coordinators listed</h1>:
+                  selected.coordinators.map((c, i) => (
+                    <li key={i}>
+                      {c.name} — {c.contact}
+                    </li>
+                  ))}
                 </ul>
                 {/* <p className="mt-6 text-gray-300 text-left"><strong>Team size:</strong> {selected.minTeamSize} - {selected.maxTeamSize}</p> */}
               </div>

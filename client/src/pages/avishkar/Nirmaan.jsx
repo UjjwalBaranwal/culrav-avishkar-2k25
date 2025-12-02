@@ -69,7 +69,7 @@ const NirmaanData = {
     ],
   },
   {
-    eventName: "ZIGGURAE",
+    eventName: "ZIGGURARE",
     eventId: "04",
     description:
       "The ultimate AutoCAD and building design showdown.\n Design Top view and plan of existing building.\n Design views with surprise constraints.",
@@ -109,15 +109,14 @@ const NirmaanData = {
     ],
   },
   {
-    eventName: "JUST IN CASE",
+    eventName: "CaseFlow",
     eventId: "06",
     description:
       "The Consulting Challenge focusing on case studies, guesstimates, and real-world business problems.",
     rules: [
       "Solo Event",
-      "Round 1: Online Test",
-      "Round 2: Guesstimate + Case Studies",
-      "Round 3: Interview Round"
+      "Round 1: Pen and Paper Test",
+      "Round 2: Presentation",
     ],
     maxTeamSize: 1,
     minTeamSize: 1,
@@ -128,26 +127,26 @@ const NirmaanData = {
       { name: "Upasna Verma", contact: "" },
     ],
   },
-  {
-    eventName: "TERRAQUIZ",
-    eventId: "07",
-    description:
-      "Nirmaan Fun Event featuring rounds such as 'Real vs Reel' and Treasure Hunt.",
-    rules: [
-      "Team Event",
-      "Round 1: Quiz Round",
-      "Round 2: Surprise Round",
-      "Round 3: Treasure Hunt"
-    ],
-    maxTeamSize: 3,
-    minTeamSize: 3,
-    PsLink: "",
-    coordinators: [
-      { name: "Swetabh Salampuria", contact: "" },
-      { name: "Prakhar Srivastav", contact: "" },
-      { name: "Abhay", contact: "" },
-    ],
-  },
+  // {
+  //   eventName: "TERRAQUIZ",
+  //   eventId: "07",
+  //   description:
+  //     "Nirmaan Fun Event featuring rounds such as 'Real vs Reel' and Treasure Hunt.",
+  //   rules: [
+  //     "Team Event",
+  //     "Round 1: Quiz Round",
+  //     "Round 2: Surprise Round",
+  //     "Round 3: Treasure Hunt"
+  //   ],
+  //   maxTeamSize: 3,
+  //   minTeamSize: 3,
+  //   PsLink: "",
+  //   coordinators: [
+  //     { name: "Swetabh Salampuria", contact: "" },
+  //     { name: "Prakhar Srivastav", contact: "" },
+  //     { name: "Abhay", contact: "" },
+  //   ],
+  // },
   {
     eventName: "SAMADHAN",
     eventId: "08",
@@ -275,9 +274,13 @@ const NirmaanPage = () => {
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-gray-400 mb-4 text-center">Coordinators</h3>
-                <ul className="list-disc list-inside ml-6 space-y-2 text-gray-300 text-left">
-                  {selected.coordinators.map((c, i) => (
-                    <li key={i}>{c.name} {c.contact}</li>
+                <ul className="list-disc list-inside ml-6 space-y-2 text-gray-300 text-center">
+                  {selected.coordinators.length==0?
+                  <h1 >No coordinators listed</h1>:
+                  selected.coordinators.map((c, i) => (
+                    <li key={i}>
+                      {c.name} — {c.contact}
+                    </li>
                   ))}
                 </ul>
                 {/* <p className="mt-6 text-gray-300 text-left">

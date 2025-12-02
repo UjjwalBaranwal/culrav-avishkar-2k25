@@ -13,7 +13,7 @@ import EventCardAvishkar from '../assets/Avishkar Event Cards/EventCardAvishkar.
 
 // Card Texts
 import AeroText from '../assets/Avishkar Event Cards/AeroText.png';
-import Astrotext from '../assets/Avishkar Event Cards/AstroText.png';
+import AstroText from '../assets/Avishkar Event Cards/AstroText.png';
 import CyberText from '../assets/Avishkar Event Cards/CyberText.png';
 import ElectroText from '../assets/Avishkar Event Cards/ElectroText.png';
 import GenesisText from '../assets/Avishkar Event Cards/GenesisText.png';
@@ -39,7 +39,7 @@ import MonoImage from '../assets/Avishkar Event Cards/MonoImage.png';
 import NirmaanImage from '../assets/Avishkar Event Cards/NirmaanImage.png';
 import OligoImage from '../assets/Avishkar Event Cards/OligoImage.png';
 import PowerImage from '../assets/Avishkar Event Cards/PowerImage.png';
-import RasayansImage from '../assets/Avishkar Event Cards/RasayansImage.png';
+import RasayansImage from '../assets/Avishkar Event Cards/RasayansImage1.png';
 import RoboImage from '../assets/Avishkar Event Cards/RoboImage.png';
 import TechImage from '../assets/Avishkar Event Cards/TechImage.png';
 
@@ -126,6 +126,31 @@ function AvishkarEvents() {
       titleImage: RasayansText,
       characterImage: RasayansImage,
     },
+    {
+  id: "av11",
+  name: "Aerodynamix",
+  slug: "aerodynamix",
+  coverImage: EventCardAvishkar,
+  titleImage: AeroText,
+  characterImage: AeroImage,
+},
+{
+  id: "av12",
+  name: "Astrowing",
+  slug: "astrowing",
+  coverImage: EventCardAvishkar,
+  titleImage: AstroText,
+  characterImage: AstroImage,
+},
+{
+  id: "av13",
+  name: "Robomania",
+  slug: "robomania",
+  coverImage: EventCardAvishkar,
+  titleImage: RoboText,
+  characterImage: RoboImage,
+},
+
   ];
 
   return (

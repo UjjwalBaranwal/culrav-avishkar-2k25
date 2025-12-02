@@ -7,132 +7,157 @@ const RasayansData = {
   eventName: "Rasayans",
   tagline: "Chemistry Unleashed",
   instagramLink: "",
- events: [
+  events: [
     {
-      eventName: "Chemethalon",
+      eventName: "Chemethlon",
       eventId: "01",
       description:
-        "Chemethalon is a mock placement event designed to simulate real recruitment processes including resume submission, online tests for Core/Software/Consultancy, group discussions and personal interviews. Mandatory for all Chemical Engineering participants. Individual mode only.",
+        "Chemethlon is a mock placement event designed to simulate real recruitment processes for Core, Consultancy, and Software roles. Participants go through resume screening, online tests, group discussions, and personal interviews, closely mimicking real-world placement procedures. The event helps students enhance resume quality, test technical and aptitude skills, improve group discussion and interpersonal skills, and prepare for HR and technical interviews. Valuable coaching and feedback will be provided to help students boost their confidence and performance.",
       rules: [
-        "Round 1: Resume Submission",
-        "Round 2: Online Test (Core / Software / Consultancy)",
-        "Round 3: Group Discussion",
-        "Round 4: Personal Interview",
-        "Individual participation",
-        "Compulsory for Chemical Engineering Students"
+        "Round 1 – Resume Submission: Participants submit their resumes for evaluation based on structure, formatting, relevant skills/coursework, clarity, and correctness.",
+        "Round 2 – Online Test (Core / Software / Consultancy): Track-wise test including Chemical engineering fundamentals (Core) / Programming logic, DSA, CS fundamentals (Software) / Aptitude, logical reasoning, Data Science (Consultancy).",
+        "Round 3 – Group Discussion: Evaluation of communication skills, clarity of thought, and ability to structure ideas.",
+        "Round 4 – Interviews: Technical and/or HR interviews assessing domain knowledge, problem-solving approach, and overall personality.",
+        "Eligibility: Compulsory event for all years of Chemical Engineering.",
+        "Participation Type: Individual participation only.",
+        "Branch: Only Chemical Engineering students are eligible.",
+        "There will be no elimination in any of the rounds."
       ],
       maxTeamSize: 1,
       minTeamSize: 1,
       PsLink: "",
       coordinators: [
-        { name: "Raj Upadhyay", contact: "" },
-        { name: "Aman Goyal", contact: "" },
-        { name: "Adeeb Sheikh", contact: "" }
+        { name: "Aman Goyal", contact: "9528987040" },
+        { name: "Adeeb Sheikh", contact: "9580425894" },
+        { name: "Raj Upadhyay", contact: "7607056068" }
       ],
     },
     {
       eventName: "ChemExpo",
       eventId: "02",
       description:
-        "ChemExpo (From Concept to Creation) is a flagship model-design event where teams present innovative chemical engineering solutions through prototypes, abstracts and viva. One Chemical Engineering member is mandatory per team along with a set budget limit.",
+        "Chem Expo (From Concept to Creation) is a flagship model-design event where participants design and build functional models or process solutions that address real-life chemical engineering problems. The event promotes innovative thinking, focusing on industrial, environmental, and sustainability challenges. Participants are encouraged to blend scientific rigor with practical design and showcase how chemical engineering can enable a greener and more efficient future.",
       rules: [
-        "Team Based Event",
-        "Abstract Submission + Model Showcase + Viva",
-        "At least one Chemical Engineering member",
-        "Budget Limit Applicable",
-        "Cross-branch participation allowed"
+        "Round 1 – Abstract Submission: Teams submit an abstract outlining their model, industrial relevance, objectives, and basic methodology.",
+        "Round 2 – Model Showcasing: Presentation and demonstration of the physical/working model or process solution.",
+        "Round 3 – Viva: Technical questioning based on concept, design, application, and feasibility of the model.",
+        "Cross-branch teams are allowed.",
+        "At least one team member must be from Chemical Engineering.",
+        "Team Size: 1st Year – Maximum 4 members; 2nd & 3rd Year – Maximum 3 members.",
       ],
-      maxTeamSize: 4,
-      minTeamSize: 4,
+      maxTeamSize: 4, // overall max (covers 1st year)
+      minTeamSize: 1,
       PsLink: "",
       coordinators: [
-        { name: "Shubham Swarnkar", contact: "" },
-        { name: "Devashish Gangwani", contact: "" },
-        { name: "Ashwani", contact: "" }
+        { name: "Ashwani Kumar", contact: "6397711952" },
+        { name: "Devashish Gangwani", contact: "9695600574" },
+        { name: "Shubham Swarnkar", contact: "9199392060" }
       ],
     },
     {
       eventName: "Simulenz 2.0",
       eventId: "03",
       description:
-        "A simulation-based competition solving industrial problems using process modelling tools. 1st years prepare PFD, 2nd years solve on Aspen, and 3rd years use Aspen + MATLAB. Includes mid-evaluation and final presentation round. Chemical Engineering only.",
+        "Simulenz 2.0 is a flagship process simulation and design competition exclusively for Chemical Engineering students. It mimics the workflow of a process engineer—from understanding industrial problems, building simulation models, and performing engineering analysis, to presenting a professional solution. The event emphasizes real-world industrial relevance, technical accuracy, software competency (Aspen Plus/HYSYS and MATLAB), sound engineering judgment, and clear technical communication.",
       rules: [
-        "Team Event",
-        "Round 1: Mid Evaluation",
-        "Round 2: Final Presentation",
-        "1st Year: PFD Design",
-        "2nd Year: Aspen Simulation",
-        "3rd Year: Aspen + MATLAB",
-        "Chemical Engineering only",
-        "Max 3 per team"
+        "Team Event exclusively for Chemical Engineering students.",
+        "Tasks by Year:",
+        "  • 1st Year – PFD Design: Create a Process Flow Diagram (PFD) for an assigned industrial process including major equipment symbols, stream flows, and logical sequencing. Basic mass balance is an optional bonus.",
+        "  • 2nd Year – Aspen Simulation: Solve an industrial problem using Aspen Plus/HYSYS with correct thermodynamic package selection, complete flowsheet, and mass-energy balance closure along with basic sensitivity analysis.",
+        "  • 3rd Year – Aspen + MATLAB: Solve an advanced industrial problem using simulation plus numerical analysis. Use MATLAB for optimization, parameter estimation, or regression of Aspen data and provide engineering insights.",
+        "Round 1 – Mid Evaluation: Teams present problem understanding, initial PFD/simulation setup, key assumptions, early results/code (for 3rd year), and challenges faced.",
+        "Round 2 – Final Presentation: 10–15 minute presentation covering objectives, industrial relevance, assumptions, design basis, PFD/flowsheet, simulation/MATLAB results, key graphs/tables/sensitivities, conclusions, and recommendations, followed by Q&A.",
+        "Eligibility: Branch – Only Chemical Engineering.",
+        "Team Size: Maximum 3 members for 1st & 2nd year teams; Maximum 2 members for 3rd year teams."
       ],
       maxTeamSize: 3,
       minTeamSize: 1,
       PsLink: "",
       coordinators: [
-        { name: "Yogesh Pradhan", contact: "" },
-        { name: "Krishna", contact: "" }
+        { name: "Yogesh Pradhan", contact: "6393805530" },
+        { name: "Krishna", contact: "9760923216" }
       ],
     },
     {
       eventName: "Quizzeria",
       eventId: "04",
       description:
-        "A quiz-based competition testing analytical reasoning and cognitive thinking through Quiz, Crossword and Surprise Rounds. Cross-branch teams allowed with at least one Chemical Engineering member.",
+        "Quizzeria is a multi-round quiz-based event designed to test general knowledge, reasoning ability, and logical thinking, with a special focus on chemical engineering concepts. Teams face a mix of MCQs, infographic-based questions, crosswords, and an exciting surprise round.",
       rules: [
-        "Round 1: Quiz",
-        "Round 2: Crossword",
-        "Round 3: Surprise Round",
-        "Cross-branch teams allowed",
-        "At least one Chemical Engineering student",
-        "Max 3 per team"
+        "Round 1 – Quiz Round: MCQs and infographic-based questions from various domains including general knowledge, reasoning, and basic technical awareness.",
+        "Round 2 – Crossword Round: Teams solve a crossword puzzle based on chemical engineering concepts.",
+        "Round 3 – Surprise Round: Fun and challenging surprise format revealed on the spot.",
+        "Team Participation: Cross-branch teams are allowed.",
+        "Team Size: 2–3 members per team.",
+        "Eligibility: At least one member must be from Chemical Engineering."
       ],
       maxTeamSize: 3,
       minTeamSize: 2,
       PsLink: "",
       coordinators: [
-        { name: "Mishti Kesarwani", contact: "" },
-        { name: "Deepika Singh", contact: "" }
+        { name: "Deepika Singh", contact: "" }, // roll no given, no phone in data
+        { name: "Mishti Kesarwani", contact: "" }
       ],
     },
     {
       eventName: "CodeKinetics",
       eventId: "05",
       description:
-        "A web development challenge where teams build projects aligned with an Open Tech Stack based problem statement. Includes abstract submission, mid evaluation, and final judging. Cross-branch allowed with Chemical Engineering student as team lead.",
+        "CodeKinetics is a web development and design competition focused on building real-world, open-tech–based web applications. Participants work through the complete workflow of a web developer—from understanding a problem statement and designing interfaces to building, testing, and presenting a working web application. The event emphasizes real-world problem solving, technical accuracy (frontend, backend, APIs), software competency with modern open tech stacks, design thinking, user experience, and strong presentation/documentation skills.",
       rules: [
-        "Team Event",
-        "Abstract Submission",
-        "Mid Evaluation",
-        "Final Evaluation",
-        "Chemical Engineering member must be team leader",
-        "Cross-branch allowed",
-        "Max 3 per team"
+        "Team Event.",
+        "Participants are encouraged to use modern web technologies (HTML, CSS, JavaScript, frameworks such as React/Next.js), backend tools, and databases.",
+        "Use of open-source tools, version control (Git/GitHub), and collaborative development practices is encouraged.",
+        "Round 1 – Abstract Submission: Teams submit an abstract describing the problem being solved, proposed features and user flow, and planned tech stack (frontend, backend, database, tools).",
+        "Round 2 – Mid Evaluation: Review of basic UI layouts or wireframes, initial implementation (core pages/basic functionality), and progress against the submitted abstract.",
+        "Round 3 – Final Demo & Evaluation: Final demonstration and evaluation of the complete web application, code quality and structure, UI/UX, responsiveness, performance, and clarity of presentation.",
+        "Eligibility & Team Rules:",
+        "  • Cross-branch teams are allowed.",
+        "  • Team Leader must be from Chemical Engineering.",
+        "  • Team Size: 1st Year – Maximum 4 members; 2nd & 3rd Year – Maximum 3 members."
       ],
-      maxTeamSize: 3,
+      maxTeamSize: 4, // covers 1st-year max
       minTeamSize: 2,
       PsLink: "",
       coordinators: [
-        { name: "Sarvagya", contact: "" },
-        { name: "Sumit Jha", contact: "" },
-        { name: "Mohd Anish", contact: "" }
+        { name: "Sumit Jha", contact: "9305064289" },
+        { name: "Sarvagya", contact: "8791219061" },
+        { name: "Mohammad Anish", contact: "6200257592" }
       ],
     },
     {
       eventName: "Data Vision",
       eventId: "06",
       description:
-        "A machine learning & data science competition where teams solve problems involving ML, DL, and NLP. Includes abstract submission, mid evaluation, and final presentation. Cross-branch allowed with Chemical Engineering lead mandatory.",
+        "Data Vision is a data analytics and ML-based competition where teams solve a provided problem statement using tools like Power BI, machine learning, and optionally web development. The event focuses on building end-to-end data-driven solutions—from data understanding and preprocessing to modelling, visualization, and presentation. It evaluates correctness of approach, quality of ML modelling, clarity of dashboards, and the ability to derive meaningful insights.",
       rules: [
-        "Team Event",
-        "Abstract Submission",
-        "Mid Evaluation",
-        "Final Evaluation",
-        "Cross-branch allowed",
-        "Chemical Engineering member must lead the team",
-        "Tech domains: ML / DL / NLP"
+        "Branches Allowed: All branches are allowed.",
+        "Team Leader Requirement: The team leader must be from Chemical Engineering.",
+        "Team Composition:",
+        "  • 1st Year: Up to 4 members per team.",
+        "  • 2nd & 3rd Year: Up to 3 members per team.",
+        "Tool Requirements:",
+        "  • 1st Year: Power BI is compulsory; ML is optional but earns extra credit.",
+        "  • 2nd & 3rd Year: ML-based modelling is mandatory.",
+        "  • Web development is optional but provides additional credit if used creatively.",
+        "Project Expectations:",
+        "  • The entire solution must address the provided problem statement.",
+        "  • Dataset modification beyond cleaning and feature engineering is not allowed.",
+        "  • Plagiarism or copying existing models without proper understanding will lead to disqualification.",
+        "Event Rounds:",
+        "  • Round 1 – Abstract Submission.",
+        "  • Round 2 – Progress Report + Live Mid Evaluation.",
+        "  • Round 3 – Final Report + Code + Dashboards + Presentation.",
+        "Evaluation Considerations:",
+        "  • Relevance and correctness of the chosen approach.",
+        "  • Quality and depth of ML modelling (where applicable).",
+        "  • Clarity of visualizations and meaningfulness of insights.",
+        "  • Creativity in using optional tools (e.g., web app integration).",
+        "  • Presentation clarity and ability to defend the solution.",
+        "  • For 1st years: Effective use of Power BI; any ML attempt earns bonus points.",
+        "Mentorship: Mentors may be assigned to teams based on availability and request."
       ],
-      maxTeamSize: 3,
+      maxTeamSize: 4, // accommodates 1st-year max
       minTeamSize: 2,
       PsLink: "",
       coordinators: [
@@ -141,47 +166,9 @@ const RasayansData = {
         { name: "Arisha Siddiqui", contact: "" }
       ],
     },
-    {
-      eventName: "CasEstimates",
-      eventId: "07",
-      description:
-        "A case-solving + estimation competition involving analytical reasoning, solution modelling and presentation. Pen-paper round followed by PPT & Q/A. Cross-branch teams allowed. Max 4 for 1st year and 2 for 2nd-3rd year teams.",
-      rules: [
-        "Round 1: Pen-Paper Problem Solving",
-        "Round 2: PPT Presentation + Q/A",
-        "Cross-branch Allowed",
-        "1st Yr: Max 4 Members",
-        "2nd & 3rd Yr: Max 2 Members"
-      ],
-      maxTeamSize: 4,
-      minTeamSize: 1,
-      PsLink: "",
-      coordinators: [
-        { name: "Deeksha Singh", contact: "" },
-        { name: "Jaanvi Saxena", contact: "" }
-      ],
-    },
-    {
-      eventName: "Scavenger Hunt",
-      eventId: "08",
-      description:
-        "A fun competitive hunt featuring multiple energetic rounds. Begins with a fun-paper test followed by unpredictable surprise rounds. Cross-branch & cross-year collaboration allowed. Max 4 per team.",
-      rules: [
-        "Round 1: Paper-Based Fun Test",
-        "Round 2: Surprise Rounds",
-        "Cross-year and Cross-branch permitted",
-        "Max 4 per team"
-      ],
-      maxTeamSize: 4,
-      minTeamSize: 2,
-      PsLink: "",
-      coordinators: [
-        { name: "Purushottam Dubey", contact: "" },
-        { name: "Divyanshu Purbey", contact: "" }
-      ],
-    },
   ],
 };
+
 
 const RasayansPage = () => {
   const [selected, setSelected] = useState(null);
@@ -286,9 +273,13 @@ const RasayansPage = () => {
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-gray-400 mb-4 text-center">Coordinators</h3>
-                <ul className="list-disc list-inside ml-6 space-y-2 text-gray-300 text-left">
-                  {selected.coordinators.map((c, i) => (
-                    <li key={i}>{c.name} {c.contact}</li>
+                <ul className="list-disc list-inside ml-6 space-y-2 text-gray-300 text-center">
+                  {selected.coordinators.length==0?
+                  <h1 >No coordinators listed</h1>:
+                  selected.coordinators.map((c, i) => (
+                    <li key={i}>
+                      {c.name} — {c.contact}
+                    </li>
                   ))}
                 </ul>
                 {/* <p className="mt-6 text-gray-300 text-left"><strong>Team size:</strong> {selected.minTeamSize} - {selected.maxTeamSize}</p> */}
