@@ -1,4 +1,4 @@
-# 🎉 Culrav-Avishkar 2k24 Official Website
+# 🎉 Culrav-Avishkar 2k25 Official Website
 
 
 ![Screenshot (500)](client/src/assets/Readme/homePage.png)
