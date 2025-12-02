@@ -70,9 +70,9 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        
+      <Navbar />
         <Suspense fallback={<Loader />}>
-        <Navbar />
+        
           <Routes>
             <Route index element={<Homepage />} />
 

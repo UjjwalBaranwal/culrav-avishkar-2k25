@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router";
 
 import AvishkarBG from "../../assets/a_s_bg.png";
 
@@ -8,71 +9,75 @@ const OligopolyData = {
   tagline: "",
   instagramLink: "",
   events: [
-  {
-    eventName: "Solo Lobo",
-    eventId: "01",
-    description:
-      "A three-round corporate readiness challenge assessing communication, leadership, interview performance, and crisis handling skills.",
-    rules: [
-      "Individual participation only.",
-      "Round 1: Group Discussion – evaluates communication, awareness, teamwork & articulation.",
-      "Round 2: Mock Interview – HR-style interview based on personality, communication & persuasion.",
-      "Round 3: Corporate Strategy + Risk Management – participants propose business solutions within 10 mins followed by evaluation.",
-    ],
-    maxTeamSize: 1,
-    minTeamSize: 1,
-    PsLink: "",
-    coordinators: [],
-  },
-  {
-    eventName: "Pitchers",
-    eventId: "02",
-    description:
-      "A startup pitching challenge conducted in two stages — quiz followed by a business pitch presentation.",
-    rules: [
-      "Team size: 1-3 members.",
-      "Round 1: Offline quiz on startups & entrepreneurship (40 MCQs, no negative marking, 30% qualifying score).",
-      "Round 2: PPT Pitching Round – teams present business plan in under 10 slides (excluding cover & final slide).",
-      "Presentation must include motivation, feasibility, revenue, marketing and financial strategy.",
-    ],
-    maxTeamSize: 3,
-    minTeamSize: 1,
-    PsLink: "",
-    coordinators: [],
-  },
-  {
-    eventName: "Ad-Hole",
-    eventId: "03",
-    description:
-      "A multi-round advertising challenge involving quizzes, live ad-analysis and final ad-film production.",
-    rules: [
-      "Team size: 1-2 members.",
-      "Round 1: Brain Teaser – 15-minute online quiz (20 advertisement-based questions) taken individually by both members.",
-      "Round 2: Evolution – video advertisement shown, participants write analysis on A4 sheet within 20 minutes.",
-      "Round 3: Thinkistaan – creative ad-making round (1.5 to 3-minute ad) followed by Q&A panel.",
-    ],
-    maxTeamSize: 2,
-    minTeamSize: 1,
-    PsLink: "",
-    coordinators: [],
-  },
-  {
-    eventName: "Trading Strategist",
-    eventId: "04",
-    description:
-      "A stock-market based analytical event testing fundamentals of finance, trading mindset and portfolio strategy under simulated conditions.",
-    rules: [
-      "Individual participation only.",
-      "Round 1: The Financial Forum – MCQ-based assessment covering stock basics, concepts & market awareness.",
-      "Round 2: The Trading Turf – simulated trading session to maximize profits using strategic decisions.",
-      "Eligibility: Open to all interested in stock trading.",
-    ],
-    maxTeamSize: 1,
-    minTeamSize: 1,
-    PsLink: "",
-    coordinators: [],
-  }
-]
+    {
+      eventName: "Solo Lobo",
+      registrationLink: "https://forms.gle/FS4NoLncNJQHPyAN8",
+      eventId: "01",
+      description:
+        "A three-round corporate readiness challenge assessing communication, leadership, interview performance, and crisis handling skills.",
+      rules: [
+        "Individual participation only.",
+        "Round 1: Group Discussion – evaluates communication, awareness, teamwork & articulation.",
+        "Round 2: Mock Interview – HR-style interview based on personality, communication & persuasion.",
+        "Round 3: Corporate Strategy + Risk Management – participants propose business solutions within 10 mins followed by evaluation.",
+      ],
+      maxTeamSize: 1,
+      minTeamSize: 1,
+      PsLink: "",
+      coordinators: [],
+    },
+    {
+      eventName: "Pitchers",
+      registrationLink: "https://forms.gle/TFBod4xhuiHrSpBX7",
+      eventId: "02",
+      description:
+        "A startup pitching challenge conducted in two stages — quiz followed by a business pitch presentation.",
+      rules: [
+        "Team size: 1-3 members.",
+        "Round 1: Offline quiz on startups & entrepreneurship (40 MCQs, no negative marking, 30% qualifying score).",
+        "Round 2: PPT Pitching Round – teams present business plan in under 10 slides (excluding cover & final slide).",
+        "Presentation must include motivation, feasibility, revenue, marketing and financial strategy.",
+      ],
+      maxTeamSize: 3,
+      minTeamSize: 1,
+      PsLink: "",
+      coordinators: [],
+    },
+    {
+      eventName: "Ad-Hole",
+      registrationLink: "",
+      eventId: "03",
+      description:
+        "A multi-round advertising challenge involving quizzes, live ad-analysis and final ad-film production.",
+      rules: [
+        "Team size: 1-2 members.",
+        "Round 1: Brain Teaser – 15-minute online quiz (20 advertisement-based questions) taken individually by both members.",
+        "Round 2: Evolution – video advertisement shown, participants write analysis on A4 sheet within 20 minutes.",
+        "Round 3: Thinkistaan – creative ad-making round (1.5 to 3-minute ad) followed by Q&A panel.",
+      ],
+      maxTeamSize: 2,
+      minTeamSize: 1,
+      PsLink: "",
+      coordinators: [],
+    },
+    {
+      eventName: "Trading Strategist",
+      registrationLink: "",
+      eventId: "04",
+      description:
+        "A stock-market based analytical event testing fundamentals of finance, trading mindset and portfolio strategy under simulated conditions.",
+      rules: [
+        "Individual participation only.",
+        "Round 1: The Financial Forum – MCQ-based assessment covering stock basics, concepts & market awareness.",
+        "Round 2: The Trading Turf – simulated trading session to maximize profits using strategic decisions.",
+        "Eligibility: Open to all interested in stock trading.",
+      ],
+      maxTeamSize: 1,
+      minTeamSize: 1,
+      PsLink: "",
+      coordinators: [],
+    }
+  ]
 
 };
 
@@ -130,30 +135,30 @@ const OligopolyPage = () => {
         {[...OligopolyData.events]
           .sort((a, b) => a.eventName.localeCompare(b.eventName))
           .map((event) => (
-          <motion.div
-            key={event.eventId}
-            initial={{ scale: 1, boxShadow: "0 0 10px rgba(0,0,0,0.2)" }}
-            whileHover={{
-              scale: 1.05,
-              boxShadow: "0 15px 30px rgba(255,115,0,0.5)",
-              transition: { duration: 0.3, ease: "easeInOut" },
-            }}
-            whileTap={{ scale: 0.98 }}
-            className="relative p-6 border border-gray-400 rounded-xl bg-black/90 backdrop-blur-md shadow-md cursor-pointer text-center select-none"
-            onClick={() => setSelected(event)}
-          >
-            <h2 className="text-2xl font-bold neon-shadow text-gray-300 mb-2">{event.eventName}</h2>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setSelected(event);
+            <motion.div
+              key={event.eventId}
+              initial={{ scale: 1, boxShadow: "0 0 10px rgba(0,0,0,0.2)" }}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 15px 30px rgba(255,115,0,0.5)",
+                transition: { duration: 0.3, ease: "easeInOut" },
               }}
-              className="mt-4 py-2 w-full border border-gray-300 rounded-lg bg-gray-300 text-black font-semibold hover:bg-gray-200 transition"
+              whileTap={{ scale: 0.98 }}
+              className="relative p-6 border border-gray-400 rounded-xl bg-black/90 backdrop-blur-md shadow-md cursor-pointer text-center select-none"
+              onClick={() => setSelected(event)}
             >
-              Explore
-            </button>
-          </motion.div>
-        ))}
+              <h2 className="text-2xl font-bold neon-shadow text-gray-300 mb-2">{event.eventName}</h2>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelected(event);
+                }}
+                className="mt-4 py-2 w-full border border-gray-300 rounded-lg bg-gray-300 text-black font-semibold hover:bg-gray-200 transition"
+              >
+                Explore
+              </button>
+            </motion.div>
+          ))}
       </div>
 
       {/* Details Modal */}
@@ -195,13 +200,13 @@ const OligopolyPage = () => {
                   Coordinators
                 </h3>
                 <ul className="list-disc list-inside ml-6 space-y-2 text-gray-300 text-center">
-                  {selected.coordinators.length==0?
-                  <h1 >No coordinators listed</h1>:
-                  selected.coordinators.map((c, i) => (
-                    <li key={i}>
-                      {c.name} — {c.contact}
-                    </li>
-                  ))}
+                  {selected.coordinators.length == 0 ?
+                    <h1 >No coordinators listed</h1> :
+                    selected.coordinators.map((c, i) => (
+                      <li key={i}>
+                        {c.name} — {c.contact}
+                      </li>
+                    ))}
                 </ul>
                 {/* <p className="mt-6 text-gray-300 text-left">
                   <strong>Team size:</strong> {selected.minTeamSize} -{" "}
@@ -209,26 +214,53 @@ const OligopolyPage = () => {
                 </p> */}
               </div>
             </section>
-
             <button
               onClick={() => handleRegister(selected.registrationLink)}
-              // Container classes: Fixed position, z-index, colors, borders, and sharp transitions
-              className="fixed bottom-8 right-8 z-50 group px-10 py-4 bg-blackborder-[3px] border-cyan-400 text-white font-bold text-xl uppercase tracking-[0.15em] shadow-[5px_5px_0_#d946ef,-4px_-4px_0_#06b6d4] hover:shadow-[-6px_-6px_0_#d946ef,6px_6px_0_#06b6d4] hover:border-fuchsia-500 hover:text-cyan-300 transition-all duration-150 ease-linear active:translate-x-[2px] active:translate-y-[2px] active:shadow-none overflow-hidden select-none" >
-              {/* Scanline Overlay Texture (CRT Monitor effect) */}
+              className="
+    relative
+    block mx-auto mt-8
+    px-3 py-2 text-sm
+
+    md:fixed md:bottom-8 md:right-8 md:mx-0 md:mt-0
+    md:px-8 md:py-3 md:text-lg
+
+    lg:px-10 lg:py-4 lg:text-xl
+    z-50 group bg-black border-[3px] border-cyan-400 text-white 
+    font-bold uppercase tracking-[0.15em]
+    shadow-[4px_4px_0_#d946ef,-3px_-3px_0_#06b6d4]
+    hover:shadow-[-6px_-6px_0_#d946ef,6px_6px_0_#06b6d4]
+    hover:border-fuchsia-500 hover:text-cyan-300
+    transition-all duration-150 ease-linear 
+    active:translate-x-[2px] active:translate-y-[2px] active:shadow-none
+    select-none overflow-hidden
+  "
+            >
+              {/* scanline overlay */}
               <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.7)_50%)] bg-[length:100%_4px] pointer-events-none z-20 opacity-60"></div>
 
-              {/* Text Content with slight glow */}
-              <span className="relative z-30 flex items-center gap-3 drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
+              <span className="relative z-30 flex items-center gap-2 drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
                 Register Now
-                {/* An arrow that shifts color and position sharply on hover */}
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-6 h-6 text-fuchsia-500 group-hover:text-cyan-400 group-hover:translate-x-2 transition-all duration-150">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  strokeWidth={3}
+                  stroke="currentColor"
+                  className="
+        w-4 h-4 
+        md:w-6 md:h-6
+        text-fuchsia-500 
+        group-hover:text-cyan-400 
+        group-hover:translate-x-2 
+        transition-all duration-150
+      "
+                >
                   <path strokeLinecap="square" strokeLinejoin="miter" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                 </svg>
               </span>
 
-              {/* Optional: A subtle flicker element that appears briefly on hover start */}
               <div className="absolute top-0 left-[-100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[25deg] group-hover:animate-[ping_0.3s_linear_1] opacity-0"></div>
             </button>
+
           </motion.div>
         )}
       </AnimatePresence>
