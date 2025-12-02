@@ -3,7 +3,7 @@
 
 ![Screenshot (500)](client/src/assets/Readme/homePage.png)
 
-Welcome to the Official Culrav-Avishkar 2k24 Website Repository ! This project was built as part of the annual techno-cultural fest of our institute, combining cutting-edge web technologies and teamwork to deliver a seamless user experience.
+Welcome to the Official Culrav-Avishkar 2k25 Website Repository ! This project was built as part of the annual techno-cultural fest of our institute, combining cutting-edge web technologies and teamwork to deliver a seamless user experience.
 
 ## Intro
 The Website starts off with a sleek animated video asset that was provided by the MHM Team.
