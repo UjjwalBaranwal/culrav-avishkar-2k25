@@ -92,6 +92,18 @@ const AerodynamixData = {
 const AerodynamixPage = () => {
   const [selected, setSelected] = useState(null);
 
+    const navigate = useNavigate();
+  
+    const handleRegister = (link) => {
+      if (link && link.trim() !== "") {
+        // Open Google Form in a new tab
+        window.open(link, "_blank");
+      } else {
+        // Redirect to Coming Soon page
+        navigate("/coming-soon")
+      }
+    };
+    
   return (
     <div className="relative min-h-screen font-sans text-gray-300">
       {/* Background */}

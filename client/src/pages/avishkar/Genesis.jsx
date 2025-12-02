@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
+import { useNavigate } from "react-router";
 
 
 import AvishkarBG from "../../assets/a_s_bg.png";
@@ -13,6 +13,7 @@ const GenesisData = {
   events: [
     {
       eventName: "Palladin",
+      registrationLink : "https://docs.google.com/forms/d/e/1FAIpQLSd_93_qY-EUZHtTUrrrkQIoPkhgUFvcqqpeslaueileNEPIZw/viewform?usp=publish-editor",
       eventId: "57",
       description:
         "A placement-focused event designed to equip biotechnology students for internships and full-time opportunities. The competition evaluates participants across core biotechnology knowledge, consultancy thinking, and software/application skills — helping them sharpen industry-ready problem-solving and communication abilities.",
@@ -34,6 +35,7 @@ const GenesisData = {
     },
     {
       eventName: "Central Dogma",
+      registrationLink : "https://docs.google.com/forms/d/e/1FAIpQLScCcg3WL50Qu6dEPNLeYJ54_VF3lLeSRsXRUeodn-Gjryx0Lg/viewform?usp=publish-editor",
       eventId: "58",
       description:
         "An engaging core biotechnology event that blends technical knowledge with fun and creativity. Participants will progress through interactive rounds featuring biotech concepts, visual challenges, puzzles, anagrams, and themed question sets designed to test both understanding and quick thinking.",
@@ -76,6 +78,7 @@ const GenesisData = {
     // },
     {
       eventName: "IQ Odyssey",
+      registrationLink : "https://docs.google.com/forms/d/e/1FAIpQLScuyNkvOmCqMUzUZ9r8qkfcc0rgqWKzMreV0iun-qz8__yCIg/viewform?usp=publish-editor",
       eventId: "60",
       description:
         "An engaging event that blends current affairs with interactive game-based challenges — designed to make learning more exciting, competitive, and fun.",
@@ -94,6 +97,7 @@ const GenesisData = {
     },
     {
       eventName: "Case & Climb",
+      registrationLink : "https://docs.google.com/forms/d/e/1FAIpQLScr3Dzy9wct6ipXjac-l-JiEEBZJUA0aMAavnMMLCPUL8p2Lw/viewform?usp=header",
       eventId: "61",
       description:
         "A case-study driven event where participants analyze real-world scenarios and demonstrate their analytical thinking, problem-solving approach, and decision-making abilities.",
@@ -114,6 +118,7 @@ const GenesisData = {
     },
     {
       eventName: "Dashboarding",
+      registrationLink : "https://docs.google.com/forms/d/e/1FAIpQLSegk6pd7QlPcuBCas3KdIiLhVUpo-bJ4Ck8tDSebp_OYDEDTg/viewform?usp=publish-editor",
       eventId: "62",
       description:
         "The Consultancy & Software Project Competition is a multidisciplinary event that encourages students to think, build, analyse, and present solutions with real-world relevance. The event blends software development and consultancy/data analytics, requiring collaboration between technology and biotechnology domains. Participants will either develop a biotech-related software solution or create analytical dashboards using real datasets, drawing meaningful insights and presenting them through strong storytelling.",
@@ -139,6 +144,18 @@ const GenesisData = {
 
 const GenesisPage = () => {
   const [selected, setSelected] = useState(null);
+
+  const navigate = useNavigate();
+
+  const handleRegister = (link) => {
+    if (link && link.trim() !== "") {
+      // Open Google Form in a new tab
+      window.open(link, "_blank");
+    } else {
+      // Redirect to Coming Soon page
+      navigate("/coming-soon")
+    }
+  };
 
   return (
     <div className="relative min-h-screen  font-sans text-gray-300">
@@ -251,6 +268,27 @@ const GenesisPage = () => {
                 </ul>
               </section>
             </div>
+
+            <button
+              onClick={() => handleRegister(selected.registrationLink)}
+              // Container classes: Fixed position, z-index, colors, borders, and sharp transitions
+              className="fixed bottom-8 right-8 z-50 group px-10 py-4 bg-blackborder-[3px] border-cyan-400 text-white font-bold text-xl uppercase tracking-[0.15em] shadow-[5px_5px_0_#d946ef,-4px_-4px_0_#06b6d4] hover:shadow-[-6px_-6px_0_#d946ef,6px_6px_0_#06b6d4] hover:border-fuchsia-500 hover:text-cyan-300 transition-all duration-150 ease-linear active:translate-x-[2px] active:translate-y-[2px] active:shadow-none overflow-hidden select-none" >
+              {/* Scanline Overlay Texture (CRT Monitor effect) */}
+              <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.7)_50%)] bg-[length:100%_4px] pointer-events-none z-20 opacity-60"></div>
+
+              {/* Text Content with slight glow */}
+              <span className="relative z-30 flex items-center gap-3 drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
+                Register Now
+                {/* An arrow that shifts color and position sharply on hover */}
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-6 h-6 text-fuchsia-500 group-hover:text-cyan-400 group-hover:translate-x-2 transition-all duration-150">
+                  <path strokeLinecap="square" strokeLinejoin="miter" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                </svg>
+              </span>
+
+              {/* Optional: A subtle flicker element that appears briefly on hover start */}
+              <div className="absolute top-0 left-[-100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[25deg] group-hover:animate-[ping_0.3s_linear_1] opacity-0"></div>
+            </button>
+
           </motion.div>
         )}
       </AnimatePresence>

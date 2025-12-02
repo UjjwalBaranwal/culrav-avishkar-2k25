@@ -70,8 +70,9 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Navbar />
+        
         <Suspense fallback={<Loader />}>
+        <Navbar />
           <Routes>
             <Route index element={<Homepage />} />
 
@@ -120,6 +121,7 @@ function App() {
             </Route>
             <Route path="/sponsors" element={<Sponsers />} />
             <Route path="/avishkar" element={<AvishkarEvents />} />
+            <Route path="/coming-soon" element={<ComingSoonPage />} />
             {/* <Route path="/login" element={<Login />} /> */}
             <Route path="/login" element={<ComingSoonPage />} />
             <Route path="/confirm-email" element={<ConfirmEmail />} />
