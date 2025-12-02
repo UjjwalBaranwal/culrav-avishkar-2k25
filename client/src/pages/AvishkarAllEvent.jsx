@@ -39,7 +39,7 @@ import MonoImage from '../assets/Avishkar Event Cards/MonoImage.png';
 import NirmaanImage from '../assets/Avishkar Event Cards/NirmaanImage.png';
 import OligoImage from '../assets/Avishkar Event Cards/OligoImage.png';
 import PowerImage from '../assets/Avishkar Event Cards/PowerImage.png';
-import RasayansImage from '../assets/Avishkar Event Cards/RasayansImage.png';
+import RasayansImage from '../assets/Avishkar Event Cards/RasayansImage1.png';
 import RoboImage from '../assets/Avishkar Event Cards/RoboImage.png';
 import TechImage from '../assets/Avishkar Event Cards/TechImage.png';
 

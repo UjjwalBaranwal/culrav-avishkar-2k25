@@ -78,7 +78,7 @@ const ElectromaniaData = {
       ],
     },
     {
-      eventName: "KAGGLE_SPRINT",
+      eventName: "KAGGLE SPRINT",
       eventId: "4",
       description:
         "An AI/ML Kaggle competition where teams build end-to-end models and compete on a live leaderboard, gaining hands-on exposure to practical machine learning workflows.",
@@ -118,7 +118,7 @@ const ElectromaniaData = {
       ],
     },
     {
-      eventName: "RTL_RUSH",
+      eventName: "RTL RUSH",
       eventId: "6",
       description:
         "A hardware design event where teams solve digital design problems using Verilog HDL. Separate problem sets for different years, with submissions including code, schematics and waveforms.",
@@ -141,7 +141,7 @@ const ElectromaniaData = {
       ],
     },
     {
-      eventName: "CIRCUIT_OF_THE_DAY",
+      eventName: "CIRCUIT OF THE DAY",
       eventId: "7",
       description:
         "A week-long circuit design challenge with daily problems of increasing difficulty. Participants design digital circuits and submit their solutions using LogisimEvolution.",
